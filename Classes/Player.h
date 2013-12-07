@@ -23,7 +23,9 @@ public:
     
     //player variables
     int health;
+    int maxHealth;
     int soul;
+    int maxSoul;
     int actionsLeft;
     
     

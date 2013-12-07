@@ -30,7 +30,6 @@ bool CardTargets::init()
     
     targetingType = PlayArea;
     
-    
     selectedTargets->init();
     statuses->init();
     
@@ -59,6 +58,7 @@ void CardTargets::targetObject(CCTouch* touch){
     
     //monster selection
     CCARRAY_FOREACH(GM->monsterArray, object){
+        //TODO: can target more than just monsters
         MonsterSprite *monster = (MonsterSprite*)object;
         CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
         if(collisionRect.containsPoint(touchPoint)){
@@ -77,8 +77,14 @@ bool CardTargets::isAbilityReady(){
         }else{
             return false;
         }
+    }else if(isDraggingRequired){
+        if(selectedTargets->count() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }else{
-        
+    
         return true;
     }
 }
@@ -88,26 +94,15 @@ void CardTargets::useAbility(){
     if(isTargetRequired){
         CCObject *object;
         CCARRAY_FOREACH(selectedTargets, object){
+        //TODO: can target more than just monsters
             MonsterSprite *monster = (MonsterSprite*)object;
             CCObject *object2;
             CCARRAY_FOREACH(statuses, object2){
                 Status *status = (Status*)object2;
-                CCString *statusName = status->className;
-                int isMatch = statusName->compare("MonsterHealthOffsetStatus");
-                if(isMatch == 0){
-                    MonsterHealthOffsetStatus *monsterHealthOffsetStatus = (MonsterHealthOffsetStatus*)status;
-                    monsterHealthOffsetStatus->addStatusToGameObject(monster);
-                }
-                isMatch = statusName->compare("GainSoulStatus");
-                if(isMatch == 0){
-                    GainSoulStatus *gainSoulStatus = (GainSoulStatus*)status;
-                    gainSoulStatus->applyStatus();
-                }
+                status->addStatusToGameObject(monster);
                 //apply status effects to monster
                 monster->updateInterface();
-                
             }
-            
         }
     }else{
         //do status
@@ -115,26 +110,13 @@ void CardTargets::useAbility(){
         //        GameManager *GM = GameManager::sharedGameManager();
         CCARRAY_FOREACH(statuses, object){
             Status *status = (Status*)object;
-            CCString *statusName = status->className;
-           // CCString *statusName = CCString::createWithFormat("GainSoulStatus");
-            int isMatch = statusName->compare("MonsterHealthOffsetStatus");
-            if(isMatch == 0){
-                //                MonsterHealthOffsetStatus *monsterHealthOffsetStatus = (MonsterHealthOffsetStatus*)status;
-                //                monsterHealthOffsetStatus->addStatusToGameObject(monster);
-            }
-            isMatch = statusName->compare("GainSoulStatus");
-            if(isMatch == 0){
-                GainSoulStatus *gainSoulStatus = (GainSoulStatus*)status;
-                gainSoulStatus->applyStatus();
-            }
+            status->applyStatus();
         }
-        
     }
     
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->afterCardPlayedStateCheck();
     //clear targetArray
     selectedTargets->removeAllObjects();
-    
-    
-    
 }
 

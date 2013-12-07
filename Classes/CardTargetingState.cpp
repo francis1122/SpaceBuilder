@@ -28,7 +28,7 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
     this->selectedCard = _selectedCard;
     GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->changeIndicatorState(selectedCard->cardTargets->targetingType);
-    
+    GM->gameLayer->setButtonLabels("", "");
     return true;
 }
 
@@ -60,9 +60,9 @@ void CardTargetingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent*
 }
 
 void CardTargetingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    this->transitionToNormalState();
-    GameManager *GM = GameManager::sharedGameManager();
-    GM->player->organizeHand();
+//    this->transitionToNormalState();
+//    GameManager *GM = GameManager::sharedGameManager();
+//    GM->player->organizeHand();
 }
 
 #pragma mark - state transitions

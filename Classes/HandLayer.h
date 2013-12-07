@@ -28,8 +28,12 @@ public:
     cocos2d::CCLabelTTF *soulLabel;
     cocos2d::CCLabelTTF *discardCountLabel;
     cocos2d::CCLabelTTF *actionLabel;
+    
+    cocos2d::CCLayerColor *healthBG;
+    cocos2d::CCLayerColor *healthIndicator;
+    cocos2d::CCLayerColor *soulBG;
+    cocos2d::CCLayerColor *soulIndicator;
 
-    void endTurn();
     void updateInterface();
     
 private:

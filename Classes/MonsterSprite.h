@@ -32,6 +32,8 @@ public:
     void updateInterface();
     void turnUpdate();
     
+
+    cocos2d::CCArray *killingBlowArray;
     cocos2d::CCArray *activeStatusArray;
     
 private:

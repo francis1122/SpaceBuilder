@@ -21,8 +21,11 @@ typedef enum TargetingType{
     RequireActions,
     DiscardArea,
     PlayArea,
-    Monsters
+    Monsters,
+    DiscardCard,
+    DrawCard
 } TargetingType;
+
 
 class CardTargets : public CCObject
 {
@@ -33,10 +36,17 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(CardTargets);
     
+    
+    //only 1 or none of these can be true
     bool isTargetRequired;
+    bool isDraggingRequired;
     
     //type of targets to highlight
     TargetingType targetingType;
+    
+    //Dragging stuff
+     
+    
     
     CCArray *selectedTargets;
     

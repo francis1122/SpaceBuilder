@@ -9,6 +9,7 @@
 #include "HandCardSelectedState.h"
 #include "SelectMonsterState.h"
 #include "CardTargetingState.h"
+#include "CardDraggingState.h"
 #include "GameManager.h"
 #include "NormalState.h"
 #include "CardTargets.h"
@@ -36,7 +37,7 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     }else{
         GM->gameLayer->changeIndicatorState(selectedCard->cardTargets->targetingType);
     }
-    
+        GM->gameLayer->setButtonLabels("", "");
     return true;
 }
 
@@ -74,9 +75,9 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
                 this->transitionToNormalState();
             }
         }else{
-            //check for card in play area
+            //check if card was dropped in play area
             if(UIState::cardInPlayArea(this->selectedCard)){
-                //check if card needs to acquire targets
+                //check if card needs to target other cards or can it be activated now
                 if(selectedCard->cardTargets->isAbilityReady()){
                     selectedCard->cardTargets->useAbility();
                     GM->player->playCard(selectedCard);
@@ -84,8 +85,15 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
                     selectedCard = NULL;
                     this->transitionToNormalState();
                 }else{
-                    GM->player->playCard(selectedCard);
-                    this->transitionToCardTargetingState(this->selectedCard);
+                    if(selectedCard->cardTargets->isDraggingRequired){
+                        //ability is not ready to be used
+                        GM->player->playCard(selectedCard);
+                        this->transitionToCardDraggingState(this->selectedCard);
+                    }else{
+                        //ability is not ready to be used
+                        GM->player->playCard(selectedCard);
+                        this->transitionToCardTargetingState(this->selectedCard);
+                    }
                 }
                 
             }else if(UIState::cardInSellArea(this->selectedCard)){
@@ -94,10 +102,12 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
                 selectedCard = NULL;
                 this->transitionToNormalState();
             }else{
-                
+                //if card is dropped randomly on board
                 if(selectedCard->cardTargets->isTargetRequired){
                     selectedCard->cardTargets->targetObject(touch);
                     
+                    //TODO: needs to be more robust and able to target multiple enemies
+                    // if one valid target has been chosen, go into cardtargetingstate
                     if(selectedCard->cardTargets->isAbilityReady()){
                         selectedCard->cardTargets->useAbility();
                         GM->player->playCard(selectedCard);
@@ -114,7 +124,7 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
             }
         }
     }else{
-        //actions are required, to back to normal state
+        //actions are required, back to normal state
         selectedCard = NULL;
         this->transitionToNormalState();
     }
@@ -138,9 +148,9 @@ void HandCardSelectedState::transitionToNormalState(){
     NS->init();
     NS->autorelease();
     GM->gameLayer->changeState(NS);
-    GM->gameLayer->updateInterface();
     GM->player->organizeHand();
     GM->organizeMarket();
+    GM->gameLayer->updateInterface();
 }
 
 void HandCardSelectedState::transitionToHandCardSelectedState(CardSprite* selectedCard){
@@ -163,4 +173,15 @@ void HandCardSelectedState::transitionToCardTargetingState(CardSprite* selectedC
     CTS->autorelease();
     GM->gameLayer->changeState(CTS);
     GM->organizeMarket();
+    GM->gameLayer->updateInterface();
+}
+
+void HandCardSelectedState::transitionToCardDraggingState(CardSprite* selectedCard){
+    GameManager *GM = GameManager::sharedGameManager();
+    CardDraggingState *CDS =  new CardDraggingState();
+    CDS->init(selectedCard);
+    CDS->autorelease();
+    GM->gameLayer->changeState(CDS);
+    GM->organizeMarket();
+    GM->gameLayer->updateInterface();
 }

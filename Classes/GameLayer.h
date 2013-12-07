@@ -27,6 +27,9 @@ public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::CCScene* scene();
     
+    //setup stuff
+    void setupButtons();
+    
     // implement the "static node()" method manually
     CREATE_FUNC(GameLayer);
     
@@ -34,11 +37,24 @@ public:
     CC_SYNTHESIZE_RETAIN(UIState*, currentState, CurrentState);
     
     cocos2d::CCLabelTTF *visualIndicatorLabel;
+    cocos2d::CCLabelTTF *monstersLeftLabel;
+    cocos2d::CCLabelTTF *sellLabel;
     
     //layers
     HandLayer *handLayer;
     MarketLayer *marketLayer;
     ZoomLayer *zoomLayer;
+    
+    
+    CCLabelTTF *leftButtonLabel;
+    CCLabelTTF *rightButtonLabel;
+    CCMenuItemSprite *rightButton;
+    CCMenuItemSprite *leftButton;
+    
+    void setButtonLabels(const char *leftLabel, const char *rightLabel);
+    
+    void rightButtonPressed(CCObject *pSender);
+    void leftButtonPressed(CCObject *pSender);
     
     cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);

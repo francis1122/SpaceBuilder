@@ -1,31 +1,26 @@
 //
-//  Status.h
+//  DeathBlowStatus.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 11/21/13.
+//  Created by Hunter Francis on 12/6/13.
 //
 //
 
-#ifndef __RogueDeck__Status__
-#define __RogueDeck__Status__
+#ifndef __RogueDeck__DeathBlowStatus__
+#define __RogueDeck__DeathBlowStatus__
 
-#include "cocos2d.h"
+#include "Status.h"
 
 USING_NS_CC;
 
 class MonsterSprite;
-class CardSprite;
-class Status : public CCObject
+
+class DeathBlowStatus : public Status
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
-    
-    // implement the "static node()" method manually
-    CREATE_FUNC(Status);
-    
+    virtual bool init(int powerLevel);
     virtual void addStatusToGameObject(MonsterSprite *monster);
-    virtual void addStatusToCardSprite(CardSprite *card);
     
     //checks whether the status can be used
     virtual bool checkStart();
@@ -42,8 +37,10 @@ public:
     //called at end of turn
     virtual void updateStatus();
     
-    CCString *className;
+    //specific status variables
+    int drawCards;
+    
     
 };
 
-#endif /* defined(__RogueDeck__Status__) */
+#endif /* defined(__RogueDeck__DeathBlowStatus__) */

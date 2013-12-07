@@ -26,6 +26,8 @@ bool NormalState::init()
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->changeIndicatorState(None);
+    GM->gameLayer->setButtonLabels("", "End Turn");
+    GM->gameLayer->updateInterface();
     return true;
 }
 
@@ -72,6 +74,18 @@ void NormalState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
         this->transitionToZoomState(marketCard, 2);
     }
     
+}
+
+//button touches
+void NormalState::leftButtonTouch(){
+    CCLog("UIState::leftButtonTouch");
+}
+
+
+void NormalState::rightButtonTouch(){
+    //end turn
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->endTurn();
 }
 
 #pragma mark - state transitions

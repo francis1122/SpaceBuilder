@@ -12,6 +12,10 @@
 #include "Status.h"
 #include "GainSoulStatus.h"
 #include "MonsterHealthOffsetStatus.h"
+#include "GainActionStatus.h"
+#include "ConvertCardToSoulStatus.h"
+#include "DrawCardStatus.h"
+#include "DeathBlowStatus.h"
 
 
 #endif

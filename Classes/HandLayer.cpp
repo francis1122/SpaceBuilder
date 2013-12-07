@@ -35,48 +35,54 @@ bool HandLayer::init()
     addChild(discardArea);
     */
     
-    libraryCountLabel = CCLabelTTF::create("14", "Arial", 32);
+    libraryCountLabel = CCLabelTTF::create("10", "Arial", 32);
     discardCountLabel = CCLabelTTF::create("0", "Arial", 32);
-    healthLabel = CCLabelTTF::create("health:10", "Arial", 32);
-    soulLabel = CCLabelTTF::create("soul:0", "Arial", 32);
-    actionLabel = CCLabelTTF::create("action:2", "Arial", 32);
+    healthLabel = CCLabelTTF::create("10\n10", "Arial", 32);
+    soulLabel = CCLabelTTF::create("0\n10", "Arial", 32);
+    actionLabel = CCLabelTTF::create("A:2", "Arial", 32);
     
-    libraryCountLabel->setPosition(CCPointMake(30, 40));
+    libraryCountLabel->setPosition(CCPointMake(190, 40));
     discardCountLabel->setPosition(CCPointMake(visibleSize.width - 40, 40));
-    healthLabel->setPosition(CCPointMake(80, 120));
-    soulLabel->setPosition(CCPointMake(80, 80));
-    actionLabel->setPosition(ccp(80,160));
+    healthLabel->setPosition(CCPointMake(68, 80));
+    soulLabel->setPosition(CCPointMake(125, 80));
+    actionLabel->setPosition(ccp(200,160));
     
     this->addChild(libraryCountLabel);
     this->addChild(discardCountLabel);
-    this->addChild(healthLabel);
-    this->addChild(soulLabel);
+    this->addChild(healthLabel, 3);
+    this->addChild(soulLabel, 3);
     this->addChild(actionLabel);
     
 //    GameManager *GM = GameManager::sharedGameManager();
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                                          "CloseNormal.png",
-                                                          "CloseSelected.png",
-                                                          this,
-                                                          menu_selector(HandLayer::endTurn));
+    //health meter setup
     
-	pCloseItem->setPosition(ccp(visibleSize.width - 50,
-                                150));
+    healthBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 50, 300);
+    healthIndicator = CCLayerColor::create(ccc4(0, 100, 0, 255), 40, 290);;
     
-    // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-    pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
+    healthBG->setPosition( 40,20);
+    healthIndicator->setPosition(45, 20);
     
+    healthIndicator->setAnchorPoint(ccp(.5, 0));
     
+    this->addChild(healthBG, 1);
+    this->addChild(healthIndicator, 2);
+    
+    //soul meter setup
+    soulBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 50, 300);
+    soulIndicator = CCLayerColor::create(ccc4(75, 20, 150, 255), 40, 290);
+    
+    soulBG->setPosition( 100,20);
+    soulIndicator->setPosition(105, 20);
+    
+    soulIndicator->setAnchorPoint(ccp(.5, 0));
+    
+    this->addChild(soulBG, 1);
+    this->addChild(soulIndicator, 2);
     
     return true;
 }
 
-void HandLayer::endTurn(){
-    GameManager *GM = GameManager::sharedGameManager();
-    GM->endTurn();
-}
+
 
 void HandLayer::updateInterface(){
     GameManager *GM = GameManager::sharedGameManager();
@@ -86,11 +92,27 @@ void HandLayer::updateInterface(){
     libraryCountLabel->setString(libraryCountString->getCString());
     CCString *discardCountString =CCString::createWithFormat("%i", GM->player->discardCards->count());
     discardCountLabel->setString(discardCountString->getCString());
-    CCString *healthString =CCString::createWithFormat("health: %i", GM->player->health);
+    CCString *healthString =CCString::createWithFormat("%i\n%i", GM->player->health, GM->player->maxHealth);
     healthLabel->setString(healthString->getCString());
-    CCString *soulString =CCString::createWithFormat("soul: %i", GM->player->soul);
+    CCString *soulString =CCString::createWithFormat("%i\n%i", GM->player->soul, GM->player->maxSoul);
     soulLabel->setString(soulString->getCString());
-    CCString *actionString =CCString::createWithFormat("actions: %i", GM->player->actionsLeft);
+    CCString *actionString =CCString::createWithFormat("A:%i", GM->player->actionsLeft);
     actionLabel->setString(actionString->getCString());
+    
+    //setHealth
+    int health = GM->player->health;
+    int maxHealth = GM->player->maxHealth;
+    float percentHealth = (float)health/(float)maxHealth;
+    if(percentHealth > 1.0) percentHealth = 1.0;
+    healthIndicator->setScale(1, percentHealth);
+    
+    //setSoul
+    int soul = GM->player->soul;
+    int maxSoul = GM->player->maxSoul;
+    float percentSoul = (float)soul/(float)maxSoul;
+    if(percentSoul > 1.0) percentSoul = 1.0;
+    soulIndicator->setScale(1,percentSoul);
+    
+    
     
 }

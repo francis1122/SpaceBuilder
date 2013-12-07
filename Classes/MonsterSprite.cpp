@@ -17,7 +17,7 @@ bool MonsterSprite::init()
 {
     //////////////////////////////
     // 1. super init first
-    if ( !CCSprite::initWithSpriteFrameName("card") )
+    if ( !CCSprite::initWithSpriteFrameName("monstercard") )
     {
         return false;
     }
@@ -30,28 +30,30 @@ bool MonsterSprite::init()
     location = 4;
     
     
-    attackLabel = CCLabelTTF::create("A:2", "Arial", 128);
-    lifeLabel =  CCLabelTTF::create("L:4", "Arial", 128);
-    attackLabel->setColor(ccGRAY);
-    lifeLabel->setColor(ccGRAY);
+    attackLabel = CCLabelTTF::create("2", "Arial", 128);
+    lifeLabel =  CCLabelTTF::create("4", "Arial", 128);
+    attackLabel->setColor(ccYELLOW);
+    lifeLabel->setColor(ccYELLOW);
     
-    attackLabel->setPosition(CCPointMake(10, 20));
-    lifeLabel->setPosition(CCPointMake(270, 20));
+    attackLabel->setPosition(CCPointMake(80, 73));
+    lifeLabel->setPosition(CCPointMake(390, 73));
     
     this->addChild(lifeLabel);
     this->addChild(attackLabel);
     
     activeStatusArray = new CCArray();
     activeStatusArray->init();
+    killingBlowArray = new CCArray();
+    killingBlowArray->init();
     this->setScale(.25);
     
     return true;
 }
 
 void MonsterSprite::updateInterface(){
-    CCString *lifeString = CCString::createWithFormat("L:%i", life);
+    CCString *lifeString = CCString::createWithFormat("%i", life);
     lifeLabel->setString(lifeString->getCString());
-    CCString *attackString = CCString::createWithFormat("A:%i", attack);
+    CCString *attackString = CCString::createWithFormat("%i", attack);
     attackLabel->setString(attackString->getCString());
 
 }

@@ -11,8 +11,7 @@
 #include "MonsterGenerator.h"
 #include "MonsterSprite.h"
 #include "CardSprite.h"
-#include "MonsterHealthOffsetStatus.h"
-#include "GainSoulStatus.h"
+#include "Statuses.h"
 #include "Player.h"
 
 USING_NS_CC;
@@ -55,9 +54,53 @@ CardGenerator* CardGenerator::sharedGameManager()
 
 
 CardSprite* CardGenerator::createCard(int powerLevel){
-    int rand = arc4random()%2;
+    int rand = arc4random()%5;
     CardSprite *card = new CardSprite();
-    if(rand == 0){
+    
+    rand = 112;
+    
+    if(rand == 112){
+        card->cardImageFile = "sword";
+        card->init();
+        //Make card ability
+        CardTargets *cardTargets = new CardTargets();
+        cardTargets->init();
+        card->detailsLabel->setString("Do Dmg\nKilling Blow");
+        cardTargets->targetingType = Monsters;
+        cardTargets->isTargetRequired = true;
+        MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
+        status->init(powerLevel);
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
+        deathStatus->init(powerLevel);
+        cardTargets->statuses->addObject(deathStatus);
+        cardTargets->statuses->addObject(status);
+        card->cardTargets = cardTargets;
+        card->setSoulCostOfCard(powerLevel);
+        return card;
+    }
+
+    
+    if(rand == 111){
+        card->cardImageFile = "images";
+        card->init();
+        //Make card ability
+        CardTargets *cardTargets = new CardTargets();
+        cardTargets->init();
+        card->detailsLabel->setString("discard a card and gain soul equal to cards cost");
+        cardTargets->isTargetRequired = false;
+        cardTargets->isDraggingRequired = true;
+        cardTargets->targetingType = DiscardCard;
+        
+        GainSoulStatus *status = new GainSoulStatus();
+        status->init(powerLevel);
+        cardTargets->statuses->addObject(status);
+        card->cardTargets = cardTargets;
+        card->setSoulCostOfCard(powerLevel);
+        return card;
+    }
+        
+    
+    if(rand == 0 || rand == 1){
         card->cardImageFile = "sword";
         card->init();
         //Make card ability
@@ -70,7 +113,7 @@ CardSprite* CardGenerator::createCard(int powerLevel){
         status->init(powerLevel);
         cardTargets->statuses->addObject(status);
         card->cardTargets = cardTargets;
-    }else{
+    }else if(rand == 2 || rand == 3){
         card->cardImageFile = "images";
         card->init();
         //Make card ability
@@ -79,6 +122,18 @@ CardSprite* CardGenerator::createCard(int powerLevel){
         card->detailsLabel->setString("gain soul");
         cardTargets->isTargetRequired = false;
         GainSoulStatus *status = new GainSoulStatus();
+        status->init(powerLevel);
+        cardTargets->statuses->addObject(status);
+        card->cardTargets = cardTargets;
+    }else{
+        card->cardImageFile = "images";
+        card->init();
+        //Make card ability
+        CardTargets *cardTargets = new CardTargets();
+        cardTargets->init();
+        card->detailsLabel->setString("gain two actions");
+        cardTargets->isTargetRequired = false;
+        GainActionStatus *status = new GainActionStatus();
         status->init(powerLevel);
         cardTargets->statuses->addObject(status);
         card->cardTargets = cardTargets;

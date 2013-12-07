@@ -124,6 +124,18 @@ void UIState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     CCLog("doubletap");
 }
 
+
+//button touches
+void UIState::leftButtonTouch(){
+    CCLog("UIState::leftButtonTouch");
+}
+
+
+void UIState::rightButtonTouch(){
+    CCLog("UIState::rightButtonTouch");
+}
+
+
 #pragma mark -collision checks
 
 bool UIState::cardInDiscardArea(CardSprite* card){
@@ -204,6 +216,11 @@ void UIState::transitionToSelectMonsterState(CardSprite* selectedCard){
 void UIState::transitionToCardTargetingState(CardSprite* selectedCard){
     
 }
+
+void UIState::transitionToCardDraggingState(CardSprite* selectedCard){
+    CCLog("empty transitionToCardDraggingState");
+}
+
 //type 0 = hand card, 1 = monster card, 2 = market card
 void UIState::transitionToZoomState(CCObject *selectedObject, int type){
     

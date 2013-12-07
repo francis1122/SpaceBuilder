@@ -14,6 +14,7 @@
 #include "HandLayer.h"
 #include "MarketLayer.h"
 #include "ZoomLayer.h"
+#include "Player.h"
 
 USING_NS_CC;
 
@@ -32,7 +33,41 @@ CCScene* GameLayer::scene()
     return scene;
 }
 
+void GameLayer::setupButtons(){
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    rightButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("button"),
+                                           CCSprite::createWithSpriteFrameName("button_press"),
+                                           this,
+                                           menu_selector(GameLayer::rightButtonPressed));
+    leftButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("button"),
+                                          CCSprite::createWithSpriteFrameName("button_press"),
+                                          this,
+                                          menu_selector(GameLayer::leftButtonPressed));
+    
+	rightButton->setPosition(ccp(visibleSize.width - 80,
+                                 270));
+	leftButton->setPosition(ccp( 240,
+                                270));
+    
+    // create menu, it's an autorelease object
+    CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
+    pMenu->setPosition(CCPointZero);
+    this->addChild(pMenu, 1);
+    
+    //labels
+    leftButtonLabel = CCLabelTTF::create("", "Arial", 32);
+    rightButtonLabel = CCLabelTTF::create("End Turn", "Arial", 32);
+//    rightButtonLabel->enableStroke(ccBLACK, 2);
+    
+    leftButtonLabel->setPosition(ccp(240, 270));
+    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 270));
+    
+    this->addChild(leftButtonLabel, 1);
+    this->addChild(rightButtonLabel, 1);
+    
 
+    
+}
 
 // on "init" you need to initialize your instance
 bool GameLayer::init()
@@ -47,6 +82,8 @@ bool GameLayer::init()
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
+    
+    setupButtons();
     /////////////////////////////
     // 3. add your codes below...
     
@@ -54,13 +91,19 @@ bool GameLayer::init()
     // create and initialize a label
     
     visualIndicatorLabel = CCLabelTTF::create("GAME LAYER", "Arial", 24);
+    monstersLeftLabel  = CCLabelTTF::create("1", "Arial", 32);
+    sellLabel = CCLabelTTF::create("SELL", "Arial", 24);
     
     // position the label on the center of the screen
     visualIndicatorLabel->setPosition(ccp(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
+    monstersLeftLabel->setPosition(ccp( 50, visibleSize.height - 20));
+    sellLabel->setPosition(ccp( visibleSize.width - 60, visibleSize.height - 50));
     
     // add the label as a child to this layer
     this->addChild(visualIndicatorLabel, 1);
+    this->addChild(monstersLeftLabel, 1);
+    this->addChild(sellLabel, 1);
     
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::createWithSpriteFrameName("background");
@@ -86,7 +129,7 @@ bool GameLayer::init()
     this->addChild(zoomLayer, 100);
     
     this->leaveZoomState();
-    
+
     
     //set game layer to gamemanager
     GM->gameLayer = this;
@@ -97,9 +140,28 @@ bool GameLayer::init()
     GM->addMonstersPhase();
     GM->organizeMonsters();
     
+
+    this->updateInterface();
+    
     return true;
 }
 
+
+void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
+        leftButtonLabel->setString(leftLabel);
+        rightButtonLabel->setString(rightLabel);
+}
+
+
+void GameLayer::rightButtonPressed(CCObject *pSender){
+    currentState->rightButtonTouch();
+
+}
+
+
+void GameLayer::leftButtonPressed(CCObject *pSender){
+    currentState->leftButtonTouch();
+}
 #pragma mark - touch code
 
 
@@ -203,6 +265,10 @@ void GameLayer::changeIndicatorState(TargetingType indicatorState){
         visualIndicatorLabel->setString("Discard Area");
     }else if(indicatorState == RequireActions){
         visualIndicatorLabel->setString("More Actions Required");
+    }else if(indicatorState == DiscardCard){
+        visualIndicatorLabel->setString("Must Discard a Card");
+    }else if(indicatorState == DrawCard){
+        visualIndicatorLabel->setString("Must Draw a Card");
     }
 }
 
@@ -216,5 +282,8 @@ void GameLayer::leaveZoomState(){
 
 void GameLayer::updateInterface(){
     handLayer->updateInterface();
+    GameManager *GM = GameManager::sharedGameManager();
+    CCString *monstersLeftString =CCString::createWithFormat("%i", GM->monstersLeft);
+    monstersLeftLabel->setString(monstersLeftString->getCString());
 }
 

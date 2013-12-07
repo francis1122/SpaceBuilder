@@ -23,6 +23,7 @@ bool ZoomState::init(){
     }
     GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->enterZoomState();
+    GM->gameLayer->setButtonLabels("", "");
     return true;
 }
 

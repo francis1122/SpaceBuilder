@@ -9,6 +9,7 @@
 #include "GameManager.h"
 #include "CardSprite.h"
 #include "HandLayer.h"
+#include "Statuses.h"
 #include "MonsterSprite.h"
 #include "MonsterHealthOffsetStatus.h"
 #include "MarketLayer.h"
@@ -87,9 +88,12 @@ void GameManager::startNewRound(int level){
     marketCardArray->removeAllObjects();
     addMonstersPhase();
     player->drawHand();
-    
-    
+    gameLayer->updateInterface();
 }
+
+
+#pragma mark -update the gameState from various points
+
 
 void GameManager::gameStateCheck(){
     //check for dead monsters
@@ -109,22 +113,73 @@ void GameManager::gameStateCheck(){
         pDirector->replaceScene(pScene);
     }
     
-    //if all monsters are dead an no market cards are left
-    if(monstersLeft <= 0 && monsterArray->count() <= 0){
+    //if all monsters are dead and no market cards are left
+    if(monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
         //go to postRoundLayer
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = PostRoundLayer::scene();
         // run
         pDirector->replaceScene(pScene);
     }
-    
 }
+
+void GameManager::afterCardPlayedStateCheck(){
+    //check for dead monsters
+    for(int i = monsterArray->count() - 1; i >= 0; i--){
+        MonsterSprite *monster = (MonsterSprite*)monsterArray->objectAtIndex(i);
+        
+        
+        
+
+        
+        if(monster->life <= 0){
+            //activate killing blow
+            CCObject *object = NULL;
+            CCARRAY_FOREACH(monster->killingBlowArray, object){
+                DeathBlowStatus *deathBlowStatus = (DeathBlowStatus*)object;
+                deathBlowStatus->applyStatus();
+            }
+            
+            this->removeMonster(monster);
+        }
+        
+        //clear temp statuses
+        monster->killingBlowArray->removeAllObjects();
+    }
+    
+    //check for player death
+    if(player->health <= 0){
+        //TODO: make death screen to go to
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        CCScene *pScene = TitleLayer::scene();
+        // run
+        pDirector->replaceScene(pScene);
+    }
+    
+    //if all monsters are dead and no market cards are left
+    if(monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
+        //go to postRoundLayer
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        CCScene *pScene = PostRoundLayer::scene();
+        // run
+        pDirector->replaceScene(pScene);
+    }
+}
+
 
 void GameManager::endTurn(){
     player->discardHand();
     player->discardPlayedCards();
     player->drawHand();
     player->organizeHand();
+    //set round stuff
+    //player health or soul can't be above deck count
+    if(player->health > player->maxHealth){
+        player->health = player->maxHealth;
+    }
+    if(player->soul > player->maxSoul){
+        player->soul = player->maxSoul;
+    }
     player->actionsLeft = 2;
     currentTurn++;
     this->marketTurn();
@@ -180,6 +235,7 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
     if(marketCardArray->containsObject(marketCard)){
         if(player->soul >= marketCard->soulCost){
             player->soul -= marketCard->soulCost;
+            player->actionsLeft--;
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
@@ -281,6 +337,7 @@ void GameManager::monsterTurn(){
     //if there are not enough monsters on the board, add a monster
     this->addMonstersPhase();
 }
+
 
 
 

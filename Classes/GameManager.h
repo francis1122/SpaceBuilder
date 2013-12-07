@@ -51,7 +51,9 @@ public:
     void startNewRound(int level);
     
     //checked to remove monsters or update cards that weren't affected directly
+    
     void gameStateCheck();
+    void afterCardPlayedStateCheck();
     
     //endTurn
     void endTurn();

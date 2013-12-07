@@ -19,7 +19,9 @@ USING_NS_CC;
 Player::Player()
 {
     health = 10;
+    maxHealth = 10;
     soul = 0;
+    maxSoul = 10;
     actionsLeft = 2;
     
     this->deckCards = new CCArray();
@@ -81,6 +83,7 @@ Player::Player()
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
+    shuffle(libraryCards);
 }
 
 
@@ -103,22 +106,34 @@ void Player::reset(){
 
 void Player::organizeHand(){
     CCObject *object;
+    int handSize = handCards->count();
     int i = 0;
+    
+    float centralPoint = 700;
+    float cardOffset = 110;
+    float startPoint = centralPoint - (cardOffset/2)*handSize;
+    
     CCARRAY_FOREACH(handCards, object){
-        i++;
         CardSprite *card = (CardSprite*)object;
-        card->setPosition(CCPointMake(150 + i * 150, 100));
+        card->setPosition(CCPointMake(startPoint + i * 110, 95));
+        i++;
     }
     organizePlayedCards();
 }
 
 void Player::organizePlayedCards(){
     CCObject *object;
+    int handSize = playedCards->count();
     int i = 0;
+    
+    float centralPoint = 700;
+    float cardOffset = 110;
+    float startPoint = centralPoint - (cardOffset/2)*handSize;
+    
     CCARRAY_FOREACH(playedCards, object){
-        i++;
         CardSprite *card = (CardSprite*)object;
-        card->setPosition(CCPointMake(150 + i * 150, 250));
+        card->setPosition(CCPointMake(startPoint + i * 110, 260));
+        i++;
     }
 }
 
@@ -127,22 +142,34 @@ void Player::removeCard(CardSprite *card){
     card->removeFromParent();
     deckCards->removeObject(card);
     handCards->removeObject(card);
+    this->maxHealth--;
+    this->maxSoul--;
 }
 
 void Player::acquireCard(CardSprite *card){
     card->turnsLeftInMarket = 0;
     this->deckCards->addObject(card);
     this->discardCards->addObject(card);
+    this->maxHealth++;
+    this->maxSoul++;
 }
 
 void Player::addCardToHand(){
     GameManager *GM = GameManager::sharedGameManager();
+    
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CCSprite *card = (CCSprite*)object;
         GM->gameLayer->addChild(card);
         handCards->addObject(card);
         libraryCards->removeLastObject();
+    }else{
+        if(discardCards->count() > 0){
+            reshuffleLibrary();
+            addCardToHand();
+        }else{
+            // no cards to draw
+        }
     }
     
     organizeHand();
@@ -188,16 +215,7 @@ void Player::discardHand(){
 
 void Player::drawHand(){
     for(int i = 0; i < 5; i++){
-        if(libraryCards->count() > 0){
-            addCardToHand();
-        }else{
-            if(discardCards->count() > 0){
-                reshuffleLibrary();
-                addCardToHand();
-            }else{
-                //no cards to draw, sorry
-            }
-        }
+        addCardToHand();
     }
     this->organizeHand();
 }
@@ -208,7 +226,7 @@ void Player::reshuffleLibrary(){
     discardCards->removeAllObjects();
 }
 
-void Player::   shuffle(CCArray *array)
+void Player::shuffle(CCArray *array)
 {
     int count = array->count();
     for (int i = 0; i < count; ++i) {

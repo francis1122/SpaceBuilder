@@ -30,6 +30,11 @@ public:
     virtual void ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
     virtual void doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event);
     
+    
+    //button touches
+    virtual void leftButtonTouch();
+    virtual void rightButtonTouch();
+    
     //state changes
     
     virtual void transitionToNormalState();

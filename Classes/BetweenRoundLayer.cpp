@@ -99,5 +99,5 @@ void BetweenRoundLayer::startRound(CCObject* pSender)
     
     // run
     pDirector->replaceScene(pScene);
-    GM->startNewRound(GM->currentLevel + 1);    
+    GM->startNewRound(GM->currentLevel + 1);
 }
