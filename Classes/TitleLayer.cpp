@@ -45,11 +45,11 @@ bool TitleLayer::init()
     //    you may modify it.
     
     // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                                          "CloseNormal.png",
-                                                          "CloseSelected.png",
-                                                          this,
-                                                          menu_selector(TitleLayer::startGame));
+    
+    CCMenuItemSprite *pCloseItem = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("ButtonGlow"),
+                                                            CCSprite::createWithSpriteFrameName("ButtonGlow_Pressed"),
+                                                            this,
+                                                            menu_selector(TitleLayer::startGame));
     
 	pCloseItem->setPosition(ccp(visibleSize.width/2,
                                 100));

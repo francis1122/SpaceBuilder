@@ -13,7 +13,7 @@
 
 class CardSprite;
 class MonsterSprite;
-
+class CardTargets;
 class UIState : public cocos2d::CCObject
 {
 public:
@@ -29,6 +29,13 @@ public:
     CardSprite *marketCardAtPoint(cocos2d::CCTouch*touch);
     MonsterSprite *monsterCardAtPoint(cocos2d::CCTouch*touch);
     cocos2d::CCObject* objectAtPoint(cocos2d::CCTouch* touch);
+    
+    //visualize what can be touched
+    virtual void clearInteractiveState();
+    //used for when card is being played
+    virtual void highlightInteractiveObjects(CardSprite *card);
+    
+    virtual void defaultInteractiveState();
     
     //cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);

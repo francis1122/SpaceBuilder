@@ -50,6 +50,8 @@ public:
     CCLabelTTF *rightButtonLabel;
     CCMenuItemSprite *rightButton;
     CCMenuItemSprite *leftButton;
+    CCSprite *rightButtonGlow, *leftButtonGlow;
+    CCSprite *playAreaGlow;
     
     void setButtonLabels(const char *leftLabel, const char *rightLabel);
     
@@ -73,6 +75,12 @@ public:
     void enterZoomState();
     void leaveZoomState();
     
+    void enablePlayAreaInteractive();
+    void disablePlayAreaInteractive();
+    void enableRightButtonInteractive();
+    void disableRightButtonInteractive();
+    void enableLeftButtonInteractive();
+    void disableLeftButtonInteractive();
     
 private:
     

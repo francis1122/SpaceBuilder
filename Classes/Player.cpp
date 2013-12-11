@@ -12,6 +12,7 @@
 #include "HandLayer.h"
 #include "Statuses.h"
 #include "CardTargets.h"
+#include "Action.h"
 
 
 USING_NS_CC;
@@ -22,7 +23,8 @@ Player::Player()
     maxHealth = 10;
     soul = 0;
     maxSoul = 10;
-    actionsLeft = 2;
+    this->actionsLeftArray = new CCArray();
+    this->actionsLeftArray->init();
     
     this->deckCards = new CCArray();
     this->playedCards = new CCArray();
@@ -75,7 +77,7 @@ Player::Player()
         cardTargets->init();
         cardTargets->isTargetRequired = false;
         GainSoulStatus *status = new GainSoulStatus();
-        status->init(2);
+        status->initWithSoulGain(2);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
@@ -83,13 +85,59 @@ Player::Player()
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
-    shuffle(libraryCards);
+    reset();
 }
 
+#pragma mark - action manipulation
 
-#pragma mark - card manipulation functions
+void Player::addAction(ActionType actionType){
+    Action *action = new Action();
+    action->init(actionType);
+    action->autorelease();
+    this->actionsLeftArray->addObject(action);
+}
+
+void Player::spendAction(ActionType actionType){
+    //check for specific match first
+    CCObject *object;
+    CCARRAY_FOREACH( actionsLeftArray, object){
+        Action *action = (Action*)object;
+        if(actionType ==  action->actionType || actionType == Neutral){
+            actionsLeftArray->removeObject(object);
+            return;
+        }
+    }
+    
+    //check for neutral match
+    CCARRAY_FOREACH( actionsLeftArray, object){
+        Action *action = (Action*)object;
+        if(action->actionType == Neutral){
+            actionsLeftArray->removeObject(object);
+            return;
+        }
+    }
+    
+}
+
+void Player::clearActions(){
+    actionsLeftArray->removeAllObjects();
+}
+
+bool Player::hasAction(ActionType actionType){
+    CCObject *object;
+    CCARRAY_FOREACH( actionsLeftArray, object){
+        Action *action = (Action*)object;
+        if(actionType ==  action->actionType || actionType == Neutral){
+            return true;
+        }
+    }
+    return false;
+}
+
+#pragma mark - card manipulation
 
 void Player::reset(){
+    clearActions();
     discardHand();
     discardCards->removeAllObjects();
     playedCards->removeAllObjects();
@@ -100,7 +148,8 @@ void Player::reset(){
     shuffle(libraryCards);
     health = deckCards->count();
     soul = 0;
-    actionsLeft = 2;
+    addAction(Neutral);
+    addAction(Neutral);
 }
 
 
@@ -115,7 +164,7 @@ void Player::organizeHand(){
     
     CCARRAY_FOREACH(handCards, object){
         CardSprite *card = (CardSprite*)object;
-        card->setPosition(CCPointMake(startPoint + i * 110, 95));
+        card->setPosition(CCPointMake(startPoint + i * 110, 75));
         i++;
     }
     organizePlayedCards();
@@ -160,7 +209,7 @@ void Player::addCardToHand(){
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CCSprite *card = (CCSprite*)object;
-        GM->gameLayer->addChild(card);
+        GM->gameLayer->addChild(card, 10000);
         handCards->addObject(card);
         libraryCards->removeLastObject();
     }else{
@@ -177,7 +226,7 @@ void Player::addCardToHand(){
 
 void Player::playCard(CardSprite *card){
     //execute card
-    actionsLeft--;
+    spendAction(card->action->actionType);
     playedCards->addObject(card);
     handCards->removeObject(card);
 }

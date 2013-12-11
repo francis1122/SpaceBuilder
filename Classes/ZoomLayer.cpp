@@ -52,7 +52,6 @@ bool ZoomLayer::init()
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, kCCMenuHandlerPriority - 1, true);
     this->setTouchEnabled(true);
     
-    
     return true;
 }
 

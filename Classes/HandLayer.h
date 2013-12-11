@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 
+class CardSprite;
 class HandLayer : public cocos2d::CCLayer
 {
 public:
@@ -18,6 +19,7 @@ public:
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
+    
     
     
     // implement the "static node()" method manually
@@ -33,8 +35,23 @@ public:
     cocos2d::CCLayerColor *healthIndicator;
     cocos2d::CCLayerColor *soulBG;
     cocos2d::CCLayerColor *soulIndicator;
+    
+    cocos2d::CCSprite *handGlow;
+    
+    cocos2d::CCArray *actionArray;
 
     void updateInterface();
+    
+    cocos2d::CCSprite *deckCardSprite, *discardCardSprite;
+    cocos2d::CCSprite *deckGlowCardSprite, *discardGlowCardSprite;
+    
+    void enableDeckInteractive();
+    void disableDeckInteractive();
+    void enableDiscardInteractive();
+    void disableDiscardInterative();
+    void enableHandInteractive();
+    void disableHandInteractive();
+    
     
 private:
     

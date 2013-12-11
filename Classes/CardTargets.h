@@ -23,7 +23,8 @@ typedef enum TargetingType{
     PlayArea,
     Monsters,
     DiscardCard,
-    DrawCard
+    DrawCard,
+    BuyCard
 } TargetingType;
 
 

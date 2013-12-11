@@ -31,6 +31,13 @@ bool GainActionStatus::init(int powerLevel)
     return true;
 }
 
+bool GainActionStatus::initWithActionGain(int actionGain){
+    if(!Status::init()){
+        return false;
+    }
+    actionGainAmount = actionGain;
+    return true;
+}
 
 void GainActionStatus::addStatusToGameObject(MonsterSprite *monster){
     
@@ -44,7 +51,9 @@ bool GainActionStatus::checkStart(){
 //called when status is given to object
 void GainActionStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
-    GM->player->actionsLeft += actionGainAmount;
+    for(int i = 0; i < actionGainAmount; i++){
+        GM->player->addAction(Neutral);
+    }
 }
 
 //called when the status ends

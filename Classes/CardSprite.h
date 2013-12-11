@@ -12,7 +12,7 @@
 #include "cocos2d.h"
 //#include "CardTargets.h"
 class CardTargets;
-
+class Action;
 class CardSprite : public cocos2d::CCSprite
 {
 public:
@@ -22,15 +22,22 @@ public:
     const char *cardImageFile;
     int turnsLeftInMarket;
     int soulCost;
+    bool isInteractive;
+    Action *action;
     
     cocos2d::CCLabelTTF *detailsLabel;
     cocos2d::CCLabelTTF *costLabel;
+    
+    cocos2d::CCSprite *glowSprite;
     
     
     // implement the "static node()" method manually
     CREATE_FUNC(CardSprite);
     
     CardTargets *cardTargets;
+    
+    void enableInteractive();
+    void disableInteractive();
     
     void setSoulCostOfCard(int newSoulCost);
 private:

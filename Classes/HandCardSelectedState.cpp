@@ -15,6 +15,9 @@
 #include "CardTargets.h"
 #include "CardSprite.h"
 #include "MonsterSprite.h"
+#include "GameLayer.h"
+#include "HandLayer.h"
+#include "MarketLayer.h"
 
 
 USING_NS_CC;
@@ -30,15 +33,55 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     GameManager *GM = GameManager::sharedGameManager();
     CCLog("handcardselectedState");
     this->selectedCard = _selectedCard;
-    if(selectedCard->turnsLeftInMarket > 0){
-        GM->gameLayer->changeIndicatorState(DiscardArea);
-    }else if(GM->player->actionsLeft <= 0){
+    selectedCard->setZOrder(10000);
+
+    if(!GM->player->hasAction(selectedCard->action->actionType)){
+        UIState::clearInteractiveState();
         GM->gameLayer->changeIndicatorState(RequireActions);
     }else{
-        GM->gameLayer->changeIndicatorState(selectedCard->cardTargets->targetingType);
+        this->highlightInteractiveObjects(selectedCard);
     }
-        GM->gameLayer->setButtonLabels("", "");
+    //highlight should take care of buttons as well
+    GM->gameLayer->setButtonLabels("", "");
     return true;
+}
+
+
+void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
+    clearInteractiveState();
+    GameManager *GM = GameManager::sharedGameManager();
+    CCObject *object;
+    TargetingType indicatorState = card->cardTargets->targetingType;
+    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
+    
+    if(card->turnsLeftInMarket > 0){
+        //if it's a market card lead the user to the discard pile
+        GM->gameLayer->handLayer->enableDiscardInteractive();
+        GM->gameLayer->changeIndicatorState(BuyCard);
+        return;
+    }else{
+        GM->gameLayer->marketLayer->enableSellInteractive();
+    }
+    if(indicatorState == None){
+        
+    }else if(indicatorState == PlayArea){
+        GM->gameLayer->enablePlayAreaInteractive();
+    }else if (indicatorState == Monsters){
+        GM->gameLayer->enablePlayAreaInteractive();
+        CCARRAY_FOREACH(GM->monsterArray, object){
+            MonsterSprite *monster = (MonsterSprite*)object;
+            monster->enableInteractive();
+        }
+    }else if(indicatorState == DiscardArea){
+        GM->gameLayer->handLayer->enableDiscardInteractive();
+    }else if(indicatorState == RequireActions){
+        //      visualIndicatorLabel->setString("More Actions Required");
+    }else if(indicatorState == DiscardCard){
+        //    visualIndicatorLabel->setString("Must Discard a Card");
+    }else if(indicatorState == DrawCard){
+        GM->gameLayer->handLayer->enableDeckInteractive();
+    }
+    
 }
 
 #pragma mark - touch events
@@ -60,7 +103,7 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     this->selectedCard->setPosition(touchPoint);
     
-    if(GM->player->actionsLeft > 0){
+    if(GM->player->hasAction(selectedCard->action->actionType)){
         if(selectedCard->turnsLeftInMarket > 0){
             //used for market card play
             

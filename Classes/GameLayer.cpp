@@ -35,12 +35,12 @@ CCScene* GameLayer::scene()
 
 void GameLayer::setupButtons(){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    rightButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("button"),
-                                           CCSprite::createWithSpriteFrameName("button_press"),
+    rightButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                           CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                            this,
                                            menu_selector(GameLayer::rightButtonPressed));
-    leftButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("button"),
-                                          CCSprite::createWithSpriteFrameName("button_press"),
+    leftButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                          CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                           this,
                                           menu_selector(GameLayer::leftButtonPressed));
     
@@ -52,7 +52,18 @@ void GameLayer::setupButtons(){
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1);
+    this->addChild(pMenu, 2);
+    
+    rightButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
+    leftButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
+    rightButtonGlow->setPosition(rightButton->getPosition());
+    leftButtonGlow->setPosition(leftButton->getPosition());
+    
+    this->addChild(rightButtonGlow, 1);
+    this->addChild(leftButtonGlow, 1);
+    
+    
+
     
     //labels
     leftButtonLabel = CCLabelTTF::create("", "Arial", 32);
@@ -60,10 +71,10 @@ void GameLayer::setupButtons(){
 //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
     leftButtonLabel->setPosition(ccp(240, 270));
-    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 270));
+    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 273));
     
-    this->addChild(leftButtonLabel, 1);
-    this->addChild(rightButtonLabel, 1);
+    this->addChild(leftButtonLabel, 3);
+    this->addChild(rightButtonLabel, 3);
     
 
     
@@ -84,6 +95,15 @@ bool GameLayer::init()
     
     
     setupButtons();
+    
+    
+    //play area glow
+    
+    playAreaGlow = CCSprite::createWithSpriteFrameName("PlayGlow");
+    playAreaGlow->setPosition(ccp(visibleSize.width/2, 255));
+    playAreaGlow->setVisible(false);
+    this->addChild(playAreaGlow, 1);
+    
     /////////////////////////////
     // 3. add your codes below...
     
@@ -101,9 +121,9 @@ bool GameLayer::init()
     sellLabel->setPosition(ccp( visibleSize.width - 60, visibleSize.height - 50));
     
     // add the label as a child to this layer
-    this->addChild(visualIndicatorLabel, 1);
-    this->addChild(monstersLeftLabel, 1);
-    this->addChild(sellLabel, 1);
+    this->addChild(visualIndicatorLabel, 4);
+    this->addChild(monstersLeftLabel, 4);
+    this->addChild(sellLabel, 4);
     
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::createWithSpriteFrameName("background");
@@ -124,9 +144,9 @@ bool GameLayer::init()
     handLayer = HandLayer::create();
     marketLayer = MarketLayer::create();
     zoomLayer = ZoomLayer::create();
-    this->addChild(handLayer);
-    this->addChild(marketLayer);
-    this->addChild(zoomLayer, 100);
+    this->addChild(handLayer, 99);
+    this->addChild(marketLayer, 99);
+    this->addChild(zoomLayer, 1000000);
     
     this->leaveZoomState();
 
@@ -269,6 +289,8 @@ void GameLayer::changeIndicatorState(TargetingType indicatorState){
         visualIndicatorLabel->setString("Must Discard a Card");
     }else if(indicatorState == DrawCard){
         visualIndicatorLabel->setString("Must Draw a Card");
+    }else if(indicatorState == BuyCard){
+        visualIndicatorLabel->setString("Drag to Discard to Buy Card");
     }
 }
 
@@ -285,5 +307,34 @@ void GameLayer::updateInterface(){
     GameManager *GM = GameManager::sharedGameManager();
     CCString *monstersLeftString =CCString::createWithFormat("%i", GM->monstersLeft);
     monstersLeftLabel->setString(monstersLeftString->getCString());
+}
+
+void GameLayer::enableRightButtonInteractive(){
+    rightButton->setEnabled(true);
+    rightButtonGlow->setVisible(true);
+}
+
+void GameLayer::disableRightButtonInteractive(){
+    rightButton->setEnabled(false);
+    rightButtonGlow->setVisible(false);
+}
+
+
+void GameLayer::enableLeftButtonInteractive(){
+    leftButton->setEnabled(true);
+    leftButtonGlow->setVisible(true);
+}
+
+void GameLayer::disableLeftButtonInteractive(){
+    leftButton->setEnabled(false);
+    leftButtonGlow->setVisible(false);
+}
+
+void GameLayer::enablePlayAreaInteractive(){
+    playAreaGlow->setVisible(true);
+}
+
+void GameLayer::disablePlayAreaInteractive(){
+    playAreaGlow->setVisible(false);
 }
 

@@ -30,6 +30,22 @@ bool MarketLayer::init()
     
  */
     
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+    
+    sellCardSprite = CCSprite::createWithSpriteFrameName("cardBack");
+    sellCardSprite->setScale(.25);
+    sellCardSprite->setPosition(ccp(visibleSize.width - 80, visibleSize.height- 100));
+    
+    this->addChild(sellCardSprite, 2);
+    
+    sellGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
+    sellGlowCardSprite->setScale(.25);
+    sellGlowCardSprite->setPosition(ccp(visibleSize.width - 80, visibleSize.height- 100));
+    sellGlowCardSprite->setVisible(false);
+    this->addChild(sellGlowCardSprite, 1);
+    
+
     return true;
 }
 
@@ -43,4 +59,13 @@ void MarketLayer::updateInterface(){
     //    CCString::create("%i",GM->libraryCards->count()
 
 }
+
+void MarketLayer::enableSellInteractive(){
+    sellGlowCardSprite->setVisible(true);
+}
+
+void MarketLayer::disableSellInteractive(){
+    sellGlowCardSprite->setVisible(false);
+}
+
 

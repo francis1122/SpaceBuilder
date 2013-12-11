@@ -10,7 +10,10 @@
 #include "GameManager.h"
 #include "GameLayer.h"
 #include "CardSprite.h"
+#include "CardTargets.h"
 #include "MonsterSprite.h"
+#include "HandLayer.h"
+#include "MarketLayer.h"
 
 USING_NS_CC;
 
@@ -18,8 +21,8 @@ USING_NS_CC;
 // on "init" you need to initialize your instance
 bool UIState::init()
 {
-//    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-//    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+    //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     return true;
 }
@@ -102,6 +105,77 @@ CCObject* UIState::objectAtPoint(cocos2d::CCTouch* touch){
     return objectAtPoint;
 }
 
+//visualize what can be touched
+void UIState::clearInteractiveState(){
+    GameManager *GM = GameManager::sharedGameManager();
+    CCObject *object;
+    GM->gameLayer->changeIndicatorState(None);
+    CCARRAY_FOREACH(GM->player->handCards, object){
+        CardSprite *card = (CardSprite*)object;
+        card->disableInteractive();
+    }
+    
+    CCARRAY_FOREACH(GM->marketCardArray, object){
+        CardSprite *card = (CardSprite*)object;
+        card->disableInteractive();
+    }
+    
+    CCARRAY_FOREACH(GM->monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+        monster->disableInteractive();
+    }
+    
+    GM->gameLayer->setButtonLabels("", "");
+    GM->gameLayer->handLayer->disableDeckInteractive();
+    GM->gameLayer->handLayer->disableDiscardInterative();
+    GM->gameLayer->disablePlayAreaInteractive();
+    GM->gameLayer->marketLayer->disableSellInteractive();
+    GM->gameLayer->disablePlayAreaInteractive();
+    GM->gameLayer->disableLeftButtonInteractive();
+    GM->gameLayer->disableRightButtonInteractive();
+    
+}
+
+
+void UIState::highlightInteractiveObjects(CardSprite *card){
+    clearInteractiveState();
+    
+}
+
+void UIState::defaultInteractiveState(){
+    //clear state
+    clearInteractiveState();
+    
+    GameManager *GM = GameManager::sharedGameManager();
+    CCObject *object;
+    GM->gameLayer->changeIndicatorState(None);
+    GM->gameLayer->enableRightButtonInteractive();
+    GM->gameLayer->setButtonLabels("", "End Turn");
+    //TODO: more exact action count required
+    CCARRAY_FOREACH(GM->player->handCards, object){
+        CardSprite *card = (CardSprite*)object;
+        if(GM->player->hasAction(card->action->actionType)){
+            card->enableInteractive();
+        }
+    }
+    if(GM->player->hasAction(Neutral)){
+        CCARRAY_FOREACH(GM->marketCardArray, object){
+            CardSprite *card = (CardSprite*)object;
+            if(card->soulCost <= GM->player->soul){
+                card->enableInteractive();
+            }else{
+                card->disableInteractive();
+            }
+        }
+    }
+    
+    
+    CCARRAY_FOREACH(GM->monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+        monster->disableInteractive();
+    }
+}
+
 
 #pragma mark - touch events
 bool UIState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
@@ -139,7 +213,7 @@ void UIState::rightButtonTouch(){
 #pragma mark -collision checks
 
 bool UIState::cardInDiscardArea(CardSprite* card){
-//    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCRect collisionRect = CCRectMake(950, 0, 200, 200);
     if(collisionRect.containsPoint(card->getPosition()) ){
         return true;

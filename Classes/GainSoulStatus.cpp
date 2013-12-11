@@ -15,7 +15,7 @@ USING_NS_CC;
 
 
 // on "init" you need to initialize your instance
-bool GainSoulStatus::init(int powerLevel)
+bool GainSoulStatus::initWithSoulGain(int soulGain)
 {
     
     if(!Status::init()){
@@ -26,7 +26,7 @@ bool GainSoulStatus::init(int powerLevel)
     
     className = new CCString();
     className->initWithFormat("GainSoulStatus");
-    soulGainAmount = powerLevel;
+    soulGainAmount = soulGain;
     return true;
 }
 

@@ -17,6 +17,7 @@
 #include "TitleLayer.h"
 #include "PostRoundLayer.h"
 #include "CardGenerator.h"
+#include "UIState.h"
 
 using namespace cocos2d;
 
@@ -128,10 +129,6 @@ void GameManager::afterCardPlayedStateCheck(){
     for(int i = monsterArray->count() - 1; i >= 0; i--){
         MonsterSprite *monster = (MonsterSprite*)monsterArray->objectAtIndex(i);
         
-        
-        
-
-        
         if(monster->life <= 0){
             //activate killing blow
             CCObject *object = NULL;
@@ -139,7 +136,6 @@ void GameManager::afterCardPlayedStateCheck(){
                 DeathBlowStatus *deathBlowStatus = (DeathBlowStatus*)object;
                 deathBlowStatus->applyStatus();
             }
-            
             this->removeMonster(monster);
         }
         
@@ -180,11 +176,15 @@ void GameManager::endTurn(){
     if(player->soul > player->maxSoul){
         player->soul = player->maxSoul;
     }
-    player->actionsLeft = 2;
+    player->clearActions();
+    player->addAction(Neutral);
+    player->addAction(Neutral);
     currentTurn++;
     this->marketTurn();
     this->monsterTurn();
     gameLayer->updateInterface();
+    gameLayer->getCurrentState()->defaultInteractiveState();
+    
 
 }
 
@@ -212,7 +212,7 @@ void GameManager::organizeMarket(){
 void GameManager::sellCard(CardSprite* card){
     //give player money
     player->soul += card->soulCost;
-    player->actionsLeft--;
+    player->spendAction(Neutral);
 
     //remove card from deck and hand
     player->removeCard(card);
@@ -235,7 +235,7 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
     if(marketCardArray->containsObject(marketCard)){
         if(player->soul >= marketCard->soulCost){
             player->soul -= marketCard->soulCost;
-            player->actionsLeft--;
+            player->spendAction(Neutral);
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
@@ -272,11 +272,12 @@ void GameManager::organizeMonsters(){
 }
 
 void GameManager::removeMonster(MonsterSprite *monster){
+    monster->onDeath();
     monster->removeFromParent();
     monsterArray->removeObject(monster);
     
     //add card to market
-    CardSprite *card = CardGenerator::sharedGameManager()->createCard(currentLevel);
+    CardSprite *card = CardGenerator::sharedGameManager()->createCard((float)(currentLevel * 2));
     card->turnsLeftInMarket = 2;
     this->addMarketCard(card);
     this->organizeMarket();

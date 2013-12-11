@@ -19,7 +19,6 @@ USING_NS_CC;
 // on "init" you need to initialize your instance
 bool DeathBlowStatus::init(int powerLevel)
 {
-    
     if(!Status::init()){
         return false;
     }
@@ -28,8 +27,17 @@ bool DeathBlowStatus::init(int powerLevel)
     
     className = new CCString();
     className->initWithFormat("DeathBlowStatus");
-    drawCards = powerLevel;
+
     return true;
+}
+
+bool DeathBlowStatus::initWithStatus(Status *status){
+    if(!Status::init()){
+        return false;
+    }
+    deathStatus = status;
+    return true;
+    
 }
 
 void DeathBlowStatus::addStatusToGameObject(MonsterSprite *monster){
@@ -44,12 +52,7 @@ bool DeathBlowStatus::checkStart(){
 
 //called when status is given to object
 void DeathBlowStatus::applyStatus(){
-    GameManager *GM = GameManager::sharedGameManager();
-    int i = 0;
-    while( i < drawCards){
-        GM->player->addCardToHand();
-        i++;
-    }
+    deathStatus->applyStatus();
 }
 
 //called when the status ends

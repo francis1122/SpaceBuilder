@@ -40,7 +40,7 @@ bool ZoomState::initCardSprite(CardSprite *_selectedCard)
     this->selectedMonsterCard = NULL;
 //    GameManager *GM = GameManager::sharedGameManager();
     this->selectedCard->setScale(1);
-    this->selectedCard->setZOrder(1000);
+    this->selectedCard->setZOrder(1000000);
     this->selectedCard->setPosition(ccp(350, visibleSize.height/2));
     
     return true;
@@ -73,7 +73,7 @@ bool ZoomState::initMarketCard(CardSprite *_selectedCard){
     CCLog("card market card");
     this->selectedCard = _selectedCard;
     this->selectedCard->setScale(1);
-    this->selectedCard->setZOrder(1000);
+    this->selectedCard->setZOrder(1000000);
     this->selectedCard->setPosition(ccp(350, visibleSize.height/2));
     this->selectedMonsterCard = NULL;
 
@@ -115,10 +115,10 @@ void ZoomState::transitionToNormalState(){
     GM->gameLayer->leaveZoomState();
     if(selectedMonsterCard != NULL){
         selectedMonsterCard->setScale(.25);
-        selectedMonsterCard->setZOrder(10);
+        selectedMonsterCard->setZOrder(10000);
     }else{
         selectedCard->setScale(.25);
-        selectedCard->setZOrder(10);
+        selectedCard->setZOrder(10000);
     }
     selectedCard = NULL;
     selectedMonsterCard = NULL;

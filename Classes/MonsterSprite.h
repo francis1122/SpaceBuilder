@@ -23,18 +23,28 @@ public:
     cocos2d::CCLabelTTF *lifeLabel;
     cocos2d::CCLabelTTF *attackLabel;
     
+    cocos2d::CCLabelTTF *detailsLabel;
+    
+    cocos2d::CCSprite *glowSprite;
+    
     //monster variables
     int life;
     int attack;
     int location;
     int lane;
-
+    bool isInteractive;
+    
     void updateInterface();
     void turnUpdate();
+    void onDeath();
     
-
+    cocos2d::CCArray *afterDeathEffectArray;
+    
     cocos2d::CCArray *killingBlowArray;
     cocos2d::CCArray *activeStatusArray;
+    
+    void enableInteractive();
+    void disableInteractive();
     
 private:
     

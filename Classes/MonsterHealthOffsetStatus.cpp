@@ -33,6 +33,14 @@ bool MonsterHealthOffsetStatus::init(int powerLevel)
     return true;
 }
 
+bool MonsterHealthOffsetStatus::initWithHealthOffset(int healthOffset){
+    if(!Status::init()){
+        return false;
+    }
+    
+    monsterHealthOffsetAmount = healthOffset;
+    return true;
+}
 
 void MonsterHealthOffsetStatus::addStatusToGameObject(MonsterSprite *monster){
     //damage immediate, no need to add to monster

@@ -13,6 +13,10 @@
 #include "NormalState.h"
 #include "MonsterSprite.h"
 #include "CardTargets.h"
+#include "GameLayer.h"
+#include "HandLayer.h"
+#include "MarketLayer.h"
+
 
 USING_NS_CC;
 
@@ -27,9 +31,46 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
     CCLog("card targeting state");
     this->selectedCard = _selectedCard;
     GameManager *GM = GameManager::sharedGameManager();
-    GM->gameLayer->changeIndicatorState(selectedCard->cardTargets->targetingType);
+    this->highlightInteractiveObjects(selectedCard);
     GM->gameLayer->setButtonLabels("", "");
     return true;
+}
+
+
+void CardTargetingState::highlightInteractiveObjects(CardSprite *card){
+    clearInteractiveState();
+    GameManager *GM = GameManager::sharedGameManager();
+    CCObject *object;
+    TargetingType indicatorState = card->cardTargets->targetingType;
+    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
+    
+    if(indicatorState == None){
+            //should never get here
+        CCLog("HandCardSelectedState::highlightInteractiveObject indicator == none, error should never be here");
+    }else if(indicatorState == PlayArea){
+        CCLog("HandCardSelectedState::highlightInteractiveObject indicator == PlayArea, error should never be here");
+    }else if (indicatorState == Monsters){
+        CCARRAY_FOREACH(GM->monsterArray, object){
+            MonsterSprite *monster = (MonsterSprite*)object;
+            monster->enableInteractive();
+        }
+    }else if(indicatorState == DiscardArea){
+        //unsure of functionality here
+        //might open the discard library up so a card can be chosen
+        GM->gameLayer->handLayer->enableDiscardInteractive();
+
+        
+    }else if(indicatorState == RequireActions){
+        CCLog("HandCardSelectedState::highlightInteractiveObject indicator == RequireActions, error should never be here");
+    }else if(indicatorState == DiscardCard){
+        //should be taken care of by dragging state
+        CCLog("HandCardSelectedState::highlightInteractiveObject indicator == DiscardCard, error should never be here");
+    }else if(indicatorState == DrawCard){
+        GM->gameLayer->handLayer->enableDeckInteractive();
+        //should be taken care of by the dragging state
+        CCLog("HandCardSelectedState::highlightInteractiveObject indicator == DrawCard, error should never be here");
+    }
+    
 }
 
 #pragma mark - touch events

@@ -13,6 +13,7 @@
 #include "CardSprite.h"
 #include "Statuses.h"
 #include "Player.h"
+#include "CardTemplates.h"
 
 USING_NS_CC;
 
@@ -53,8 +54,14 @@ CardGenerator* CardGenerator::sharedGameManager()
 }
 
 
-CardSprite* CardGenerator::createCard(int powerLevel){
-    int rand = arc4random()%5;
+CardSprite* CardGenerator::createCard(float powerLevel){
+    //what should happen
+    
+    //choose color
+    return chooseCardColor(powerLevel);
+    
+    
+    /*int rand = arc4random()%5;
     CardSprite *card = new CardSprite();
     
     rand = 112;
@@ -139,5 +146,46 @@ CardSprite* CardGenerator::createCard(int powerLevel){
         card->cardTargets = cardTargets;
     }
     card->setSoulCostOfCard(powerLevel);
-    return card;
+    return card;*/
 }
+
+CardSprite* CardGenerator::chooseCardColor(float powerLevel){
+    
+    //choose card color
+    return cardForNeutral(powerLevel);
+    
+}
+
+CardSprite* CardGenerator::cardForNeutral(float powerLevel){
+    //randomly choose a template for neutral
+    CardSprite *newCard;
+    
+    //choose directDamage
+    int rand = arc4random()%4;
+    
+    if(rand == 0){
+        DirectDamageTemplate *cardTemplate = new DirectDamageTemplate();
+        cardTemplate->init(powerLevel);
+        newCard = cardTemplate->createCard();
+    }else if(rand == 1){
+        SoulGainTemplate *cardTemplate = new SoulGainTemplate();
+        cardTemplate->init(powerLevel);
+        newCard = cardTemplate->createCard();
+    }else if(rand == 2){
+        DrawCardTemplate *cardTemplate = new DrawCardTemplate();
+        cardTemplate->init(powerLevel);
+        newCard = cardTemplate->createCard();
+    }else if(rand == 3){
+        ActionGainTemplate *cardTemplate = new ActionGainTemplate();
+        cardTemplate->init(powerLevel);
+        newCard = cardTemplate->createCard();
+    }
+    return newCard;
+    
+}
+
+
+
+
+
+

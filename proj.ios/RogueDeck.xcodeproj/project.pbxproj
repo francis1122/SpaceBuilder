@@ -238,6 +238,12 @@
 		5A0438D7185261D9008EF3F5 /* ConvertCardToSoulStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438D5185261D9008EF3F5 /* ConvertCardToSoulStatus.cpp */; };
 		5A0438DA18526501008EF3F5 /* DrawCardStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438D818526501008EF3F5 /* DrawCardStatus.cpp */; };
 		5A0438DD185270D4008EF3F5 /* DeathBlowStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438DB185270D4008EF3F5 /* DeathBlowStatus.cpp */; };
+		5A0438E218529F1F008EF3F5 /* CardTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438E018529F1F008EF3F5 /* CardTemplate.cpp */; };
+		5A0438E51852A395008EF3F5 /* DirectDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438E31852A395008EF3F5 /* DirectDamageTemplate.cpp */; };
+		5A0438E918580857008EF3F5 /* SoulGainTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438E718580857008EF3F5 /* SoulGainTemplate.cpp */; };
+		5A0438EC18580F87008EF3F5 /* ActionGainTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438EA18580F87008EF3F5 /* ActionGainTemplate.cpp */; };
+		5A0438EF18581190008EF3F5 /* DrawCardTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438ED18581190008EF3F5 /* DrawCardTemplate.cpp */; };
+		5A0438F418584871008EF3F5 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438F218584871008EF3F5 /* Action.cpp */; };
 		5A3B0075183F3E37004384CD /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0073183F3E37004384CD /* Status.cpp */; };
 		5A3B0078183F40A1004384CD /* GainSoulStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0076183F40A1004384CD /* GainSoulStatus.cpp */; };
 		5A3B007B183F42E6004384CD /* MonsterHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0079183F42E6004384CD /* MonsterHealthOffsetStatus.cpp */; };
@@ -769,6 +775,20 @@
 		5A0438D918526501008EF3F5 /* DrawCardStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawCardStatus.h; path = ../Classes/DrawCardStatus.h; sourceTree = "<group>"; };
 		5A0438DB185270D4008EF3F5 /* DeathBlowStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DeathBlowStatus.cpp; path = ../Classes/DeathBlowStatus.cpp; sourceTree = "<group>"; };
 		5A0438DC185270D4008EF3F5 /* DeathBlowStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeathBlowStatus.h; path = ../Classes/DeathBlowStatus.h; sourceTree = "<group>"; };
+		5A0438E018529F1F008EF3F5 /* CardTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardTemplate.cpp; path = ../Classes/CardTemplate.cpp; sourceTree = "<group>"; };
+		5A0438E118529F1F008EF3F5 /* CardTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTemplate.h; path = ../Classes/CardTemplate.h; sourceTree = "<group>"; };
+		5A0438E31852A395008EF3F5 /* DirectDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DirectDamageTemplate.cpp; path = ../Classes/DirectDamageTemplate.cpp; sourceTree = "<group>"; };
+		5A0438E41852A395008EF3F5 /* DirectDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DirectDamageTemplate.h; path = ../Classes/DirectDamageTemplate.h; sourceTree = "<group>"; };
+		5A0438E61852A7DC008EF3F5 /* CardTemplates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardTemplates.h; path = ../Classes/CardTemplates.h; sourceTree = "<group>"; };
+		5A0438E718580857008EF3F5 /* SoulGainTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoulGainTemplate.cpp; path = ../Classes/SoulGainTemplate.cpp; sourceTree = "<group>"; };
+		5A0438E818580857008EF3F5 /* SoulGainTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoulGainTemplate.h; path = ../Classes/SoulGainTemplate.h; sourceTree = "<group>"; };
+		5A0438EA18580F87008EF3F5 /* ActionGainTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ActionGainTemplate.cpp; path = ../Classes/ActionGainTemplate.cpp; sourceTree = "<group>"; };
+		5A0438EB18580F87008EF3F5 /* ActionGainTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActionGainTemplate.h; path = ../Classes/ActionGainTemplate.h; sourceTree = "<group>"; };
+		5A0438ED18581190008EF3F5 /* DrawCardTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawCardTemplate.cpp; path = ../Classes/DrawCardTemplate.cpp; sourceTree = "<group>"; };
+		5A0438EE18581190008EF3F5 /* DrawCardTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawCardTemplate.h; path = ../Classes/DrawCardTemplate.h; sourceTree = "<group>"; };
+		5A0438F218584871008EF3F5 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Action.cpp; path = ../Classes/Action.cpp; sourceTree = "<group>"; };
+		5A0438F318584871008EF3F5 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Action.h; path = ../Classes/Action.h; sourceTree = "<group>"; };
+		5A0438F518585402008EF3F5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
 		5A3B0073183F3E37004384CD /* Status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../Classes/Status.cpp; sourceTree = "<group>"; };
 		5A3B0074183F3E37004384CD /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../Classes/Status.h; sourceTree = "<group>"; };
 		5A3B0076183F40A1004384CD /* GainSoulStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GainSoulStatus.cpp; path = ../Classes/GainSoulStatus.cpp; sourceTree = "<group>"; };
@@ -1352,6 +1372,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5A0438F518585402008EF3F5 /* Constants.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -1800,6 +1821,54 @@
 			path = CocoStudio;
 			sourceTree = "<group>";
 		};
+		5A0438DE18529EF9008EF3F5 /* CardGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				5A3B00B91846C574004384CD /* CardGenerator.cpp */,
+				5A3B00BA1846C574004384CD /* CardGenerator.h */,
+				5A0438DF18529F05008EF3F5 /* CardTemplates */,
+			);
+			name = CardGenerator;
+			sourceTree = "<group>";
+		};
+		5A0438DF18529F05008EF3F5 /* CardTemplates */ = {
+			isa = PBXGroup;
+			children = (
+				5A0438E61852A7DC008EF3F5 /* CardTemplates.h */,
+				5A0438E018529F1F008EF3F5 /* CardTemplate.cpp */,
+				5A0438E118529F1F008EF3F5 /* CardTemplate.h */,
+				5A0438E31852A395008EF3F5 /* DirectDamageTemplate.cpp */,
+				5A0438E41852A395008EF3F5 /* DirectDamageTemplate.h */,
+				5A0438E718580857008EF3F5 /* SoulGainTemplate.cpp */,
+				5A0438E818580857008EF3F5 /* SoulGainTemplate.h */,
+				5A0438EA18580F87008EF3F5 /* ActionGainTemplate.cpp */,
+				5A0438EB18580F87008EF3F5 /* ActionGainTemplate.h */,
+				5A0438ED18581190008EF3F5 /* DrawCardTemplate.cpp */,
+				5A0438EE18581190008EF3F5 /* DrawCardTemplate.h */,
+			);
+			name = CardTemplates;
+			sourceTree = "<group>";
+		};
+		5A0438F018581907008EF3F5 /* ConditionalStatus */ = {
+			isa = PBXGroup;
+			children = (
+				5A0438DB185270D4008EF3F5 /* DeathBlowStatus.cpp */,
+				5A0438DC185270D4008EF3F5 /* DeathBlowStatus.h */,
+			);
+			name = ConditionalStatus;
+			sourceTree = "<group>";
+		};
+		5A0438F11858468C008EF3F5 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				5A0438F218584871008EF3F5 /* Action.cpp */,
+				5A0438F318584871008EF3F5 /* Action.h */,
+				5A6D33E8183EAEFB00CB0174 /* Player.cpp */,
+				5A6D33E9183EAEFB00CB0174 /* Player.h */,
+			);
+			name = Player;
+			sourceTree = "<group>";
+		};
 		5A3B0072183F3E27004384CD /* Status */ = {
 			isa = PBXGroup;
 			children = (
@@ -1810,14 +1879,13 @@
 				5A0438CD185018A7008EF3F5 /* GainActionStatus.h */,
 				5A3B0076183F40A1004384CD /* GainSoulStatus.cpp */,
 				5A3B0077183F40A1004384CD /* GainSoulStatus.h */,
+				5A0438D818526501008EF3F5 /* DrawCardStatus.cpp */,
+				5A0438D918526501008EF3F5 /* DrawCardStatus.h */,
 				5A3B0079183F42E6004384CD /* MonsterHealthOffsetStatus.cpp */,
 				5A3B007A183F42E6004384CD /* MonsterHealthOffsetStatus.h */,
 				5A0438D5185261D9008EF3F5 /* ConvertCardToSoulStatus.cpp */,
 				5A0438D6185261D9008EF3F5 /* ConvertCardToSoulStatus.h */,
-				5A0438D818526501008EF3F5 /* DrawCardStatus.cpp */,
-				5A0438D918526501008EF3F5 /* DrawCardStatus.h */,
-				5A0438DB185270D4008EF3F5 /* DeathBlowStatus.cpp */,
-				5A0438DC185270D4008EF3F5 /* DeathBlowStatus.h */,
+				5A0438F018581907008EF3F5 /* ConditionalStatus */,
 			);
 			name = Status;
 			sourceTree = "<group>";
@@ -1851,12 +1919,10 @@
 				5A6D33E3183C3DA900CB0174 /* interface */,
 				5A6D33D01839E53100CB0174 /* GameManager.cpp */,
 				5A6D33D11839E53100CB0174 /* GameManager.h */,
+				5A0438F11858468C008EF3F5 /* Player */,
 				5A3B00AE1845C6EE004384CD /* MonsterGenerator.cpp */,
 				5A3B00AF1845C6EE004384CD /* MonsterGenerator.h */,
-				5A3B00B91846C574004384CD /* CardGenerator.cpp */,
-				5A3B00BA1846C574004384CD /* CardGenerator.h */,
-				5A6D33E8183EAEFB00CB0174 /* Player.cpp */,
-				5A6D33E9183EAEFB00CB0174 /* Player.h */,
+				5A0438DE18529EF9008EF3F5 /* CardGenerator */,
 				5A6D33E4183DDFBF00CB0174 /* GameObjects */,
 			);
 			name = Game;
@@ -2067,6 +2133,7 @@
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				5A3B0075183F3E37004384CD /* Status.cpp in Sources */,
+				5A0438F418584871008EF3F5 /* Action.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				15A3D91C1682F7D5002FB0C5 /* b2EdgeAndCircleContact.cpp in Sources */,
@@ -2085,6 +2152,7 @@
 				15A3D9291682F7D5002FB0C5 /* b2WeldJoint.cpp in Sources */,
 				5A3B00B81845CD88004384CD /* BetweenRoundLayer.cpp in Sources */,
 				15A3D92A1682F7D5002FB0C5 /* b2WheelJoint.cpp in Sources */,
+				5A0438EF18581190008EF3F5 /* DrawCardTemplate.cpp in Sources */,
 				15A3D9391682F7D5002FB0C5 /* b2Rope.cpp in Sources */,
 				15A3D9951682F7F9002FB0C5 /* chipmunk.c in Sources */,
 				15A3D9971682F7F9002FB0C5 /* cpConstraint.c in Sources */,
@@ -2113,6 +2181,7 @@
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
 				5A6D33EA183EAEFB00CB0174 /* Player.cpp in Sources */,
+				5A0438E51852A395008EF3F5 /* DirectDamageTemplate.cpp in Sources */,
 				15A3D9AC1682F7F9002FB0C5 /* cpSpaceComponent.c in Sources */,
 				15A3D9AD1682F7F9002FB0C5 /* cpSpaceHash.c in Sources */,
 				15A3D9AE1682F7F9002FB0C5 /* cpSpaceQuery.c in Sources */,
@@ -2147,6 +2216,7 @@
 				15A3DA441682F826002FB0C5 /* CCNodeLoaderLibrary.cpp in Sources */,
 				15A3DA451682F826002FB0C5 /* CCParticleSystemQuadLoader.cpp in Sources */,
 				15A3DA461682F826002FB0C5 /* CCScale9SpriteLoader.cpp in Sources */,
+				5A0438E918580857008EF3F5 /* SoulGainTemplate.cpp in Sources */,
 				15A3DA471682F826002FB0C5 /* CCScrollViewLoader.cpp in Sources */,
 				15A3DA481682F826002FB0C5 /* CCSpriteLoader.cpp in Sources */,
 				15A3DA491682F826002FB0C5 /* CCControl.cpp in Sources */,
@@ -2242,6 +2312,7 @@
 				379BB9AC17F03F3700829B88 /* CCUtilMath.cpp in Sources */,
 				379BB9AD17F03F3700829B88 /* CCComAttribute.cpp in Sources */,
 				379BB9AE17F03F3700829B88 /* CCComAudio.cpp in Sources */,
+				5A0438EC18580F87008EF3F5 /* ActionGainTemplate.cpp in Sources */,
 				379BB9AF17F03F3700829B88 /* CCComController.cpp in Sources */,
 				379BB9B017F03F3700829B88 /* CCComRender.cpp in Sources */,
 				379BB9B117F03F3700829B88 /* CCInputDelegate.cpp in Sources */,
@@ -2275,6 +2346,7 @@
 				379BB9CF17F03F3700829B88 /* json_value.cpp in Sources */,
 				379BB9D117F03F3700829B88 /* json_writer.cpp in Sources */,
 				379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */,
+				5A0438E218529F1F008EF3F5 /* CardTemplate.cpp in Sources */,
 				379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

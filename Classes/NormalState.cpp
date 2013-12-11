@@ -25,8 +25,7 @@ bool NormalState::init()
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     GameManager *GM = GameManager::sharedGameManager();
-    GM->gameLayer->changeIndicatorState(None);
-    GM->gameLayer->setButtonLabels("", "End Turn");
+    UIState::defaultInteractiveState();
     GM->gameLayer->updateInterface();
     return true;
 }

@@ -8,6 +8,7 @@
 
 #include "MonsterGenerator.h"
 #include "MonsterSprite.h"
+#include "Statuses.h"
 
 using namespace cocos2d;
 
@@ -50,8 +51,25 @@ MonsterGenerator* MonsterGenerator::sharedGameManager()
 
 MonsterSprite* MonsterGenerator::createMonster(int powerLevel){
     MonsterSprite *monster = MonsterSprite::create();
-    monster->life = powerLevel * 2;
+    monster->life = powerLevel * 2.5;
     monster->attack = powerLevel;
+    
+    //add monster rewards
+    int rand = arc4random()%5;
+    if(rand == 0){
+
+        GainSoulStatus *status = new GainSoulStatus();
+        status->initWithSoulGain(powerLevel/2);
+        CCString *newString = CCString::createWithFormat("Gain %i Soul", status->soulGainAmount);
+        monster->detailsLabel->setString(newString->getCString());
+        monster->afterDeathEffectArray->addObject(status);
+    }else if(rand ==1){
+        GainActionStatus *status = new GainActionStatus();
+        status->initWithActionGain(1);
+        monster->afterDeathEffectArray->addObject(status);
+        monster->detailsLabel->setString("Gain an Action");
+    }
+    
     return monster;
 }
 

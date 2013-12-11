@@ -9,6 +9,7 @@
 #include "MonsterSprite.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "Statuses.h"
 
 USING_NS_CC;
 
@@ -27,8 +28,15 @@ bool MonsterSprite::init()
     
     life = 4;
     attack = 2;
-    location = 4;
+    location = 3;
     
+    
+    //details of card
+    CCSize detailSize = CCSizeMake(330, 290);
+    detailsLabel = CCLabelTTF::create("", "Arial", 48, detailSize, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    detailsLabel->setColor(ccBLACK);
+    detailsLabel->setPosition(ccp(240,155));
+    this->addChild(detailsLabel);
     
     attackLabel = CCLabelTTF::create("2", "Arial", 128);
     lifeLabel =  CCLabelTTF::create("4", "Arial", 128);
@@ -45,9 +53,27 @@ bool MonsterSprite::init()
     activeStatusArray->init();
     killingBlowArray = new CCArray();
     killingBlowArray->init();
+    afterDeathEffectArray = new CCArray();
+    afterDeathEffectArray->init();
     this->setScale(.25);
     
+    glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
+    glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 21,glowSprite->getContentSize().height/2 - 21));
+    glowSprite->setVisible(false);
+    this->addChild(glowSprite, -1);
+    isInteractive = false;
+    
     return true;
+}
+
+void MonsterSprite::enableInteractive(){
+    glowSprite->setVisible(true);
+    isInteractive = true;
+}
+
+void MonsterSprite::disableInteractive(){
+    glowSprite->setVisible(false);
+    isInteractive = false;
 }
 
 void MonsterSprite::updateInterface(){
@@ -56,6 +82,16 @@ void MonsterSprite::updateInterface(){
     CCString *attackString = CCString::createWithFormat("%i", attack);
     attackLabel->setString(attackString->getCString());
 
+}
+
+
+
+void MonsterSprite::onDeath(){
+    CCObject *object;
+    CCARRAY_FOREACH(afterDeathEffectArray, object){
+        Status *status = (Status*)object;
+        status->applyStatus();
+    }
 }
 
 void MonsterSprite::turnUpdate(){

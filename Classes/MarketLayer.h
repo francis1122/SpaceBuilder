@@ -28,6 +28,12 @@ public:
     void endTurn();
     void updateInterface();
     
+    cocos2d::CCSprite *sellCardSprite;
+    cocos2d::CCSprite *sellGlowCardSprite;
+
+    void enableSellInteractive();
+    void disableSellInteractive();
+    
 private:
     
 };

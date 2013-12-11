@@ -26,8 +26,11 @@ public:
     //Get instance of singleton
     static CardGenerator* sharedGameManager();
     
-    CardSprite* createCard(int powerLevel);
+    CardSprite* createCard(float powerLevel);
     
+    CardSprite* chooseCardColor(float powerLevel);
+    
+    CardSprite* cardForNeutral(float powerLevel);
     
 };
 #endif /* defined(__RogueDeck__CardGenerator__) */

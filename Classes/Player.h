@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "GameLayer.h"
 #include "CardSprite.h"
+#include "Action.h"
 
 USING_NS_CC;
 
@@ -26,7 +27,7 @@ public:
     int maxHealth;
     int soul;
     int maxSoul;
-    int actionsLeft;
+    CCArray *actionsLeftArray;
     
     
     //deck variables
@@ -39,7 +40,13 @@ public:
     
     void reset();
     
-    //card manipulation functions
+    //action manipulation
+    void addAction(ActionType actionType);
+    void spendAction(ActionType actionType);
+    void clearActions();
+    bool hasAction(ActionType actionType);
+    
+    //card manipulation
     void organizeHand();
     void organizePlayedCards();
     void removeCard(CardSprite *card);

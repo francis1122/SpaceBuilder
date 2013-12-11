@@ -31,6 +31,14 @@ bool DrawCardStatus::init(int powerLevel)
     return true;
 }
 
+bool DrawCardStatus::initWithDrawAmount(int drawAmount){
+    if(!Status::init()){
+        return false;
+    }
+    drawCards = drawAmount;
+    return true;
+}
+
 
 //checks whether the status can be used
 bool DrawCardStatus::checkStart(){
