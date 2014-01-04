@@ -25,6 +25,7 @@ typedef enum TargetingType{
     DiscardCard,
     DrawCard,
     BuyCard
+//    PlayToDiscard
 } TargetingType;
 
 
@@ -42,16 +43,20 @@ public:
     bool isTargetRequired;
     bool isDraggingRequired;
     
+    //amount of targets that must be targetted, used for dragging as well
+    int targetAmount;
+    
     //type of targets to highlight
     TargetingType targetingType;
     
     //Dragging stuff
      
-    
-    
+
     CCArray *selectedTargets;
     
     //array of statuses
+    //inital statuses cannot require targets
+    CCArray *initialStatuses;
     CCArray *statuses;
 
 
@@ -62,11 +67,14 @@ bool isAbilityActivatable(UIState* state);
 void activateAbility(UIState* state);
 
 //targets objects to use ability on
-void targetObject(CCTouch* touch);
+bool targetObject(CCTouch* touch);
 
 // checks whether the ability can be used
 bool isAbilityReady();
 
+//exectutes the intialStatuses
+void useInitialAbility();
+    
 //does what the ability should do
 void useAbility();
     

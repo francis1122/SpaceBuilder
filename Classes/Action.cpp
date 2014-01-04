@@ -15,7 +15,6 @@ bool Action::init(ActionType type){
     return true;
 }
 
-
 ccColor3B Action::getActionColor(){
     if(actionType == Neutral){
         return ccGRAY;

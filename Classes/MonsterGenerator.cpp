@@ -9,6 +9,8 @@
 #include "MonsterGenerator.h"
 #include "MonsterSprite.h"
 #include "Statuses.h"
+#include "Action.h"
+#include "LLMath.h"
 
 using namespace cocos2d;
 
@@ -49,15 +51,16 @@ MonsterGenerator* MonsterGenerator::sharedGameManager()
 }
 
 
-MonsterSprite* MonsterGenerator::createMonster(int powerLevel){
+MonsterSprite* MonsterGenerator::createMonster(float powerLevel){
     MonsterSprite *monster = MonsterSprite::create();
-    monster->life = powerLevel * 2.5;
-    monster->attack = powerLevel;
+    monster->life = powerLevel/4 + LLMath::getIntValue(0,powerLevel/2);
+    monster->attack = powerLevel/5 + LLMath::getIntValue(0,powerLevel/4);
+    monster->location = 2+ arc4random()%3;
+    monster->monsterLevel = (int)powerLevel;
     
     //add monster rewards
     int rand = arc4random()%5;
     if(rand == 0){
-
         GainSoulStatus *status = new GainSoulStatus();
         status->initWithSoulGain(powerLevel/2);
         CCString *newString = CCString::createWithFormat("Gain %i Soul", status->soulGainAmount);
@@ -65,7 +68,14 @@ MonsterSprite* MonsterGenerator::createMonster(int powerLevel){
         monster->afterDeathEffectArray->addObject(status);
     }else if(rand ==1){
         GainActionStatus *status = new GainActionStatus();
-        status->initWithActionGain(1);
+        CCArray *actions = new CCArray();
+        actions->init();
+        Action *action = new Action();
+        action->init(Neutral);
+        actions->addObject(action);
+        status->initWithActionGain(actions);
+        
+        
         monster->afterDeathEffectArray->addObject(status);
         monster->detailsLabel->setString("Gain an Action");
     }

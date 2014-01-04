@@ -11,35 +11,85 @@
 #include "CardSprite.h"
 #include "CardTargets.h"
 
-void SoulGainTemplate::addAugmentationStatus(){
+const std::string SoulGainTemplate::CLASS_NAME = "SoulGainTemplate";
+
+#pragma mark - augmentation
+
+void SoulGainTemplate::addNeutralAugmentationStatus(){
     
 }
 
-void SoulGainTemplate::addAdditionalCost(){
+void SoulGainTemplate::addRedAugmentationStatus(){
     
 }
 
-void SoulGainTemplate::addMainStatus(){
-    CardTargets *cardTargets = new CardTargets();
-    cardTargets->init();
-    cardTargets->targetingType = PlayArea;
-    cardTargets->isTargetRequired = false;
-    createdCard->cardTargets = cardTargets;
+void SoulGainTemplate::addBlueAugmentationStatus(){
     
-    cardPower += arc4random()%3;
-    cardPower -= arc4random()%((int)cardPower/2);
-    cardPower += arc4random()%((int)cardPower/2);
+}
+
+void SoulGainTemplate::addYellowAugmentationStatus(){
+    
+}
+
+void SoulGainTemplate::addPurpleAugmentationStatus(){
+    
+}
+
+#pragma mark - additional cost
+
+
+void SoulGainTemplate::addNeutralAdditionalCost(){
+}
+
+void SoulGainTemplate::addRedAdditionalCost(){
+}
+
+void SoulGainTemplate::addBlueAdditionalCost(){
+}
+
+void SoulGainTemplate::addYellowAdditionalCost(){
+}
+
+void SoulGainTemplate::addPurpleAdditionalCost(){
+}
+
+
+#pragma mark - main status
+
+void SoulGainTemplate::addNeutralMainStatus(){
+    createdCard->cardTargets->targetingType = PlayArea;
+    createdCard->cardTargets->isTargetRequired = false;
+    
+    cardPower -= LLMath::getIntValue(cardPower/2);
     soulGain = cardPower;
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(cardPower);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription =CCString::createWithFormat("Gain %i Soul", soulGain);
+    createdCard->setupSoulGainCard(cardPower);
 }
 
+void SoulGainTemplate::addRedMainStatus(){
+    addNeutralMainStatus();
+}
+
+void SoulGainTemplate::addBlueMainStatus(){
+    addNeutralMainStatus();
+}
+
+void SoulGainTemplate::addYellowMainStatus(){
+    addNeutralMainStatus();
+}
+
+void SoulGainTemplate::addPurpleMainStatus(){
+    addNeutralMainStatus();
+}
+
+#pragma mark -
 int SoulGainTemplate::calculateSoul(){
-    int cost = (int)cardPower;
-    cost -= 2;
-    cost += arc4random()%(cost/3);
+    int cost = (int)cardPower/2;
+    cost += cardCostOffset;
+    cost += LLMath::diceRoll((int)cardPower/2, 3);
+    
     return cost;
 }
 

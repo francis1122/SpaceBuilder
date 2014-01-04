@@ -16,6 +16,8 @@
 class HandLayer;
 class MarketLayer;
 class ZoomLayer;
+class MonsterLayer;
+class TopSlideLayer;
 class GameLayer : public cocos2d::CCLayer
 {
 public:
@@ -43,7 +45,10 @@ public:
     //layers
     HandLayer *handLayer;
     MarketLayer *marketLayer;
+    MonsterLayer *monsterLayer;
     ZoomLayer *zoomLayer;
+    TopSlideLayer *topSlideLayer;
+    
     
     
     CCLabelTTF *leftButtonLabel;
@@ -57,6 +62,12 @@ public:
     
     void rightButtonPressed(CCObject *pSender);
     void leftButtonPressed(CCObject *pSender);
+    
+    bool isOnMonsters;
+    void switchButtonPressed(CCObject *pSender);
+    
+    
+    bool isTap;
     
     cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);

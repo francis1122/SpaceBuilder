@@ -10,6 +10,10 @@
 #define __RogueDeck__CardGenerator__
 
 #include "cocos2d.h"
+#include "CardTemplate.h"
+
+typedef CardTemplate* (*createFunc)(void); // function pointer type
+typedef std::map<std::string, createFunc> script_map;
 
 USING_NS_CC;
 class CardSprite;
@@ -29,8 +33,22 @@ public:
     CardSprite* createCard(float powerLevel);
     
     CardSprite* chooseCardColor(float powerLevel);
-    
+
+    CardSprite* cardForRed(float powerLevel);
+    CardSprite* cardForBlue(float powerLevel);
+    CardSprite* cardForYellow(float powerLevel);
+    CardSprite* cardForPurple(float powerLevel);
     CardSprite* cardForNeutral(float powerLevel);
+    
+    
+
+    
+    
+    script_map map;
+    
+    void registerClass(const std::string& pFunction, createFunc function);
+    
+    CardTemplate* createClass(const std::string& pFunction);
     
 };
 #endif /* defined(__RogueDeck__CardGenerator__) */

@@ -38,7 +38,6 @@ public:
     
     virtual void transitionToNormalState();
     virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
-    virtual void transitionToSelectMonsterState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     virtual void transitionToCardDraggingState(CardSprite* selectedCard);
 

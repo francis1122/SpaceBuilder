@@ -39,7 +39,6 @@ public:
     
     virtual void transitionToNormalState();
     virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
-    virtual void transitionToSelectMonsterState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     //type 0 = hand card, 1 = monster card, 2 = market card
     virtual void transitionToZoomState(CCObject *selectedObject, int type);

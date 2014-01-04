@@ -19,7 +19,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{58, 450}, {40.5, 42.75}}</string>
+			<string>{{436, 452}, {40.5, 42.75}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
@@ -38,7 +38,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{410, 221}, {42.75, 40.5}}</string>
+			<string>{{230, 433}, {42.75, 40.5}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -57,9 +57,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{419, 176}, {40.5, 42.75}}</string>
+			<string>{{230, 391}, {42.75, 40.5}}</string>
 			<key>textureRotated</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>Button_Pressed</key>
 		<dict>
@@ -76,9 +76,123 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{419, 131}, {40.5, 42.75}}</string>
+			<string>{{230, 348}, {42.75, 40.5}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>CardBase</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {125, 170}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{125, 170}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 170}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{288, 131}, {170, 125}}</string>
 			<key>textureRotated</key>
 			<true/>
+		</dict>
+		<key>CardCostBox</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {31.25, 40.75}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{31.25, 40.75}</string>
+			<key>spriteSourceSize</key>
+			<string>{31.25, 40.75}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{356, 473}, {40.75, 31.25}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>CardGainSoul</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {99.5, 79.25}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{99.5, 79.25}</string>
+			<key>spriteSourceSize</key>
+			<string>{99.5, 79.25}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{275, 372}, {79.25, 99.5}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>CardTextBox</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {98.5, 78}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{98.5, 78}</string>
+			<key>spriteSourceSize</key>
+			<string>{98.5, 78}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{356, 372}, {78, 98.5}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>Card_Action</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {35, 24.75}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{35, 24.75}</string>
+			<key>spriteSourceSize</key>
+			<string>{35, 24.75}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{275, 474}, {24.75, 35}}</string>
+			<key>textureRotated</key>
+			<true/>
+		</dict>
+		<key>Card_Image_Attack</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {98.25, 90.75}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{98.25, 90.75}</string>
+			<key>spriteSourceSize</key>
+			<string>{98.25, 90.75}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{2, 396}, {98.25, 90.75}}</string>
+			<key>textureRotated</key>
+			<false/>
 		</dict>
 		<key>HandGlow</key>
 		<dict>
@@ -95,9 +209,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{288, 131}, {67.75, 283.5}}</string>
+			<string>{{2, 164}, {283.5, 67.75}}</string>
 			<key>textureRotated</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>PlayGlow</key>
 		<dict>
@@ -152,9 +266,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{100, 392}, {160, 109.75}}</string>
+			<string>{{119, 348}, {109.75, 160}}</string>
 			<key>textureRotated</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>cardBack</key>
 		<dict>
@@ -171,7 +285,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{100, 278}, {159, 112}}</string>
+			<string>{{280, 258}, {159, 112}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
@@ -190,7 +304,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{100, 164}, {159, 112}}</string>
+			<string>{{119, 234}, {159, 112}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
@@ -228,9 +342,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{474, 288}, {29.5, 29.25}}</string>
+			<string>{{230, 476}, {29.25, 29.5}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>images</key>
 		<dict>
@@ -247,9 +361,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{2, 450}, {53.25, 59}}</string>
+			<string>{{436, 396}, {59, 53.25}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>imgres</key>
 		<dict>
@@ -266,9 +380,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{358, 187}, {50, 63}}</string>
+			<string>{{441, 344}, {63, 50}}</string>
 			<key>textureRotated</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>monstercard</key>
 		<dict>
@@ -285,7 +399,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{358, 288}, {114.25, 160}}</string>
+			<string>{{2, 234}, {114.25, 160}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -304,7 +418,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{358, 131}, {58.5, 54}}</string>
+			<string>{{441, 288}, {58.5, 54}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>

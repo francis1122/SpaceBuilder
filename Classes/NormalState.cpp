@@ -101,9 +101,7 @@ void NormalState::transitionToHandCardSelectedState(CardSprite* selectedCard){
     GM->gameLayer->changeState(HCSS);
 }
 
-void NormalState::transitionToSelectMonsterState(CardSprite* selectedCard){
-    
-}
+
 
 void NormalState::transitionToCardTargetingState(CardSprite* selectedCard){
     

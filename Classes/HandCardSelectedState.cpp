@@ -7,7 +7,6 @@
 //
 
 #include "HandCardSelectedState.h"
-#include "SelectMonsterState.h"
 #include "CardTargetingState.h"
 #include "CardDraggingState.h"
 #include "GameManager.h"
@@ -34,7 +33,7 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     CCLog("handcardselectedState");
     this->selectedCard = _selectedCard;
     selectedCard->setZOrder(10000);
-
+    
     if(!GM->player->hasAction(selectedCard->action->actionType)){
         UIState::clearInteractiveState();
         GM->gameLayer->changeIndicatorState(RequireActions);
@@ -122,8 +121,8 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
             if(UIState::cardInPlayArea(this->selectedCard)){
                 //check if card needs to target other cards or can it be activated now
                 if(selectedCard->cardTargets->isAbilityReady()){
-                    selectedCard->cardTargets->useAbility();
                     GM->player->playCard(selectedCard);
+                    selectedCard->cardTargets->useAbility();
                     GM->player->organizeHand();
                     selectedCard = NULL;
                     this->transitionToNormalState();
@@ -147,15 +146,19 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
             }else{
                 //if card is dropped randomly on board
                 if(selectedCard->cardTargets->isTargetRequired){
-                    selectedCard->cardTargets->targetObject(touch);
                     
-                    //TODO: needs to be more robust and able to target multiple enemies
-                    // if one valid target has been chosen, go into cardtargetingstate
-                    if(selectedCard->cardTargets->isAbilityReady()){
-                        selectedCard->cardTargets->useAbility();
-                        GM->player->playCard(selectedCard);
-                        selectedCard = NULL;
-                        this->transitionToNormalState();
+                    if(selectedCard->cardTargets->targetObject(touch)){
+                        
+                        if(selectedCard->cardTargets->isAbilityReady()){
+                            GM->player->playCard(selectedCard);
+                            selectedCard->cardTargets->useAbility();
+                            selectedCard = NULL;
+                            this->transitionToNormalState();
+                        }else{
+                            //ability is not ready to be used
+                            GM->player->playCard(selectedCard);
+                            this->transitionToCardTargetingState(this->selectedCard);
+                        }
                     }else{
                         selectedCard = NULL;
                         this->transitionToNormalState();
@@ -200,14 +203,7 @@ void HandCardSelectedState::transitionToHandCardSelectedState(CardSprite* select
     CCLog("error:already in handCardSelectedState");
 }
 
-void HandCardSelectedState::transitionToSelectMonsterState(CardSprite* selectedCard){
-    GameManager *GM = GameManager::sharedGameManager();
-    SelectMonsterState *SMS =  new SelectMonsterState();
-    SMS->init(selectedCard);
-    SMS->autorelease();
-    GM->gameLayer->changeState(SMS);
-    GM->organizeMarket();
-}
+
 
 void HandCardSelectedState::transitionToCardTargetingState(CardSprite* selectedCard){
     GameManager *GM = GameManager::sharedGameManager();

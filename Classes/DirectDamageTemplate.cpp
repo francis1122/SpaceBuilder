@@ -10,70 +10,149 @@
 #include "Statuses.h"
 #include "CardSprite.h"
 #include "CardTargets.h"
+#include "Action.h"
+#include "CardGenerator.h"
+#include "LLMath.h"
 
 
-void DirectDamageTemplate::addAugmentationStatus(){
-    int rand = arc4random()%4;
+const std::string DirectDamageTemplate::CLASS_NAME = "DirectDamageTemplate";
+
+
+
+
+#pragma mark - augmentation
+
+
+void DirectDamageTemplate::addNeutralAugmentationStatus(){
+    
+}
+
+void DirectDamageTemplate::addRedAugmentationStatus(){
+    int rand = arc4random()%3;
     if(rand == 0){
         //killing blow augmentation
-        DeathBlowStatus *status = new DeathBlowStatus();
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
-        int rand2 = arc4random()%3;
         Status *killStatus;
-        if(rand2 == 0){
-            GainSoulStatus *status = new GainSoulStatus();
-            status->initWithSoulGain(cardPower/2);
-            killStatus = status;
-            powerLevel -= 2;
-            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain %i Soul", (int)(cardPower/2));
-        }else if(rand2 == 1){
             GainActionStatus *status = new GainActionStatus();
-            status->initWithActionGain(1);
+            CCArray *actions = new CCArray();
+            actions->init();
+            Action *action = new Action();
+            action->init(Red);
+            actions->addObject(action);
+            status->initWithActionGain(actions);
             killStatus = status;
             powerLevel -= 2;
-            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain an Action");
-        }else if(rand2 == 2){
-            DrawCardStatus *status = new DrawCardStatus();
-            status->initWithDrawAmount(1);
-            killStatus = status;
-            powerLevel -= 2;
-            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Draw a Card");
-        }
+            cardCostOffset += 2;
+            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Red Action");
         
-        status->initWithStatus(killStatus);
+        deathStatus->initWithStatus(killStatus);
+        createdCard->cardTargets->statuses->addObject(deathStatus);
+
     }
-
 }
 
-void DirectDamageTemplate::addAdditionalCost(){
-    
+void DirectDamageTemplate::addBlueAugmentationStatus(){
+    int rand = arc4random()%3;
+    if(rand == 0){
+        //killing blow augmentation
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
+        //choose status
+        Status *killStatus;
+            GainActionStatus *status = new GainActionStatus();
+            CCArray *actions = new CCArray();
+            actions->init();
+            Action *action = new Action();
+            action->init(Neutral);
+            actions->addObject(action);
+            status->initWithActionGain(actions);
+            killStatus = status;
+            powerLevel -= 2;
+            cardCostOffset += 2;
+            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Neutral Action");
+        deathStatus->initWithStatus(killStatus);
+        createdCard->cardTargets->statuses->addObject(deathStatus);
+        
+    }
 }
 
-void DirectDamageTemplate::addMainStatus(){
-    //status
-    CardTargets *cardTargets = new CardTargets();
-    cardTargets->init();
-    cardTargets->targetingType = Monsters;
-    cardTargets->isTargetRequired = true;
-    createdCard->cardTargets = cardTargets;
-    
-    
-    cardPower -= arc4random()%((int)cardPower/2);
-    cardPower += arc4random()%((int)cardPower/2);
+void DirectDamageTemplate::addYellowAugmentationStatus(){
+    int rand = arc4random()%3;
+    if(rand == 0){
+        //killing blow augmentation
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
+        //choose status
+        Status *killStatus;
+            DrawCardStatus *status = new DrawCardStatus();
+            status->initWithDrawAmount(2);
+            killStatus = status;
+            powerLevel -= 2;
+            cardCostOffset += 2;
+            
+            augmentationDescription = CCString::createWithFormat("\nKilling Blow: Draw 2 Cards");
+        
+        deathStatus->initWithStatus(killStatus);
+        createdCard->cardTargets->statuses->addObject(status);
+    }
+}
 
+void DirectDamageTemplate::addPurpleAugmentationStatus(){
+    cardPower += 6;
+    cardCostOffset -= 3;
+}
+
+#pragma mark - additional cost
+
+
+void DirectDamageTemplate::addNeutralAdditionalCost(){
+}
+
+void DirectDamageTemplate::addRedAdditionalCost(){
+}
+
+void DirectDamageTemplate::addBlueAdditionalCost(){
+}
+
+void DirectDamageTemplate::addYellowAdditionalCost(){
+}
+
+void DirectDamageTemplate::addPurpleAdditionalCost(){
+}
+
+
+#pragma mark - main status
+
+void DirectDamageTemplate::addNeutralMainStatus(){
+    
+    createdCard->cardTargets->targetingType = Monsters;
+    createdCard->cardTargets->isTargetRequired = true;
+    
+    cardPower = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
+    
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-(int)cardPower);
+    status->initWithHealthOffset(-(int)cardPower/2);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription =CCString::createWithFormat("Attack Monster for %i", (int)cardPower);
+    createdCard->setupDamageCard((int)cardPower/2);
 }
 
-int DirectDamageTemplate::calculateSoul(){
-    int cost = (int)cardPower;
-    cost += 2;
-    cost -= arc4random()%(cost/4);
-    cost += arc4random()%(cost/3);
-    return cost;
+void DirectDamageTemplate::addRedMainStatus(){
+    addNeutralMainStatus();
 }
+
+void DirectDamageTemplate::addBlueMainStatus(){
+    addNeutralMainStatus();
+}
+
+void DirectDamageTemplate::addYellowMainStatus(){
+    addNeutralMainStatus();
+}
+
+void DirectDamageTemplate::addPurpleMainStatus(){
+    addNeutralMainStatus();
+}
+
+#pragma mark -
+
 
 
 

@@ -16,6 +16,7 @@
 #include "ConvertCardToSoulStatus.h"
 #include "DrawCardStatus.h"
 #include "DeathBlowStatus.h"
+#include "RandomMonsterStatus.h"
 
 
 #endif

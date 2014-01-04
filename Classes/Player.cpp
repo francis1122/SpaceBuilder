@@ -53,15 +53,15 @@ Player::Player()
         //Make card ability
         CardTargets *cardTargets = new CardTargets();
         cardTargets->init();
-        card->detailsLabel->setString("do damage to monster");
+//        card->detailsLabel->setString("do damage to monster");
         cardTargets->targetingType = Monsters;
         cardTargets->isTargetRequired = true;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->init(2);
+        status->init(4);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        
+        card->setupDamageCard(4);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
@@ -71,17 +71,17 @@ Player::Player()
         CardSprite *card = new CardSprite();
         card->cardImageFile = "images";
         card->init();
-        card->detailsLabel->setString("gain soul");
+//        card->detailsLabel->setString("gain soul");
         //Make card ability
         CardTargets *cardTargets = new CardTargets();
         cardTargets->init();
         cardTargets->isTargetRequired = false;
         GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(2);
+        status->initWithSoulGain(4);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        
+        card->setupSoulGainCard(4);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
@@ -127,7 +127,7 @@ bool Player::hasAction(ActionType actionType){
     CCObject *object;
     CCARRAY_FOREACH( actionsLeftArray, object){
         Action *action = (Action*)object;
-        if(actionType ==  action->actionType || actionType == Neutral){
+        if(actionType ==  action->actionType || action->actionType == Neutral){
             return true;
         }
     }
@@ -209,6 +209,7 @@ void Player::addCardToHand(){
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CCSprite *card = (CCSprite*)object;
+        card->setScale(.25);
         GM->gameLayer->addChild(card, 10000);
         handCards->addObject(card);
         libraryCards->removeLastObject();
@@ -227,6 +228,8 @@ void Player::addCardToHand(){
 void Player::playCard(CardSprite *card){
     //execute card
     spendAction(card->action->actionType);
+    card->setScale(.15);
+    card->cardTargets->useInitialAbility();
     playedCards->addObject(card);
     handCards->removeObject(card);
 }

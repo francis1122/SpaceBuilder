@@ -27,7 +27,6 @@ bool MarketLayer::init()
     CCLayerColor *playArea = CCLayerColor::create(ccc4(255, 0, 0, 255), visibleSize.width, 160);
     playArea->setPosition(CCPointMake(0, 180));
     addChild(playArea);
-    
  */
     
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();

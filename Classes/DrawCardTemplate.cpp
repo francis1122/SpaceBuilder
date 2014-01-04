@@ -11,35 +11,91 @@
 #include "CardSprite.h"
 #include "CardTargets.h"
 
-void DrawCardTemplate::addAugmentationStatus(){
+
+const std::string DrawCardTemplate::CLASS_NAME = "DrawCardTemplate";
+
+
+
+#pragma mark - augmentation
+
+
+void DrawCardTemplate::addNeutralAugmentationStatus(){
     
 }
 
-void DrawCardTemplate::addAdditionalCost(){
+void DrawCardTemplate::addRedAugmentationStatus(){
     
 }
 
-void DrawCardTemplate::addMainStatus(){
-    CardTargets *cardTargets = new CardTargets();
-    cardTargets->init();
-    cardTargets->targetingType = PlayArea;
-    cardTargets->isTargetRequired = false;
-    createdCard->cardTargets = cardTargets;
+void DrawCardTemplate::addBlueAugmentationStatus(){
     
-    cardPower += arc4random()%3;
-    cardPower -= arc4random()%((int)cardPower/2);
-    cardPower += arc4random()%((int)cardPower/2);
+}
+
+void DrawCardTemplate::addYellowAugmentationStatus(){
+    
+}
+
+void DrawCardTemplate::addPurpleAugmentationStatus(){
+    
+}
+
+#pragma mark - additional cost
+
+
+void DrawCardTemplate::addNeutralAdditionalCost(){
+}
+
+void DrawCardTemplate::addRedAdditionalCost(){
+}
+
+void DrawCardTemplate::addBlueAdditionalCost(){
+}
+
+void DrawCardTemplate::addYellowAdditionalCost(){
+}
+
+void DrawCardTemplate::addPurpleAdditionalCost(){
+}
+
+
+#pragma mark - main status
+
+
+
+void DrawCardTemplate::addNeutralMainStatus(){
+    createdCard->cardTargets->targetingType = PlayArea;
+    createdCard->cardTargets->isTargetRequired = false;
+    
     drawCardAmount = 2;
     DrawCardStatus *status = new DrawCardStatus();
     status->initWithDrawAmount(2);
     createdCard->cardTargets->statuses->addObject(status);
     mainDescription =CCString::createWithFormat("Draw %i Cards", drawCardAmount);
+    createdCard->setCardType(Spell);
 }
 
+void DrawCardTemplate::addRedMainStatus(){
+    addNeutralMainStatus();
+}
+
+void DrawCardTemplate::addBlueMainStatus(){
+    addNeutralMainStatus();
+}
+
+void DrawCardTemplate::addYellowMainStatus(){
+    addNeutralMainStatus();
+}
+
+void DrawCardTemplate::addPurpleMainStatus(){
+    addNeutralMainStatus();
+}
+
+#pragma mark -
+
 int DrawCardTemplate::calculateSoul(){
-    int cost = (int)cardPower;
-    cost -= arc4random()%(cost/2);
-    cost += arc4random()%(cost/4);
+    int cost = (int)cardPower/4;
+    cost += cardCostOffset;
+    cost += LLMath::diceRoll((int)cardPower/2, 3);
     return cost;
 }
 

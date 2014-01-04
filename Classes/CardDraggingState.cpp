@@ -80,7 +80,6 @@ void CardDraggingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* 
 
     GM->player->organizeHand();
     draggingCard = NULL;
-    
 }
 
 void CardDraggingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){

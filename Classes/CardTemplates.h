@@ -14,5 +14,8 @@
 #include "SoulGainTemplate.h"
 #include "DrawCardTemplate.H"
 #include "ActionGainTemplate.h"
+#include "RandomTargetDamageTemplate.h"
+#include "MultiTargetDirectDamageTemplate.h"
+#include "DrawDiscardTemplate.h"
 
 #endif

@@ -14,6 +14,11 @@
 #include "Statuses.h"
 #include "Player.h"
 #include "CardTemplates.h"
+#include "IRDSColor.h"
+#include "Action.h"
+#include "IRDSTable.h"
+#include "IRDSObject.h"
+#include "IRDSCardTemplate.h"
 
 USING_NS_CC;
 
@@ -47,6 +52,18 @@ CardGenerator* CardGenerator::sharedGameManager()
     {
         //Create an instance to the singleton
         m_mySingleton = new CardGenerator();
+        
+        CardGenerator *CG = CardGenerator::sharedGameManager();
+        CG->registerClass(DirectDamageTemplate::CLASS_NAME, &DirectDamageTemplate::create);
+        CG->registerClass(SoulGainTemplate::CLASS_NAME, &SoulGainTemplate::create);
+        CG->registerClass(ActionGainTemplate::CLASS_NAME, &ActionGainTemplate::create);
+        CG->registerClass(DrawCardTemplate::CLASS_NAME, &DrawCardTemplate::create);
+        CG->registerClass(RandomTargetDamageTemplate::CLASS_NAME, &RandomTargetDamageTemplate::create);
+        CG->registerClass(MultiTargetDirectDamageTemplate::CLASS_NAME, &MultiTargetDirectDamageTemplate::create);
+        CG->registerClass(DrawDiscardTemplate::CLASS_NAME, &DrawDiscardTemplate::create);
+        
+        
+        
     }
     
     //Return the singleton object
@@ -56,6 +73,10 @@ CardGenerator* CardGenerator::sharedGameManager()
 
 CardSprite* CardGenerator::createCard(float powerLevel){
     //what should happen
+    
+    //test
+  //  CardTemplate *test = createClass("DirectDamageTemplate");
+//    test->init(powerLevel);
     
     //choose color
     return chooseCardColor(powerLevel);
@@ -149,43 +170,162 @@ CardSprite* CardGenerator::createCard(float powerLevel){
     return card;*/
 }
 
-CardSprite* CardGenerator::chooseCardColor(float powerLevel){
+CardSprite* CardGenerator::chooseCardColor(float powerLevel)
+{
+    
+    IRDSTable *colorDrops = new IRDSTable();
+//    colorDrops->rdsContents->addObject(new IRDSColor(Neutral, 10.0));
+    colorDrops->rdsContents->addObject(new IRDSColor(Red, 10.0));
+    colorDrops->rdsContents->addObject(new IRDSColor(Yellow, 10.0));
+    colorDrops->rdsContents->addObject(new IRDSColor(Purple, 10.0));
+    colorDrops->rdsContents->addObject(new IRDSColor(Blue, 1000.0));
+    
+    IRDSColor *colorChosen = (IRDSColor*)colorDrops->rdsResult(powerLevel);
+    
+    
     
     //choose card color
-    return cardForNeutral(powerLevel);
+    if(colorChosen->color == Neutral){
+        return cardForNeutral(powerLevel);
+    }else if(colorChosen->color == Blue){
+        return cardForBlue(powerLevel);
+    }else if(colorChosen->color == Red){
+        return cardForRed(powerLevel);
+    }else if(colorChosen->color == Yellow){
+        return cardForYellow(powerLevel);
+    }else if(colorChosen->color == Purple){
+        return cardForPurple(Purple);
+    }
     
+    return NULL;
 }
 
-CardSprite* CardGenerator::cardForNeutral(float powerLevel){
-    //randomly choose a template for neutral
+CardSprite* CardGenerator::cardForRed(float powerLevel){
+
+    //setup card drop table for cards to be chosen
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 14.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(MultiTargetDirectDamageTemplate::CLASS_NAME, 500.0, 0));
+    
+    //randomly choose a template
+    IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
     CardSprite *newCard;
-    
-    //choose directDamage
-    int rand = arc4random()%4;
-    
-    if(rand == 0){
-        DirectDamageTemplate *cardTemplate = new DirectDamageTemplate();
-        cardTemplate->init(powerLevel);
-        newCard = cardTemplate->createCard();
-    }else if(rand == 1){
-        SoulGainTemplate *cardTemplate = new SoulGainTemplate();
-        cardTemplate->init(powerLevel);
-        newCard = cardTemplate->createCard();
-    }else if(rand == 2){
-        DrawCardTemplate *cardTemplate = new DrawCardTemplate();
-        cardTemplate->init(powerLevel);
-        newCard = cardTemplate->createCard();
-    }else if(rand == 3){
-        ActionGainTemplate *cardTemplate = new ActionGainTemplate();
-        cardTemplate->init(powerLevel);
-        newCard = cardTemplate->createCard();
-    }
+    CardTemplate *cardTemplate = createClass(colorChosen->className);
+    cardTemplate->init(powerLevel, Red);
+    newCard = cardTemplate->createCard();
+    //set the color of the cards
+    Action *action = new Action();
+    action->init(Red);
+    newCard->setAction(action);
     return newCard;
     
 }
 
 
+CardSprite* CardGenerator::cardForBlue(float powerLevel){
+    //setup card drop table for cards to be chosen
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 10.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 7.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawDiscardTemplate::CLASS_NAME, 500.0, 0));
+    
+
+    //randomly choose a template
+    IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
+    CardSprite *newCard;
+    CardTemplate *cardTemplate = createClass(colorChosen->className);
+    cardTemplate->init(powerLevel, Blue);
+    newCard = cardTemplate->createCard();
+    //set the color of the cards
+    Action *action = new Action();
+    action->init(Blue);
+    newCard->setAction(action);
+    return newCard;
+    
+}
 
 
+CardSprite* CardGenerator::cardForYellow(float powerLevel){
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 10.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(RandomTargetDamageTemplate::CLASS_NAME, 5.0, 0));
+    //randomly choose a template
+    IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
+    CardSprite *newCard;
+    CardTemplate *cardTemplate = createClass(colorChosen->className);
+    cardTemplate->init(powerLevel, Yellow);
+    newCard = cardTemplate->createCard();
+    //set the color of the cards
+    Action *action = new Action();
+    action->init(Yellow);
+    newCard->setAction(action);
+    return newCard;
+    
+}
+
+
+CardSprite* CardGenerator::cardForPurple(float powerLevel){
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 12.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
+    //randomly choose a template
+    IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
+    CardSprite *newCard;
+    CardTemplate *cardTemplate = createClass(colorChosen->className);
+    cardTemplate->init(powerLevel, Purple);
+    newCard = cardTemplate->createCard();
+    //set the color of the cards
+    Action *action = new Action();
+    action->init(Purple);
+    newCard->setAction(action);
+    return newCard;
+    
+}
+
+
+CardSprite* CardGenerator::cardForNeutral(float powerLevel){
+    //setup card drop table for cards to be chosen
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 10.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 8.0, 0));
+    //randomly choose a template
+    IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
+    CardSprite *newCard;
+    CardTemplate *cardTemplate = createClass(colorChosen->className);
+    cardTemplate->init(powerLevel, Neutral);
+    newCard = cardTemplate->createCard();
+    //set the color of the cards
+    Action *action = new Action();
+    action->init(Neutral);
+    newCard->setAction(action);
+    return newCard;
+}
+
+
+
+void CardGenerator::registerClass(const std::string& pFunction, createFunc function){
+    CardGenerator::map.insert(std::make_pair(pFunction, function));
+}
+
+CardTemplate* CardGenerator::createClass(const std::string& pFunction){
+        script_map::const_iterator iter = CardGenerator::map.find(pFunction);
+        if (iter == CardGenerator::map.end())
+        {
+            // not found
+        }
+        //should call the class
+        CardTemplate *cardTemplate = (*iter).second();
+    return cardTemplate;
+}
 
 

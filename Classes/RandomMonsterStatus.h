@@ -1,13 +1,13 @@
 //
-//  GainActionStatus.h
+//  RandomMonsterStatus.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 12/4/13.
+//  Created by Hunter Francis on 12/30/13.
 //
 //
 
-#ifndef __RogueDeck__GainActionStatus__
-#define __RogueDeck__GainActionStatus__
+#ifndef __RogueDeck__RandomMonsterStatus__
+#define __RogueDeck__RandomMonsterStatus__
 
 #include "cocos2d.h"
 #include "Status.h"
@@ -15,14 +15,14 @@
 USING_NS_CC;
 
 class MonsterSprite;
-class GainActionStatus : public Status
+
+class RandomMonsterStatus : public Status
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init(int powerLevel);
+    virtual bool initWithStatus(Status *_status, int targets);
     
-    bool initWithActionGain(CCArray *actions);
-    
+    //status must require a monster target
     virtual void addStatusToGameObject(MonsterSprite *monster);
     
     //checks whether the status can be used
@@ -42,9 +42,10 @@ public:
     
     
     //specific status variables
-    CCArray *actionsGained;
+    int targets;
+    Status *randomStatus;
     
     
 };
 
-#endif /* defined(__RogueDeck__GainActionStatus__) */
+#endif /* defined(__RogueDeck__RandomMonsterStatus__) */

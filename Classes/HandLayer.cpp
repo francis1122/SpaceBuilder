@@ -10,6 +10,7 @@
 #include "GameManager.h"
 #include "CardSprite.h"
 #include "Constants.h"
+#include "Action.h"
 
 
 USING_NS_CC;
@@ -159,12 +160,12 @@ void HandLayer::updateInterface(){
     actionArray->removeAllObjects();
     
     for (int i = 0; i < GM->player->actionsLeftArray->count(); i++) {
-        CCSprite *sprite = CCSprite::createWithSpriteFrameName("deckIcon");
-        sprite->setScale(.25);
+        CCSprite *sprite = CCSprite::createWithSpriteFrameName("Card_Action");
+        Action *action = (Action*)GM->player->actionsLeftArray->objectAtIndex(i);
+        sprite->setColor(action->getActionColor());
+        sprite->setScale(.5);
         sprite->setPosition(ccp(540 + i * 60, 185));
         //change color depending on action
-        
-        
         
         addChild(sprite, ZORDERING_ACTIONSPRITE);
         actionArray->addObject(sprite);

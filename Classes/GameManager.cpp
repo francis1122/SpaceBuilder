@@ -18,6 +18,8 @@
 #include "PostRoundLayer.h"
 #include "CardGenerator.h"
 #include "UIState.h"
+#include "MonsterLayer.h"
+#include "MarketLayer.h"
 
 using namespace cocos2d;
 
@@ -27,13 +29,11 @@ GameManager* GameManager::m_mySingleton = NULL;
 
 GameManager::GameManager()
 {
-    
     this->monsterArray = new CCArray();
     this->monsterArray->init();
     this->marketCardArray = new CCArray();
     this->marketCardArray->init();
     
-
     this->player = new Player();
 
     currentLevel = 2;
@@ -73,8 +73,8 @@ void GameManager::startNewGame(){
     player = NULL;
     player = new Player();
     
-    currentLevel = 2;
-    monstersLeft = 2;
+    currentLevel = 1;
+    monstersLeft = 10;
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -83,7 +83,7 @@ void GameManager::startNewGame(){
 void GameManager::startNewRound(int level){
     player->reset();
     currentLevel = level;
-    monstersLeft = 1 + level;
+    monstersLeft = 10 + level;
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -94,7 +94,6 @@ void GameManager::startNewRound(int level){
 
 
 #pragma mark -update the gameState from various points
-
 
 void GameManager::gameStateCheck(){
     //check for dead monsters
@@ -198,10 +197,10 @@ void GameManager::organizeMarket(){
         CardSprite *card = (CardSprite*)object;
         if(card->turnsLeftInMarket == 1){
             i++;
-            card->setPosition(CCPointMake(850 + i * 60, 400));
+            card->setPosition(CCPointMake(170 + i * 140, 390));
         }else if(card->turnsLeftInMarket == 2){
             j++;
-            card->setPosition(CCPointMake(850 + j * 60, 540));
+            card->setPosition(CCPointMake(170 + j * 140, 540));
         }else if( card->turnsLeftInMarket== 0){
             CCLog("card should be removed from market and destroyed");
         }
@@ -220,7 +219,7 @@ void GameManager::sellCard(CardSprite* card){
 
 void GameManager::addMarketCard(CardSprite* marketCard){
     this->marketCardArray->addObject(marketCard);
-    this->gameLayer->addChild(marketCard);
+    this->gameLayer->marketLayer->addChild(marketCard);
     
     this->organizeMarket();
 }
@@ -268,24 +267,25 @@ void GameManager::organizeMonsters(){
     CCARRAY_FOREACH(monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
         monster->setPosition(CCPointMake(150 + monster->lane * 150, 400 + monster->location * 40));
+        monster->updateInterface();
     }
 }
 
 void GameManager::removeMonster(MonsterSprite *monster){
+    //add card to market
+    CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
+    card->turnsLeftInMarket = 2;
+    this->addMarketCard(card);
+
     monster->onDeath();
     monster->removeFromParent();
     monsterArray->removeObject(monster);
-    
-    //add card to market
-    CardSprite *card = CardGenerator::sharedGameManager()->createCard((float)(currentLevel * 2));
-    card->turnsLeftInMarket = 2;
-    this->addMarketCard(card);
     this->organizeMarket();
 }
 
 
 void GameManager::spawnMonster(){
-    MonsterSprite *monster = MonsterGenerator::sharedGameManager()->createMonster(currentLevel);
+    MonsterSprite *monster = MonsterGenerator::sharedGameManager()->createMonster(10 + (float)currentLevel * 3.0);
     //give monster the correct lane
     
     //cycle through monsters to see what lane is open
@@ -311,7 +311,7 @@ void GameManager::spawnMonster(){
     }
     
     monstersLeft--;
-    this->gameLayer->addChild(monster);
+    this->gameLayer->monsterLayer->addChild(monster);
     monster->updateInterface();
     
     this->monsterArray->addObject(monster);

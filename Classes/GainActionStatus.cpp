@@ -12,6 +12,7 @@
 #include "MonsterSprite.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "Action.h"
 
 USING_NS_CC;
 
@@ -27,15 +28,15 @@ bool GainActionStatus::init(int powerLevel)
     
     className = new CCString();
     className->initWithFormat("GainActionStatus");
-    actionGainAmount = 2;
     return true;
 }
 
-bool GainActionStatus::initWithActionGain(int actionGain){
+bool GainActionStatus::initWithActionGain(CCArray *actions){
     if(!Status::init()){
         return false;
     }
-    actionGainAmount = actionGain;
+    actionsGained = new CCArray();
+    actionsGained->initWithArray(actions);
     return true;
 }
 
@@ -51,8 +52,9 @@ bool GainActionStatus::checkStart(){
 //called when status is given to object
 void GainActionStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
-    for(int i = 0; i < actionGainAmount; i++){
-        GM->player->addAction(Neutral);
+    for(int i = 0; i < actionsGained->count(); i++){
+        Action *action = (Action*)actionsGained->objectAtIndex(i);
+        GM->player->addAction(action->actionType);
     }
 }
 

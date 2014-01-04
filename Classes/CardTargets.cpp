@@ -27,11 +27,14 @@ bool CardTargets::init()
     
     selectedTargets = new CCArray();
     statuses = new CCArray();
+    initialStatuses = new CCArray();
     
     targetingType = PlayArea;
     
     selectedTargets->init();
     statuses->init();
+    initialStatuses->init();
+    targetAmount = 1;
     
     return true;
 }
@@ -39,6 +42,8 @@ bool CardTargets::init()
 
 //checks whether the ability can be activated
 bool CardTargets::isAbilityActivatable(UIState* state){
+    //check if proper amount is possible
+    
     return true;
 }
 
@@ -48,13 +53,13 @@ void CardTargets::activateAbility(UIState* state){
 }
 
 //targets objects to use ability on
-void CardTargets::targetObject(CCTouch* touch){
+bool CardTargets::targetObject(CCTouch* touch){
     GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     CCObject *object;
     
-    //TODO: make this target specific objects
+    //TODO: make this target specific objects such as cards in hand or market cards
     
     //monster selection
     CCARRAY_FOREACH(GM->monsterArray, object){
@@ -64,21 +69,22 @@ void CardTargets::targetObject(CCTouch* touch){
         if(collisionRect.containsPoint(touchPoint)){
             CCLog("monster has been hit");
             selectedTargets->addObject(monster);
-            return;
+            return true;
         }
     }
+    return false;
 }
 
 // checks whether the ability can be used
 bool CardTargets::isAbilityReady(){
     if(isTargetRequired){
-        if(selectedTargets->count() > 0){
+        if(selectedTargets->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
     }else if(isDraggingRequired){
-        if(selectedTargets->count() > 0){
+        if(selectedTargets->count() >= targetAmount){
             return true;
         }else{
             return false;
@@ -87,6 +93,22 @@ bool CardTargets::isAbilityReady(){
     
         return true;
     }
+}
+
+void CardTargets::useInitialAbility(){
+
+    CCObject *object;
+    CCARRAY_FOREACH(initialStatuses, object){
+        Status *status = (Status*)object;
+        status->applyStatus();
+    }
+
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->organizeMonsters();
+    GM->organizeMarket();
+    GM->player->organizeHand();
+    GM->player->organizePlayedCards();
+    GM->gameLayer->updateInterface();
 }
 
 //does what the ability should do
@@ -100,8 +122,6 @@ void CardTargets::useAbility(){
             CCARRAY_FOREACH(statuses, object2){
                 Status *status = (Status*)object2;
                 status->addStatusToGameObject(monster);
-                //apply status effects to monster
-                monster->updateInterface();
             }
         }
     }else{
@@ -113,8 +133,14 @@ void CardTargets::useAbility(){
             status->applyStatus();
         }
     }
+    //apply status effects to monster
+//    monster->updateInterface();
+    
     
     GameManager *GM = GameManager::sharedGameManager();
+    GM->organizeMonsters();
+    GM->organizeMarket();
+    GM->gameLayer->updateInterface();
     GM->afterCardPlayedStateCheck();
     //clear targetArray
     selectedTargets->removeAllObjects();

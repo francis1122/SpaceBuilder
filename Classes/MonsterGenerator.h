@@ -26,7 +26,7 @@ public:
     //Get instance of singleton
     static MonsterGenerator* sharedGameManager();
   
-    MonsterSprite* createMonster(int powerLevel);
+    MonsterSprite* createMonster(float powerLevel);
     
     
 };

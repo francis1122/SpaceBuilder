@@ -1,25 +1,25 @@
 //
-//  DirectDamageTemplate.h
+//  RandomTargetDamageTemplate.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 12/6/13.
+//  Created by Hunter Francis on 12/30/13.
 //
 //
 
-#ifndef __RogueDeck__DirectDamageTemplate__
-#define __RogueDeck__DirectDamageTemplate__
+#ifndef __RogueDeck__RandomTargetDamageTemplate__
+#define __RogueDeck__RandomTargetDamageTemplate__
 
 #include "cocos2d.h"
 #include "CardTemplate.h"
 USING_NS_CC;
 
 class CardSprite;
-class DirectDamageTemplate : public CardTemplate
+class RandomTargetDamageTemplate : public CardTemplate
 {
     
 public:
     static const std::string CLASS_NAME;
-    static CardTemplate* create(){ return new DirectDamageTemplate();}
+    static CardTemplate* create(){ return new RandomTargetDamageTemplate();}
     
     virtual void addNeutralAugmentationStatus();
     virtual void addRedAugmentationStatus();
@@ -41,4 +41,4 @@ public:
     
 };
 
-#endif /* defined(__RogueDeck__DirectDamageTemplate__) */
+#endif /* defined(__RogueDeck__RandomTargetDamageTemplate__) */

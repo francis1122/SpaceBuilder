@@ -10,7 +10,15 @@
 #define __RogueDeck__CardSprite__
 
 #include "cocos2d.h"
-//#include "CardTargets.h"
+
+
+typedef enum CardType{
+    Attack,
+    Soul,
+    Equipment,
+    Spell
+} CardType;
+
 class CardTargets;
 class Action;
 class CardSprite : public cocos2d::CCSprite
@@ -25,6 +33,11 @@ public:
     bool isInteractive;
     Action *action;
     
+    
+
+    
+    cocos2d::CCSprite *textBox;
+    cocos2d::CCSprite *costBox;
     cocos2d::CCLabelTTF *detailsLabel;
     cocos2d::CCLabelTTF *costLabel;
     
@@ -39,8 +52,19 @@ public:
     void enableInteractive();
     void disableInteractive();
     
+    void setCardType(CardType newCardType);
+    CardType getCardType(){ return cardType;}
     void setSoulCostOfCard(int newSoulCost);
+    
+    void setAction(Action* newAction);
+#pragma mark - card creation
+    void addActionGain(cocos2d::CCArray* actionArray);
+    void setupDamageCard(int damage);
+    
+    void setupSoulGainCard(int soulGain);
+    
 private:
+    CardType cardType;
     
 };
 

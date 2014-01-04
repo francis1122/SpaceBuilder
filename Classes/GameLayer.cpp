@@ -14,7 +14,9 @@
 #include "HandLayer.h"
 #include "MarketLayer.h"
 #include "ZoomLayer.h"
+#include "TopSlideLayer.h"
 #include "Player.h"
+#include "MonsterLayer.h"
 
 USING_NS_CC;
 
@@ -52,31 +54,31 @@ void GameLayer::setupButtons(){
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 2);
+    this->addChild(pMenu, 102);
     
     rightButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
     leftButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
     rightButtonGlow->setPosition(rightButton->getPosition());
     leftButtonGlow->setPosition(leftButton->getPosition());
     
-    this->addChild(rightButtonGlow, 1);
-    this->addChild(leftButtonGlow, 1);
+    this->addChild(rightButtonGlow, 101);
+    this->addChild(leftButtonGlow, 101);
     
     
-
+    
     
     //labels
     leftButtonLabel = CCLabelTTF::create("", "Arial", 32);
     rightButtonLabel = CCLabelTTF::create("End Turn", "Arial", 32);
-//    rightButtonLabel->enableStroke(ccBLACK, 2);
+    //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
     leftButtonLabel->setPosition(ccp(240, 270));
     rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 273));
     
-    this->addChild(leftButtonLabel, 3);
-    this->addChild(rightButtonLabel, 3);
+    this->addChild(leftButtonLabel, 103);
+    this->addChild(rightButtonLabel, 103);
     
-
+    
     
 }
 
@@ -93,7 +95,7 @@ bool GameLayer::init()
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
-    
+    isOnMonsters = true;
     setupButtons();
     
     
@@ -102,7 +104,7 @@ bool GameLayer::init()
     playAreaGlow = CCSprite::createWithSpriteFrameName("PlayGlow");
     playAreaGlow->setPosition(ccp(visibleSize.width/2, 255));
     playAreaGlow->setVisible(false);
-    this->addChild(playAreaGlow, 1);
+    this->addChild(playAreaGlow, 100);
     
     /////////////////////////////
     // 3. add your codes below...
@@ -116,18 +118,18 @@ bool GameLayer::init()
     
     // position the label on the center of the screen
     visualIndicatorLabel->setPosition(ccp(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
+                                          origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
     monstersLeftLabel->setPosition(ccp( 50, visibleSize.height - 20));
     sellLabel->setPosition(ccp( visibleSize.width - 60, visibleSize.height - 50));
     
     // add the label as a child to this layer
-    this->addChild(visualIndicatorLabel, 4);
-    this->addChild(monstersLeftLabel, 4);
-    this->addChild(sellLabel, 4);
+    this->addChild(visualIndicatorLabel, 100);
+    this->addChild(monstersLeftLabel, 100);
+    this->addChild(sellLabel, 100);
     
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::createWithSpriteFrameName("background");
-//    pSprite->initWithSpriteFrameName("background");
+    //    pSprite->initWithSpriteFrameName("background");
     
     // position the sprite on the center of the screen
     pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
@@ -136,31 +138,56 @@ bool GameLayer::init()
     this->addChild(pSprite, 0);
     
     GameManager *GM = GameManager::sharedGameManager();
-
+    
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     this->setTouchEnabled(true);
-
+    
     //layer creation
     handLayer = HandLayer::create();
     marketLayer = MarketLayer::create();
     zoomLayer = ZoomLayer::create();
+    monsterLayer = MonsterLayer::create();
+    topSlideLayer = TopSlideLayer::create();
+    this->addChild(topSlideLayer);
     this->addChild(handLayer, 99);
-    this->addChild(marketLayer, 99);
+    topSlideLayer->addChild(marketLayer, 99);
+    topSlideLayer->addChild(monsterLayer, 99);
     this->addChild(zoomLayer, 1000000);
     
+    
+    marketLayer->setPosition(ccp(visibleSize.width, 0));
+    
     this->leaveZoomState();
-
+    
     
     //set game layer to gamemanager
     GM->gameLayer = this;
     GM->player->drawHand();
     this->setCurrentState(new NormalState());
     currentState->init();
-
+    
     GM->addMonstersPhase();
     GM->organizeMonsters();
     
-
+    
+    //market/monster switch button
+    CCMenuItemSprite *switchButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                           CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                           this,
+                                           menu_selector(GameLayer::switchButtonPressed));
+    
+	switchButton->setPosition(ccp(visibleSize.width - 80,
+                                 470));
+    
+    // create menu, it's an autorelease object
+    CCMenu* pMenu = CCMenu::create(switchButton, NULL);
+    pMenu->setPosition(CCPointZero);
+    this->addChild(pMenu, 100);
+    
+    
+    
+    
+    
     this->updateInterface();
     
     return true;
@@ -168,20 +195,34 @@ bool GameLayer::init()
 
 
 void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
-        leftButtonLabel->setString(leftLabel);
-        rightButtonLabel->setString(rightLabel);
+    leftButtonLabel->setString(leftLabel);
+    rightButtonLabel->setString(rightLabel);
 }
 
 
 void GameLayer::rightButtonPressed(CCObject *pSender){
     currentState->rightButtonTouch();
-
+    
 }
 
 
 void GameLayer::leftButtonPressed(CCObject *pSender){
     currentState->leftButtonTouch();
 }
+
+void GameLayer::switchButtonPressed(CCObject *pSender){
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    isOnMonsters = !isOnMonsters;
+    CCAction *move;
+    topSlideLayer->stopAllActions();
+    if(isOnMonsters){
+        move = CCMoveTo::create(0.3, ccp(0, 0));
+    }else{
+        move = CCMoveTo::create(0.3, ccp(-visibleSize.width, 0));
+    }
+    topSlideLayer->runAction(move);
+}
+
 #pragma mark - touch code
 
 
@@ -200,60 +241,63 @@ CCArray* GameLayer::allTouchesFromSet(CCSet *touches)
 
 bool GameLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 {
+    isTap = true;
     return currentState->ccTouchBegan(touch, event);
     
     
-/*    // This method is passed an NSSet of touches called (of course) "touches"
-    // We need to convert it to an array first
-    CCArray *allTouches = this->allTouchesFromSet(touches);
-    CCTouch* fingerOne = (CCTouch *)allTouches->objectAtIndex(0);
-    
-    // Convert each UITouch object to a CGPoint, which has x/y coordinates we can actually use
-    CCPoint pointOne = fingerOne->getLocationInView();
-    
-    // The touch points are always in "portrait" coordinates - convert to landscape
-    pointOne = CCDirector::sharedDirector()->convertToGL(pointOne);
-    
-    // We store the starting point of the touch so we can determine whether the touch is a swipe or tap.
- */
+    /*    // This method is passed an NSSet of touches called (of course) "touches"
+     // We need to convert it to an array first
+     CCArray *allTouches = this->allTouchesFromSet(touches);
+     CCTouch* fingerOne = (CCTouch *)allTouches->objectAtIndex(0);
+     
+     // Convert each UITouch object to a CGPoint, which has x/y coordinates we can actually use
+     CCPoint pointOne = fingerOne->getLocationInView();
+     
+     // The touch points are always in "portrait" coordinates - convert to landscape
+     pointOne = CCDirector::sharedDirector()->convertToGL(pointOne);
+     
+     // We store the starting point of the touch so we can determine whether the touch is a swipe or tap.
+     */
 }
 
 void GameLayer::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
+    isTap = false;
     currentState->ccTouchMoved(touch, event);
     // This method is passed an NSSet of touches called (of course) "touches"
     // We need to convert it to an array first
-/*    CCArray *allTouches = this->allTouchesFromSet(touches);
-    
-    // Only run the following code if there is more than one touch
-    if (allTouches->count() > 1)
-    {
-        // We're going to track the first two touches (i.e. first two fingers)
-        // Create "UITouch" objects representing each touch
-        CCTouch* fingerOne = (CCTouch *)allTouches->objectAtIndex(0);
-        
-        // Convert each UITouch object to a CGPoint, which has x/y coordinates we can actually use
-        CCPoint pointOne = fingerOne->getLocationInView();
-        
-        // The touch points are always in "portrait" coordinates - you will need to convert them if in landscape (which we are)
-        pointOne = CCDirector::sharedDirector()->convertToGL(pointOne);
-    }
- */
+    /*    CCArray *allTouches = this->allTouchesFromSet(touches);
+     
+     // Only run the following code if there is more than one touch
+     if (allTouches->count() > 1)
+     {
+     // We're going to track the first two touches (i.e. first two fingers)
+     // Create "UITouch" objects representing each touch
+     CCTouch* fingerOne = (CCTouch *)allTouches->objectAtIndex(0);
+     
+     // Convert each UITouch object to a CGPoint, which has x/y coordinates we can actually use
+     CCPoint pointOne = fingerOne->getLocationInView();
+     
+     // The touch points are always in "portrait" coordinates - you will need to convert them if in landscape (which we are)
+     pointOne = CCDirector::sharedDirector()->convertToGL(pointOne);
+     }
+     */
 }
 
 void GameLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
     currentState->ccTouchEnded(touch, event);
     
-
-    long currentTouchTime = millisecondNow();
-    long deltaTime = currentTouchTime - previousTouchTime;
-    if(deltaTime < 150){
-        //is a double tap
-        currentState->doubleTap(touch, event);
+    if(isTap){
+        long currentTouchTime = millisecondNow();
+        long deltaTime = currentTouchTime - previousTouchTime;
+        if(deltaTime < 150){
+            //is a double tap
+            currentState->doubleTap(touch, event);
+        }
+        
+        previousTouchTime = currentTouchTime;
     }
-    
-    previousTouchTime = currentTouchTime;
 }
 
 void GameLayer::ccTouchCancelled(CCTouch *touch, CCEvent *event){

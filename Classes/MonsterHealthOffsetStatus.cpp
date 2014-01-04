@@ -19,8 +19,7 @@ USING_NS_CC;
 
 // on "init" you need to initialize your instance
 bool MonsterHealthOffsetStatus::init(int powerLevel)
-{
-    
+{    
     if(!Status::init()){
         return false;
     }
