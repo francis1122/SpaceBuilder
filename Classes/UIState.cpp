@@ -169,7 +169,6 @@ void UIState::defaultInteractiveState(){
         }
     }
     
-    
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
         monster->disableInteractive();

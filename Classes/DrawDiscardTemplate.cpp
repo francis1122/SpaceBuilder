@@ -62,9 +62,7 @@ void DrawDiscardTemplate::addPurpleAdditionalCost(){
 #pragma mark - main status
 
 void DrawDiscardTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = DiscardCard;
-    createdCard->cardTargets->isTargetRequired = false;
-    createdCard->cardTargets->isDraggingRequired = true;
+    createdCard->cardTargets->targetingType = DrawCard_DiscardCard;
     
     
     

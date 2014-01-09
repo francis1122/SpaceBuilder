@@ -81,7 +81,7 @@ void MonsterSprite::updateInterface(){
     lifeLabel->setString(lifeString->getCString());
     CCString *attackString = CCString::createWithFormat("%i", attack);
     attackLabel->setString(attackString->getCString());
-
+    
 }
 
 
@@ -96,16 +96,30 @@ void MonsterSprite::onDeath(){
 
 void MonsterSprite::turnUpdate(){
     GameManager *GM = GameManager::sharedGameManager();
-    //update life label
-    updateInterface();
     
-    if(location > 0){
-        //move monster
-        location--;
-    }else{
-        //attack human
-        GM->player->health -= attack;
-        
+    
+    //update status first
+    for(int i = activeStatusArray->count() - 1; i >= 0 ;i--){
+        Status *status = (Status*)activeStatusArray->objectAtIndex(i);
+        status->updateStatus(this);
+        if(status->checkEnd()){
+            //should remove status
+            status->applyEndStatus();
+            activeStatusArray->removeObjectAtIndex(i);
+        }
     }
+    
+    if(life > 0){
+        if(location > 0){
+            //move monster
+            location--;
+        }else{
+            //attack human
+            GM->player->health -= attack;
+        }
+    }
+    
+    //update monster labels
+    updateInterface();
 }
 

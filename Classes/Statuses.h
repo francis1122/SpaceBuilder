@@ -17,6 +17,7 @@
 #include "DrawCardStatus.h"
 #include "DeathBlowStatus.h"
 #include "RandomMonsterStatus.h"
+#include "MonsterHealthOffsetDurationStatus.h"
 
 
 #endif

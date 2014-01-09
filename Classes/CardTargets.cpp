@@ -42,7 +42,31 @@ bool CardTargets::init()
 
 //checks whether the ability can be activated
 bool CardTargets::isAbilityActivatable(UIState* state){
+    GameManager *GM = GameManager::sharedGameManager();
     //check if proper amount is possible
+    if(targetingType == PlayArea_TargetMonsters){
+        if(GM->monsterArray->count() > targetAmount){
+            return true;
+        }else{
+            return false;
+        }
+    }else if(targetingType == PlayArea){
+        return true;
+    }else if(targetingType == Monsters){
+        if(GM->monsterArray->count() > targetAmount){
+            return true;
+        }else{
+            return false;
+        }
+    }else if(targetingType == DiscardArea){
+        if(GM->player->handCards->count() > targetAmount){
+            return true;
+        }else{
+            return false;
+        }
+    }else if(targetingType == DrawCard_DiscardCard){
+        return true;
+    }
     
     return true;
 }
@@ -77,22 +101,32 @@ bool CardTargets::targetObject(CCTouch* touch){
 
 // checks whether the ability can be used
 bool CardTargets::isAbilityReady(){
-    if(isTargetRequired){
+    if(targetingType == PlayArea_TargetMonsters ||
+       targetingType == Monsters){
+        //targets
         if(selectedTargets->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
-    }else if(isDraggingRequired){
+        
+    }else if(targetingType == DiscardCard){
+        //dragging
         if(selectedTargets->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
-    }else{
-    
+        
+    }else if(targetingType == PlayArea ||
+             targetingType == DrawCard ||
+             targetingType == BuyCard ||
+             targetingType == DrawCard_DiscardCard){
+        
         return true;
     }
+    
+    return false;
 }
 
 void CardTargets::useInitialAbility(){
@@ -104,16 +138,14 @@ void CardTargets::useInitialAbility(){
     }
 
     GameManager *GM = GameManager::sharedGameManager();
-    GM->organizeMonsters();
-    GM->organizeMarket();
-    GM->player->organizeHand();
-    GM->player->organizePlayedCards();
+//    GM->player->organizeHand();
+//    GM->player->organizePlayedCards();
     GM->gameLayer->updateInterface();
 }
 
 //does what the ability should do
 void CardTargets::useAbility(){
-    if(isTargetRequired){
+    if(targetingType == Monsters){
         CCObject *object;
         CCARRAY_FOREACH(selectedTargets, object){
         //TODO: can target more than just monsters
@@ -127,7 +159,7 @@ void CardTargets::useAbility(){
     }else{
         //do status
         CCObject *object;
-        //        GameManager *GM = GameManager::sharedGameManager();
+        //GameManager *GM = GameManager::sharedGameManager();
         CCARRAY_FOREACH(statuses, object){
             Status *status = (Status*)object;
             status->applyStatus();

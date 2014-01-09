@@ -17,6 +17,8 @@
 #include "TopSlideLayer.h"
 #include "Player.h"
 #include "MonsterLayer.h"
+#include "AnimationManager.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -80,6 +82,7 @@ void GameLayer::setupButtons(){
     
     
     
+    
 }
 
 // on "init" you need to initialize your instance
@@ -91,6 +94,11 @@ bool GameLayer::init()
     {
         return false;
     }
+    
+    
+    AM->resetAnimationManager();
+    this->addChild(AM);
+    
     previousTouchTime = millisecondNow();
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
@@ -137,7 +145,6 @@ bool GameLayer::init()
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
     
-    GameManager *GM = GameManager::sharedGameManager();
     
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     this->setTouchEnabled(true);
@@ -163,6 +170,7 @@ bool GameLayer::init()
     //set game layer to gamemanager
     GM->gameLayer = this;
     GM->player->drawHand();
+    GM->player->organizeHand();
     this->setCurrentState(new NormalState());
     currentState->init();
     
@@ -172,17 +180,17 @@ bool GameLayer::init()
     
     //market/monster switch button
     CCMenuItemSprite *switchButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
-                                           CCSprite::createWithSpriteFrameName("Button_Pressed"),
-                                           this,
-                                           menu_selector(GameLayer::switchButtonPressed));
+                                                              CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                                              this,
+                                                              menu_selector(GameLayer::switchButtonPressed));
     
-	switchButton->setPosition(ccp(visibleSize.width - 80,
-                                 470));
+	switchButton->setPosition(ccp(visibleSize.width,
+                                  470));
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(switchButton, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 100);
+    topSlideLayer->addChild(pMenu, 100);
     
     
     
@@ -190,8 +198,11 @@ bool GameLayer::init()
     
     this->updateInterface();
     
+    
+    
     return true;
 }
+
 
 
 void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
@@ -201,13 +212,17 @@ void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
 
 
 void GameLayer::rightButtonPressed(CCObject *pSender){
-    currentState->rightButtonTouch();
+    if(GM->isInteractive){
+        currentState->rightButtonTouch();
+    }
     
 }
 
 
 void GameLayer::leftButtonPressed(CCObject *pSender){
-    currentState->leftButtonTouch();
+    if(GM->isInteractive){
+        currentState->leftButtonTouch();
+    }
 }
 
 void GameLayer::switchButtonPressed(CCObject *pSender){
@@ -241,8 +256,13 @@ CCArray* GameLayer::allTouchesFromSet(CCSet *touches)
 
 bool GameLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 {
-    isTap = true;
-    return currentState->ccTouchBegan(touch, event);
+    GameManager::sharedGameManager();
+    if(GM->isInteractive){
+        isTap = true;
+        return currentState->ccTouchBegan(touch, event);
+    }else{
+        return false;
+    }
     
     
     /*    // This method is passed an NSSet of touches called (of course) "touches"
@@ -262,8 +282,10 @@ bool GameLayer::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
 
 void GameLayer::ccTouchMoved(CCTouch* touch, CCEvent* event)
 {
-    isTap = false;
-    currentState->ccTouchMoved(touch, event);
+    if(GM->isInteractive){
+        isTap = false;
+        currentState->ccTouchMoved(touch, event);
+    }
     // This method is passed an NSSet of touches called (of course) "touches"
     // We need to convert it to an array first
     /*    CCArray *allTouches = this->allTouchesFromSet(touches);
@@ -286,22 +308,26 @@ void GameLayer::ccTouchMoved(CCTouch* touch, CCEvent* event)
 
 void GameLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
-    currentState->ccTouchEnded(touch, event);
-    
-    if(isTap){
-        long currentTouchTime = millisecondNow();
-        long deltaTime = currentTouchTime - previousTouchTime;
-        if(deltaTime < 150){
-            //is a double tap
-            currentState->doubleTap(touch, event);
-        }
+    if(GM->isInteractive){
+        currentState->ccTouchEnded(touch, event);
         
-        previousTouchTime = currentTouchTime;
+        if(isTap){
+            long currentTouchTime = millisecondNow();
+            long deltaTime = currentTouchTime - previousTouchTime;
+            if(deltaTime < 150){
+                //is a double tap
+                currentState->doubleTap(touch, event);
+            }
+            
+            previousTouchTime = currentTouchTime;
+        }
     }
 }
 
 void GameLayer::ccTouchCancelled(CCTouch *touch, CCEvent *event){
-    currentState->ccTouchCancelled(touch, event);
+    if(GM->isInteractive){
+        currentState->ccTouchCancelled(touch, event);
+    }
     
 }
 
@@ -314,7 +340,6 @@ long GameLayer::millisecondNow()
 
 void GameLayer::changeState(UIState* state){
     this->setCurrentState(state);
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameStateCheck();
 }
 
@@ -335,6 +360,8 @@ void GameLayer::changeIndicatorState(TargetingType indicatorState){
         visualIndicatorLabel->setString("Must Draw a Card");
     }else if(indicatorState == BuyCard){
         visualIndicatorLabel->setString("Drag to Discard to Buy Card");
+    }else if(indicatorState == DrawCard_DiscardCard){
+        visualIndicatorLabel->setString("Must Discard a Card");
     }
 }
 
@@ -348,7 +375,6 @@ void GameLayer::leaveZoomState(){
 
 void GameLayer::updateInterface(){
     handLayer->updateInterface();
-    GameManager *GM = GameManager::sharedGameManager();
     CCString *monstersLeftString =CCString::createWithFormat("%i", GM->monstersLeft);
     monstersLeftLabel->setString(monstersLeftString->getCString());
 }
@@ -380,5 +406,15 @@ void GameLayer::enablePlayAreaInteractive(){
 
 void GameLayer::disablePlayAreaInteractive(){
     playAreaGlow->setVisible(false);
+}
+
+
+#pragma mark - global positioning
+
+CCPoint GameLayer::monsterLayerToMarketLayer(CCPoint monsterPoint){
+    return ccp(monsterPoint.x + monsterLayer->getPosition().x + topSlideLayer->getPosition().x - marketLayer->getPosition().x,
+               monsterPoint.y + monsterLayer->getPosition().y + topSlideLayer->getPosition().y - marketLayer->getPosition().y);
+    
+    
 }
 

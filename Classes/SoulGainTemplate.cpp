@@ -58,10 +58,9 @@ void SoulGainTemplate::addPurpleAdditionalCost(){
 
 void SoulGainTemplate::addNeutralMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
-    cardPower -= LLMath::getIntValue(cardPower/2);
-    soulGain = cardPower;
+//    cardPower -= LLMath::getIntValue(cardPower/3);
+    soulGain = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(cardPower);
     createdCard->cardTargets->statuses->addObject(status);
@@ -85,11 +84,5 @@ void SoulGainTemplate::addPurpleMainStatus(){
 }
 
 #pragma mark -
-int SoulGainTemplate::calculateSoul(){
-    int cost = (int)cardPower/2;
-    cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/2, 3);
-    
-    return cost;
-}
+
 

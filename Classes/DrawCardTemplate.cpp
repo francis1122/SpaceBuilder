@@ -64,7 +64,6 @@ void DrawCardTemplate::addPurpleAdditionalCost(){
 
 void DrawCardTemplate::addNeutralMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
     drawCardAmount = 2;
     DrawCardStatus *status = new DrawCardStatus();

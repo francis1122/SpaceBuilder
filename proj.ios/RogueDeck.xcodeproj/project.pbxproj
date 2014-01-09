@@ -255,6 +255,11 @@
 		5A0439121877420F008EF3F5 /* MonsterLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0439101877420F008EF3F5 /* MonsterLayer.cpp */; };
 		5A04391518777BD4008EF3F5 /* TopSlideLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A04391318777BD4008EF3F5 /* TopSlideLayer.cpp */; };
 		5A04391818778666008EF3F5 /* DrawDiscardTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A04391618778666008EF3F5 /* DrawDiscardTemplate.cpp */; };
+		5A04391B1878B9CD008EF3F5 /* PosionDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0439191878B9CD008EF3F5 /* PosionDamageTemplate.cpp */; };
+		5A04391E18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A04391C18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp */; };
+		5A043921187C83C9008EF3F5 /* BaseObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A04391F187C83C9008EF3F5 /* BaseObject.cpp */; };
+		5A043925187C8481008EF3F5 /* AnimationManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A043923187C8481008EF3F5 /* AnimationManager.cpp */; };
+		5A043929187C8676008EF3F5 /* AnimationObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A043927187C8676008EF3F5 /* AnimationObject.cpp */; };
 		5A3B0075183F3E37004384CD /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0073183F3E37004384CD /* Status.cpp */; };
 		5A3B0078183F40A1004384CD /* GainSoulStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0076183F40A1004384CD /* GainSoulStatus.cpp */; };
 		5A3B007B183F42E6004384CD /* MonsterHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0079183F42E6004384CD /* MonsterHealthOffsetStatus.cpp */; };
@@ -821,6 +826,16 @@
 		5A04391418777BD4008EF3F5 /* TopSlideLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopSlideLayer.h; path = ../Classes/TopSlideLayer.h; sourceTree = "<group>"; };
 		5A04391618778666008EF3F5 /* DrawDiscardTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DrawDiscardTemplate.cpp; path = ../Classes/DrawDiscardTemplate.cpp; sourceTree = "<group>"; };
 		5A04391718778666008EF3F5 /* DrawDiscardTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawDiscardTemplate.h; path = ../Classes/DrawDiscardTemplate.h; sourceTree = "<group>"; };
+		5A0439191878B9CD008EF3F5 /* PosionDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PosionDamageTemplate.cpp; path = ../Classes/PosionDamageTemplate.cpp; sourceTree = "<group>"; };
+		5A04391A1878B9CD008EF3F5 /* PosionDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PosionDamageTemplate.h; path = ../Classes/PosionDamageTemplate.h; sourceTree = "<group>"; };
+		5A04391C18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MonsterHealthOffsetDurationStatus.cpp; path = ../Classes/MonsterHealthOffsetDurationStatus.cpp; sourceTree = "<group>"; };
+		5A04391D18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterHealthOffsetDurationStatus.h; path = ../Classes/MonsterHealthOffsetDurationStatus.h; sourceTree = "<group>"; };
+		5A04391F187C83C9008EF3F5 /* BaseObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseObject.cpp; path = ../Classes/BaseObject.cpp; sourceTree = "<group>"; };
+		5A043920187C83C9008EF3F5 /* BaseObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseObject.h; path = ../Classes/BaseObject.h; sourceTree = "<group>"; };
+		5A043923187C8481008EF3F5 /* AnimationManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnimationManager.cpp; path = ../Classes/AnimationManager.cpp; sourceTree = "<group>"; };
+		5A043924187C8481008EF3F5 /* AnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationManager.h; path = ../Classes/AnimationManager.h; sourceTree = "<group>"; };
+		5A043927187C8676008EF3F5 /* AnimationObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AnimationObject.cpp; path = ../Classes/AnimationObject.cpp; sourceTree = "<group>"; };
+		5A043928187C8676008EF3F5 /* AnimationObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimationObject.h; path = ../Classes/AnimationObject.h; sourceTree = "<group>"; };
 		5A3B0073183F3E37004384CD /* Status.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Status.cpp; path = ../Classes/Status.cpp; sourceTree = "<group>"; };
 		5A3B0074183F3E37004384CD /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Status.h; path = ../Classes/Status.h; sourceTree = "<group>"; };
 		5A3B0076183F40A1004384CD /* GainSoulStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GainSoulStatus.cpp; path = ../Classes/GainSoulStatus.cpp; sourceTree = "<group>"; };
@@ -1884,6 +1899,8 @@
 				5A04390E1875E70F008EF3F5 /* MultiTargetDirectDamageTemplate.h */,
 				5A04391618778666008EF3F5 /* DrawDiscardTemplate.cpp */,
 				5A04391718778666008EF3F5 /* DrawDiscardTemplate.h */,
+				5A0439191878B9CD008EF3F5 /* PosionDamageTemplate.cpp */,
+				5A04391A1878B9CD008EF3F5 /* PosionDamageTemplate.h */,
 			);
 			name = CardTemplates;
 			sourceTree = "<group>";
@@ -1932,6 +1949,31 @@
 			name = "Targeting status";
 			sourceTree = "<group>";
 		};
+		5A043922187C8451008EF3F5 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				5A043926187C8665008EF3F5 /* AnimationManager */,
+				5A6D33D01839E53100CB0174 /* GameManager.cpp */,
+				5A6D33D11839E53100CB0174 /* GameManager.h */,
+				5A3B00AE1845C6EE004384CD /* MonsterGenerator.cpp */,
+				5A3B00AF1845C6EE004384CD /* MonsterGenerator.h */,
+				5A0438F11858468C008EF3F5 /* Player */,
+				5A0438DE18529EF9008EF3F5 /* CardGenerator */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		5A043926187C8665008EF3F5 /* AnimationManager */ = {
+			isa = PBXGroup;
+			children = (
+				5A043923187C8481008EF3F5 /* AnimationManager.cpp */,
+				5A043924187C8481008EF3F5 /* AnimationManager.h */,
+				5A043927187C8676008EF3F5 /* AnimationObject.cpp */,
+				5A043928187C8676008EF3F5 /* AnimationObject.h */,
+			);
+			name = AnimationManager;
+			sourceTree = "<group>";
+		};
 		5A3B0072183F3E27004384CD /* Status */ = {
 			isa = PBXGroup;
 			children = (
@@ -1948,6 +1990,8 @@
 				5A3B007A183F42E6004384CD /* MonsterHealthOffsetStatus.h */,
 				5A0438D5185261D9008EF3F5 /* ConvertCardToSoulStatus.cpp */,
 				5A0438D6185261D9008EF3F5 /* ConvertCardToSoulStatus.h */,
+				5A04391C18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp */,
+				5A04391D18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.h */,
 				5A043909187271AE008EF3F5 /* Targeting status */,
 				5A0438F018581907008EF3F5 /* ConditionalStatus */,
 			);
@@ -1980,13 +2024,8 @@
 				5A3B0072183F3E27004384CD /* Status */,
 				5A6D33D6183A009400CB0174 /* UIStates */,
 				5A6D33E3183C3DA900CB0174 /* interface */,
-				5A6D33D01839E53100CB0174 /* GameManager.cpp */,
-				5A6D33D11839E53100CB0174 /* GameManager.h */,
-				5A0438F11858468C008EF3F5 /* Player */,
-				5A3B00AE1845C6EE004384CD /* MonsterGenerator.cpp */,
-				5A3B00AF1845C6EE004384CD /* MonsterGenerator.h */,
+				5A043922187C8451008EF3F5 /* Singletons */,
 				5A6D33EE183EE87900CB0174 /* CardTarget */,
-				5A0438DE18529EF9008EF3F5 /* CardGenerator */,
 				5A6D33E4183DDFBF00CB0174 /* GameObjects */,
 			);
 			name = Game;
@@ -2037,6 +2076,8 @@
 				5A6D33D41839EE5E00CB0174 /* CardSprite.h */,
 				5A6D33E5183DDFDD00CB0174 /* MonsterSprite.cpp */,
 				5A6D33E6183DDFDD00CB0174 /* MonsterSprite.h */,
+				5A04391F187C83C9008EF3F5 /* BaseObject.cpp */,
+				5A043920187C83C9008EF3F5 /* BaseObject.h */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -2212,6 +2253,7 @@
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
 				15A3D9221682F7D5002FB0C5 /* b2GearJoint.cpp in Sources */,
 				15A3D9231682F7D5002FB0C5 /* b2Joint.cpp in Sources */,
+				5A043925187C8481008EF3F5 /* AnimationManager.cpp in Sources */,
 				15A3D9241682F7D5002FB0C5 /* b2MouseJoint.cpp in Sources */,
 				15A3D9251682F7D5002FB0C5 /* b2PrismaticJoint.cpp in Sources */,
 				15A3D9261682F7D5002FB0C5 /* b2PulleyJoint.cpp in Sources */,
@@ -2235,6 +2277,7 @@
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
+				5A043921187C83C9008EF3F5 /* BaseObject.cpp in Sources */,
 				5A6D33CB1839D43C00CB0174 /* TitleLayer.cpp in Sources */,
 				15A3D9A01682F7F9002FB0C5 /* cpSimpleMotor.c in Sources */,
 				15A3D9A11682F7F9002FB0C5 /* cpSlideJoint.c in Sources */,
@@ -2335,6 +2378,7 @@
 				1A8F3B6E175E05DA00049216 /* Animation.cpp in Sources */,
 				1A8F3B6F175E05DA00049216 /* AnimationState.cpp in Sources */,
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
+				5A04391E18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
@@ -2347,6 +2391,7 @@
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
+				5A04391B1878B9CD008EF3F5 /* PosionDamageTemplate.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
 				1A8F3B7E175E05DA00049216 /* SkeletonJson.cpp in Sources */,
@@ -2402,6 +2447,7 @@
 				379BB9BC17F03F3700829B88 /* UIDragPanel.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,
 				379BB9BE17F03F3700829B88 /* UIPageView.cpp in Sources */,
+				5A043929187C8676008EF3F5 /* AnimationObject.cpp in Sources */,
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
 				5A0439121877420F008EF3F5 /* MonsterLayer.cpp in Sources */,

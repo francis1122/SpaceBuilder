@@ -9,6 +9,10 @@
 #include "CardSprite.h"
 #include "CardTargets.h"
 #include "Action.h"
+#include "GameManager.h"
+#include "GameLayer.h"
+#include "Constants.h"
+#include "HandLayer.h"
 
 USING_NS_CC;
 
@@ -69,6 +73,18 @@ bool CardSprite::init()
     isInteractive = false;
         
     return true;
+}
+
+
+void CardSprite::addCard()
+{
+    this->setPosition(GM->gameLayer->handLayer->deckCardSprite->getPosition());
+    GM->gameLayer->addChild(this, 10000);
+}
+
+void CardSprite::removeCard()
+{
+    this->removeFromParentAndCleanup(true);
 }
 
 void CardSprite::setCardType(CardType newCardType){

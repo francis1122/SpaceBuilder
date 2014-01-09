@@ -10,7 +10,8 @@
 #define RogueDeck_Constants_h
 
 
-
+#define GM GameManager::sharedGameManager()
+#define AM AnimationManager::sharedAnimationManager()
 
 //z ordering of objects
 

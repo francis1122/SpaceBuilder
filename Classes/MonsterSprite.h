@@ -10,8 +10,9 @@
 #define __RogueDeck__MonsterSprite__
 
 #include "cocos2d.h"
+#include "BaseObject.h"
 
-class MonsterSprite : public cocos2d::CCSprite
+class MonsterSprite : public BaseObject
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -40,8 +41,10 @@ public:
     void turnUpdate();
     void onDeath();
     
+    //effects that happen when the monster dies
     cocos2d::CCArray *afterDeathEffectArray;
     
+    //effects that get added on attack, this array is cleared at the end of each attack
     cocos2d::CCArray *killingBlowArray;
     cocos2d::CCArray *activeStatusArray;
     

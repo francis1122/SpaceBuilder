@@ -53,9 +53,9 @@ MonsterGenerator* MonsterGenerator::sharedGameManager()
 
 MonsterSprite* MonsterGenerator::createMonster(float powerLevel){
     MonsterSprite *monster = MonsterSprite::create();
-    monster->life = powerLevel/4 + LLMath::getIntValue(0,powerLevel/2);
+    monster->life = powerLevel/6 + LLMath::getIntValue(0,powerLevel/3);
     monster->attack = powerLevel/5 + LLMath::getIntValue(0,powerLevel/4);
-    monster->location = 2+ arc4random()%3;
+    monster->location = 2 + arc4random()%3;
     monster->monsterLevel = (int)powerLevel;
     
     //add monster rewards

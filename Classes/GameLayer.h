@@ -69,6 +69,8 @@ public:
     
     bool isTap;
     
+    #pragma mark - touch code
+    
     cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
     virtual void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
@@ -92,6 +94,9 @@ public:
     void disableRightButtonInteractive();
     void enableLeftButtonInteractive();
     void disableLeftButtonInteractive();
+
+    #pragma mark - positioning
+    CCPoint monsterLayerToMarketLayer(CCPoint monsterPoint);
     
 private:
     

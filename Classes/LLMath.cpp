@@ -43,6 +43,9 @@ int LLMath::getIntValue(int min, int max){
 
 int LLMath::diceRoll(int range, int count){
     int total = 0;
+    if(range < 1){
+        range = 1;
+    }
     for(int i = 0; i < count; i++){
         total += arc4random()%range;
     }

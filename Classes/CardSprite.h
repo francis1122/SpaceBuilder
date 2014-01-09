@@ -10,6 +10,7 @@
 #define __RogueDeck__CardSprite__
 
 #include "cocos2d.h"
+#include "BaseObject.h"
 
 
 typedef enum CardType{
@@ -21,11 +22,14 @@ typedef enum CardType{
 
 class CardTargets;
 class Action;
-class CardSprite : public cocos2d::CCSprite
+class CardSprite : public BaseObject
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
+    
+    void addCard();
+    void removeCard();
     
     const char *cardImageFile;
     int turnsLeftInMarket;

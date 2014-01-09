@@ -20,6 +20,9 @@
 #include "UIState.h"
 #include "MonsterLayer.h"
 #include "MarketLayer.h"
+#include "AnimationManager.h"
+#include "AnimationObject.h"
+#include "Constants.h"
 
 using namespace cocos2d;
 
@@ -29,30 +32,31 @@ GameManager* GameManager::m_mySingleton = NULL;
 
 GameManager::GameManager()
 {
+    AM;
     this->monsterArray = new CCArray();
     this->monsterArray->init();
     this->marketCardArray = new CCArray();
     this->marketCardArray->init();
     
     this->player = new Player();
-
+    
     currentLevel = 2;
     monstersLeft = 2;
     currentTurn = 1;
     
-//        Monster *card = CardSprite::create();
-  //      libraryCards->addObject(card);
+    //        Monster *card = CardSprite::create();
+    //      libraryCards->addObject(card);
     //    deckCards->addObject(card);
-
     
-/*
-    CCSprite *sprite1 = CCSprite::create();
-    CCSprite *sprite2 = CCSprite::create();
     
-    this->deckCards->addObject(sprite1);
-    this->deckCards->addObject(sprite2);
-    CCLog("capcity %i", this->deckCards->capacity());
-  */
+    /*
+     CCSprite *sprite1 = CCSprite::create();
+     CCSprite *sprite2 = CCSprite::create();
+     
+     this->deckCards->addObject(sprite1);
+     this->deckCards->addObject(sprite2);
+     CCLog("capcity %i", this->deckCards->capacity());
+     */
 }
 
 GameManager* GameManager::sharedGameManager()
@@ -73,6 +77,7 @@ void GameManager::startNewGame(){
     player = NULL;
     player = new Player();
     
+    isInteractive = true;
     currentLevel = 1;
     monstersLeft = 10;
     currentTurn = 1;
@@ -89,7 +94,9 @@ void GameManager::startNewRound(int level){
     marketCardArray->removeAllObjects();
     addMonstersPhase();
     player->drawHand();
+    player->organizeHand();
     gameLayer->updateInterface();
+    isInteractive = true;
 }
 
 
@@ -110,6 +117,7 @@ void GameManager::gameStateCheck(){
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = TitleLayer::scene();
         // run
+        
         pDirector->replaceScene(pScene);
     }
     
@@ -119,6 +127,8 @@ void GameManager::gameStateCheck(){
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = PostRoundLayer::scene();
         // run
+        
+        
         pDirector->replaceScene(pScene);
     }
 }
@@ -161,12 +171,15 @@ void GameManager::afterCardPlayedStateCheck(){
     }
 }
 
+void GameManager::setIsInteractive(bool value){
+    isInteractive = value;
+}
 
 void GameManager::endTurn(){
+    this->setIsInteractive(false);
     player->discardHand();
     player->discardPlayedCards();
-    player->drawHand();
-    player->organizeHand();
+    
     //set round stuff
     //player health or soul can't be above deck count
     if(player->health > player->maxHealth){
@@ -181,10 +194,15 @@ void GameManager::endTurn(){
     currentTurn++;
     this->marketTurn();
     this->monsterTurn();
+    
+    player->drawHand();
+    player->organizeHand();
+    
     gameLayer->updateInterface();
     gameLayer->getCurrentState()->defaultInteractiveState();
+    this->setIsInteractive(true);
     
-
+    
 }
 
 #pragma mark - market stuff
@@ -192,27 +210,41 @@ void GameManager::endTurn(){
 //market stuff
 void GameManager::organizeMarket(){
     int i= 0,j = 0;
+    CCLog("Market Organize");
+    AnimationObject *cardAnimation = new AnimationObject();
+    cardAnimation->init();
     CCObject *object;
     CCARRAY_FOREACH(marketCardArray, object){
         CardSprite *card = (CardSprite*)object;
+        CCPoint cardPos;
         if(card->turnsLeftInMarket == 1){
             i++;
-            card->setPosition(CCPointMake(170 + i * 140, 390));
+            cardPos = ccp(170 + i * 140, 390);
         }else if(card->turnsLeftInMarket == 2){
             j++;
-            card->setPosition(CCPointMake(170 + j * 140, 540));
+            //            card->setPosition(CCPointMake(170 + j * 140, 540));
+            cardPos = ccp(170 + j * 140, 540);
         }else if( card->turnsLeftInMarket== 0){
             CCLog("card should be removed from market and destroyed");
+            cardPos = CCPoint(0,0);
         }
-
+        CCMoveTo *action = CCMoveTo::create(.3, cardPos);
+        AnimationObject *animationObject = new AnimationObject();
+        animationObject->init(action, card);
+        cardAnimation->addAnimation(animationObject);
+        
     }
+    cardAnimation->duration = .05;
+    AM->addAnimation(cardAnimation);
+    
+    
 }
 
 void GameManager::sellCard(CardSprite* card){
     //give player money
     player->soul += card->soulCost;
     player->spendAction(Neutral);
-
+    
     //remove card from deck and hand
     player->removeCard(card);
 }
@@ -238,7 +270,7 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
-        return true;
+            return true;
         }else{
             CCLog("need more soul");
             return false;
@@ -264,23 +296,32 @@ void GameManager::marketTurn(){
 
 void GameManager::organizeMonsters(){
     CCObject *object;
+    CCLog("monster Organize");
+    AnimationObject *monsterAnimation = new AnimationObject();
+    monsterAnimation->init();
     CCARRAY_FOREACH(monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-        monster->setPosition(CCPointMake(150 + monster->lane * 150, 400 + monster->location * 40));
+        CCPoint monsterPos = ccp(150 + monster->lane * 150, 400 + monster->location * 40);
+        CCMoveTo *action = CCMoveTo::create(.3, monsterPos);
+        AnimationObject *animationObject = new AnimationObject();
+        animationObject->init(action, monster);
+        monsterAnimation->addAnimation(animationObject);
         monster->updateInterface();
     }
+    monsterAnimation->duration = .05;
+    AM->addAnimation(monsterAnimation);
 }
 
 void GameManager::removeMonster(MonsterSprite *monster){
     //add card to market
     CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
+    card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
     card->turnsLeftInMarket = 2;
     this->addMarketCard(card);
-
+    
     monster->onDeath();
     monster->removeFromParent();
     monsterArray->removeObject(monster);
-    this->organizeMarket();
 }
 
 
@@ -312,6 +353,7 @@ void GameManager::spawnMonster(){
     
     monstersLeft--;
     this->gameLayer->monsterLayer->addChild(monster);
+    monster->setPosition( ccp(150 + monster->lane * 150, 400 + monster->location * 40));
     monster->updateInterface();
     
     this->monsterArray->addObject(monster);

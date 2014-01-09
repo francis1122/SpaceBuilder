@@ -34,6 +34,8 @@ public:
     // another test function
     void runScene() { CCLOG("test");};
     
+    bool isInteractive;
+    
     GameLayer *gameLayer;
     Player *player;
     
@@ -49,7 +51,7 @@ public:
     
     void startNewGame();
     void startNewRound(int level);
-    
+    void setIsInteractive(bool value);
     //checked to remove monsters or update cards that weren't affected directly
     
     void gameStateCheck();

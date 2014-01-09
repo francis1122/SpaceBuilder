@@ -124,15 +124,13 @@ void MultiTargetDirectDamageTemplate::addPurpleAdditionalCost(){
 void MultiTargetDirectDamageTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->targetingType = Monsters;
-    createdCard->cardTargets->isTargetRequired = true;
     createdCard->cardTargets->targetAmount = 2;
     
-    cardPower = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
-    
+    int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-(int)cardPower/2);
+    status->initWithHealthOffset(-attack/2);
     createdCard->cardTargets->statuses->addObject(status);
-    createdCard->setupDamageCard((int)cardPower/2);
+    createdCard->setupDamageCard(attack/2);
     mainDescription = CCString::createWithFormat("\nMulti Shot 2");
 }
 

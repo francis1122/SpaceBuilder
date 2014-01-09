@@ -19,12 +19,14 @@ USING_NS_CC;
 typedef enum TargetingType{
     None,
     RequireActions,
-    DiscardArea,
-    PlayArea,
-    Monsters,
-    DiscardCard,
-    DrawCard,
-    BuyCard
+    DiscardArea, //might not have cards required to discard
+    DrawCard_DiscardCard, //always have cards to discard, so it's not a problem
+    PlayArea, //can always be played in the play area
+    PlayArea_TargetMonsters, //must be played in the play area and must have monster targets
+    Monsters, //must have monster targets
+    DiscardCard, //draw card from the discard pile
+    DrawCard, // not sure
+    BuyCard //buy a card
 //    PlayToDiscard
 } TargetingType;
 
@@ -40,8 +42,8 @@ public:
     
     
     //only 1 or none of these can be true
-    bool isTargetRequired;
-    bool isDraggingRequired;
+//    bool isTargetRequired;
+//    bool isDraggingRequired;
     
     //amount of targets that must be targetted, used for dragging as well
     int targetAmount;

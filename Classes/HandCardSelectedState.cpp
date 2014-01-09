@@ -79,6 +79,8 @@ void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
         //    visualIndicatorLabel->setString("Must Discard a Card");
     }else if(indicatorState == DrawCard){
         GM->gameLayer->handLayer->enableDeckInteractive();
+    }else if(indicatorState == DrawCard_DiscardCard){
+        GM->gameLayer->enablePlayAreaInteractive();
     }
     
 }
@@ -102,6 +104,7 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     this->selectedCard->setPosition(touchPoint);
     
+    //check if actions are available for card use
     if(GM->player->hasAction(selectedCard->action->actionType)){
         if(selectedCard->turnsLeftInMarket > 0){
             //used for market card play
@@ -111,14 +114,101 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
                 //add card to players hand
                 GM->buyCardFromMarket(this->selectedCard);
                 selectedCard = NULL;
+                GM->organizeMarket();
                 this->transitionToNormalState();
+            }else{
+                selectedCard = NULL;
+                GM->organizeMarket();
+                this->transitionToNormalState();
+            }
+        }else{
+            if(UIState::cardInSellArea(this->selectedCard)){
+                //sell card
+                GM->sellCard(selectedCard);
+                selectedCard = NULL;
+                this->transitionToNormalState();
+            }else if(selectedCard->cardTargets->targetingType == PlayArea){
+                if(UIState::cardInPlayArea(this->selectedCard)){
+                    if(selectedCard->cardTargets->isAbilityReady()){
+                        GM->player->playCard(selectedCard);
+                        selectedCard->cardTargets->useAbility();
+                        GM->player->organizeHand();
+                        selectedCard = NULL;
+                        this->transitionToNormalState();
+                    }else{
+                        selectedCard = NULL;
+                        this->transitionToNormalState();
+                    }
+                }else{
+                    selectedCard = NULL;
+                    this->transitionToNormalState();
+                }
+                
+            }else if(selectedCard->cardTargets->targetingType == Monsters){
+                if(UIState::cardInPlayArea(this->selectedCard)){
+                    //ability is not ready to be used
+                    GM->player->playCard(selectedCard);
+                    this->transitionToCardTargetingState(this->selectedCard);
+                }else{
+                    if(selectedCard->cardTargets->targetObject(touch)){
+                        if(selectedCard->cardTargets->isAbilityReady()){
+                            GM->player->playCard(selectedCard);
+                            selectedCard->cardTargets->useAbility();
+                            selectedCard = NULL;
+                            this->transitionToNormalState();
+                        }else{
+                            //ability is not ready to be used
+                            GM->player->playCard(selectedCard);
+                            this->transitionToCardTargetingState(this->selectedCard);
+                        }
+                    }else{
+                        selectedCard = NULL;
+                        this->transitionToNormalState();
+                    }
+                }
+            }else if(selectedCard->cardTargets->targetingType == DiscardCard ||
+                     selectedCard->cardTargets->targetingType == DrawCard_DiscardCard){
+                if(UIState::cardInPlayArea(this->selectedCard)){
+                    if(selectedCard->cardTargets->isAbilityActivatable(this)){
+                        GM->player->playCard(selectedCard);
+                        this->transitionToCardDraggingState(this->selectedCard);
+                    }else{
+                        selectedCard = NULL;
+                        this->transitionToNormalState();
+                    }
+                }else{
+                    selectedCard = NULL;
+                    this->transitionToNormalState();
+                }
+            }else if(selectedCard->cardTargets->targetingType == PlayArea_TargetMonsters){
+                if(UIState::cardInPlayArea(this->selectedCard)){
+                    if(selectedCard->cardTargets->isAbilityActivatable(this)){
+                        GM->player->playCard(selectedCard);
+                    }
+                }else{
+                    selectedCard = NULL;
+                    this->transitionToNormalState();
+                }
             }else{
                 selectedCard = NULL;
                 this->transitionToNormalState();
             }
-        }else{
+        }
+    }else{
+        selectedCard = NULL;
+        this->transitionToNormalState();
+    }
+    
+    GM->player->organizeHand();
+    GM->organizeMarket();
+            //
+            //
+            //
+            //
+            //
+            
             //check if card was dropped in play area
-            if(UIState::cardInPlayArea(this->selectedCard)){
+          /*  if(UIState::cardInPlayArea(this->selectedCard)){
                 //check if card needs to target other cards or can it be activated now
                 if(selectedCard->cardTargets->isAbilityReady()){
                     GM->player->playCard(selectedCard);
@@ -177,6 +267,7 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     
     GM->player->organizeHand();
     GM->organizeMarket();
+           */
 }
 
 void HandCardSelectedState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
@@ -195,7 +286,7 @@ void HandCardSelectedState::transitionToNormalState(){
     NS->autorelease();
     GM->gameLayer->changeState(NS);
     GM->player->organizeHand();
-    GM->organizeMarket();
+    //    GM->organizeMarket();
     GM->gameLayer->updateInterface();
 }
 
@@ -211,7 +302,7 @@ void HandCardSelectedState::transitionToCardTargetingState(CardSprite* selectedC
     CTS->init(selectedCard);
     CTS->autorelease();
     GM->gameLayer->changeState(CTS);
-    GM->organizeMarket();
+    //    GM->organizeMarket();
     GM->gameLayer->updateInterface();
 }
 
@@ -221,6 +312,6 @@ void HandCardSelectedState::transitionToCardDraggingState(CardSprite* selectedCa
     CDS->init(selectedCard);
     CDS->autorelease();
     GM->gameLayer->changeState(CDS);
-    GM->organizeMarket();
+    //    GM->organizeMarket();
     GM->gameLayer->updateInterface();
 }

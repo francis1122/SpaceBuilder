@@ -82,17 +82,15 @@ void DirectDamageTemplate::addYellowAugmentationStatus(){
         //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
-        Status *killStatus;
             DrawCardStatus *status = new DrawCardStatus();
             status->initWithDrawAmount(2);
-            killStatus = status;
             powerLevel -= 2;
             cardCostOffset += 2;
             
             augmentationDescription = CCString::createWithFormat("\nKilling Blow: Draw 2 Cards");
         
-        deathStatus->initWithStatus(killStatus);
-        createdCard->cardTargets->statuses->addObject(status);
+        deathStatus->initWithStatus(status);
+        createdCard->cardTargets->statuses->addObject(deathStatus);
     }
 }
 
@@ -125,14 +123,13 @@ void DirectDamageTemplate::addPurpleAdditionalCost(){
 void DirectDamageTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->targetingType = Monsters;
-    createdCard->cardTargets->isTargetRequired = true;
     
     cardPower = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
-    
+    int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-(int)cardPower/2);
+    status->initWithHealthOffset(-attack/2);
     createdCard->cardTargets->statuses->addObject(status);
-    createdCard->setupDamageCard((int)cardPower/2);
+    createdCard->setupDamageCard(attack/2);
 }
 
 void DirectDamageTemplate::addRedMainStatus(){

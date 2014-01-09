@@ -64,7 +64,6 @@ void ActionGainTemplate::addPurpleAdditionalCost(){
 
 void ActionGainTemplate::addNeutralMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
     GainActionStatus *status = new GainActionStatus();
     Action *actionOne = new Action();
@@ -80,7 +79,6 @@ void ActionGainTemplate::addNeutralMainStatus(){
 
 void ActionGainTemplate::addRedMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
     GainActionStatus *status = new GainActionStatus();
     Action *actionOne = new Action();
@@ -96,7 +94,6 @@ void ActionGainTemplate::addRedMainStatus(){
 
 void ActionGainTemplate::addBlueMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
 
     GainActionStatus *status = new GainActionStatus();
@@ -113,7 +110,6 @@ void ActionGainTemplate::addBlueMainStatus(){
 
 void ActionGainTemplate::addYellowMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
 
     GainActionStatus *status = new GainActionStatus();
@@ -130,7 +126,6 @@ void ActionGainTemplate::addYellowMainStatus(){
 
 void ActionGainTemplate::addPurpleMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
     
 
     GainActionStatus *status = new GainActionStatus();

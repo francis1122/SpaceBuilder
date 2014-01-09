@@ -57,3 +57,9 @@ bool Status::checkEnd(){
 void Status::updateStatus(){
     
 }
+
+//called at end of turn
+void Status::updateStatus(MonsterSprite *monster){
+    
+}
+

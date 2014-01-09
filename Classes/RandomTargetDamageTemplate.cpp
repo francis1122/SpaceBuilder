@@ -113,26 +113,25 @@ void RandomTargetDamageTemplate::addNeutralMainStatus(){
     
     //
     
-    createdCard->cardTargets->targetingType = PlayArea;
-    createdCard->cardTargets->isTargetRequired = false;
+    createdCard->cardTargets->targetingType = PlayArea_TargetMonsters;
     
     
     int targetAmount = 1 + arc4random()%2;
-
+    createdCard->cardTargets->targetAmount = targetAmount;
     if(targetAmount == 1){
         cardPower += 6;
     }
-    cardPower = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/3, 3);
-    
+    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/2, 3);
+    cardCostOffset -= 2;
     
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-(int)cardPower/2);
+    status->initWithHealthOffset(-attack);
     
     RandomMonsterStatus *rndStatus = new RandomMonsterStatus();
     rndStatus->initWithStatus(status, 1);
     
     createdCard->cardTargets->statuses->addObject(rndStatus);
-    createdCard->setupDamageCard((int)((int)cardPower/2));
+    createdCard->setupDamageCard(attack);
     mainDescription = CCString::createWithFormat("\nRandom %i monsters", targetAmount);
 }
 

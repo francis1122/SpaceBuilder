@@ -165,7 +165,7 @@ void CardTemplate::addPurpleMainStatus(){
 #pragma mark -
 
 int CardTemplate::calculateSoul(){
-    int cost = (int)cardPower/2;
+    int cost = (int)cardPower/4;
     cost += cardCostOffset;
     cost += LLMath::diceRoll((int)cardPower/2, 3);
     return cost;

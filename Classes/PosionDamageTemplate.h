@@ -1,26 +1,25 @@
 //
-//  SoulGainTemplate.h
+//  PosionDamageTemplate.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 12/10/13.
+//  Created by Hunter Francis on 1/4/14.
 //
 //
 
-#ifndef __RogueDeck__SoulGainTemplate__
-#define __RogueDeck__SoulGainTemplate__
-
+#ifndef __RogueDeck__PosionDamageTemplate__
+#define __RogueDeck__PosionDamageTemplate__
 
 #include "cocos2d.h"
 #include "CardTemplate.h"
 USING_NS_CC;
 
 class CardSprite;
-class SoulGainTemplate : public CardTemplate
+class PosionDamageTemplate : public CardTemplate
 {
     
 public:
     static const std::string CLASS_NAME;
-    static CardTemplate* create(){ return new SoulGainTemplate();}
+    static CardTemplate* create(){ return new PosionDamageTemplate();}
     
     virtual void addNeutralAugmentationStatus();
     virtual void addRedAugmentationStatus();
@@ -40,7 +39,7 @@ public:
     virtual void addYellowMainStatus();
     virtual void addPurpleMainStatus();
     
-    int soulGain;
+    
 };
 
-#endif /* defined(__RogueDeck__SoulGainTemplate__) */
+#endif /* defined(__RogueDeck__PosionDamageTemplate__) */

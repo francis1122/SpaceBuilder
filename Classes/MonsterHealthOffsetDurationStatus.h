@@ -1,13 +1,13 @@
 //
-//  MonsterHealthOffsetStatus.h
+//  MonsterHealthOffsetDurationStatus.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 11/21/13.
+//  Created by Hunter Francis on 1/4/14.
 //
 //
 
-#ifndef __RogueDeck__MonsterHealthOffsetStatus__
-#define __RogueDeck__MonsterHealthOffsetStatus__
+#ifndef __RogueDeck__MonsterHealthOffsetDurationStatus__
+#define __RogueDeck__MonsterHealthOffsetDurationStatus__
 
 #include "cocos2d.h"
 #include "Status.h"
@@ -16,12 +16,10 @@ USING_NS_CC;
 
 class MonsterSprite;
 
-class MonsterHealthOffsetStatus : public Status
+class MonsterHealthOffsetDurationStatus : public Status
 {
 public:
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init(int powerLevel);
-    virtual bool initWithHealthOffset(int healthOffset);
+    virtual bool initWithHealthOffset(int healthOffset, int duration);
     
     virtual void addStatusToGameObject(MonsterSprite *monster);
     
@@ -38,12 +36,13 @@ public:
     virtual bool checkEnd();
     
     //called at end of turn
-    virtual void updateStatus();
-     
+    virtual void updateStatus(MonsterSprite *monster);
+    
     //specific status variables
     int monsterHealthOffsetAmount;
+    int duration;
     
     
 };
 
-#endif /* defined(__RogueDeck__MonsterHealthOffsetStatus__) */
+#endif /* defined(__RogueDeck__MonsterHealthOffsetDurationStatus__) */

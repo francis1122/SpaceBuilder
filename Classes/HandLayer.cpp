@@ -123,7 +123,6 @@ bool HandLayer::init()
 
 
 void HandLayer::updateInterface(){
-    GameManager *GM = GameManager::sharedGameManager();
 //    CCString::create("%i",GM->libraryCards->count()
 //    ccs("%i",);
     CCString *libraryCountString = CCString::createWithFormat("%i", GM->player->libraryCards->count());

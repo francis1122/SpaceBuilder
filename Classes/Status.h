@@ -41,6 +41,7 @@ public:
     
     //called at end of turn
     virtual void updateStatus();
+    virtual void updateStatus(MonsterSprite *monster);
     
     CCString *className;
     
