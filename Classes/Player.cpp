@@ -17,7 +17,7 @@
 #include "AnimationManager.h"
 #include "AnimationObject.h"
 #include "CardSprite.h"
-
+#include "Targets.h"
 
 USING_NS_CC;
 
@@ -55,16 +55,16 @@ Player::Player()
         card->cardImageFile = "sword";
         card->init();
         //Make card ability
-        CardTargets *cardTargets = new CardTargets();
+        CardTargets *cardTargets = new MonsterTargets();
         cardTargets->init();
 //        card->detailsLabel->setString("do damage to monster");
         cardTargets->targetingType = Monsters;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->init(2);
+        status->init(3);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        card->setupDamageCard(2);
+        card->setupDamageCard(3);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
@@ -76,14 +76,14 @@ Player::Player()
         card->init();
 //        card->detailsLabel->setString("gain soul");
         //Make card ability
-        CardTargets *cardTargets = new CardTargets();
+        CardTargets *cardTargets = new PlayAreaTargets();
         cardTargets->init();
         GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(2);
+        status->initWithSoulGain(3);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        card->setupSoulGainCard(2);
+        card->setupSoulGainCard(3);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
@@ -169,12 +169,14 @@ void Player::organizeHand(){
     CCARRAY_FOREACH(handCards, object){
         CardSprite *card = (CardSprite*)object;
         //card->setPosition(CCPointMake(startPoint + i * 110, 75));
-        
         AnimationObject *animation = new AnimationObject();
         CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 110, 75));
         animation->init(move, card);
-        
-        animationHolder->addAnimation(animation);
+        if(!card->isZoomed){
+            animationHolder->addAnimation(animation);
+        }else{
+            CCLog("nothing");
+        }
         
         
         i++;
@@ -196,13 +198,12 @@ void Player::organizePlayedCards(){
     animationHolder->init();
     CCARRAY_FOREACH(playedCards, object){
         CardSprite *card = (CardSprite*)object;
-//        card->setPosition(CCPointMake(startPoint + i * 110, 260));
         AnimationObject *animation = new AnimationObject();
         CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 110, 260));
         animation->init(move, card);
-        
-        animationHolder->addAnimation(animation);
-        
+        if(!card->isZoomed){
+            animationHolder->addAnimation(animation);
+        }
         i++;
     }
     animationHolder->duration = .05;
@@ -262,7 +263,6 @@ void Player::playCard(CardSprite *card){
     //execute card
     spendAction(card->action->actionType);
     card->setScale(.15);
-    card->cardTargets->useInitialAbility();
     playedCards->addObject(card);
     handCards->removeObject(card);
     GM->player->organizeHand();

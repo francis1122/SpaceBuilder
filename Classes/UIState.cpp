@@ -109,7 +109,7 @@ CCObject* UIState::objectAtPoint(cocos2d::CCTouch* touch){
 void UIState::clearInteractiveState(){
     GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
-    GM->gameLayer->changeIndicatorState(None);
+    GM->gameLayer->changeIndicatorState("");
     CCARRAY_FOREACH(GM->player->handCards, object){
         CardSprite *card = (CardSprite*)object;
         card->disableInteractive();
@@ -148,7 +148,7 @@ void UIState::defaultInteractiveState(){
     
     GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
-    GM->gameLayer->changeIndicatorState(None);
+    GM->gameLayer->changeIndicatorState("");
     GM->gameLayer->enableRightButtonInteractive();
     GM->gameLayer->setButtonLabels("", "End Turn");
     //TODO: more exact action count required

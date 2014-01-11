@@ -9,11 +9,16 @@
 #include "DrawCardTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 
 
 const std::string DrawCardTemplate::CLASS_NAME = "DrawCardTemplate";
 
+void DrawCardTemplate::createCardTargets(){
+    CardTargets *cardTargets = new PlayAreaTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 
 #pragma mark - augmentation
@@ -90,13 +95,6 @@ void DrawCardTemplate::addPurpleMainStatus(){
 }
 
 #pragma mark -
-
-int DrawCardTemplate::calculateSoul(){
-    int cost = (int)cardPower/4;
-    cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/2, 3);
-    return cost;
-}
 
 
 

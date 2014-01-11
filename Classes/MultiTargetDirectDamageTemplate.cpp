@@ -9,7 +9,7 @@
 #include "MultiTargetDirectDamageTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 #include "Action.h"
 #include "CardGenerator.h"
 #include "LLMath.h"
@@ -17,7 +17,11 @@
 
 const std::string MultiTargetDirectDamageTemplate::CLASS_NAME = "MultiTargetDirectDamageTemplate";
 
-
+void MultiTargetDirectDamageTemplate::createCardTargets(){
+    CardTargets *cardTargets = new PlayAreaToTargetMonstersTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 
 #pragma mark - augmentation
@@ -126,11 +130,11 @@ void MultiTargetDirectDamageTemplate::addNeutralMainStatus(){
     createdCard->cardTargets->targetingType = Monsters;
     createdCard->cardTargets->targetAmount = 2;
     
-    int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-attack/2);
+    status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
-    createdCard->setupDamageCard(attack/2);
+    createdCard->setupDamageCard(attack);
     mainDescription = CCString::createWithFormat("\nMulti Shot 2");
 }
 

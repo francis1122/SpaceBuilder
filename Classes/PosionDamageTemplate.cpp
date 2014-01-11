@@ -10,12 +10,18 @@
 
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 
 
 const std::string PosionDamageTemplate::CLASS_NAME = "PosionDamageTemplate";
 
-
+void PosionDamageTemplate::createCardTargets(){
+    CardTargets *cardTargets = new MonsterTargets();
+    //DrawCard_DiscardCard
+    
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 #pragma mark - augmentation
 
@@ -61,8 +67,6 @@ void PosionDamageTemplate::addPurpleAdditionalCost(){
 #pragma mark - main status
 
 void PosionDamageTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = Monsters;
-    
     int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
     
     MonsterHealthOffsetDurationStatus *status = new MonsterHealthOffsetDurationStatus();

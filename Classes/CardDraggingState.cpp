@@ -26,13 +26,12 @@ bool CardDraggingState::init(CardSprite *_selectedCard)
     if(!UIState::init()){
         return false;
     }
-    //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
     CCLog("card draggin state");
     this->selectedCard = _selectedCard;
-    GM->gameLayer->changeIndicatorState(selectedCard->cardTargets->targetingType);
     GM->gameLayer->setButtonLabels("", "");
-    this->highlightInteractiveObjects(_selectedCard);
+    UIState::clearInteractiveState();
+    this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
     
     //TODO: Display library or dis card pile to help player drag card from, feature still needs to be implemented
     draggingCard = NULL;
@@ -43,12 +42,12 @@ void CardDraggingState::highlightInteractiveObjects(CardSprite *card){
     clearInteractiveState();
     CCObject *object;
     TargetingType indicatorState = card->cardTargets->targetingType;
-    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
+   // GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
     
     if(card->turnsLeftInMarket > 0){
         //if it's a market card lead the user to the discard pile
         GM->gameLayer->handLayer->enableDiscardInteractive();
-        GM->gameLayer->changeIndicatorState(BuyCard);
+//        GM->gameLayer->changeIndicatorState(BuyCard);
         return;
     }else{
         GM->gameLayer->marketLayer->enableSellInteractive();
@@ -81,6 +80,19 @@ void CardDraggingState::highlightInteractiveObjects(CardSprite *card){
 
 #pragma mark - touch events
 bool CardDraggingState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
+    
+    CardSprite *object = selectedCard->cardTargets->targetObjectWithDraggingState(touch, this, selectedCard);
+    if(object){
+        //select that card
+        draggingCard = object;
+        this->clearInteractiveState();
+        selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingCard(this);
+        return  true;
+    }else{
+        return false;
+    }
+    
+    /*
     if(selectedCard->cardTargets->targetingType == DiscardCard || selectedCard->cardTargets->targetingType == DrawCard_DiscardCard){
         //can only select hand cards
         CardSprite *card = UIState::handCardAtPoint(touch);
@@ -93,7 +105,8 @@ bool CardDraggingState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* 
             return false;
         }
     }
-    return true;
+     */
+    return false;
 }
 
 void CardDraggingState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
@@ -105,6 +118,28 @@ void CardDraggingState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* 
 }
 
 void CardDraggingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
+    
+    
+    if(selectedCard->cardTargets->targetObjectWithDraggingCard(touch, this, draggingCard))
+    {
+        if(selectedCard->cardTargets->isAbilityReady()){
+            selectedCard->cardTargets->useAbility();
+            this->transitionToNormalState();
+        }else{
+            this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
+        }
+    }else{
+        this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
+    }
+    
+    
+    GM->player->organizeHand();
+    draggingCard = NULL;
+    
+    
+    //
+    /*
+    
     if(selectedCard->cardTargets->targetingType == DiscardCard || selectedCard->cardTargets->targetingType == DrawCard_DiscardCard){
         //can only land in discard Area
         if(UIState::cardInDiscardArea(draggingCard)){
@@ -124,12 +159,13 @@ void CardDraggingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* 
 
     GM->player->organizeHand();
     draggingCard = NULL;
+     */
 }
 
 void CardDraggingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    this->highlightInteractiveObjects(selectedCard);
-    this->transitionToNormalState();
+    this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
     GM->player->organizeHand();
+    draggingCard = NULL;
 }
 
 #pragma mark - state transitions
@@ -154,3 +190,5 @@ void CardDraggingState::transitionToSelectMonsterState(CardSprite* selectedCard)
 void CardDraggingState::transitionToCardTargetingState(CardSprite* selectedCard){
     
 }
+
+

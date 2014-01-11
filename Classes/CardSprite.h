@@ -34,7 +34,6 @@ public:
     const char *cardImageFile;
     int turnsLeftInMarket;
     int soulCost;
-    bool isInteractive;
     Action *action;
     
     

@@ -231,7 +231,9 @@ void GameManager::organizeMarket(){
         CCMoveTo *action = CCMoveTo::create(.3, cardPos);
         AnimationObject *animationObject = new AnimationObject();
         animationObject->init(action, card);
-        cardAnimation->addAnimation(animationObject);
+        if(!card->isZoomed){
+            cardAnimation->addAnimation(animationObject);
+        }
         
     }
     cardAnimation->duration = .05;
@@ -305,8 +307,10 @@ void GameManager::organizeMonsters(){
         CCMoveTo *action = CCMoveTo::create(.3, monsterPos);
         AnimationObject *animationObject = new AnimationObject();
         animationObject->init(action, monster);
-        monsterAnimation->addAnimation(animationObject);
-        monster->updateInterface();
+        if(!monster->isZoomed){
+            monsterAnimation->addAnimation(animationObject);
+        }
+            monster->updateInterface();
     }
     monsterAnimation->duration = .05;
     AM->addAnimation(monsterAnimation);
@@ -326,8 +330,15 @@ void GameManager::removeMonster(MonsterSprite *monster){
 
 
 void GameManager::spawnMonster(){
-    MonsterSprite *monster = MonsterGenerator::sharedGameManager()->createMonster(10 + (float)currentLevel * 3.0);
+    MonsterSprite *monster;
+    if(monstersLeft == 1){
+        monster = MonsterGenerator::sharedGameManager()->createBossMonster(20 + (float)currentLevel * 10.0);
+    }else{
+       monster = MonsterGenerator::sharedGameManager()->createMonster(10 + (float)currentLevel * 3.0);
+    }
     //give monster the correct lane
+    
+    
     
     //cycle through monsters to see what lane is open
     int maxMonsters = MIN(currentTurn, 4);

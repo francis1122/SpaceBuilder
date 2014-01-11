@@ -34,7 +34,6 @@ public:
     int location;
     int lane;
     float monsterLevel;
-    bool isInteractive;
     
     
     void updateInterface();

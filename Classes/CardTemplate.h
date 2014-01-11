@@ -32,6 +32,8 @@ public:
 
     virtual CardSprite* createCard();
     
+    virtual void createCardTargets();
+    
     virtual void addAugmentationStatus();
     virtual void addNeutralAugmentationStatus();
     virtual void addRedAugmentationStatus();

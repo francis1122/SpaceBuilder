@@ -81,7 +81,7 @@ public:
     long millisecondNow();
     
     void changeState(UIState* state);
-    void changeIndicatorState(TargetingType indicatorState);
+    void changeIndicatorState(const char *label);
     
     void updateInterface();
     

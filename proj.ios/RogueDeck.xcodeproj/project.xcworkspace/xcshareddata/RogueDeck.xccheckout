@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4905BDCE-B214-4A95-9014-377901558279</string>
+	<key>IDESourceControlProjectName</key>
+	<string>RogueDeck</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F4889FD4-A73B-476E-BCFC-A8BA4A06D8EF</key>
+		<string>https://github.com/francis1122/RogueDeck.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios/RogueDeck.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F4889FD4-A73B-476E-BCFC-A8BA4A06D8EF</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/francis1122/RogueDeck.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F4889FD4-A73B-476E-BCFC-A8BA4A06D8EF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4889FD4-A73B-476E-BCFC-A8BA4A06D8EF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>RogueDeck</string>
+		</dict>
+	</array>
+</dict>
+</plist>

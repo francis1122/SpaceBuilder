@@ -22,6 +22,7 @@ public:
     virtual bool initMonsterSprite(MonsterSprite *_selectedMonsterCard);
     virtual bool initMarketCard(CardSprite *_selectedCard);
     
+    bool isMarketCard;
     CardSprite *selectedCard;
     MonsterSprite *selectedMonsterCard;
     

@@ -98,7 +98,9 @@ void AnimationManager::runAnimation(AnimationObject *animation){
         }
     }else{
         animation->getObject()->stopAllActions();
-        animation->getObject()->runAction(animation->getAction());
+        if(!animation->getObject()->isZoomed){
+            animation->getObject()->runAction(animation->getAction());
+        }
     }
 
 }

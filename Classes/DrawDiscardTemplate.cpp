@@ -11,12 +11,17 @@
 
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 
 
 const std::string DrawDiscardTemplate::CLASS_NAME = "DrawDiscardTemplate";
 
-
+void DrawDiscardTemplate::createCardTargets(){
+    CardTargets *cardTargets = new DrawDiscardTargets();
+    
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 #pragma mark - augmentation
 
@@ -62,11 +67,6 @@ void DrawDiscardTemplate::addPurpleAdditionalCost(){
 #pragma mark - main status
 
 void DrawDiscardTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = DrawCard_DiscardCard;
-    
-    
-    
-//    createdCard->cardTargets->
     
     int drawCardAmount = 2;
     int discardAmount = 1;

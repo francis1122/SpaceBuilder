@@ -31,7 +31,8 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
     CCLog("card targeting state");
     this->selectedCard = _selectedCard;
     GameManager *GM = GameManager::sharedGameManager();
-    this->highlightInteractiveObjects(selectedCard);
+    UIState::clearInteractiveState();
+    this->selectedCard->cardTargets->highlightNextInteractiveObjects(this);
     GM->gameLayer->setButtonLabels("", "");
     return true;
 }
@@ -42,7 +43,7 @@ void CardTargetingState::highlightInteractiveObjects(CardSprite *card){
     GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
     TargetingType indicatorState = card->cardTargets->targetingType;
-    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
+//    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
     
     if(indicatorState == None){
             //should never get here
@@ -89,15 +90,14 @@ void CardTargetingState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent*
 
 void CardTargetingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     GameManager *GM = GameManager::sharedGameManager();
-    selectedCard->cardTargets->targetObject(touch);
-
-    if(selectedCard->cardTargets->isAbilityReady()){
-        selectedCard->cardTargets->useAbility();
-        GM->player->organizeHand();
-        selectedCard = NULL;
-        this->transitionToNormalState();
-    }
-
+    CardTargets *targets = selectedCard->cardTargets;
+    targets->targetObjectWithTargetingState(touch, this, this->selectedCard);
+        if(targets->isAbilityReady()){
+            targets->useAbility();
+            GM->player->organizeHand();
+            selectedCard = NULL;
+            this->transitionToNormalState();
+        }
 }
 
 void CardTargetingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){

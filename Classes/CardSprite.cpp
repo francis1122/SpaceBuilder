@@ -27,11 +27,12 @@ bool CardSprite::init()
     {
         return false;
     }
+    
+    BaseObject::initDefaultState();
+
 //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     turnsLeftInMarket = 0;
-//    cardTargets = new CardTargets();
-  //  cardTargets->init();
     this->setScale(.25);
     
     action = new Action();
@@ -70,7 +71,7 @@ bool CardSprite::init()
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 + 5 ,glowSprite->getContentSize().height/2));
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
-    isInteractive = false;
+
         
     return true;
 }
@@ -79,7 +80,7 @@ bool CardSprite::init()
 void CardSprite::addCard()
 {
     this->setPosition(GM->gameLayer->handLayer->deckCardSprite->getPosition());
-    GM->gameLayer->addChild(this, 10000);
+    GM->gameLayer->handLayer->addChild(this, 10000);
 }
 
 void CardSprite::removeCard()

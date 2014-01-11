@@ -13,6 +13,7 @@
 #include "UIState.h"
 #include "CardSprite.h"
 
+class BaseObject;
 class CardDraggingState : public UIState
 {
 public:

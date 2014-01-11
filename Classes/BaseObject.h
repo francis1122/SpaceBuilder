@@ -14,6 +14,10 @@
 class BaseObject : public cocos2d::CCSprite
 {
 public:
+    
+    bool initDefaultState();
+    bool isZoomed;
+    bool isInteractive;
 
     
     

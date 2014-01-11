@@ -11,8 +11,9 @@
 
 #include "cocos2d.h"
 
-
+class CardSprite;
 class UIState;
+class BaseObject;
 USING_NS_CC;
 
 
@@ -21,13 +22,14 @@ typedef enum TargetingType{
     RequireActions,
     DiscardArea, //might not have cards required to discard
     DrawCard_DiscardCard, //always have cards to discard, so it's not a problem
-    PlayArea, //can always be played in the play area
+    PlayArea, //can always be played in the play area, no restrictions
     PlayArea_TargetMonsters, //must be played in the play area and must have monster targets
     Monsters, //must have monster targets
     DiscardCard, //draw card from the discard pile
     DrawCard, // not sure
-    BuyCard //buy a card
-//    PlayToDiscard
+    BuyCard, //buy a card
+    MonsterDefend //can only target monsters that are on the attack line
+    //    PlayToDiscard
 } TargetingType;
 
 
@@ -40,11 +42,6 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(CardTargets);
     
-    
-    //only 1 or none of these can be true
-//    bool isTargetRequired;
-//    bool isDraggingRequired;
-    
     //amount of targets that must be targetted, used for dragging as well
     int targetAmount;
     
@@ -52,33 +49,48 @@ public:
     TargetingType targetingType;
     
     //Dragging stuff
-     
-
+    
+    
     CCArray *selectedTargets;
     
     //array of statuses
-    //inital statuses cannot require targets
+    //inital statuses cannot require targets, gets called before statuses get's called and before state change
     CCArray *initialStatuses;
     CCArray *statuses;
-
-
-//checks whether the ability can be activated
-bool isAbilityActivatable(UIState* state);
-
-//initial call when ability is used
-void activateAbility(UIState* state);
-
-//targets objects to use ability on
-bool targetObject(CCTouch* touch);
-
-// checks whether the ability can be used
-bool isAbilityReady();
-
-//exectutes the intialStatuses
-void useInitialAbility();
     
-//does what the ability should do
-void useAbility();
+    
+    virtual void highlightInteractiveObjects(UIState* state);
+    
+    virtual void highlightNextInteractiveObjects(UIState* state);
+    
+    virtual void highlightInteractiveObjectsWithDraggingState(UIState* state);
+    
+    virtual void highlightInteractiveObjectsWithDraggingCard(UIState* state);
+    
+    //checks whether the ability can be activated
+    virtual bool isAbilityActivatable(UIState* state);
+    
+    //targets objects to use ability on
+    virtual bool targetObjectWithHandCard(CCTouch* touch, UIState* state, CardSprite *card);
+    
+    //targets objects to use ability on
+    virtual bool targetObjectWithTargetingState(CCTouch* touch, UIState* state, CardSprite *card);
+    
+    virtual CardSprite* targetObjectWithDraggingState(CCTouch* touch, UIState* state, CardSprite *card);
+    
+    virtual bool targetObjectWithDraggingCard(CCTouch* touch, UIState* state, CardSprite *card);
+    
+    // checks whether the ability can be used
+    virtual bool isAbilityReady();
+    
+    //changes the state
+    virtual void changeState(UIState* state, CardSprite *card);
+    
+    //exectutes the intialStatuses
+    virtual void useInitialAbility();
+    
+    //does what the ability should do
+    virtual void useAbility();
     
 };
 

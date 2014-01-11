@@ -9,7 +9,7 @@
 #include "DirectDamageTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 #include "Action.h"
 #include "CardGenerator.h"
 #include "LLMath.h"
@@ -19,6 +19,11 @@ const std::string DirectDamageTemplate::CLASS_NAME = "DirectDamageTemplate";
 
 
 
+void DirectDamageTemplate::createCardTargets(){
+    CardTargets *cardTargets = new MonsterTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 #pragma mark - augmentation
 
@@ -122,14 +127,11 @@ void DirectDamageTemplate::addPurpleAdditionalCost(){
 
 void DirectDamageTemplate::addNeutralMainStatus(){
     
-    createdCard->cardTargets->targetingType = Monsters;
-    
-    cardPower = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
-    int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-    status->initWithHealthOffset(-attack/2);
+    status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
-    createdCard->setupDamageCard(attack/2);
+    createdCard->setupDamageCard(attack);
 }
 
 void DirectDamageTemplate::addRedMainStatus(){

@@ -40,12 +40,32 @@ bool CardTargets::init()
 }
 
 
+void CardTargets::highlightInteractiveObjects(UIState* state)
+{
+    
+}
+
+void CardTargets::highlightNextInteractiveObjects(UIState* state)
+{
+    
+}
+
+void CardTargets::highlightInteractiveObjectsWithDraggingState(UIState* state)
+{
+    
+}
+
+void CardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* state)
+{
+    
+}
+
 //checks whether the ability can be activated
 bool CardTargets::isAbilityActivatable(UIState* state){
     GameManager *GM = GameManager::sharedGameManager();
     //check if proper amount is possible
     if(targetingType == PlayArea_TargetMonsters){
-        if(GM->monsterArray->count() > targetAmount){
+        if(GM->monsterArray->count() >= targetAmount){
             return true;
         }else{
             return false;
@@ -53,37 +73,62 @@ bool CardTargets::isAbilityActivatable(UIState* state){
     }else if(targetingType == PlayArea){
         return true;
     }else if(targetingType == Monsters){
-        if(GM->monsterArray->count() > targetAmount){
+        if(GM->monsterArray->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
     }else if(targetingType == DiscardArea){
-        if(GM->player->handCards->count() > targetAmount){
+        if(GM->player->handCards->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
     }else if(targetingType == DrawCard_DiscardCard){
         return true;
+    }else if(targetingType == MonsterDefend){
+        int validTargetCount = 0;
+        for(int i = 0; i < GM->monsterArray->count(); i++){
+            MonsterSprite *monsterSprite = (MonsterSprite*)GM->monsterArray->objectAtIndex(i);
+            if(monsterSprite->location <= 0){
+                validTargetCount++;
+            }
+        }
+        if(validTargetCount > targetAmount){
+            return true;
+        }else{
+            return false;
+        }
     }
-    
-    return true;
+    CCLog("CardTargets::isAbilityActivatable error");
+    return false;
 }
 
-//initial call when ability is used
-void CardTargets::activateAbility(UIState* state){
-    //change state?
-}
 
 //targets objects to use ability on
-bool CardTargets::targetObject(CCTouch* touch){
+bool CardTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardSprite *card){
     GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     CCObject *object;
     
     //TODO: make this target specific objects such as cards in hand or market cards
+    
+    
+    if(targetingType == MonsterDefend){
+        for(int i = 0; i < GM->monsterArray->count(); i++){
+            MonsterSprite *monster = (MonsterSprite*)GM->monsterArray->objectAtIndex(i);
+            CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
+            if(monster->location <= 0){
+                if(collisionRect.containsPoint(touchPoint)){
+                    selectedTargets->addObject(monster);
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
     
     //monster selection
     CCARRAY_FOREACH(GM->monsterArray, object){
@@ -99,17 +144,30 @@ bool CardTargets::targetObject(CCTouch* touch){
     return false;
 }
 
+//targets objects to use ability on
+bool CardTargets::targetObjectWithTargetingState(CCTouch* touch, UIState* state, CardSprite *card){
+    return false;
+}
+
+CardSprite* CardTargets::targetObjectWithDraggingState(CCTouch* touch, UIState* state, CardSprite *card){
+    return NULL;
+}
+
+bool CardTargets::targetObjectWithDraggingCard(CCTouch* touch, UIState* state, CardSprite *card){
+    return false;
+}
+
 // checks whether the ability can be used
 bool CardTargets::isAbilityReady(){
     if(targetingType == PlayArea_TargetMonsters ||
-       targetingType == Monsters){
+       targetingType == Monsters ||
+       targetingType == MonsterDefend){
         //targets
         if(selectedTargets->count() >= targetAmount){
             return true;
         }else{
             return false;
         }
-        
     }else if(targetingType == DiscardCard){
         //dragging
         if(selectedTargets->count() >= targetAmount){
@@ -117,16 +175,20 @@ bool CardTargets::isAbilityReady(){
         }else{
             return false;
         }
-        
     }else if(targetingType == PlayArea ||
              targetingType == DrawCard ||
              targetingType == BuyCard ||
              targetingType == DrawCard_DiscardCard){
-        
         return true;
     }
-    
+    CCLog("CardTargets::isAbilityReady error");
     return false;
+}
+
+
+//changes the state
+void CardTargets::changeState(UIState* state, CardSprite *card){
+
 }
 
 void CardTargets::useInitialAbility(){
@@ -145,7 +207,8 @@ void CardTargets::useInitialAbility(){
 
 //does what the ability should do
 void CardTargets::useAbility(){
-    if(targetingType == Monsters){
+    if(targetingType == Monsters ||
+       targetingType == MonsterDefend){
         CCObject *object;
         CCARRAY_FOREACH(selectedTargets, object){
         //TODO: can target more than just monsters

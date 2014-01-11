@@ -343,7 +343,9 @@ void GameLayer::changeState(UIState* state){
     GM->gameStateCheck();
 }
 
-void GameLayer::changeIndicatorState(TargetingType indicatorState){
+void GameLayer::changeIndicatorState(const char *label){
+    visualIndicatorLabel->setString(label);
+    /*
     if(indicatorState == None){
         visualIndicatorLabel->setString("");
     }else if(indicatorState == PlayArea){
@@ -363,6 +365,7 @@ void GameLayer::changeIndicatorState(TargetingType indicatorState){
     }else if(indicatorState == DrawCard_DiscardCard){
         visualIndicatorLabel->setString("Must Discard a Card");
     }
+     */
 }
 
 void GameLayer::enterZoomState(){

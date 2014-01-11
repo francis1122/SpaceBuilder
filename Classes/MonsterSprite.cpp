@@ -18,14 +18,16 @@ bool MonsterSprite::init()
 {
     //////////////////////////////
     // 1. super init first
+
     if ( !CCSprite::initWithSpriteFrameName("monstercard") )
     {
         return false;
     }
+    BaseObject::initDefaultState();
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
-    
+
     life = 4;
     attack = 2;
     location = 3;
@@ -61,7 +63,6 @@ bool MonsterSprite::init()
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 21,glowSprite->getContentSize().height/2 - 21));
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
-    isInteractive = false;
     
     return true;
 }

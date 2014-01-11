@@ -11,7 +11,7 @@
 #include "DirectDamageTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 #include "Action.h"
 #include "CardGenerator.h"
 #include "LLMath.h"
@@ -19,7 +19,11 @@
 
 const std::string RandomTargetDamageTemplate::CLASS_NAME = "RandomTargetDamageTemplate";
 
-
+void RandomTargetDamageTemplate::createCardTargets(){
+    CardTargets *cardTargets = new PlayAreaTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 
 #pragma mark - augmentation
@@ -112,8 +116,7 @@ void RandomTargetDamageTemplate::addPurpleAdditionalCost(){
 void RandomTargetDamageTemplate::addNeutralMainStatus(){
     
     //
-    
-    createdCard->cardTargets->targetingType = PlayArea_TargetMonsters;
+
     
     
     int targetAmount = 1 + arc4random()%2;
@@ -121,7 +124,7 @@ void RandomTargetDamageTemplate::addNeutralMainStatus(){
     if(targetAmount == 1){
         cardPower += 6;
     }
-    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/2, 3);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
     cardCostOffset -= 2;
     
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();

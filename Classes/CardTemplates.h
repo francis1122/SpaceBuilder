@@ -18,5 +18,6 @@
 #include "MultiTargetDirectDamageTemplate.h"
 #include "DrawDiscardTemplate.h"
 #include "PosionDamageTemplate.h"
+#include "OnDefendDirectDamageTemplate.h"
 
 #endif

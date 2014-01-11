@@ -14,6 +14,10 @@
 #include "MonsterSprite.h"
 #include "CardTargets.h"
 #include "GameLayer.h"
+#include "ZoomLayer.h"
+#include "MonsterLayer.h"
+#include "MarketLayer.h"
+#include "HandLayer.h"
 
 USING_NS_CC;
 
@@ -38,10 +42,14 @@ bool ZoomState::initCardSprite(CardSprite *_selectedCard)
     CCLog("card sprite");
     this->selectedCard = _selectedCard;
     this->selectedMonsterCard = NULL;
-//    GameManager *GM = GameManager::sharedGameManager();
+    this->selectedCard->removeFromParent();
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->gameLayer->zoomLayer->addChild(this->selectedCard, 100);
     this->selectedCard->setScale(1);
-    this->selectedCard->setZOrder(1000000);
+    this->selectedCard->stopAllActions();
     this->selectedCard->setPosition(ccp(350, visibleSize.height/2));
+    this->selectedCard->isZoomed = true;
+    isMarketCard = false;
     
     return true;
 }
@@ -54,10 +62,16 @@ bool ZoomState::initMonsterSprite(MonsterSprite *_selectedMonsterCard){
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     CCLog("card monster sprite");
     this->selectedMonsterCard = _selectedMonsterCard;
-    this->selectedMonsterCard->setScale(1);
-    this->selectedMonsterCard->setZOrder(1000);
-    this->selectedMonsterCard->setPosition(ccp(350, visibleSize.height/2));
     this->selectedCard = NULL;
+    
+    this->selectedMonsterCard->removeFromParent();
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->gameLayer->zoomLayer->addChild(this->selectedMonsterCard, 100);
+    
+    this->selectedMonsterCard->setScale(1);
+    this->selectedMonsterCard->setPosition(ccp(350, visibleSize.height/2));
+
+    this->selectedMonsterCard->isZoomed = true;
 //    GameManager *GM = GameManager::sharedGameManager();
 
     
@@ -72,10 +86,16 @@ bool ZoomState::initMarketCard(CardSprite *_selectedCard){
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     CCLog("card market card");
     this->selectedCard = _selectedCard;
+    this->selectedMonsterCard = NULL;
+    this->selectedCard->removeFromParent();
+    GameManager *GM = GameManager::sharedGameManager();
+    GM->gameLayer->zoomLayer->addChild(this->selectedCard, 100);
     this->selectedCard->setScale(1);
     this->selectedCard->setZOrder(1000000);
     this->selectedCard->setPosition(ccp(350, visibleSize.height/2));
-    this->selectedMonsterCard = NULL;
+
+    this->selectedCard->isZoomed = true;
+    isMarketCard = true;
 
 //    GameManager *GM = GameManager::sharedGameManager();
     
@@ -114,11 +134,28 @@ void ZoomState::transitionToNormalState(){
 
     GM->gameLayer->leaveZoomState();
     if(selectedMonsterCard != NULL){
+        GameManager *GM = GameManager::sharedGameManager();
+        this->selectedMonsterCard->removeFromParent();
+        GM->gameLayer->monsterLayer->addChild(this->selectedMonsterCard, 10000);
+        
         selectedMonsterCard->setScale(.25);
-        selectedMonsterCard->setZOrder(10000);
+        this->selectedMonsterCard->isZoomed = false;
+        GM->organizeMonsters();
+        
     }else{
+        GameManager *GM = GameManager::sharedGameManager();
+        selectedCard->removeFromParent();
+        if(isMarketCard){
+            GM->gameLayer->marketLayer->addChild(this->selectedCard, 100);
+        }else{
+            GM->gameLayer->handLayer->addChild(this->selectedCard, 100);
+        }
+        
         selectedCard->setScale(.25);
         selectedCard->setZOrder(10000);
+        this->selectedCard->isZoomed = false;
+        GM->player->organizeHand();
+        GM->organizeMarket();
     }
     selectedCard = NULL;
     selectedMonsterCard = NULL;
@@ -129,9 +166,8 @@ void ZoomState::transitionToNormalState(){
     NS->autorelease();
     GM->gameLayer->changeState(NS);
     GM->gameLayer->updateInterface();
-    GM->player->organizeHand();
-    GM->organizeMarket();
-    GM->organizeMonsters();
+
+
 }
 
 void ZoomState::transitionToHandCardSelectedState(CardSprite* selectedCard){

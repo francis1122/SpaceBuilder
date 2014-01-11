@@ -21,6 +21,8 @@ public:
     static const std::string CLASS_NAME;
     static CardTemplate* create(){ return new DrawDiscardTemplate();}
     
+    virtual void createCardTargets();
+    
     virtual void addNeutralAugmentationStatus();
     virtual void addRedAugmentationStatus();
     virtual void addBlueAugmentationStatus();

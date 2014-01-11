@@ -9,12 +9,17 @@
 #include "ActionGainTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
+#include "Targets.h"
 #include "Action.h"
 
 
 const std::string ActionGainTemplate::CLASS_NAME = "ActionGainTemplate";
 
+void ActionGainTemplate::createCardTargets(){
+    CardTargets *cardTargets = new PlayAreaTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 #pragma mark - augmentation
 
@@ -63,7 +68,6 @@ void ActionGainTemplate::addPurpleAdditionalCost(){
 
 
 void ActionGainTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
     GainActionStatus *status = new GainActionStatus();
     Action *actionOne = new Action();
@@ -143,10 +147,4 @@ void ActionGainTemplate::addPurpleMainStatus(){
 #pragma mark -
 
 
-int ActionGainTemplate::calculateSoul(){
-    int cost = (int)cardPower/4;
-    cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/2, 3);
-    return cost;
-}
 

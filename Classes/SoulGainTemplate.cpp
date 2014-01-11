@@ -9,9 +9,16 @@
 #include "SoulGainTemplate.h"
 #include "Statuses.h"
 #include "CardSprite.h"
-#include "CardTargets.h"
-
+#include "Targets.h"
+#include "Targets.h"
 const std::string SoulGainTemplate::CLASS_NAME = "SoulGainTemplate";
+
+
+void SoulGainTemplate::createCardTargets(){
+    CardTargets *cardTargets = new PlayAreaTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
+}
 
 #pragma mark - augmentation
 
@@ -57,10 +64,9 @@ void SoulGainTemplate::addPurpleAdditionalCost(){
 #pragma mark - main status
 
 void SoulGainTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
 //    cardPower -= LLMath::getIntValue(cardPower/3);
-    soulGain = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/3, 3);
+    soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(cardPower);
     createdCard->cardTargets->statuses->addObject(status);

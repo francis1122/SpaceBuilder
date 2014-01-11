@@ -31,9 +31,8 @@ CardSprite* CardTemplate::createCard(){
     
     createdCard = new CardSprite();
     createdCard->init();
-    CardTargets *cardTargets = new CardTargets();
-    cardTargets->init();
-    createdCard->cardTargets = cardTargets;
+    
+    this->createCardTargets();
     
     //chance of additional cost
     
@@ -56,6 +55,12 @@ CardSprite* CardTemplate::createCard(){
     this->addDescriptionText();
     
     return createdCard;
+}
+
+void CardTemplate::createCardTargets(){
+    CardTargets *cardTargets = new CardTargets();
+    cardTargets->init();
+    createdCard->cardTargets = cardTargets;
 }
 
 #pragma mark - augmentation

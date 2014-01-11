@@ -7,3 +7,11 @@
 //
 
 #include "BaseObject.h"
+
+
+bool BaseObject::initDefaultState()
+{
+    isZoomed = false;
+    isInteractive = false;
+    return true;
+}
