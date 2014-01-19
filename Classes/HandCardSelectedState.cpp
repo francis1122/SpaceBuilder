@@ -38,9 +38,14 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
         UIState::clearInteractiveState();
         GM->gameLayer->changeIndicatorState("Requires Actions");
     }else{
-        UIState::clearInteractiveState();
-        this->selectedCard->cardTargets->highlightInteractiveObjects(this);
-//        this->highlightInteractiveObjects(selectedCard);
+        if(selectedCard->turnsLeftInMarket > 0){
+            //set state for market card
+            GM->gameLayer->handLayer->enableDiscardInteractive();
+            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
+        }else{
+            UIState::clearInteractiveState();
+            this->selectedCard->cardTargets->highlightInteractiveObjects(this);
+        }
     }
     //highlight should take care of buttons as well
     GM->gameLayer->setButtonLabels("", "");
@@ -136,9 +141,9 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
             //sell card
             if(UIState::cardInSellArea(this->selectedCard)){
                 //sell card
-                GM->sellCard(selectedCard);
+/*                GM->sellCard(selectedCard);
                 selectedCard = NULL;
-                this->transitionToNormalState();
+                this->transitionToNormalState();*/
             }else{
                 CardTargets *target = this->selectedCard->cardTargets;
                 //check if there are targets that the card can use

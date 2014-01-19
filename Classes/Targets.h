@@ -14,5 +14,7 @@
 #include "MonsterTargets.h"
 #include "PlayAreaToTargetMonstersTargets.h"
 #include "DrawDiscardTargets.h"
+#include "DefendMonsterTargets.h"
+#include "SellCardTargets.h"
 
 #endif

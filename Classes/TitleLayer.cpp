@@ -9,7 +9,7 @@
 #include "TitleLayer.h"
 #include "GameLayer.h"
 #include "GameManager.h"
-
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -65,7 +65,7 @@ bool TitleLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("Rogue Deck", "Arial", 24);
+    CCLabelTTF* pLabel = CCLabelTTF::create("Rogue Deck", Main_Font, 24);
     
     // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
@@ -88,8 +88,6 @@ bool TitleLayer::init()
 
 void TitleLayer::startGame(CCObject* pSender)
 {
-    
-    GameManager *GM = GameManager::sharedGameManager();
     GM->startNewGame();
     //load game scene
     // create a scene. it's an autorelease object

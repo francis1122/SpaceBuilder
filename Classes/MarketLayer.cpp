@@ -8,6 +8,7 @@
 
 #include "MarketLayer.h"
 #include "GameManager.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -20,8 +21,8 @@ bool MarketLayer::init()
     {
         return false;
     }
-    //CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+        CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
    /*
     CCLayerColor *playArea = CCLayerColor::create(ccc4(255, 0, 0, 255), visibleSize.width, 160);
@@ -29,7 +30,10 @@ bool MarketLayer::init()
     addChild(playArea);
  */
     
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    CCLabelTTF *sellLabel = CCLabelTTF::create("SELL", Main_Font, 24);
+    sellLabel->setPosition(ccp( visibleSize.width - 60, visibleSize.height - 50));
+    this->addChild(sellLabel, 100);
+
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     sellCardSprite = CCSprite::createWithSpriteFrameName("cardBack");
@@ -43,6 +47,10 @@ bool MarketLayer::init()
     sellGlowCardSprite->setPosition(ccp(visibleSize.width - 80, visibleSize.height- 100));
     sellGlowCardSprite->setVisible(false);
     this->addChild(sellGlowCardSprite, 1);
+    
+    CCSprite *bg = CCSprite::createWithSpriteFrameName("MonsterLayer");
+    bg->setPosition(ccp( bg->getContentSize().width/2, bg->getContentSize().height/2 + 310));
+    this->addChild(bg);
     
 
     return true;

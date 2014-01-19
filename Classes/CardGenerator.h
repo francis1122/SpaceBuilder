@@ -37,7 +37,7 @@ public:
     CardSprite* cardForRed(float powerLevel);
     CardSprite* cardForBlue(float powerLevel);
     CardSprite* cardForYellow(float powerLevel);
-    CardSprite* cardForPurple(float powerLevel);
+    CardSprite* cardForGreen(float powerLevel);
     CardSprite* cardForNeutral(float powerLevel);
     
     

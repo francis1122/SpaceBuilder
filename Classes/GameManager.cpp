@@ -23,6 +23,7 @@
 #include "AnimationManager.h"
 #include "AnimationObject.h"
 #include "Constants.h"
+#include "LevelTemplates.h"
 
 using namespace cocos2d;
 
@@ -40,8 +41,7 @@ GameManager::GameManager()
     
     this->player = new Player();
     
-    currentLevel = 2;
-    monstersLeft = 2;
+    currentLevel = 1;
     currentTurn = 1;
     
     //        Monster *card = CardSprite::create();
@@ -79,7 +79,8 @@ void GameManager::startNewGame(){
     
     isInteractive = true;
     currentLevel = 1;
-    monstersLeft = 10;
+    currentLevelTemplate = new IntroLevelTemplate();
+    currentLevelTemplate->init(10 + (currentLevel * 3));
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -88,7 +89,15 @@ void GameManager::startNewGame(){
 void GameManager::startNewRound(int level){
     player->reset();
     currentLevel = level;
-    monstersLeft = 10 + level;
+    int rand = arc4random()%2;
+    if(rand == 0){
+        currentLevelTemplate = new PlainsLevelTemplate();
+        currentLevelTemplate->init(10 + (currentLevel * 3));
+    }else{
+        currentLevelTemplate = new ForestLevelTemplate();
+        currentLevelTemplate->init(10 + (currentLevel * 3));
+    }
+
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -106,7 +115,7 @@ void GameManager::gameStateCheck(){
     //check for dead monsters
     for(int i = monsterArray->count() - 1; i >= 0; i--){
         MonsterSprite *monster = (MonsterSprite*)monsterArray->objectAtIndex(i);
-        if(monster->life <= 0){
+        if(monster->life <= 0 || monster->isDead){
             this->removeMonster(monster);
         }
     }
@@ -117,18 +126,15 @@ void GameManager::gameStateCheck(){
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = TitleLayer::scene();
         // run
-        
         pDirector->replaceScene(pScene);
     }
     
     //if all monsters are dead and no market cards are left
-    if(monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
+    if(currentLevelTemplate->monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
         //go to postRoundLayer
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = PostRoundLayer::scene();
         // run
-        
-        
         pDirector->replaceScene(pScene);
     }
 }
@@ -162,7 +168,7 @@ void GameManager::afterCardPlayedStateCheck(){
     }
     
     //if all monsters are dead and no market cards are left
-    if(monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
+    if(currentLevelTemplate->monstersLeft <= 0 && monsterArray->count() <= 0 && marketCardArray->count()<= 0){
         //go to postRoundLayer
         CCDirector* pDirector = CCDirector::sharedDirector();
         CCScene *pScene = PostRoundLayer::scene();
@@ -209,7 +215,7 @@ void GameManager::endTurn(){
 
 //market stuff
 void GameManager::organizeMarket(){
-    int i= 0,j = 0;
+    int i= 0,j = 0, k = 0;
     CCLog("Market Organize");
     AnimationObject *cardAnimation = new AnimationObject();
     cardAnimation->init();
@@ -218,12 +224,16 @@ void GameManager::organizeMarket(){
         CardSprite *card = (CardSprite*)object;
         CCPoint cardPos;
         if(card->turnsLeftInMarket == 1){
-            i++;
-            cardPos = ccp(170 + i * 140, 390);
+            k++;
+            cardPos = ccp(140 + k * 130, 390);
         }else if(card->turnsLeftInMarket == 2){
-            j++;
+            k++;
             //            card->setPosition(CCPointMake(170 + j * 140, 540));
-            cardPos = ccp(170 + j * 140, 540);
+            cardPos = ccp(140 + k * 130, 465);
+        }else if( card->turnsLeftInMarket== 3){
+            k++;
+            //            card->setPosition(CCPointMake(170 + j * 140, 540));
+            cardPos = ccp(140 + k * 130, 540);
         }else if( card->turnsLeftInMarket== 0){
             CCLog("card should be removed from market and destroyed");
             cardPos = CCPoint(0,0);
@@ -298,12 +308,11 @@ void GameManager::marketTurn(){
 
 void GameManager::organizeMonsters(){
     CCObject *object;
-    CCLog("monster Organize");
     AnimationObject *monsterAnimation = new AnimationObject();
     monsterAnimation->init();
     CCARRAY_FOREACH(monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-        CCPoint monsterPos = ccp(150 + monster->lane * 150, 400 + monster->location * 40);
+        CCPoint monsterPos = ccp(210 + monster->lane * 150, 400 + monster->location * 30);
         CCMoveTo *action = CCMoveTo::create(.3, monsterPos);
         AnimationObject *animationObject = new AnimationObject();
         animationObject->init(action, monster);
@@ -320,7 +329,9 @@ void GameManager::removeMonster(MonsterSprite *monster){
     //add card to market
     CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
     card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
-    card->turnsLeftInMarket = 2;
+    //give player soul for killing a monster quickly
+    player->soul += monster->location;
+    card->turnsLeftInMarket = 3;
     this->addMarketCard(card);
     
     monster->onDeath();
@@ -331,17 +342,13 @@ void GameManager::removeMonster(MonsterSprite *monster){
 
 void GameManager::spawnMonster(){
     MonsterSprite *monster;
-    if(monstersLeft == 1){
-        monster = MonsterGenerator::sharedGameManager()->createBossMonster(20 + (float)currentLevel * 10.0);
-    }else{
-       monster = MonsterGenerator::sharedGameManager()->createMonster(10 + (float)currentLevel * 3.0);
-    }
+    monster = currentLevelTemplate->spawnMonster();
     //give monster the correct lane
     
     
     
     //cycle through monsters to see what lane is open
-    int maxMonsters = MIN(currentTurn, 4);
+    int maxMonsters = MIN(currentTurn, currentLevelTemplate->maxLanes);
     int newLane = -1;
     for(int j = 0; j < maxMonsters; j++){
         bool emptyLane = true;
@@ -362,9 +369,9 @@ void GameManager::spawnMonster(){
         monster->lane = newLane;
     }
     
-    monstersLeft--;
+    currentLevelTemplate->monstersLeft--;
     this->gameLayer->monsterLayer->addChild(monster);
-    monster->setPosition( ccp(150 + monster->lane * 150, 400 + monster->location * 40));
+    monster->setPosition( ccp(210 + monster->lane * 150, 1000));
     monster->updateInterface();
     
     this->monsterArray->addObject(monster);
@@ -372,9 +379,9 @@ void GameManager::spawnMonster(){
 
 void GameManager::addMonstersPhase(){
     //monsters allowed to spawn
-    int maxMonsters = MIN(currentTurn, 4);
+    int maxMonsters = MIN(currentTurn, 5);
     
-    while(monsterArray->count() < maxMonsters && monstersLeft > 0){
+    while(monsterArray->count() < maxMonsters && currentLevelTemplate->monstersLeft > 0){
         this->spawnMonster();
     }
     this->organizeMonsters();
@@ -392,6 +399,20 @@ void GameManager::monsterTurn(){
     this->addMonstersPhase();
 }
 
+#pragma mark - utility functions
 
+bool GameManager::tauntPresent()
+{
+    bool tauntIsPresent = false;
+    CCObject *object;
+    CCARRAY_FOREACH(monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+        if(monster->hasTaunt){
+            tauntIsPresent = true;
+        }
+    }
+    return tauntIsPresent;
+    
+}
 
 

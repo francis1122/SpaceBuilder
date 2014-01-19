@@ -43,7 +43,6 @@ public:
     //specific status variables
     int monsterHealthOffsetAmount;
     
-    
 };
 
 #endif /* defined(__RogueDeck__MonsterHealthOffsetStatus__) */

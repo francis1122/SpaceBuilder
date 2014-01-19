@@ -16,7 +16,7 @@
 const std::string OnDefendDirectDamageTemplate::CLASS_NAME = "OnDefendDirectDamageTemplate";
 
 void OnDefendDirectDamageTemplate::createCardTargets(){
-    CardTargets *cardTargets = new MonsterTargets();
+    CardTargets *cardTargets = new DefendMonsterTargets();
     //DrawCard_DiscardCard
     
     cardTargets->init();
@@ -42,7 +42,7 @@ void OnDefendDirectDamageTemplate::addYellowAugmentationStatus(){
     
 }
 
-void OnDefendDirectDamageTemplate::addPurpleAugmentationStatus(){
+void OnDefendDirectDamageTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -61,14 +61,13 @@ void OnDefendDirectDamageTemplate::addBlueAdditionalCost(){
 void OnDefendDirectDamageTemplate::addYellowAdditionalCost(){
 }
 
-void OnDefendDirectDamageTemplate::addPurpleAdditionalCost(){
+void OnDefendDirectDamageTemplate::addGreenAdditionalCost(){
 }
 
 #pragma mark - main status
 
 void OnDefendDirectDamageTemplate::addNeutralMainStatus(){
-    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/3, 3);
-    
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
@@ -90,7 +89,7 @@ void OnDefendDirectDamageTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void OnDefendDirectDamageTemplate::addPurpleMainStatus(){
+void OnDefendDirectDamageTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

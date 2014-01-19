@@ -28,9 +28,21 @@ bool MonsterTargets::init()
 void MonsterTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->enablePlayAreaInteractive();
     CCObject *object;
+    bool tauntIsPresent = GM->tauntPresent();
+    
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-        monster->enableInteractive();
+        if(monster->life >= minMonsterLife || minMonsterLife == -1){
+            if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+        if(tauntIsPresent){
+            if(monster->hasTaunt){
+            monster->enableInteractive();
+            }
+        }else{
+            monster->enableInteractive();
+        }
+        }
+        }
     }
     GM->gameLayer->changeIndicatorState("Play Area or Target Monster");
     
@@ -39,9 +51,21 @@ void MonsterTargets::highlightInteractiveObjects(UIState* state){
 void MonsterTargets::highlightNextInteractiveObjects(UIState* state){
     //highlight only monsters
     CCObject *object;
+    bool tauntIsPresent = GM->tauntPresent();
+    
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-        monster->enableInteractive();
+        if(monster->life >= minMonsterLife || minMonsterLife == -1){
+            if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+        if(tauntIsPresent){
+            if(monster->hasTaunt){
+                monster->enableInteractive();
+            }
+        }else{
+            monster->enableInteractive();
+        }
+            }
+        }
     }
     GM->gameLayer->changeIndicatorState("Target Monster");
     
@@ -49,7 +73,26 @@ void MonsterTargets::highlightNextInteractiveObjects(UIState* state){
 
 //checks whether the ability can be activated
 bool MonsterTargets::isAbilityActivatable(UIState* state){
-    if(GM->monsterArray->count() >= targetAmount){
+    int targetCount = 0;
+    bool tauntIsPresent = GM->tauntPresent();
+    CCObject *object;
+    CCARRAY_FOREACH(GM->monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+            if(monster->life >= minMonsterLife || minMonsterLife == -1){
+                if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+                    if(tauntIsPresent){
+                        if(monster->hasTaunt){
+                            targetCount++;
+                        }
+                    }else{
+                        targetCount++;
+                    }
+                }
+            }
+    }
+    
+    
+    if(targetCount >= 1){
         return true;
     }else{
         return false;
@@ -62,12 +105,24 @@ bool MonsterTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, Ca
 
     //monsters are an exceptable place
     CCObject *object;
+    bool tauntIsPresent = GM->tauntPresent();
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
         CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
         if(collisionRect.containsPoint(touchPoint)){
-            selectedTargets->addObject(monster);
-            return true;
+            if(monster->life >= minMonsterLife || minMonsterLife == -1){
+                if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+            if(tauntIsPresent){
+                if(monster->hasTaunt){
+                    selectedTargets->addObject(monster);
+                    return true;
+                }
+            }else{
+                selectedTargets->addObject(monster);
+                return true;
+            }
+                }
+            }
         }
     }
     
@@ -84,12 +139,24 @@ bool MonsterTargets::targetObjectWithTargetingState(CCTouch* touch, UIState* sta
     
     //monsters are an exceptable place
     CCObject *object;
+    bool tauntIsPresent = GM->tauntPresent();
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
         CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
         if(collisionRect.containsPoint(touchPoint)){
-            selectedTargets->addObject(monster);
-            return true;
+            if(tauntIsPresent){
+                if(monster->life >= minMonsterLife || minMonsterLife == -1){
+                    if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+                if(monster->hasTaunt){
+                    selectedTargets->addObject(monster);
+                    return true;
+                }
+            }else{
+                selectedTargets->addObject(monster);
+                return true;
+            }
+                }
+            }
         }
     }
     return false;

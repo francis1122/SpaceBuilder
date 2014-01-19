@@ -8,6 +8,7 @@
 
 #include "PostRoundLayer.h"
 #include "BetweenRoundLayer.h"
+#include "Constants.h"
 
 
 USING_NS_CC;
@@ -64,7 +65,7 @@ bool PostRoundLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("PostRoundLayer", "Arial", 24);
+    CCLabelTTF* pLabel = CCLabelTTF::create("PostRoundLayer", Main_Font, 24);
     
     // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,

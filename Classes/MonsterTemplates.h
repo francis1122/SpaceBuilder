@@ -11,6 +11,10 @@
 
 #include "MonsterTemplate.h"
 #include "WeakMinionTemplate.h"
+#include "RushMinionTemplate.h"
+#include "BloodGiantTemplate.h"
+#include "OozeTemplate.h"
+#include "ArcherTemplate.h"
 
 
 #endif

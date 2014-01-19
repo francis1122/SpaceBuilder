@@ -43,7 +43,7 @@ MonsterTemplate* temp(){
     return NULL;
 }
 
-MonsterGenerator* MonsterGenerator::sharedGameManager()
+MonsterGenerator* MonsterGenerator::sharedMonsterGeneratorManager()
 {
     //If the singleton has no instance yet, create one
     if(NULL == m_mySingleton)
@@ -51,8 +51,12 @@ MonsterGenerator* MonsterGenerator::sharedGameManager()
         //Create an instance to the singleton
         m_mySingleton = new MonsterGenerator();
         
-        MonsterGenerator *MG = MonsterGenerator::sharedGameManager();
+        MonsterGenerator *MG = MonsterGenerator::sharedMonsterGeneratorManager();
         MG->registerClass(WeakMinionTemplate::CLASS_NAME, &WeakMinionTemplate::create);
+        MG->registerClass(RushMinionTemplate::CLASS_NAME, &RushMinionTemplate::create);
+        MG->registerClass(BloodGiantTemplate::CLASS_NAME, &BloodGiantTemplate::create);
+        MG->registerClass(OozeTemplate::CLASS_NAME, &OozeTemplate::create);
+        MG->registerClass(ArcherTemplate::CLASS_NAME, &ArcherTemplate::create);
         
     }
     
@@ -77,43 +81,5 @@ MonsterTemplate* MonsterGenerator::createClass(const std::string& pFunction){
     //should call the class
     MonsterTemplate *monsterTemplate = (*iter).second();
     return monsterTemplate;
-}
-
-
-
-MonsterSprite* MonsterGenerator::createMonster(float powerLevel){
-    //setup card drop table for cards to be chosen
-    IRDSTable *templateDrops = new IRDSTable();
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(WeakMinionTemplate::CLASS_NAME, 0.0, 0));
-    
-    //randomly choose a template
-    IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);
-    // use chosen template to create card
-    MonsterSprite *newMonster;
-    MonsterTemplate *monsterTemplate = createClass(colorChosen->className);
-    monsterTemplate->init(powerLevel);
-    newMonster = monsterTemplate->createMonster();
-
-    return newMonster;
-}
-
-MonsterSprite* MonsterGenerator::createBossMonster(float powerLevel){
-    MonsterSprite *monster = MonsterSprite::create();
-    monster->life = powerLevel/6 + LLMath::getIntValue(0,powerLevel/3);
-    monster->attack = powerLevel/5 + LLMath::getIntValue(0,powerLevel/4);
-    monster->location = 2 + arc4random()%3;
-    monster->monsterLevel = (int)powerLevel;
-    
-    //add monster rewards
-    int rand = arc4random()%5;
-    if(rand == 0){
-        GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(powerLevel/2);
-        CCString *newString = CCString::createWithFormat("Gain %i Soul", status->soulGainAmount);
-        monster->detailsLabel->setString(newString->getCString());
-        monster->afterDeathEffectArray->addObject(status);
-    }
-    
-    return monster;
 }
 

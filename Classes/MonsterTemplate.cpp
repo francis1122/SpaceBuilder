@@ -70,6 +70,8 @@ void MonsterTemplate::addDescriptionText()
     if(rewardDescription) reward= rewardDescription->getCString();
     CCString *detailsString =CCString::createWithFormat("%s%s", augDesc, reward);
     createdMonster->detailsLabel->setString(detailsString->getCString());
+    
+    createdMonster->setupMonsterImage(monsterSpriteName);
 }
 
 

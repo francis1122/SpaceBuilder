@@ -45,6 +45,9 @@ public:
     //amount of targets that must be targetted, used for dragging as well
     int targetAmount;
     
+    int minMonsterLife;
+    int maxMonsterLife;
+    
     //type of targets to highlight
     TargetingType targetingType;
     
@@ -66,6 +69,8 @@ public:
     virtual void highlightInteractiveObjectsWithDraggingState(UIState* state);
     
     virtual void highlightInteractiveObjectsWithDraggingCard(UIState* state);
+    
+    virtual void unableToActivateHighlight(UIState*);
     
     //checks whether the ability can be activated
     virtual bool isAbilityActivatable(UIState* state);

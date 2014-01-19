@@ -87,7 +87,7 @@ void RandomTargetDamageTemplate::addYellowAugmentationStatus(){
 
 }
 
-void RandomTargetDamageTemplate::addPurpleAugmentationStatus(){
+void RandomTargetDamageTemplate::addGreenAugmentationStatus(){
   //  cardPower += 6;
 //    cardCostOffset -= 3;
 }
@@ -107,7 +107,7 @@ void RandomTargetDamageTemplate::addBlueAdditionalCost(){
 void RandomTargetDamageTemplate::addYellowAdditionalCost(){
 }
 
-void RandomTargetDamageTemplate::addPurpleAdditionalCost(){
+void RandomTargetDamageTemplate::addGreenAdditionalCost(){
 }
 
 
@@ -122,16 +122,19 @@ void RandomTargetDamageTemplate::addNeutralMainStatus(){
     int targetAmount = 1 + arc4random()%2;
     createdCard->cardTargets->targetAmount = targetAmount;
     if(targetAmount == 1){
-        cardPower += 6;
+        cardPower += cardPower/2;
+        cardCostOffset -= cardPower/7;
+    }else{
+        cardPower -= cardPower/6;
+        cardCostOffset += cardPower/7;
     }
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
-    cardCostOffset -= 2;
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
     
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     
     RandomMonsterStatus *rndStatus = new RandomMonsterStatus();
-    rndStatus->initWithStatus(status, 1);
+    rndStatus->initWithStatus(status, targetAmount);
     
     createdCard->cardTargets->statuses->addObject(rndStatus);
     createdCard->setupDamageCard(attack);
@@ -150,7 +153,7 @@ void RandomTargetDamageTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void RandomTargetDamageTemplate::addPurpleMainStatus(){
+void RandomTargetDamageTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

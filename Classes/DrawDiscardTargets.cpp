@@ -14,6 +14,8 @@
 #include "Player.h"
 #include "Constants.h"
 #include "Statuses.h"
+#include "HandLayer.h"
+#include "GameLayer.h"
 
 // on "init" you need to initialize your instance
 bool DrawDiscardTargets::init()
@@ -29,11 +31,12 @@ bool DrawDiscardTargets::init()
 
 void DrawDiscardTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->enablePlayAreaInteractive();
-    GM->gameLayer->changeIndicatorState("Play Area or Target Monster");
+    GM->gameLayer->changeIndicatorState("Play Area");
 }
 
 void DrawDiscardTargets::highlightInteractiveObjectsWithDraggingState(UIState* state)
 {
+    GM->gameLayer->changeIndicatorState("Discard Card");
     CCObject *object;
     CCARRAY_FOREACH(GM->player->handCards, object){
         CardSprite *card = (CardSprite*)object;

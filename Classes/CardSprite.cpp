@@ -43,10 +43,10 @@ bool CardSprite::init()
     this->addChild(textBox, 1);
     
     //details of card
-    CCSize detailSize = CCSizeMake(330, 240);
-    detailsLabel = CCLabelTTF::create("", "Arial", 48, detailSize, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    CCSize detailSize = CCSizeMake(330, 260);
+    detailsLabel = CCLabelTTF::create("", Main_Font, 42, detailSize, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
     detailsLabel->setColor(ccBLACK);
-    detailsLabel->setPosition(ccp(212,175));
+    detailsLabel->setPosition(ccp(190,155));
     textBox->addChild(detailsLabel, 2);
     
     
@@ -55,7 +55,7 @@ bool CardSprite::init()
     this->addChild(costBox, 2);
     
     CCSize costSize = CCSizeMake(150, 150);
-    costLabel = CCLabelTTF::create("0", "Arial", 92, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    costLabel = CCLabelTTF::create("0", Main_Font, 92, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     costLabel->setColor(ccWHITE);
     costLabel->setPosition(ccp(58,65));
     costBox->addChild(costLabel, 2);
@@ -149,12 +149,10 @@ void CardSprite::setupDamageCard(int damage){
     
     CCSize costSize = CCSizeMake(150, 150);
     CCString *string =CCString::createWithFormat("%i", damage);
-    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), "Arial", 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), Main_Font, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     damageLabel->setColor(ccWHITE);
     damageLabel->setPosition(ccp(255,460));
     this->addChild(damageLabel, 2);
-
-
 }
 
 void CardSprite::setupSoulGainCard(int soulGain){
@@ -165,7 +163,7 @@ void CardSprite::setupSoulGainCard(int soulGain){
     
     CCSize costSize = CCSizeMake(150, 150);
     CCString *string =CCString::createWithFormat("%i", soulGain);
-    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), "Arial", 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), Main_Font, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     damageLabel->setColor(ccWHITE);
     damageLabel->setPosition(ccp(255,470));
     this->addChild(damageLabel, 2);

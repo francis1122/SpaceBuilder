@@ -10,8 +10,12 @@
 #define RogueDeck_Constants_h
 
 
+#define Main_Font "BlueHighway-Regular"
+#define Main_Bold_Font "BlueHighway-Bold"
+
 #define GM GameManager::sharedGameManager()
 #define AM AnimationManager::sharedAnimationManager()
+#define MG MonsterGenerator::sharedMonsterGeneratorManager()
 
 //z ordering of objects
 

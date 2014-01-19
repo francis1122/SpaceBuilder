@@ -64,11 +64,11 @@ bool HandLayer::init()
     addChild(discardArea);
     */
     
-    libraryCountLabel = CCLabelTTF::create("10", "Arial", 48);
-    discardCountLabel = CCLabelTTF::create("0", "Arial", 48);
-    healthLabel = CCLabelTTF::create("10\n10", "Arial", 32);
-    soulLabel = CCLabelTTF::create("0\n10", "Arial", 32);
-    actionLabel = CCLabelTTF::create("A:2", "Arial", 32);
+    libraryCountLabel = CCLabelTTF::create("10", Main_Font, 48);
+    discardCountLabel = CCLabelTTF::create("0", Main_Font, 48);
+    healthLabel = CCLabelTTF::create("10\n10", Main_Font, 32);
+    soulLabel = CCLabelTTF::create("0\n10", Main_Font, 32);
+    actionLabel = CCLabelTTF::create("A:2", Main_Font, 32);
     
     libraryCountLabel->setPosition(CCPointMake(220, 80));
     discardCountLabel->setPosition(CCPointMake(visibleSize.width - 80, 80));

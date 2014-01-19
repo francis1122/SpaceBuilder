@@ -19,6 +19,7 @@
 #include "MonsterLayer.h"
 #include "AnimationManager.h"
 #include "Constants.h"
+#include "LevelTemplates.h"
 
 USING_NS_CC;
 
@@ -70,8 +71,8 @@ void GameLayer::setupButtons(){
     
     
     //labels
-    leftButtonLabel = CCLabelTTF::create("", "Arial", 32);
-    rightButtonLabel = CCLabelTTF::create("End Turn", "Arial", 32);
+    leftButtonLabel = CCLabelTTF::create("", Main_Font, 32);
+    rightButtonLabel = CCLabelTTF::create("End Turn", Main_Font, 32);
     //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
     leftButtonLabel->setPosition(ccp(240, 270));
@@ -120,20 +121,19 @@ bool GameLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    visualIndicatorLabel = CCLabelTTF::create("GAME LAYER", "Arial", 24);
-    monstersLeftLabel  = CCLabelTTF::create("1", "Arial", 32);
-    sellLabel = CCLabelTTF::create("SELL", "Arial", 24);
+    visualIndicatorLabel = CCLabelTTF::create("GAME LAYER", Main_Font, 24);
+    monstersLeftLabel  = CCLabelTTF::create("1", Main_Font, 32);
+
     
     // position the label on the center of the screen
     visualIndicatorLabel->setPosition(ccp(origin.x + visibleSize.width/2,
                                           origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
     monstersLeftLabel->setPosition(ccp( 50, visibleSize.height - 20));
-    sellLabel->setPosition(ccp( visibleSize.width - 60, visibleSize.height - 50));
-    
+
     // add the label as a child to this layer
     this->addChild(visualIndicatorLabel, 100);
     this->addChild(monstersLeftLabel, 100);
-    this->addChild(sellLabel, 100);
+
     
     // add "HelloWorld" splash screen"
     CCSprite* pSprite = CCSprite::createWithSpriteFrameName("background");
@@ -157,8 +157,9 @@ bool GameLayer::init()
     topSlideLayer = TopSlideLayer::create();
     this->addChild(topSlideLayer);
     this->addChild(handLayer, 99);
-    topSlideLayer->addChild(marketLayer, 99);
+
     topSlideLayer->addChild(monsterLayer, 99);
+    topSlideLayer->addChild(marketLayer, 99);
     this->addChild(zoomLayer, 1000000);
     
     
@@ -378,7 +379,7 @@ void GameLayer::leaveZoomState(){
 
 void GameLayer::updateInterface(){
     handLayer->updateInterface();
-    CCString *monstersLeftString =CCString::createWithFormat("%i", GM->monstersLeft);
+    CCString *monstersLeftString =CCString::createWithFormat("%i", GM->currentLevelTemplate->monstersLeft);
     monstersLeftLabel->setString(monstersLeftString->getCString());
 }
 

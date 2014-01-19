@@ -22,13 +22,12 @@ bool CardTemplate::init(float powerLevel, ActionType color ){
     mainDescription = NULL;
     augmentationDescription = NULL;
     actionsGained = new CCArray();
-
     return true;
 }
 
 CardSprite* CardTemplate::createCard(){
     CCLog("CardTemplate::createCard");
-    
+    cardCostOffset = 0;
     createdCard = new CardSprite();
     createdCard->init();
     
@@ -74,8 +73,8 @@ void CardTemplate::addAugmentationStatus(){
         addBlueAugmentationStatus();
     }else if(cardColor == Yellow){
         addYellowAugmentationStatus();
-    }else if(cardColor == Purple){
-        addPurpleAugmentationStatus();
+    }else if(cardColor == Green){
+        addGreenAugmentationStatus();
     }
 }
 
@@ -95,7 +94,7 @@ void CardTemplate::addYellowAugmentationStatus(){
     
 }
 
-void CardTemplate::addPurpleAugmentationStatus(){
+void CardTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -110,8 +109,8 @@ void CardTemplate::addAdditionalCost(){
         addBlueAdditionalCost();
     }else if(cardColor == Yellow){
         addYellowAdditionalCost();
-    }else if(cardColor == Purple){
-        addPurpleAdditionalCost();
+    }else if(cardColor == Green){
+        addGreenAdditionalCost();
     }
 }
 
@@ -127,7 +126,7 @@ void CardTemplate::addBlueAdditionalCost(){
 void CardTemplate::addYellowAdditionalCost(){
 }
 
-void CardTemplate::addPurpleAdditionalCost(){
+void CardTemplate::addGreenAdditionalCost(){
 }
 
 
@@ -142,8 +141,8 @@ void CardTemplate::addMainStatus(){
         addBlueMainStatus();
     }else if(cardColor == Yellow){
         addYellowMainStatus();
-    }else if(cardColor == Purple){
-        addPurpleMainStatus();
+    }else if(cardColor == Green){
+        addGreenMainStatus();
     }
 }
 
@@ -163,16 +162,16 @@ void CardTemplate::addYellowMainStatus(){
     
 }
 
-void CardTemplate::addPurpleMainStatus(){
+void CardTemplate::addGreenMainStatus(){
     
 }
 
 #pragma mark -
 
 int CardTemplate::calculateSoul(){
-    int cost = (int)cardPower/4;
+    int cost = (int)cardPower/2;
     cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/2, 3);
+    cost += LLMath::diceRoll((int)cardPower/3, 1);
     return cost;
 }
 

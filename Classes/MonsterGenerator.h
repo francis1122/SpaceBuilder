@@ -13,6 +13,7 @@
 #include "MonsterTemplate.h"
 
 
+
 typedef MonsterTemplate* (*createMonsterFunc)(void); // function pointer type
 typedef std::map<std::string, createMonsterFunc> scriptMonster_map;
 
@@ -30,14 +31,12 @@ private:
     
 public:
     //Get instance of singleton
-    static MonsterGenerator* sharedGameManager();
+    static MonsterGenerator* sharedMonsterGeneratorManager();
     
     scriptMonster_map map;
     void registerClass(const std::string& pFunction, createMonsterFunc function);
     MonsterTemplate* createClass(const std::string& pFunction);
     
-    MonsterSprite* createMonster(float powerLevel);
-    MonsterSprite* createBossMonster(float powerLevel);
     
 };
 

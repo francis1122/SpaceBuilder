@@ -30,7 +30,9 @@ bool MonsterLayer::init()
     CCLayerColor *playArea = CCLayerColor::create(ccc4(80, 80, 80, 190), visibleSize.width, visibleSize.height);
     playArea->setPosition(CCPointMake(0, 0));
     addChild(playArea);*/
-    
+    CCSprite *bg = CCSprite::createWithSpriteFrameName("MonsterLayerBG");
+    bg->setPosition(ccp( bg->getContentSize().width/2, bg->getContentSize().height/2 + 310));
+    this->addChild(bg);
     
     return true;
 }

@@ -40,7 +40,7 @@ void DrawCardTemplate::addYellowAugmentationStatus(){
     
 }
 
-void DrawCardTemplate::addPurpleAugmentationStatus(){
+void DrawCardTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -59,7 +59,7 @@ void DrawCardTemplate::addBlueAdditionalCost(){
 void DrawCardTemplate::addYellowAdditionalCost(){
 }
 
-void DrawCardTemplate::addPurpleAdditionalCost(){
+void DrawCardTemplate::addGreenAdditionalCost(){
 }
 
 
@@ -74,7 +74,7 @@ void DrawCardTemplate::addNeutralMainStatus(){
     DrawCardStatus *status = new DrawCardStatus();
     status->initWithDrawAmount(2);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription =CCString::createWithFormat("Draw %i Cards", drawCardAmount);
+    mainDescription = CCString::createWithFormat("Draw %i Cards", drawCardAmount);
     createdCard->setCardType(Spell);
 }
 
@@ -90,7 +90,7 @@ void DrawCardTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void DrawCardTemplate::addPurpleMainStatus(){
+void DrawCardTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

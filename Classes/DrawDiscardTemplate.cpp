@@ -42,7 +42,7 @@ void DrawDiscardTemplate::addYellowAugmentationStatus(){
     
 }
 
-void DrawDiscardTemplate::addPurpleAugmentationStatus(){
+void DrawDiscardTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -61,18 +61,18 @@ void DrawDiscardTemplate::addBlueAdditionalCost(){
 void DrawDiscardTemplate::addYellowAdditionalCost(){
 }
 
-void DrawDiscardTemplate::addPurpleAdditionalCost(){
+void DrawDiscardTemplate::addGreenAdditionalCost(){
 }
 
 #pragma mark - main status
 
 void DrawDiscardTemplate::addNeutralMainStatus(){
     
-    int drawCardAmount = 2;
-    int discardAmount = 1;
-    createdCard->cardTargets->targetAmount = 1;
+    int drawCardAmount = (int)(cardPower/10);
+    int discardAmount = drawCardAmount;
+    createdCard->cardTargets->targetAmount = drawCardAmount;
     DrawCardStatus *status = new DrawCardStatus();
-    status->initWithDrawAmount(2);
+    status->initWithDrawAmount(drawCardAmount);
     createdCard->cardTargets->initialStatuses->addObject(status);
     mainDescription = CCString::createWithFormat("Draw %i Cards, discard %i Card", drawCardAmount, discardAmount);
     createdCard->setCardType(Spell);
@@ -84,8 +84,6 @@ void DrawDiscardTemplate::addNeutralMainStatus(){
     statusAction->initWithActionGain(actionsGained);
     createdCard->cardTargets->initialStatuses->addObject(statusAction);
     
-    
-    cardCostOffset = -2.0;
 }
 
 void DrawDiscardTemplate::addRedMainStatus(){
@@ -100,7 +98,7 @@ void DrawDiscardTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void DrawDiscardTemplate::addPurpleMainStatus(){
+void DrawDiscardTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

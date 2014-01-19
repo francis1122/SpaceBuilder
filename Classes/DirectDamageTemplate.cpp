@@ -47,8 +47,8 @@ void DirectDamageTemplate::addRedAugmentationStatus(){
             actions->addObject(action);
             status->initWithActionGain(actions);
             killStatus = status;
-            powerLevel -= 2;
-            cardCostOffset += 2;
+            powerLevel -= cardPower/6;
+            cardCostOffset += cardPower/6;
             augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Red Action");
         
         deathStatus->initWithStatus(killStatus);
@@ -72,8 +72,8 @@ void DirectDamageTemplate::addBlueAugmentationStatus(){
             actions->addObject(action);
             status->initWithActionGain(actions);
             killStatus = status;
-            powerLevel -= 2;
-            cardCostOffset += 2;
+            powerLevel -= cardPower/6;
+            cardCostOffset += cardPower/6;
             augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Neutral Action");
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);
@@ -89,8 +89,8 @@ void DirectDamageTemplate::addYellowAugmentationStatus(){
         //choose status
             DrawCardStatus *status = new DrawCardStatus();
             status->initWithDrawAmount(2);
-            powerLevel -= 2;
-            cardCostOffset += 2;
+            powerLevel -= cardPower/6;
+            cardCostOffset += cardPower/6;
             
             augmentationDescription = CCString::createWithFormat("\nKilling Blow: Draw 2 Cards");
         
@@ -99,9 +99,8 @@ void DirectDamageTemplate::addYellowAugmentationStatus(){
     }
 }
 
-void DirectDamageTemplate::addPurpleAugmentationStatus(){
-    cardPower += 6;
-    cardCostOffset -= 3;
+void DirectDamageTemplate::addGreenAugmentationStatus(){
+    cardPower += cardPower/6;
 }
 
 #pragma mark - additional cost
@@ -119,7 +118,7 @@ void DirectDamageTemplate::addBlueAdditionalCost(){
 void DirectDamageTemplate::addYellowAdditionalCost(){
 }
 
-void DirectDamageTemplate::addPurpleAdditionalCost(){
+void DirectDamageTemplate::addGreenAdditionalCost(){
 }
 
 
@@ -127,7 +126,7 @@ void DirectDamageTemplate::addPurpleAdditionalCost(){
 
 void DirectDamageTemplate::addNeutralMainStatus(){
     
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
@@ -146,7 +145,7 @@ void DirectDamageTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void DirectDamageTemplate::addPurpleMainStatus(){
+void DirectDamageTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

@@ -18,6 +18,7 @@
 #include "DeathBlowStatus.h"
 #include "RandomMonsterStatus.h"
 #include "MonsterHealthOffsetDurationStatus.h"
+#include "InstantKillMonsterStatus.h"
 
 
 #endif

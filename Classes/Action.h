@@ -15,7 +15,7 @@ typedef enum ActionType{
     Neutral,
     Red,
     Blue,
-    Purple,
+    Green,
     Yellow
 } ActionType;
 

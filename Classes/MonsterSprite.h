@@ -30,11 +30,14 @@ public:
     
     //monster variables
     int life;
+    int maxLife;
     int attack;
     int location;
     int lane;
+    bool hasTaunt;
+    bool hasRange;
     float monsterLevel;
-    
+    bool isDead;
     
     void updateInterface();
     void turnUpdate();
@@ -49,6 +52,8 @@ public:
     
     void enableInteractive();
     void disableInteractive();
+    
+    void setupMonsterImage(cocos2d::CCString* monserSpriteName);
     
 private:
     

@@ -54,8 +54,10 @@ void RandomMonsterStatus::applyStatus(){
     //choose random monsters and apply status to monsters X times
     for( int i = 0; i < targets; i++){
         //choose random monster
-        MonsterSprite *monster = (MonsterSprite*)GM->monsterArray->objectAtIndex(arc4random()%GM->monsterArray->count());
-        randomStatus->addStatusToGameObject(monster);
+        if(GM->monsterArray->count() > 0){
+            MonsterSprite *monster = (MonsterSprite*)GM->monsterArray->objectAtIndex(arc4random()%GM->monsterArray->count());
+            randomStatus->addStatusToGameObject(monster);
+        }
     }
 }
 

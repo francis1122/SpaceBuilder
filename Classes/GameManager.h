@@ -15,7 +15,7 @@
 #include "Player.h"
 
 USING_NS_CC;
-
+class LevelTemplate;
 class GameManager
 {
 private:
@@ -41,7 +41,6 @@ public:
     
     //level/round information
     int currentLevel;
-    int monstersLeft;
     int currentTurn;
     
     //monster variables
@@ -69,11 +68,16 @@ public:
     void marketTurn();
     
     //monster spawn stuff
+    LevelTemplate *currentLevelTemplate;
+    
     void organizeMonsters();
     void removeMonster(MonsterSprite *monster);
     void spawnMonster();
     void addMonstersPhase();
     void monsterTurn();
+    
+    //helper functions
+    bool tauntPresent();
     
 };
 

@@ -42,7 +42,7 @@ void PosionDamageTemplate::addYellowAugmentationStatus(){
     
 }
 
-void PosionDamageTemplate::addPurpleAugmentationStatus(){
+void PosionDamageTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -61,20 +61,20 @@ void PosionDamageTemplate::addBlueAdditionalCost(){
 void PosionDamageTemplate::addYellowAdditionalCost(){
 }
 
-void PosionDamageTemplate::addPurpleAdditionalCost(){
+void PosionDamageTemplate::addGreenAdditionalCost(){
 }
 
 #pragma mark - main status
 
 void PosionDamageTemplate::addNeutralMainStatus(){
-    int attack = (int)cardPower/2 + LLMath::diceRoll((int)cardPower/4, 3);
+    int attack = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/8, 1);
     
     MonsterHealthOffsetDurationStatus *status = new MonsterHealthOffsetDurationStatus();
     status->initWithHealthOffset(-attack, 999);
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupDamageCard(attack);
     
-    mainDescription = CCString::createWithFormat("Burn");
+    mainDescription = CCString::createWithFormat("Posion");
     
 }
 
@@ -90,7 +90,7 @@ void PosionDamageTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void PosionDamageTemplate::addPurpleMainStatus(){
+void PosionDamageTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

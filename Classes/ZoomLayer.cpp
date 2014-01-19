@@ -10,7 +10,7 @@
 #include "GameManager.h"
 #include "UIState.h"
 #include "GameLayer.h"
-
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -34,7 +34,7 @@ bool ZoomLayer::init()
      
     
     // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemLabel *pCloseItem = CCMenuItemLabel::create(CCLabelTTF::create("Close", "Arial", 64),
+    CCMenuItemLabel *pCloseItem = CCMenuItemLabel::create(CCLabelTTF::create("Close", Main_Font, 64),
                                                           this,
                                                           menu_selector(ZoomLayer::leaveZoom));
                                                  
@@ -67,7 +67,6 @@ bool ZoomLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 
 void ZoomLayer::leaveZoom(CCObject* pSender)
 {
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->getCurrentState()->transitionToNormalState();
 }
 

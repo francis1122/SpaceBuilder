@@ -22,8 +22,8 @@ ccColor3B Action::getActionColor(){
         return ccRED;
     }else if(actionType == Blue){
         return ccBLUE;
-    }else if(actionType == Purple){
-        return ccMAGENTA;
+    }else if(actionType == Green){
+        return ccGREEN;
     }else if(actionType == Yellow){
         return ccYELLOW;
     }

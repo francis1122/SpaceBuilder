@@ -38,7 +38,7 @@ void SoulGainTemplate::addYellowAugmentationStatus(){
     
 }
 
-void SoulGainTemplate::addPurpleAugmentationStatus(){
+void SoulGainTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -46,18 +46,23 @@ void SoulGainTemplate::addPurpleAugmentationStatus(){
 
 
 void SoulGainTemplate::addNeutralAdditionalCost(){
+    
 }
 
 void SoulGainTemplate::addRedAdditionalCost(){
+    
 }
 
 void SoulGainTemplate::addBlueAdditionalCost(){
+    
 }
 
 void SoulGainTemplate::addYellowAdditionalCost(){
+    
 }
 
-void SoulGainTemplate::addPurpleAdditionalCost(){
+void SoulGainTemplate::addGreenAdditionalCost(){
+    
 }
 
 
@@ -66,11 +71,11 @@ void SoulGainTemplate::addPurpleAdditionalCost(){
 void SoulGainTemplate::addNeutralMainStatus(){
     
 //    cardPower -= LLMath::getIntValue(cardPower/3);
-    soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 3);
+    int soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
     GainSoulStatus *status = new GainSoulStatus();
-    status->initWithSoulGain(cardPower);
+    status->initWithSoulGain(soulGain);
     createdCard->cardTargets->statuses->addObject(status);
-    createdCard->setupSoulGainCard(cardPower);
+    createdCard->setupSoulGainCard(soulGain);
 }
 
 void SoulGainTemplate::addRedMainStatus(){
@@ -85,7 +90,7 @@ void SoulGainTemplate::addYellowMainStatus(){
     addNeutralMainStatus();
 }
 
-void SoulGainTemplate::addPurpleMainStatus(){
+void SoulGainTemplate::addGreenMainStatus(){
     addNeutralMainStatus();
 }
 

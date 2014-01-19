@@ -39,21 +39,21 @@ public:
     virtual void addRedAugmentationStatus();
     virtual void addBlueAugmentationStatus();
     virtual void addYellowAugmentationStatus();
-    virtual void addPurpleAugmentationStatus();
+    virtual void addGreenAugmentationStatus();
     
     virtual void addAdditionalCost();
     virtual void addNeutralAdditionalCost();
     virtual void addRedAdditionalCost();
     virtual void addBlueAdditionalCost();
     virtual void addYellowAdditionalCost();
-    virtual void addPurpleAdditionalCost();
+    virtual void addGreenAdditionalCost();
     
     virtual void addMainStatus();
     virtual void addNeutralMainStatus();
     virtual void addRedMainStatus();
     virtual void addBlueMainStatus();
     virtual void addYellowMainStatus();
-    virtual void addPurpleMainStatus();
+    virtual void addGreenMainStatus();
     
     virtual void addDescriptionText();
     virtual int calculateSoul();

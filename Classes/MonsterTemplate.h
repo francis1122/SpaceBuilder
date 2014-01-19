@@ -24,6 +24,7 @@ class MonsterTemplate
 public:
     float powerLevel; //static powerLevel of monster
     float monsterPower; //changes while making the monster to balance elements that go into monster
+    CCString *monsterSpriteName;
     MonsterSprite *createdMonster;
     
     virtual bool init(float powerLevel);

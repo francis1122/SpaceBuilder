@@ -29,7 +29,7 @@ bool PlayAreaTargets::init()
 
 void PlayAreaTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->enablePlayAreaInteractive();
-    GM->gameLayer->changeIndicatorState("Play Area or Target Monster");
+    GM->gameLayer->changeIndicatorState("Play Area");
 }
 
 void PlayAreaTargets::highlightNextInteractiveObjects(UIState* state){

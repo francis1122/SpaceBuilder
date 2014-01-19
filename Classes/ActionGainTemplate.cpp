@@ -40,7 +40,7 @@ void ActionGainTemplate::addYellowAugmentationStatus(){
     
 }
 
-void ActionGainTemplate::addPurpleAugmentationStatus(){
+void ActionGainTemplate::addGreenAugmentationStatus(){
     
 }
 
@@ -59,7 +59,7 @@ void ActionGainTemplate::addBlueAdditionalCost(){
 void ActionGainTemplate::addYellowAdditionalCost(){
 }
 
-void ActionGainTemplate::addPurpleAdditionalCost(){
+void ActionGainTemplate::addGreenAdditionalCost(){
 }
 
 
@@ -128,7 +128,7 @@ void ActionGainTemplate::addYellowMainStatus(){
     createdCard->setCardType(Spell);
 }
 
-void ActionGainTemplate::addPurpleMainStatus(){
+void ActionGainTemplate::addGreenMainStatus(){
     createdCard->cardTargets->targetingType = PlayArea;
     
 
@@ -137,7 +137,7 @@ void ActionGainTemplate::addPurpleMainStatus(){
     actionOne->init(Neutral);
     actionsGained->addObject(actionOne);
     Action *actionTwo = new Action();
-    actionTwo->init(Purple);
+    actionTwo->init(Green);
     actionsGained->addObject(actionTwo);
     status->initWithActionGain(actionsGained);
     createdCard->cardTargets->statuses->addObject(status);

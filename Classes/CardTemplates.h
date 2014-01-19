@@ -19,5 +19,8 @@
 #include "DrawDiscardTemplate.h"
 #include "PosionDamageTemplate.h"
 #include "OnDefendDirectDamageTemplate.h"
+#include "WashTemplate.h"
+#include "SellCardTemplate.h"
+#include "InstantMonsterTemplate.h"
 
 #endif

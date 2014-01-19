@@ -10,6 +10,7 @@
 #include "GameLayer.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -67,7 +68,7 @@ bool BetweenRoundLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("BetweenRoundLayer", "Arial", 24);
+    CCLabelTTF* pLabel = CCLabelTTF::create("BetweenRoundLayer", Main_Font, 24);
     
     // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
@@ -91,7 +92,6 @@ bool BetweenRoundLayer::init()
 void BetweenRoundLayer::startRound(CCObject* pSender)
 {
     //load game scene
-    GameManager *GM = GameManager::sharedGameManager();
 
     // create a scene. it's an autorelease object
     CCDirector* pDirector = CCDirector::sharedDirector();

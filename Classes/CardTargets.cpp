@@ -13,6 +13,8 @@
 #include "UIState.h"
 #include "Player.h"
 #include "Statuses.h"
+#include "GameLayer.h"
+#include "Constants.h"
 
 
 USING_NS_CC;
@@ -35,6 +37,9 @@ bool CardTargets::init()
     statuses->init();
     initialStatuses->init();
     targetAmount = 1;
+    
+    minMonsterLife = -1;
+    maxMonsterLife = -1;
     
     return true;
 }
@@ -60,9 +65,14 @@ void CardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* state)
     
 }
 
+void CardTargets::unableToActivateHighlight(UIState*)
+{
+    GM->gameLayer->changeIndicatorState("Cannot Play Card");
+    
+}
+
 //checks whether the ability can be activated
 bool CardTargets::isAbilityActivatable(UIState* state){
-    GameManager *GM = GameManager::sharedGameManager();
     //check if proper amount is possible
     if(targetingType == PlayArea_TargetMonsters){
         if(GM->monsterArray->count() >= targetAmount){
@@ -107,7 +117,6 @@ bool CardTargets::isAbilityActivatable(UIState* state){
 
 //targets objects to use ability on
 bool CardTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardSprite *card){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     CCObject *object;
@@ -199,7 +208,6 @@ void CardTargets::useInitialAbility(){
         status->applyStatus();
     }
 
-    GameManager *GM = GameManager::sharedGameManager();
 //    GM->player->organizeHand();
 //    GM->player->organizePlayedCards();
     GM->gameLayer->updateInterface();
@@ -232,7 +240,6 @@ void CardTargets::useAbility(){
 //    monster->updateInterface();
     
     
-    GameManager *GM = GameManager::sharedGameManager();
     GM->organizeMonsters();
     GM->organizeMarket();
     GM->gameLayer->updateInterface();
