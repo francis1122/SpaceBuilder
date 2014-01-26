@@ -34,14 +34,14 @@ void MonsterTargets::highlightInteractiveObjects(UIState* state){
         MonsterSprite *monster = (MonsterSprite*)object;
         if(monster->life >= minMonsterLife || minMonsterLife == -1){
             if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
-        if(tauntIsPresent){
-            if(monster->hasTaunt){
-            monster->enableInteractive();
+                if(tauntIsPresent){
+                    if(monster->hasTaunt){
+                        monster->enableInteractive();
+                    }
+                }else{
+                    monster->enableInteractive();
+                }
             }
-        }else{
-            monster->enableInteractive();
-        }
-        }
         }
     }
     GM->gameLayer->changeIndicatorState("Play Area or Target Monster");
@@ -57,13 +57,13 @@ void MonsterTargets::highlightNextInteractiveObjects(UIState* state){
         MonsterSprite *monster = (MonsterSprite*)object;
         if(monster->life >= minMonsterLife || minMonsterLife == -1){
             if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
-        if(tauntIsPresent){
-            if(monster->hasTaunt){
-                monster->enableInteractive();
-            }
-        }else{
-            monster->enableInteractive();
-        }
+                if(tauntIsPresent){
+                    if(monster->hasTaunt){
+                        monster->enableInteractive();
+                    }
+                }else{
+                    monster->enableInteractive();
+                }
             }
         }
     }
@@ -78,17 +78,17 @@ bool MonsterTargets::isAbilityActivatable(UIState* state){
     CCObject *object;
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-            if(monster->life >= minMonsterLife || minMonsterLife == -1){
-                if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
-                    if(tauntIsPresent){
-                        if(monster->hasTaunt){
-                            targetCount++;
-                        }
-                    }else{
+        if(monster->life >= minMonsterLife || minMonsterLife == -1){
+            if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+                if(tauntIsPresent){
+                    if(monster->hasTaunt){
                         targetCount++;
                     }
+                }else{
+                    targetCount++;
                 }
             }
+        }
     }
     
     
@@ -102,7 +102,7 @@ bool MonsterTargets::isAbilityActivatable(UIState* state){
 //targets objects to use ability on
 bool MonsterTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardSprite *card){
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
-
+    
     //monsters are an exceptable place
     CCObject *object;
     bool tauntIsPresent = GM->tauntPresent();
@@ -112,15 +112,15 @@ bool MonsterTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, Ca
         if(collisionRect.containsPoint(touchPoint)){
             if(monster->life >= minMonsterLife || minMonsterLife == -1){
                 if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
-            if(tauntIsPresent){
-                if(monster->hasTaunt){
-                    selectedTargets->addObject(monster);
-                    return true;
-                }
-            }else{
-                selectedTargets->addObject(monster);
-                return true;
-            }
+                    if(tauntIsPresent){
+                        if(monster->hasTaunt){
+                            selectedTargets->addObject(monster);
+                            return true;
+                        }
+                    }else{
+                        selectedTargets->addObject(monster);
+                        return true;
+                    }
                 }
             }
         }
@@ -144,17 +144,17 @@ bool MonsterTargets::targetObjectWithTargetingState(CCTouch* touch, UIState* sta
         MonsterSprite *monster = (MonsterSprite*)object;
         CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
         if(collisionRect.containsPoint(touchPoint)){
-            if(tauntIsPresent){
-                if(monster->life >= minMonsterLife || minMonsterLife == -1){
-                    if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
-                if(monster->hasTaunt){
-                    selectedTargets->addObject(monster);
-                    return true;
-                }
-            }else{
-                selectedTargets->addObject(monster);
-                return true;
-            }
+            if(monster->life >= minMonsterLife || minMonsterLife == -1){
+                if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+                    if(tauntIsPresent){
+                        if(monster->hasTaunt){
+                            selectedTargets->addObject(monster);
+                            return true;
+                        }
+                    }else{
+                        selectedTargets->addObject(monster);
+                        return true;
+                    }
                 }
             }
         }
@@ -173,7 +173,7 @@ bool MonsterTargets::isAbilityReady(){
 
 //changes the state
 void MonsterTargets::changeState(UIState* state, CardSprite *card){
-        state->transitionToCardTargetingState(card);
+    state->transitionToCardTargetingState(card);
 }
 
 void MonsterTargets::useInitialAbility(){

@@ -13,6 +13,7 @@
 #include "GameLayer.h"
 #include "Constants.h"
 #include "HandLayer.h"
+#include "Utility.h"
 
 USING_NS_CC;
 
@@ -44,7 +45,7 @@ bool CardSprite::init()
     
     //details of card
     CCSize detailSize = CCSizeMake(330, 260);
-    detailsLabel = CCLabelTTF::create("", Main_Font, 42, detailSize, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    detailsLabel = CCLabelTTF::create("", Main_Font, 42, detailSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
     detailsLabel->setColor(ccBLACK);
     detailsLabel->setPosition(ccp(190,155));
     textBox->addChild(detailsLabel, 2);
@@ -55,7 +56,7 @@ bool CardSprite::init()
     this->addChild(costBox, 2);
     
     CCSize costSize = CCSizeMake(150, 150);
-    costLabel = CCLabelTTF::create("0", Main_Font, 92, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    costLabel = CCLabelTTF::create("0", LARGE_NUMBER_FONT, 92, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     costLabel->setColor(ccWHITE);
     costLabel->setPosition(ccp(58,65));
     costBox->addChild(costLabel, 2);
@@ -123,6 +124,9 @@ void CardSprite::setSoulCostOfCard(int newSoulCost){
     CCString *newString = CCString::createWithFormat("%i", newSoulCost);
     costLabel->setString(newString->getCString());
     soulCost = newSoulCost;
+    
+    CCRenderTexture *damageShadow = Utility::createTTFStroke(costLabel, 7, ccBLACK, 255);
+    costBox->addChild(damageShadow, 1);
 }
 
 
@@ -137,6 +141,9 @@ void CardSprite::addActionGain(CCArray* actionArray){
         sprite->setScale(1.0);
         sprite->setPosition(ccpAdd(textBox->getPosition(), ccp(-20 + i * 80, 110)));
         addChild(sprite, 2);
+        
+//        CCRenderTexture *damageShadow = Utility::createTTFStroke(sprite, 7, ccBLACK, 255);
+  //      this->addChild(damageShadow, 1);
     }
 }
 
@@ -149,10 +156,12 @@ void CardSprite::setupDamageCard(int damage){
     
     CCSize costSize = CCSizeMake(150, 150);
     CCString *string =CCString::createWithFormat("%i", damage);
-    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), Main_Font, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), LARGE_NUMBER_FONT, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     damageLabel->setColor(ccWHITE);
     damageLabel->setPosition(ccp(255,460));
     this->addChild(damageLabel, 2);
+    CCRenderTexture *damageShadow = Utility::createTTFStroke(damageLabel, 7, ccBLACK, 255);
+    this->addChild(damageShadow, 1);
 }
 
 void CardSprite::setupSoulGainCard(int soulGain){
@@ -163,10 +172,13 @@ void CardSprite::setupSoulGainCard(int soulGain){
     
     CCSize costSize = CCSizeMake(150, 150);
     CCString *string =CCString::createWithFormat("%i", soulGain);
-    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), Main_Font, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    CCLabelTTF *damageLabel = CCLabelTTF::create(string->getCString(), LARGE_NUMBER_FONT, 200, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
     damageLabel->setColor(ccWHITE);
     damageLabel->setPosition(ccp(255,470));
     this->addChild(damageLabel, 2);
+    
+    CCRenderTexture *damageShadow = Utility::createTTFStroke(damageLabel, 7, ccBLACK, 255);
+    this->addChild(damageShadow, 1);
 
 }
 

@@ -11,6 +11,8 @@
 #include "Player.h"
 #include "Statuses.h"
 #include "Constants.h"
+#include "Utility.h"
+#include "AnimationManager.h"
 
 USING_NS_CC;
 
@@ -37,26 +39,24 @@ bool MonsterSprite::init()
     hasRange = false;
     
     //details of card
-    CCSize detailSize = CCSizeMake(330, 290);
-    detailsLabel = CCLabelTTF::create("", Main_Font, 48, detailSize, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    CCSize detailSize = CCSizeMake(325, 240);
+    detailsLabel = CCLabelTTF::create("", Main_Font, 48, detailSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
     detailsLabel->setColor(ccBLACK);
-    detailsLabel->setPosition(ccp(240,155));
+    detailsLabel->setPosition(ccp(240,235));
     this->addChild(detailsLabel);
     
-    attackLabel = CCLabelTTF::create("2", Main_Bold_Font, 128);
-    lifeLabel =  CCLabelTTF::create("4", Main_Bold_Font, 128);
+    attackLabel = CCLabelTTF::create("2", LARGE_NUMBER_FONT, 128);
+    lifeLabel =  CCLabelTTF::create("4", LARGE_NUMBER_FONT, 128);
     attackLabel->setColor(ccWHITE);
     lifeLabel->setColor(ccWHITE);
-    attackLabel->enableStroke(ccBLACK, 6);
-    lifeLabel->enableStroke(ccBLACK, 6);
-    attackLabel->setFontFillColor(ccBLACK, true);
-    lifeLabel->setFontFillColor(ccBLACK, true);
     
-    attackLabel->setPosition(CCPointMake(80, 73));
-    lifeLabel->setPosition(CCPointMake(390, 73));
+    attackLabel->setPosition(CCPointMake(85, 92));
+    lifeLabel->setPosition(CCPointMake(379, 92));
     
-    this->addChild(lifeLabel);
-    this->addChild(attackLabel);
+
+    
+    this->addChild(lifeLabel, 1);
+    this->addChild(attackLabel, 1);
     
     activeStatusArray = new CCArray();
     activeStatusArray->init();
@@ -71,6 +71,7 @@ bool MonsterSprite::init()
     glowSprite->setVisible(false);
     glowSprite->setScaleY(.7);
     this->addChild(glowSprite, -1);
+    lifeRender = NULL;
     
     return true;
 }
@@ -90,6 +91,19 @@ void MonsterSprite::updateInterface(){
     lifeLabel->setString(lifeString->getCString());
     CCString *attackString = CCString::createWithFormat("%i", attack);
     attackLabel->setString(attackString->getCString());
+    if(lifeRender){
+        lifeRender->removeFromParentAndCleanup(true);
+        lifeRender = NULL;
+    }
+    
+    if(attackRender){
+        attackRender->removeFromParentAndCleanup(true);
+        attackRender = NULL;
+    }
+    lifeRender = Utility::createTTFStroke(lifeLabel, 7, ccBLACK, 255);
+    attackRender = Utility::createTTFStroke(attackLabel, 7, ccBLACK, 255);
+    this->addChild(lifeRender);
+    this->addChild(attackRender);
     
 }
 
@@ -151,4 +165,9 @@ void MonsterSprite::setupMonsterImage(CCString* monserSpriteName)
     this->addChild(image);
 }
 
-
+void MonsterSprite::changeMonsterHealth(int healthOffset){
+    if(healthOffset < 0){
+        AM->createDamageIcon(healthOffset, this->getPosition());
+    }
+    life += healthOffset;
+}

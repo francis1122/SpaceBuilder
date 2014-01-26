@@ -46,13 +46,13 @@ bool TitleLayer::init()
     
     // add a "close" icon to exit the progress. it's an autorelease object
     
-    CCMenuItemSprite *pCloseItem = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("ButtonGlow"),
-                                                            CCSprite::createWithSpriteFrameName("ButtonGlow_Pressed"),
+    CCMenuItemSprite *pCloseItem = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("StartButton_Normal"),
+                                                            CCSprite::createWithSpriteFrameName("StartButton_Pressed"),
                                                             this,
                                                             menu_selector(TitleLayer::startGame));
     
 	pCloseItem->setPosition(ccp(visibleSize.width/2,
-                                100));
+                                150));
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
@@ -65,20 +65,22 @@ bool TitleLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("Rogue Deck", Main_Font, 24);
-    
+//    CCLabelTTF* pLabel = CCLabelTTF::create("Rogue Deck", Main_Font, 24);
+     CCSprite* title = CCSprite::createWithSpriteFrameName("Title");
     // position the label on the center of the screen
-    pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - pLabel->getContentSize().height));
+    title->setPosition(ccp(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height - title->getContentSize().height + 60));
     
     // add the label as a child to this layer
-    this->addChild(pLabel, 1);
+    this->addChild(title, 1);
     
     // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::create("HelloWorld.png");
+    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("MenuBG");
+    pSprite->setPosition(ccp(pSprite->getContentSize().width/2,
+                           pSprite->getContentSize().height/2));
     
     // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);

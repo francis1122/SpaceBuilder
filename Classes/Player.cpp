@@ -241,7 +241,7 @@ void Player::addCardToHand(){
 
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::addCard));
         animation->init(obj, AM);
-        animation->duration = .03;
+        animation->duration = .05;
         AM->addAnimation(animation);
         
         
@@ -329,3 +329,24 @@ void Player::shuffle(CCArray *array)
         array->exchangeObjectAtIndex(i, n);
     }
 }
+
+
+void Player::changeSoul(int soulOffset){
+    if(soulOffset > 0){
+        AM->createSoulIcon(soulOffset, ccp(70, 90));
+    }
+    this->soul += soulOffset;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

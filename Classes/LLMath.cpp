@@ -8,6 +8,7 @@
 
 #include "LLMath.h"
 
+USING_NS_CC;
 
 double LLMath::getDoubleValue(double max){
     
@@ -51,6 +52,4 @@ int LLMath::diceRoll(int range, int count){
     }
     return total;
 }
-
-
 

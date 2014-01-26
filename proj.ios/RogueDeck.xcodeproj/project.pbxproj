@@ -308,6 +308,8 @@
 		5A6D33EA183EAEFB00CB0174 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33E8183EAEFB00CB0174 /* Player.cpp */; };
 		5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */; };
 		5A6D33F4183EEEBE00CB0174 /* CardTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */; };
+		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
+		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -956,6 +958,10 @@
 		5A6D33F0183EE8DC00CB0174 /* CardTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargets.h; path = ../Classes/CardTargets.h; sourceTree = "<group>"; };
 		5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardTargetingState.cpp; path = ../Classes/CardTargetingState.cpp; sourceTree = "<group>"; };
 		5A6D33F3183EEEBE00CB0174 /* CardTargetingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargetingState.h; path = ../Classes/CardTargetingState.h; sourceTree = "<group>"; };
+		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
+		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
+		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
+		5ABBEAAE188E109500EE8A8A /* DamageIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageIcon.h; path = ../Classes/DamageIcon.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1490,8 +1496,7 @@
 			isa = PBXGroup;
 			children = (
 				5A0438F518585402008EF3F5 /* Constants.h */,
-				5A0439031864FC19008EF3F5 /* LLMath.cpp */,
-				5A0439041864FC19008EF3F5 /* LLMath.h */,
+				5ABBEA9C188BA92D00EE8A8A /* utility */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -2224,6 +2229,7 @@
 		5A6D33E4183DDFBF00CB0174 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				5ABBEAAC188E107100EE8A8A /* Visuals */,
 				5A6D33D31839EE5E00CB0174 /* CardSprite.cpp */,
 				5A6D33D41839EE5E00CB0174 /* CardSprite.h */,
 				5A6D33E5183DDFDD00CB0174 /* MonsterSprite.cpp */,
@@ -2249,6 +2255,26 @@
 				5A4488F11880B1D30024E488 /* Monster targets */,
 			);
 			name = CardTarget;
+			sourceTree = "<group>";
+		};
+		5ABBEA9C188BA92D00EE8A8A /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				5A0439031864FC19008EF3F5 /* LLMath.cpp */,
+				5A0439041864FC19008EF3F5 /* LLMath.h */,
+				5ABBEAA0188BADC900EE8A8A /* Utility.cpp */,
+				5ABBEAA1188BADCA00EE8A8A /* Utility.h */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
+		5ABBEAAC188E107100EE8A8A /* Visuals */ = {
+			isa = PBXGroup;
+			children = (
+				5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */,
+				5ABBEAAE188E109500EE8A8A /* DamageIcon.h */,
+			);
+			name = Visuals;
 			sourceTree = "<group>";
 		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
@@ -2407,6 +2433,7 @@
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				5A3B0075183F3E37004384CD /* Status.cpp in Sources */,
 				5A0438F418584871008EF3F5 /* Action.cpp in Sources */,
+				5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */,
 				15A3D91A1682F7D5002FB0C5 /* b2Contact.cpp in Sources */,
 				15A3D91B1682F7D5002FB0C5 /* b2ContactSolver.cpp in Sources */,
 				5A0438FF186409B5008EF3F5 /* IRDSTable.cpp in Sources */,
@@ -2635,6 +2662,7 @@
 				5A0439121877420F008EF3F5 /* MonsterLayer.cpp in Sources */,
 				379BB9C117F03F3700829B88 /* UICheckBox.cpp in Sources */,
 				5A04390F1875E70F008EF3F5 /* MultiTargetDirectDamageTemplate.cpp in Sources */,
+				5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */,
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
 				379BB9C417F03F3700829B88 /* UILabelAtlas.cpp in Sources */,

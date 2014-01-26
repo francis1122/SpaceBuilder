@@ -57,6 +57,6 @@ bool MonsterHealthOffsetDurationStatus::checkEnd(){
 
 //called at end of turn
 void MonsterHealthOffsetDurationStatus::updateStatus(MonsterSprite *monster){
-    monster->life += monsterHealthOffsetAmount;
+    monster->changeMonsterHealth(monsterHealthOffsetAmount);
     duration--;
 }

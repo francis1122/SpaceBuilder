@@ -45,12 +45,16 @@ bool PostRoundLayer::init()
     //    you may modify it.
     
     // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
+/*    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                                           "CloseNormal.png",
                                                           "CloseSelected.png",
                                                           this,
                                                           menu_selector(PostRoundLayer::nextRound));
-    
+    */
+    CCMenuItemSprite *pCloseItem = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("StartButton_Normal"),
+                                                            CCSprite::createWithSpriteFrameName("StartButton_Pressed"),
+                                                            this,
+                                                            menu_selector(PostRoundLayer::nextRound));
 	pCloseItem->setPosition(ccp(visibleSize.width/2,
                                 100));
     
@@ -65,20 +69,10 @@ bool PostRoundLayer::init()
     // add a label shows "Hello World"
     // create and initialize a label
     
-    CCLabelTTF* pLabel = CCLabelTTF::create("PostRoundLayer", Main_Font, 24);
     
-    // position the label on the center of the screen
-    pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - pLabel->getContentSize().height));
-    
-    // add the label as a child to this layer
-    this->addChild(pLabel, 1);
-    
-    // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-    
-    // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("Victory");
+    pSprite->setPosition(ccp(pSprite->getContentSize().width/2,
+                             pSprite->getContentSize().height/2));
     
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);

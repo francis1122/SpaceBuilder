@@ -40,6 +40,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>fonts/X_BAMBI.TTF</string>
+		<string>fonts/FETTE___.TTF</string>
 		<string>fonts/blue highway rg.tff</string>
 		<string>fonts/blue highway bd.tff</string>
 	</array>

@@ -19,7 +19,7 @@ public:
     bool isZoomed;
     bool isInteractive;
 
-    
+    void removeBaseObject();
     
 };
 

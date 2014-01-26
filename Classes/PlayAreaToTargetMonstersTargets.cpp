@@ -130,9 +130,9 @@ bool PlayAreaToTargetMonstersTargets::targetObjectWithTargetingState(CCTouch* to
         MonsterSprite *monster = (MonsterSprite*)object;
         CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width * monster->getScale(), monster->getContentSize().height * monster->getScale());
         if(collisionRect.containsPoint(touchPoint)){
-            if(tauntIsPresent){
-                if(monster->life >= minMonsterLife || minMonsterLife == -1){
-                    if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+            if(monster->life >= minMonsterLife || minMonsterLife == -1){
+                if(monster->life <= maxMonsterLife || maxMonsterLife == -1){
+                    if(tauntIsPresent){
                         if(monster->hasTaunt){
                             selectedTargets->addObject(monster);
                             return true;

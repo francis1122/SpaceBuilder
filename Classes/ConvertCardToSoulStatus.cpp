@@ -34,7 +34,7 @@ bool ConvertCardToSoulStatus::init(int powerLevel)
 
 void ConvertCardToSoulStatus::addStatusToCardSprite(CardSprite *card){
     GameManager *GM = GameManager::sharedGameManager();
-    GM->player->soul += card->soulCost + soulGainAmount;
+    GM->player->changeSoul(card->soulCost + soulGainAmount);
 }
 
 //checks whether the status can be used

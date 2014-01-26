@@ -42,7 +42,8 @@ bool GainSoulStatus::checkStart(){
 //called when status is given to object
 void GainSoulStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
-    GM->player->soul += soulGainAmount;
+    GM->player->changeSoul(soulGainAmount);
+
 }
 
 //called when the status ends

@@ -43,7 +43,7 @@ bool MonsterHealthOffsetStatus::initWithHealthOffset(int healthOffset){
 
 void MonsterHealthOffsetStatus::addStatusToGameObject(MonsterSprite *monster){
     //damage immediate, no need to add to monster
-    monster->life += monsterHealthOffsetAmount;
+    monster->changeMonsterHealth(monsterHealthOffsetAmount);
 }
 
 //checks whether the status can be used

@@ -15,3 +15,9 @@ bool BaseObject::initDefaultState()
     isInteractive = false;
     return true;
 }
+
+
+void BaseObject::removeBaseObject(){
+    this->removeFromParentAndCleanup(true);
+    
+}

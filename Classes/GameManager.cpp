@@ -80,7 +80,7 @@ void GameManager::startNewGame(){
     isInteractive = true;
     currentLevel = 1;
     currentLevelTemplate = new IntroLevelTemplate();
-    currentLevelTemplate->init(10 + (currentLevel * 3));
+    currentLevelTemplate->init(13 + (currentLevel * 3));
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -92,10 +92,10 @@ void GameManager::startNewRound(int level){
     int rand = arc4random()%2;
     if(rand == 0){
         currentLevelTemplate = new PlainsLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * 3));
+        currentLevelTemplate->init(13 + (currentLevel * 3));
     }else{
         currentLevelTemplate = new ForestLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * 3));
+        currentLevelTemplate->init(13 + (currentLevel * 3));
     }
 
     currentTurn = 1;
@@ -144,7 +144,7 @@ void GameManager::afterCardPlayedStateCheck(){
     for(int i = monsterArray->count() - 1; i >= 0; i--){
         MonsterSprite *monster = (MonsterSprite*)monsterArray->objectAtIndex(i);
         
-        if(monster->life <= 0){
+        if(monster->life <= 0 || monster->isDead){
             //activate killing blow
             CCObject *object = NULL;
             CCARRAY_FOREACH(monster->killingBlowArray, object){
@@ -254,7 +254,7 @@ void GameManager::organizeMarket(){
 
 void GameManager::sellCard(CardSprite* card){
     //give player money
-    player->soul += card->soulCost;
+    GM->player->changeSoul(card->soulCost);
     player->spendAction(Neutral);
     
     //remove card from deck and hand
@@ -277,7 +277,7 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
     //check if card is a market card
     if(marketCardArray->containsObject(marketCard)){
         if(player->soul >= marketCard->soulCost){
-            player->soul -= marketCard->soulCost;
+                GM->player->changeSoul(-marketCard->soulCost);
             player->spendAction(Neutral);
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
@@ -326,11 +326,12 @@ void GameManager::organizeMonsters(){
 }
 
 void GameManager::removeMonster(MonsterSprite *monster){
+    //do damage Icon
     //add card to market
     CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
     card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
     //give player soul for killing a monster quickly
-    player->soul += monster->location;
+//    player->soul += monster->location;
     card->turnsLeftInMarket = 3;
     this->addMarketCard(card);
     

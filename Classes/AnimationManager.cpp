@@ -18,6 +18,11 @@
 #include "AnimationObject.h"
 #include "Constants.h"
 #include "GameManager.h"
+#include "DamageIcon.h"
+#include "BaseObject.h"
+#include "GameLayer.h"
+#include "MonsterLayer.h"
+#include "HandLayer.h"
 
 using namespace cocos2d;
 
@@ -104,17 +109,54 @@ void AnimationManager::runAnimation(AnimationObject *animation){
     }
 
 }
-/*
+
 #pragma mark - helper functions
 
-void AnimationManager::addCard(CCNode *node)
-{
-    GM->gameLayer->addChild(node, 10000);
+void AnimationManager::createDamageIcon(int damage ,CCPoint point){
+    DamageIcon *icon = new DamageIcon();
+    icon->init(damage);
+    icon->autorelease();
+    GM->gameLayer->monsterLayer->addChild(icon, 1000000);
+    icon->setPosition(point);
+    icon->setScale(0.4);
+
+
+//    CCScaleTo *action = CCScaleTo::create(.05, .4);
+//    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
+    CCDelayTime *delay = CCDelayTime::create(.8);
+    CCFadeOut *fade = CCFadeOut::create(.4);
+    CCCallFunc *obj = CCCallFunc::create(icon, callfunc_selector(BaseObject::removeBaseObject));
+    
+    CCSequence *seq = CCSequence::create( delay, fade, obj, NULL);
+    icon->runAction(seq);
+/*    AnimationObject *animationObject = new AnimationObject();
+    animationObject->init(seq, icon);
+    animationObject->duration = .04;*/
+    
+    //this->addAnimation(animationObject);
 }
 
-void AnimationManager::removeCard(CCNode *node)
-{
-    node->removeFromParentAndCleanup(true);
+void AnimationManager::createSoulIcon(int soul, CCPoint point){
+    DamageIcon *icon = new DamageIcon();
+    icon->init(soul);
+    icon->autorelease();
+    icon->setColor(ccMAGENTA);
+    GM->gameLayer->handLayer->addChild(icon, 1000000);
+    icon->setPosition(point);
+    icon->setScale(0.4);
+    
+    
+    //    CCScaleTo *action = CCScaleTo::create(.05, .4);
+    //    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
+    CCDelayTime *delay = CCDelayTime::create(.8);
+    CCFadeOut *fade = CCFadeOut::create(.4);
+    CCCallFunc *obj = CCCallFunc::create(icon, callfunc_selector(BaseObject::removeBaseObject));
+    
+    CCSequence *seq = CCSequence::create( delay, fade, obj, NULL);
+    icon->runAction(seq);
+    /*    AnimationObject *animationObject = new AnimationObject();
+     animationObject->init(seq, icon);
+     animationObject->duration = .04;*/
+    
+    //this->addAnimation(animationObject);
 }
-*/
-

@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "BaseObject.h"
 
+
 class MonsterSprite : public BaseObject
 {
 public:
@@ -22,6 +23,9 @@ public:
     CREATE_FUNC(MonsterSprite);
     
     cocos2d::CCLabelTTF *lifeLabel;
+    
+    cocos2d::CCRenderTexture *lifeRender;
+    cocos2d::CCRenderTexture *attackRender;
     cocos2d::CCLabelTTF *attackLabel;
     
     cocos2d::CCLabelTTF *detailsLabel;
@@ -50,10 +54,13 @@ public:
     cocos2d::CCArray *killingBlowArray;
     cocos2d::CCArray *activeStatusArray;
     
+    
     void enableInteractive();
     void disableInteractive();
     
     void setupMonsterImage(cocos2d::CCString* monserSpriteName);
+    
+    void changeMonsterHealth(int healthOffset);
     
 private:
     

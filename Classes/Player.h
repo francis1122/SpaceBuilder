@@ -59,5 +59,7 @@ public:
     void drawHand();
     void reshuffleLibrary();
     void shuffle(CCArray *array);
+    
+    void changeSoul(int soulOffset);
 };
 #endif /* defined(__RogueDeck__Player__) */

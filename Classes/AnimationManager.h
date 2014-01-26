@@ -37,6 +37,10 @@ public:
     
   //  void addCard(CCNode *node);
   //  void removeCard(CCNode *node);
+
+    void createDamageIcon(int damage, CCPoint point);
+    
+    void createSoulIcon(int soul ,CCPoint point);
     
 private:
     CCArray *animationQueue;
