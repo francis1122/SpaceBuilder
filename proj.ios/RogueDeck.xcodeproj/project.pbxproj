@@ -308,6 +308,8 @@
 		5A6D33EA183EAEFB00CB0174 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33E8183EAEFB00CB0174 /* Player.cpp */; };
 		5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */; };
 		5A6D33F4183EEEBE00CB0174 /* CardTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */; };
+		5AADD32218961890002E06FE /* PreemptiveDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */; };
+		5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
@@ -958,6 +960,10 @@
 		5A6D33F0183EE8DC00CB0174 /* CardTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargets.h; path = ../Classes/CardTargets.h; sourceTree = "<group>"; };
 		5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardTargetingState.cpp; path = ../Classes/CardTargetingState.cpp; sourceTree = "<group>"; };
 		5A6D33F3183EEEBE00CB0174 /* CardTargetingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargetingState.h; path = ../Classes/CardTargetingState.h; sourceTree = "<group>"; };
+		5AADD32018961890002E06FE /* PreemptiveDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreemptiveDamageTemplate.h; path = ../Classes/PreemptiveDamageTemplate.h; sourceTree = "<group>"; };
+		5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PreemptiveDamageTemplate.cpp; path = ../Classes/PreemptiveDamageTemplate.cpp; sourceTree = "<group>"; };
+		5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHealthOffsetStatus.cpp; sourceTree = "<group>"; };
+		5AADD34E189A2C83002E06FE /* PlayerHealthOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerHealthOffsetStatus.h; sourceTree = "<group>"; };
 		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
@@ -2103,6 +2109,7 @@
 				5A04391D18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.h */,
 				5A448925188B10E30024E488 /* InstantKillMonsterStatus.cpp */,
 				5A448926188B10E30024E488 /* InstantKillMonsterStatus.h */,
+				5AADD350189A2C8E002E06FE /* PlayerStatus */,
 				5A043909187271AE008EF3F5 /* Targeting status */,
 				5A0438F018581907008EF3F5 /* ConditionalStatus */,
 			);
@@ -2153,6 +2160,8 @@
 				5A04391A1878B9CD008EF3F5 /* PosionDamageTemplate.h */,
 				5A04392A187F3620008EF3F5 /* OnDefendDirectDamageTemplate.cpp */,
 				5A04392B187F3620008EF3F5 /* OnDefendDirectDamageTemplate.h */,
+				5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */,
+				5AADD32018961890002E06FE /* PreemptiveDamageTemplate.h */,
 			);
 			name = "Damage Cards";
 			sourceTree = "<group>";
@@ -2255,6 +2264,15 @@
 				5A4488F11880B1D30024E488 /* Monster targets */,
 			);
 			name = CardTarget;
+			sourceTree = "<group>";
+		};
+		5AADD350189A2C8E002E06FE /* PlayerStatus */ = {
+			isa = PBXGroup;
+			children = (
+				5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */,
+				5AADD34E189A2C83002E06FE /* PlayerHealthOffsetStatus.h */,
+			);
+			name = PlayerStatus;
 			sourceTree = "<group>";
 		};
 		5ABBEA9C188BA92D00EE8A8A /* utility */ = {
@@ -2478,6 +2496,7 @@
 				15A3D9A31682F7F9002FB0C5 /* cpArray.c in Sources */,
 				15A3D9A41682F7F9002FB0C5 /* cpBB.c in Sources */,
 				15A3D9A51682F7F9002FB0C5 /* cpBBTree.c in Sources */,
+				5AADD32218961890002E06FE /* PreemptiveDamageTemplate.cpp in Sources */,
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
 				5A0438F91863EFCE008EF3F5 /* IRDSObject.cpp in Sources */,
@@ -2553,6 +2572,7 @@
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
+				5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,
 				15A3DA5E1682F826002FB0C5 /* CCPhysicsDebugNode.cpp in Sources */,

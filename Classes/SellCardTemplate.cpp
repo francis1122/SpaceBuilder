@@ -39,7 +39,7 @@ void SellCardTemplate::addYellowAugmentationStatus(){
 }
 
 void SellCardTemplate::addGreenAugmentationStatus(){
-    
+            
 }
 
 #pragma mark - additional cost
@@ -71,7 +71,7 @@ void SellCardTemplate::addGreenAdditionalCost(){
 void SellCardTemplate::addNeutralMainStatus(){
     
     //    cardPower -= LLMath::getIntValue(cardPower/3);
-    int soulGain = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/3, 1);
+    int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(soulGain);
     createdCard->cardTargets->statuses->addObject(status);
@@ -85,15 +85,32 @@ void SellCardTemplate::addRedMainStatus(){
 }
 
 void SellCardTemplate::addBlueMainStatus(){
-    addNeutralMainStatus();
+    GainActionStatus *status = new GainActionStatus();
+    Action *actionOne = new Action();
+    actionOne->init(Neutral);
+    actionsGained->addObject(actionOne);
+    status->initWithActionGain(actionsGained);
+    createdCard->cardTargets->statuses->addObject(status);
+    createdCard->setCardType(Spell);
+    mainDescription = CCString::createWithFormat("Destroy Card a Card");
 }
 
 void SellCardTemplate::addYellowMainStatus(){
-    addNeutralMainStatus();
+    int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
+    GainSoulStatus *status = new GainSoulStatus();
+    status->initWithSoulGain(soulGain);
+    createdCard->cardTargets->statuses->addObject(status);
+    mainDescription = CCString::createWithFormat("Destroy Card For %i Soul", soulGain);
+    createdCard->setCardType(Spell);
 }
 
 void SellCardTemplate::addGreenMainStatus(){
-    addNeutralMainStatus();
+    int healthGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
+    PlayerHealthOffsetStatus *status = new PlayerHealthOffsetStatus();
+    status->initWithHealthOffset(healthGain);
+    createdCard->cardTargets->statuses->addObject(status);
+    mainDescription = CCString::createWithFormat("Destroy Card For %i Health", healthGain);
+    createdCard->setCardType(Spell);
 }
 
 #pragma mark -

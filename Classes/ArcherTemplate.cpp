@@ -22,9 +22,9 @@ void ArcherTemplate::addAugmentationStatus()
 
 void ArcherTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/6 + LLMath::diceRoll(powerLevel/6,1));
+    createdMonster->life = (int)(powerLevel/5 + LLMath::diceRoll(powerLevel/7,1));
     createdMonster->maxLife = createdMonster->life;
-    createdMonster->attack = (int)(powerLevel/10 + LLMath::getIntValue(0,powerLevel/10));
+    createdMonster->attack = (int)(powerLevel/9 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 3;
     createdMonster->hasRange = true;
     createdMonster->monsterLevel = (int)powerLevel;

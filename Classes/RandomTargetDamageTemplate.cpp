@@ -138,7 +138,7 @@ void RandomTargetDamageTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->statuses->addObject(rndStatus);
     createdCard->setupDamageCard(attack);
-    mainDescription = CCString::createWithFormat("\nRandom %i monsters", targetAmount);
+    mainDescription = CCString::createWithFormat("Random %i monsters", targetAmount);
 }
 
 void RandomTargetDamageTemplate::addRedMainStatus(){

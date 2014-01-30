@@ -45,6 +45,8 @@ public:
     
     CCString *className;
     
+    int preemptiveBonus;
+    
 };
 
 #endif /* defined(__RogueDeck__Status__) */

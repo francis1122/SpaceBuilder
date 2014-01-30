@@ -22,5 +22,6 @@
 #include "WashTemplate.h"
 #include "SellCardTemplate.h"
 #include "InstantMonsterTemplate.h"
+#include "PreemptiveDamageTemplate.h"
 
 #endif

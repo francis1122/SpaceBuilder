@@ -42,6 +42,8 @@ public:
     int monsterHealthOffsetAmount;
     int duration;
     
+    int isPreemptive;
+    
     
 };
 

@@ -12,6 +12,7 @@
 #include "GainSoulStatus.h"
 #include "MonsterSprite.h"
 #include "GameManager.h"
+#include "Constants.h"
 #include "Player.h"
 
 
@@ -24,12 +25,18 @@ bool MonsterHealthOffsetDurationStatus::initWithHealthOffset(int healthOffset, i
     }
     monsterHealthOffsetAmount = healthOffset;
     this->duration = duration;
+        isPreemptive = false;
     return true;
 }
 
 void MonsterHealthOffsetDurationStatus::addStatusToGameObject(MonsterSprite *monster){
     //damage immediate, no need to add to monster
     monster->activeStatusArray->addObject(this);
+    if(GM->player->playedCards->count() <= 1){
+        //preemptive bounus
+        isPreemptive = true;
+    }
+    
 }
 
 //checks whether the status can be used
@@ -57,6 +64,10 @@ bool MonsterHealthOffsetDurationStatus::checkEnd(){
 
 //called at end of turn
 void MonsterHealthOffsetDurationStatus::updateStatus(MonsterSprite *monster){
-    monster->changeMonsterHealth(monsterHealthOffsetAmount);
+    int offset = monsterHealthOffsetAmount;
+    if(isPreemptive){
+        offset += preemptiveBonus;
+    }
+    monster->changeMonsterHealth(offset);
     duration--;
 }

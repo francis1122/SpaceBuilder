@@ -41,6 +41,7 @@ public:
     virtual void addBlueMainStatus();
     virtual void addYellowMainStatus();
     virtual void addGreenMainStatus();
+    int preemptiveBounus;
     
 };
 

@@ -69,6 +69,7 @@ bool MonsterSprite::init()
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 21,glowSprite->getContentSize().height/2 - 21));
     glowSprite->setVisible(false);
+    glowSprite->setColor(ccGREEN);
     glowSprite->setScaleY(.7);
     this->addChild(glowSprite, -1);
     lifeRender = NULL;

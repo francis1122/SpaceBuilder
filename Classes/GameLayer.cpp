@@ -180,7 +180,7 @@ bool GameLayer::init()
     
     
     //market/monster switch button
-    CCMenuItemSprite *switchButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+    /*CCMenuItemSprite *switchButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
                                                               CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                                               this,
                                                               menu_selector(GameLayer::switchButtonPressed));
@@ -193,7 +193,7 @@ bool GameLayer::init()
     pMenu->setPosition(CCPointZero);
     topSlideLayer->addChild(pMenu, 100);
     
-    
+    */
     
     
     

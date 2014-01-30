@@ -12,6 +12,8 @@
 #include "CardSprite.h"
 #include "CardTargets.h"
 #include "DirectDamageTemplate.h"
+#include <string>
+#include <streambuf>
 
 
 bool CardTemplate::init(float powerLevel, ActionType color ){
@@ -169,9 +171,9 @@ void CardTemplate::addGreenMainStatus(){
 #pragma mark -
 
 int CardTemplate::calculateSoul(){
-    int cost = (int)cardPower/2;
+    int cost = (int)cardPower/4;
     cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/3, 1);
+    cost += LLMath::diceRoll((int)cardPower/8, 1);
     return cost;
 }
 
@@ -181,17 +183,19 @@ void CardTemplate::addDescriptionText(){
         // add arrows to card
         createdCard->addActionGain(actionsGained);
         //move description down    detailsLabel->setPosition(ccp(240,155));
-        createdCard->detailsLabel->setPosition(ccp(240,90));
+        createdCard->detailsLabel->setPosition(ccp(createdCard->detailsLabel->getPosition().x, createdCard->detailsLabel->getPosition().y - 80));
     }
-    
     const char* main = "";
-    if(mainDescription) main = mainDescription->getCString();
+    if(mainDescription){ mainDescription = CCString::createWithFormat("%s\r", mainDescription->getCString()); main = mainDescription->getCString();}
     const char* cost = "";
-    if(costDescription) cost= costDescription->getCString();
+    if(costDescription){ costDescription = CCString::createWithFormat("%s", costDescription->getCString()); cost = costDescription->getCString();}
     const char* augmentation = "";
-    if(augmentationDescription) augmentation = augmentationDescription->getCString();
+    if(augmentationDescription){ augmentationDescription = CCString::createWithFormat("\r%s", augmentationDescription->getCString()); augmentation = augmentationDescription->getCString();}
     CCString *detailsString =CCString::createWithFormat("%s%s%s", cost, main, augmentation );
     createdCard->detailsLabel->setString(detailsString->getCString());
 }
+
+
+
 
 

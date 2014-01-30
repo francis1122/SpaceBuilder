@@ -48,8 +48,14 @@ bool DrawCardStatus::checkStart(){
 //called when status is given to object
 void DrawCardStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
+    int cards = drawCards;
+    if(GM->player->playedCards->count() <= 1){
+        //preemptive bounus
+        cards += preemptiveBonus;
+    }
+    
     int i = 0;
-    while( i < drawCards){
+    while( i < cards){
         GM->player->addCardToHand();
         i++;
     }

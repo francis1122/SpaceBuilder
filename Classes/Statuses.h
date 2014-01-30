@@ -19,6 +19,8 @@
 #include "RandomMonsterStatus.h"
 #include "MonsterHealthOffsetDurationStatus.h"
 #include "InstantKillMonsterStatus.h"
+#include "PlayerHealthOffsetStatus.h"
+
 
 
 #endif

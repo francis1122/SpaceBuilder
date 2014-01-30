@@ -13,8 +13,8 @@
 bool LevelTemplate::init(float _powerLevel){
     levelPower = _powerLevel;
     this->powerLevel = _powerLevel;
-    monstersLeft = 14;
-    maxLanes = 5;
+    monstersLeft = 15;
+    maxLanes = 6;
     return true;
 }
 

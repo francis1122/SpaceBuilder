@@ -20,7 +20,7 @@ bool Status::init()
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     className = new CCString();
     className->initWithFormat("Status");
-    
+    preemptiveBonus = 0;
     return true;
 }
 

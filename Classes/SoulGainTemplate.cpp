@@ -18,6 +18,7 @@ void SoulGainTemplate::createCardTargets(){
     CardTargets *cardTargets = new PlayAreaTargets();
     cardTargets->init();
     createdCard->cardTargets = cardTargets;
+    preemptiveBounus = 0;
 }
 
 #pragma mark - augmentation
@@ -39,7 +40,16 @@ void SoulGainTemplate::addYellowAugmentationStatus(){
 }
 
 void SoulGainTemplate::addGreenAugmentationStatus(){
-    
+    int rand = arc4random()%2;
+    if(rand == 0){
+        //killing blow augmentation
+        
+        int soul = cardPower/3;
+        powerLevel -= cardPower/2;
+        cardCostOffset += cardPower/4;
+        preemptiveBounus = soul;
+        augmentationDescription = CCString::createWithFormat("Preemptive %i", soul);
+    }
 }
 
 #pragma mark - additional cost
@@ -69,11 +79,10 @@ void SoulGainTemplate::addGreenAdditionalCost(){
 #pragma mark - main status
 
 void SoulGainTemplate::addNeutralMainStatus(){
-    
-//    cardPower -= LLMath::getIntValue(cardPower/3);
-    int soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
+    int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(soulGain);
+    status->preemptiveBonus = preemptiveBounus;
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupSoulGainCard(soulGain);
 }

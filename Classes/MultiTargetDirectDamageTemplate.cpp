@@ -34,21 +34,16 @@ void MultiTargetDirectDamageTemplate::addNeutralAugmentationStatus(){
 void MultiTargetDirectDamageTemplate::addRedAugmentationStatus(){
     int rand = arc4random()%3;
     if(rand == 0){
-        //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
         Status *killStatus;
-        GainActionStatus *status = new GainActionStatus();
-        CCArray *actions = new CCArray();
-        actions->init();
-        Action *action = new Action();
-        action->init(Red);
-        actions->addObject(action);
-        status->initWithActionGain(actions);
+        int soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/8, 1);
+        GainSoulStatus *status = new GainSoulStatus();
+        status->initWithSoulGain(soulGain);
         killStatus = status;
-        powerLevel -= powerLevel/6;
-        cardCostOffset += powerLevel/6;
-        augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Red Action");
+        powerLevel -= cardPower/4;
+        cardCostOffset += cardPower/4;
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Gain %i soul", soulGain);
         
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);
@@ -72,7 +67,7 @@ void MultiTargetDirectDamageTemplate::addBlueAugmentationStatus(){
         killStatus = status;
         powerLevel -= powerLevel/6;
         cardCostOffset += powerLevel/6;
-        augmentationDescription = CCString::createWithFormat("\nKilling Blow: Gain a Neutral Action");
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Gain a Neutral Action");
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);
         
@@ -92,7 +87,7 @@ void MultiTargetDirectDamageTemplate::addYellowAugmentationStatus(){
         powerLevel -= powerLevel/6;
         cardCostOffset += powerLevel/6;
         
-        augmentationDescription = CCString::createWithFormat("\nKilling Blow: Draw 2 Cards");
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
         
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(status);
@@ -135,7 +130,7 @@ void MultiTargetDirectDamageTemplate::addNeutralMainStatus(){
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupDamageCard(attack);
-    mainDescription = CCString::createWithFormat("\nMulti Shot 2");
+    mainDescription = CCString::createWithFormat("Multi Shot 2");
 }
 
 void MultiTargetDirectDamageTemplate::addRedMainStatus(){

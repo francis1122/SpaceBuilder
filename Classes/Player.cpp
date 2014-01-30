@@ -60,11 +60,11 @@ Player::Player()
 //        card->detailsLabel->setString("do damage to monster");
         cardTargets->targetingType = Monsters;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->init(3);
+        status->init(2);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        card->setupDamageCard(3);
+        card->setupDamageCard(2);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
@@ -79,11 +79,11 @@ Player::Player()
         CardTargets *cardTargets = new PlayAreaTargets();
         cardTargets->init();
         GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(3);
+        status->initWithSoulGain(2);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
-        card->setupSoulGainCard(3);
+        card->setupSoulGainCard(2);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }

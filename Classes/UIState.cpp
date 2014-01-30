@@ -158,7 +158,6 @@ void UIState::defaultInteractiveState(){
             card->enableInteractive();
         }
     }
-    if(GM->player->hasAction(Neutral)){
         CCARRAY_FOREACH(GM->marketCardArray, object){
             CardSprite *card = (CardSprite*)object;
             if(card->soulCost <= GM->player->soul){
@@ -167,7 +166,6 @@ void UIState::defaultInteractiveState(){
                 card->disableInteractive();
             }
         }
-    }
     
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;

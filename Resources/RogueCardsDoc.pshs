@@ -24,7 +24,7 @@
 			<key>MaxSheetSize</key>
 			<integer>4096</integer>
 			<key>NpotSize</key>
-			<string>{4096, 2684}</string>
+			<string>{4096, 4040}</string>
 			<key>Padding</key>
 			<integer>8</integer>
 			<key>PixelFormat</key>
@@ -64,12 +64,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAxAAAAAECAABkYjU2YTc1Nzhm
-					OGU0MzZmZjQyNGE5MzRmZDQzYTE3ZWNmODVl
-					OWNiOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAxAAAAAECAABmMWJkMTM2NWIw
+					ZWQ2MTkwNTQ1YjkwYTY0ZjI2MmY1ZjNkYTY4
+					NjczOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDNlMWZlOTsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDNlMWZlOTsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21vbnN0ZXJzL2FyY2hlci5wbmcA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -137,9 +137,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{486, 249}, {110.75, 75.75}}</string>
+						<string>{{927, 506}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1944, 996}, {443, 303}}</string>
+						<string>{{3708, 2024}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -165,7 +165,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1944, 996}</string>
+						<string>{3708, 2024}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -207,12 +207,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAwwAAAAECAABlMWJmZDVjNzI5
-					ZmU0NGRkMzYyOWM4MTI4MTQ2ODY4NGJiZjM4
-					Y2ZiOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAwwAAAAECAABlYTUxZDk0MTM4
+					MTU4YTkyYjU4MTBkNThiOTNlYWM2Yjc1MzNi
+					MTc1OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDQwMDExMjsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDQwMDExMjsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21lbnVzL2JhdHRsZWJnLnBuZwAA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -280,9 +280,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{288, 2}, {284, 160}}</string>
+						<string>{{860, 2}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{1152, 8}, {1136, 640}}</string>
+						<string>{{3440, 8}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -292,7 +292,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -308,7 +308,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{1152, 8}</string>
+						<string>{3440, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -350,12 +350,12 @@
 					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
 					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
 					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
-					AAQAAAADAwAAAAEAAMYAAAABAgAAY2VlZmI4
-					OGUzMmIyMTc3Y2NkNmFmMTdjYTIwMjQyMDQw
-					YWFmZDhmMzswMDAwMDAwMDswMDAwMDAwMDsw
+					AAQAAAADAwAAAAEAAMYAAAABAgAAMWVhZWZh
+					YmY5YTU2YzU5OWY5YjE4ODE1MjAzNDZjMjMy
+					YWQwMGFkYjswMDAwMDAwMDswMDAwMDAwMDsw
 					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
 					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
-					MDAxOzAxMDAwMDAxOzAwMDAwMDAwMDA0MDAx
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDA0MDAx
 					MTQ7L3VzZXJzL2h1bnRlci9kcm9wYm94L3Jv
 					Z3VlZGVjay9tZW51cy9iYXR0bGV0aXRsZS5w
 					bmcAAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
@@ -423,9 +423,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{697, 405}, {117, 38.5}}</string>
+						<string>{{240, 249}, {117, 38.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2788, 1620}, {468, 154}}</string>
+						<string>{{960, 996}, {468, 154}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -451,7 +451,7 @@
 						<key>OriginalSize</key>
 						<string>{468, 154}</string>
 						<key>Position</key>
-						<string>{2788, 1620}</string>
+						<string>{960, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -493,12 +493,12 @@
 					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
 					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
 					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
-					AAQAAAADAwAAAAEAAMgAAAABAgAAYmU1M2E5
-					Yjc5ZDM1NWQwMTBmNTMyNGQzYzFmNWRmN2I2
-					MmYyZGI0NDswMDAwMDAwMDswMDAwMDAwMDsw
+					AAQAAAADAwAAAAEAAMgAAAABAgAAOTQ5NzYx
+					OWJiMDUzMzQ1Y2I2MGRiZjk5NTVhNzE4OTY5
+					YTk5M2EwNTswMDAwMDAwMDswMDAwMDAwMDsw
 					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
 					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
-					MDAxOzAxMDAwMDAxOzAwMDAwMDAwMDAzZTFm
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDAzZTFm
 					ZWQ7L3VzZXJzL2h1bnRlci9kcm9wYm94L3Jv
 					Z3VlZGVjay9tb25zdGVycy9ibG9vZGdpYW50
 					LnBuZwDwAAAA/v///wEAAAAAAAAAEwAAAAQQ
@@ -566,9 +566,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{486, 362}, {110.75, 75.75}}</string>
+						<string>{{927, 619}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1944, 1448}, {443, 303}}</string>
+						<string>{{3708, 2476}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -594,7 +594,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1944, 1448}</string>
+						<string>{3708, 2476}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -635,11 +635,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC7AAAA
-					AQIAADI2ZTkzOThiYTMwZTFjMzRmNWU1YWUy
-					Yzk0ZjgzOGQzZGJjNGU4NWU7MDAwMDAwMDA7
+					AQIAAGVmMWIxOTg2ZDgwOWM1YjIzYTA1ZWUz
+					YTViY2NlOTAxNmIyNzIzY2Y7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjMzOGFjOy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svYnV0dG9uLnBu
 					ZwAA8AAAAP7///8BAAAAAAAAABMAAAAEEAAA
@@ -707,9 +707,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{383, 363}, {42.75, 40.5}}</string>
+						<string>{{240, 410}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{1532, 1452}, {171, 162}}</string>
+						<string>{{960, 1640}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -735,7 +735,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{1532, 1452}</string>
+						<string>{960, 1640}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -776,11 +776,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					vwAAAAECAABjNWMzZTlkNzdjYTQ2NmMzNzc3
-					ZjlmYWQ2Njc1YmU0ZDA3YmNiMjY2OzAwMDAw
+					vwAAAAECAAA1YzFmZjgyNWVmNzEyMmM3NTdm
+					OTRlYmJmOGE4MjkxY2QzM2RhNzJhOzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDI3MTU2MDsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL2J1dHRv
 					bmdsb3cucG5nAADwAAAA/v///wEAAAAAAAAA
@@ -848,9 +848,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{338, 363}, {42.75, 40.5}}</string>
+						<string>{{240, 368}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{1352, 1452}, {171, 162}}</string>
+						<string>{{960, 1472}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -876,7 +876,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{1352, 1452}</string>
+						<string>{960, 1472}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -917,12 +917,12 @@
 					RUE1N0UtRjc5Mi0zN0JELUFGOTEtNTIzOTBC
 					RkM1M0FEGAAAAAECAACBAAAAAQAIAO8XAAAB
 					AAgAAAAAAAAAAAABAAAAAQEAAC8AAAAEAAAA
-					AwMAAAABAADHAAAAAQIAADlkMzI5Y2ViM2Ex
-					OTBmNWNhYjc2MjhiMGY4NThiMmY0MzU3NWQ1
-					NGQ7MDAwMDAwMDA7MDAwMDAwMDA7MDAwMDAw
+					AwMAAAABAADHAAAAAQIAADc1YjEwOTgzMTg5
+					MjdlYjU0NmRhZTdkMzY0ZWZjYzQ0OTA1NGEy
+					MTM7MDAwMDAwMDA7MDAwMDAwMDA7MDAwMDAw
 					MDAwMDAwMDAyMDtjb20uYXBwbGUuYXBwLXNh
 					bmRib3gucmVhZC13cml0ZTswMDAwMDAwMTsw
-					MTAwMDAwMTswMDAwMDAwMDAwMjcxNTY1Oy91
+					MTAwMDAwMjswMDAwMDAwMDAwMjcxNTY1Oy91
 					c2Vycy9odW50ZXIvZHJvcGJveC9yb2d1ZWRl
 					Y2svYnV0dG9uZ2xvd19wcmVzc2VkLnBuZwAA
 					8AAAAP7///8BAAAAAAAAABMAAAAEEAAAaAAA
@@ -990,9 +990,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{428, 363}, {42.75, 40.5}}</string>
+						<string>{{240, 453}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{1712, 1452}, {171, 162}}</string>
+						<string>{{960, 1812}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1018,7 +1018,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{1712, 1452}</string>
+						<string>{960, 1812}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1059,12 +1059,12 @@
 					RS1GNzkyLTM3QkQtQUY5MS01MjM5MEJGQzUz
 					QUQYAAAAAQIAAIEAAAABAAgA7xcAAAEACAAA
 					AAAAAAAAAAEAAAABAQAALwAAAAQAAAADAwAA
-					AAEAAMMAAAABAgAAYjc1MTVmNzVlNmY1NzI2
-					ZThiNmJhNjFkNTQ1ZWU4Zjg3NTRhNWM4NDsw
+					AAEAAMMAAAABAgAANDNjMjQwZWRjMDMwMTVk
+					M2MzZjZkMDcxNGI3NmM2YmI0MTdjODQ3Nzsw
 					MDAwMDAwMDswMDAwMDAwMDswMDAwMDAwMDAw
 					MDAwMDIwO2NvbS5hcHBsZS5hcHAtc2FuZGJv
 					eC5yZWFkLXdyaXRlOzAwMDAwMDAxOzAxMDAw
-					MDAxOzAwMDAwMDAwMDAyNzE1NjM7L3VzZXJz
+					MDAyOzAwMDAwMDAwMDAyNzE1NjM7L3VzZXJz
 					L2h1bnRlci9kcm9wYm94L3JvZ3VlZGVjay9i
 					dXR0b25fcHJlc3NlZC5wbmcAAPAAAAD+////
 					AQAAAAAAAAATAAAABBAAAGQAAAAAAAAABRAA
@@ -1131,9 +1131,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{338, 405}, {42.75, 40.5}}</string>
+						<string>{{240, 495}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{1352, 1620}, {171, 162}}</string>
+						<string>{{960, 1980}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1159,7 +1159,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{1352, 1620}</string>
+						<string>{960, 1980}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1201,12 +1201,12 @@
 					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
 					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
 					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
-					AAQAAAADAwAAAAEAAMcAAAABAgAAYjVkY2Jk
-					YjU2NzhkNjI0Njg3MjE0ZTRlZTk2MzAzYzJi
-					NDY3ODAwNzswMDAwMDAwMDswMDAwMDAwMDsw
+					AAQAAAADAwAAAAEAAMcAAAABAgAAOTEyMDZm
+					OGYyYjVmNDcyNzNlMTQ5NWQ3OGM3MDMzODkw
+					NmQyNDljMDswMDAwMDAwMDswMDAwMDAwMDsw
 					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
 					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
-					MDAxOzAxMDAwMDAxOzAwMDAwMDAwMDAzMDQy
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDAzMDQy
 					YWY7L3VzZXJzL2h1bnRlci9kcm9wYm94L3Jv
 					Z3VlZGVjay9jYXJkcGFydHMvY2FyZGJhc2Uu
 					cG5nAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
@@ -1274,9 +1274,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{860, 288}, {125, 170}}</string>
+						<string>{{860, 288}, {115.5, 164.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3440, 1152}, {500, 680}}</string>
+						<string>{{3440, 1152}, {462, 658}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1286,7 +1286,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1298,15 +1298,15 @@
 						<key>OriginalImage_RelativePath</key>
 						<string>../../../../../Dropbox/RogueDeck/cardparts/CardBase.png/</string>
 						<key>OriginalRect</key>
-						<string>{{0, 0}, {500, 680}}</string>
+						<string>{{0, 0}, {462, 658}}</string>
 						<key>OriginalSize</key>
-						<string>{500, 680}</string>
+						<string>{462, 658}</string>
 						<key>Position</key>
 						<string>{3440, 1152}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
-						<string>{125, 170}</string>
+						<string>{115.5, 164.5}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -1344,12 +1344,12 @@
 					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
 					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
 					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
-					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAADU3
-					NzI4ZDEwNjA0NWVmNDNjMTZmZDVlMDI4NjJi
-					NGI1MmE0NTAyZDc7MDAwMDAwMDA7MDAwMDAw
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAADIx
+					YzFiNzY3ZmQ3NzVmYTkzOTA4NjI1MGE5N2Uy
+					YzBiMWVmM2MxZjI7MDAwMDAwMDA7MDAwMDAw
 					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
 					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
-					MDAwMDAwMTswMTAwMDAwMTswMDAwMDAwMDAw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
 					MzA0MmIzOy91c2Vycy9odW50ZXIvZHJvcGJv
 					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL2NhcmRj
 					b3N0Ym94LnBuZwAAAPAAAAD+////AQAAAAAA
@@ -1417,9 +1417,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{951, 460}, {31.75, 40.75}}</string>
+						<string>{{139, 692}, {31.75, 40.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3804, 1840}, {125, 163}}</string>
+						<string>{{556, 2768}, {125, 163}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1429,7 +1429,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1445,7 +1445,7 @@
 						<key>OriginalSize</key>
 						<string>{125, 163}</string>
 						<key>Position</key>
-						<string>{3804, 1840}</string>
+						<string>{556, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1487,12 +1487,12 @@
 					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
 					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
 					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
-					AC8AAAAEAAAAAwMAAAABAADLAAAAAQIAAGMw
-					ZjYyMDVkNGRmOTdhMmY0Y2ZiNzBlYTgwZGI4
-					M2FmYmU1ZmIzNGE7MDAwMDAwMDA7MDAwMDAw
+					AC8AAAAEAAAAAwMAAAABAADLAAAAAQIAAGI5
+					OThkM2FiNWM0ZWY4ZmE2OTY3Mjg3MDBmYWI4
+					ZjMxZDliNzA2MWY7MDAwMDAwMDA7MDAwMDAw
 					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
 					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
-					MDAwMDAwMTswMTAwMDAwMTswMDAwMDAwMDAw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
 					MzA0MmI3Oy91c2Vycy9odW50ZXIvZHJvcGJv
 					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL2NhcmRn
 					YWluc291bC5wbmcAAPAAAAD+////AQAAAAAA
@@ -1560,9 +1560,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 365}, {99.5, 79.75}}</string>
+						<string>{{284, 361}, {88.75, 84.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 1460}, {398, 317}}</string>
+						<string>{{1136, 1444}, {355, 338}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1584,15 +1584,15 @@
 						<key>OriginalImage_RelativePath</key>
 						<string>../../../../../Dropbox/RogueDeck/cardparts/CardGainSoul.png/</string>
 						<key>OriginalRect</key>
-						<string>{{0, 0}, {398, 317}}</string>
+						<string>{{0, 0}, {355, 338}}</string>
 						<key>OriginalSize</key>
-						<string>{398, 317}</string>
+						<string>{355, 338}</string>
 						<key>Position</key>
-						<string>{8, 1460}</string>
+						<string>{1136, 1444}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
-						<string>{99.5, 79.25}</string>
+						<string>{88.75, 84.5}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -1630,12 +1630,12 @@
 					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
 					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
 					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
-					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAADZl
-					NjhjZjk0ZjhjMzdjZjYxYWU1YWViYmUyZTQw
-					NGI4OWFlYWM3NjM7MDAwMDAwMDA7MDAwMDAw
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAAGIx
+					ZmZlZDJmYWUxNGU3MDM0ZWRhOGRhODMyODI3
+					YTQ5ODEwZDUwMTc7MDAwMDAwMDA7MDAwMDAw
 					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
 					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
-					MDAwMDAwMTswMTAwMDAwMTswMDAwMDAwMDAw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
 					MzA0MmI1Oy91c2Vycy9odW50ZXIvZHJvcGJv
 					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL2NhcmR0
 					ZXh0Ym94LnBuZwAAAPAAAAD+////AQAAAAAA
@@ -1703,9 +1703,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 446}, {98.5, 78}}</string>
+						<string>{{341, 930}, {98, 79.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 1784}, {394, 312}}</string>
+						<string>{{1364, 3720}, {392, 318}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1727,15 +1727,15 @@
 						<key>OriginalImage_RelativePath</key>
 						<string>../../../../../Dropbox/RogueDeck/cardparts/CardTextBox.png/</string>
 						<key>OriginalRect</key>
-						<string>{{0, 0}, {394, 312}}</string>
+						<string>{{0, 0}, {392, 318}}</string>
 						<key>OriginalSize</key>
-						<string>{394, 312}</string>
+						<string>{392, 318}</string>
 						<key>Position</key>
-						<string>{8, 1784}</string>
+						<string>{1364, 3720}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
-						<string>{98.5, 78}</string>
+						<string>{98, 79.5}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -1773,12 +1773,12 @@
 					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
 					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
 					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
-					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAADNk
-					YjBjNTVlZjNhYWQxMWJjMDI5Y2FlNjUwNWY4
-					OGU5ZmE0ZmQ1MGI7MDAwMDAwMDA7MDAwMDAw
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAADNh
+					ZDYwYTc1YTEzMzUwNjJiOWI0NzY0NzM2ZGI1
+					ODUwYmViOGFkOGE7MDAwMDAwMDA7MDAwMDAw
 					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
 					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
-					MDAwMDAwMTswMTAwMDAwMTswMDAwMDAwMDAw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
 					MzA0MmIxOy91c2Vycy9odW50ZXIvZHJvcGJv
 					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL2NhcmRf
 					YWN0aW9uLnBuZwAAAPAAAAD+////AQAAAAAA
@@ -1846,9 +1846,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{999, 288}, {35, 24.75}}</string>
+						<string>{{182, 692}, {35, 24.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3996, 1152}, {140, 99}}</string>
+						<string>{{728, 2768}, {140, 99}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1874,7 +1874,7 @@
 						<key>OriginalSize</key>
 						<string>{140, 99}</string>
 						<key>Position</key>
-						<string>{3996, 1152}</string>
+						<string>{728, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1917,11 +1917,11 @@
 					LTM3QkQtQUY5MS01MjM5MEJGQzUzQUQYAAAA
 					AQIAAIEAAAABAAgA7xcAAAEACAAAAAAAAAAA
 					AAEAAAABAQAALwAAAAQAAAADAwAAAAEAANAA
-					AAABAgAAMzRjNDkzNGMwMDU3MDI4ZDlmMjgy
-					NWQwZTJjMDZjMmNiZGJhMGMwOTswMDAwMDAw
+					AAABAgAANjY0MmVkZDA0NTEwM2U0MDY4MjRi
+					NTViMWEzYTU4NzczNjRhYzJjOTswMDAwMDAw
 					MDswMDAwMDAwMDswMDAwMDAwMDAwMDAwMDIw
 					O2NvbS5hcHBsZS5hcHAtc2FuZGJveC5yZWFk
-					LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAxOzAw
+					LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAyOzAw
 					MDAwMDAwMDAzMDQyYjk7L3VzZXJzL2h1bnRl
 					ci9kcm9wYm94L3JvZ3VlZGVjay9jYXJkcGFy
 					dHMvY2FyZF9pbWFnZV9hdHRhY2sucG5nAPAA
@@ -1990,9 +1990,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{850, 460}, {98.75, 90.75}}</string>
+						<string>{{927, 406}, {98.75, 90.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3400, 1840}, {393, 363}}</string>
+						<string>{{3708, 1624}, {393, 363}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2002,7 +2002,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2018,11 +2018,155 @@
 						<key>OriginalSize</key>
 						<string>{393, 363}</string>
 						<key>Position</key>
-						<string>{3400, 1840}</string>
+						<string>{3708, 1624}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{98.25, 90.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>Card_Image_Attack2</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vayQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA/AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAWAAAAAQEAAENhcmRfSW1hZ2VfQXR0
+					YWNrMi5wbmcAABgAAAABBgAABAAAABQAAAAk
+					AAAANAAAAEgAAABcAAAACAAAAAQDAADpEAIA
+					AAAAAAgAAAAEAwAAFcQFAAAAAAAIAAAABAMA
+					APY8EAAAAAAACAAAAAQDAAD9ZCEAAAAAAAgA
+					AAAEAwAAi0IwAAAAAAAIAAAABAMAALNLTQAA
+					AAAAGAAAAAEGAACcAAAArAAAALwAAADMAAAA
+					3AAAAOwAAAAIAAAAAAQAAEG4lkpzAAAAGAAA
+					AAECAAABAAAAAAAAAA8AAAAAAAAAAAAAAAAA
+					AAAAAAAAAQUAAAQAAAADAwAABgAAAAQAAAAD
+					AwAABAAAAAgAAAAEAwAABAAAAAAAAAAEAAAA
+					AwMAAPUBAAAMAAAAAQEAAE1hY2ludG9zaCBI
+					RAgAAAAEAwAAACCIPToAAAAIAAAAAAQAAEG2
+					75HaAAAAJAAAAAEBAAAxREVFQTU3RS1GNzky
+					LTM3QkQtQUY5MS01MjM5MEJGQzUzQUQYAAAA
+					AQIAAIEAAAABAAgA7xcAAAEACAAAAAAAAAAA
+					AAEAAAABAQAALwAAAAQAAAADAwAAAAEAANEA
+					AAABAgAANTlmMDlmODJiZGZjYWQ1ZDVmYTRh
+					OTllNjg0YjNkYWU2Y2MzY2UxYjswMDAwMDAw
+					MDswMDAwMDAwMDswMDAwMDAwMDAwMDAwMDIw
+					O2NvbS5hcHBsZS5hcHAtc2FuZGJveC5yZWFk
+					LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAyOzAw
+					MDAwMDAwMDA0ZDRiYjM7L3VzZXJzL2h1bnRl
+					ci9kcm9wYm94L3JvZ3VlZGVjay9jYXJkcGFy
+					dHMvY2FyZF9pbWFnZV9hdHRhY2syLnBuZwAA
+					AADwAAAA/v///wEAAAAAAAAAEwAAAAQQAAB8
+					AAAAAAAAAAUQAAD8AAAAAAAAABAQAAAsAQAA
+					AAAAAEAQAAAcAQAAAAAAAFQQAABUAQAAAAAA
+					AFUQAABgAQAAAAAAAFYQAABMAQAAAAAAAAIg
+					AAAIAgAAAAAAABAgAACIAQAAAAAAABEgAAC8
+					AQAAAAAAABIgAACcAQAAAAAAABMgAACsAQAA
+					AAAAACAgAADoAQAAAAAAADAgAABMAQAAAAAA
+					AAHAAABsAQAAAAAAABHAAAAUAAAAAAAAABLA
+					AAB8AQAAAAAAABDQAAAUAgAAAAAAAIDwAAAg
+					AgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>Card_Image_Attack2</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{375, 417}, {78, 79.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{1500, 1668}, {312, 319}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>Card_Image_Attack2</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/Card_Image_Attack2.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/Card_Image_Attack2.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {312, 319}}</string>
+						<key>OriginalSize</key>
+						<string>{312, 319}</string>
+						<key>Position</key>
+						<string>{1500, 1668}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{78, 79.75}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -2059,11 +2203,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC9AAAA
-					AQIAADg0YTFlNTgzZWFmNWU3NjEzZjkyODcw
-					ODk4YTgyNmU0ZTZhYTY0NjM7MDAwMDAwMDA7
+					AQIAADAxODJiNjJmZGM4ZTkxNDY3ZWIzZTU3
+					YzkzMjMyZGVjMmJiNDVkYWE7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjY4ZDQ2Oy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svaGFuZGdsb3cu
 					cG5nAAAAAPAAAAD+////AQAAAAAAAAATAAAA
@@ -2201,12 +2345,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAwQAAAAECAAA1NDZmOWM2NzYz
-					NTQ2MTVlZDg0ZTg2NDEzN2ViNzdmMzA1NmIx
-					MmI5OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAwQAAAAECAAAxYzYzY2ZlMGFk
+					ODY5NzJhODUyOGRmNjU1ODk5MzBmNTY5NGYy
+					MzM1OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDQwODYxZjsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDQwODYxZjsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21lbnVzL21lbnViZy5wbmcAAAAA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -2274,9 +2418,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{860, 2}, {284, 160}}</string>
+						<string>{{574, 2}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{3440, 8}, {1136, 640}}</string>
+						<string>{{2296, 8}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2286,7 +2430,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2302,7 +2446,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{3440, 8}</string>
+						<string>{2296, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2344,12 +2488,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAxAAAAAECAAAzOWI2ZDc3MDA3
-					ZmUxNDRjYjFiZTQxYWRiMjAzZWQxZjcwYTYx
-					YjIyOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAxAAAAAECAAA4Mzg2ZTM1MmJi
+					NDhkNjAyZjU5MWQ3ODM3MDM0Y2ViMjFlYzU5
+					OTEyOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDNlMWZlYjsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDNlMWZlYjsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21vbnN0ZXJzL21pbmlvbi5wbmcA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -2417,9 +2561,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{737, 450}, {110.75, 75.75}}</string>
+						<string>{{115, 931}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2948, 1800}, {443, 303}}</string>
+						<string>{{460, 3724}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2429,7 +2573,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2445,7 +2589,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{2948, 1800}</string>
+						<string>{460, 3724}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2486,11 +2630,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					wQAAAAECAABiZDMzODk5YWI4OWI0MzJkNmU0
-					YzU5NWUwOTRkYjBkYzllYjk4ZGE0OzAwMDAw
+					wQAAAAECAABjNmRlOThlZWU5MWU0MTJmYzM5
+					OTZhMmY2MDY4YTQ4ODY0YjhiMjBmOzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDNlNzMzMTsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL21vbnN0
 					ZXJsYXllci5wbmcAAAAA8AAAAP7///8BAAAA
@@ -2627,12 +2771,12 @@
 					RS1GNzkyLTM3QkQtQUY5MS01MjM5MEJGQzUz
 					QUQYAAAAAQIAAIEAAAABAAgA7xcAAAEACAAA
 					AAAAAAAAAAEAAAABAQAALwAAAAQAAAADAwAA
-					AAEAAMMAAAABAgAAYTkzODZiOWNiYmQyOWQz
-					OTkyNDEzOGQ4ZDhhMjdjMWRhMDFkMzgzMDsw
+					AAEAAMMAAAABAgAAZjBiYzU0NzgyNDAxNGU4
+					NDRlODNhM2YwMjEyNzg1NWE1MmM3MTQxOTsw
 					MDAwMDAwMDswMDAwMDAwMDswMDAwMDAwMDAw
 					MDAwMDIwO2NvbS5hcHBsZS5hcHAtc2FuZGJv
 					eC5yZWFkLXdyaXRlOzAwMDAwMDAxOzAxMDAw
-					MDAxOzAwMDAwMDAwMDAzZTczMzM7L3VzZXJz
+					MDAyOzAwMDAwMDAwMDAzZTczMzM7L3VzZXJz
 					L2h1bnRlci9kcm9wYm94L3JvZ3VlZGVjay9t
 					b25zdGVybGF5ZXJiZy5wbmcAAPAAAAD+////
 					AQAAAAAAAAATAAAABBAAAGQAAAAAAAAABRAA
@@ -2768,11 +2912,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					wAAAAAECAAAzNGQ4NDk2OGZiYjBkZmFhZGY3
-					NzUzNzVjMTI3M2Q0YmJlMDE4OWU5OzAwMDAw
+					wAAAAAECAABjYTdhN2Y4OGE4YWUwM2E4ODNi
+					MDI4Y2ViNDg4MWQ4YzA3ZjkzNzE1OzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDNlNzMyZjsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL21vbnN0
 					ZXJsaW5lLnBuZwDwAAAA/v///wEAAAAAAAAA
@@ -2840,9 +2984,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{987, 288}, {261.75, 10.5}}</string>
+						<string>{{1005, 506}, {261.75, 10.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3948, 1152}, {1045, 42}}</string>
+						<string>{{4020, 2024}, {1045, 42}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2868,7 +3012,7 @@
 						<key>OriginalSize</key>
 						<string>{1045, 42}</string>
 						<key>Position</key>
-						<string>{3948, 1152}</string>
+						<string>{4020, 2024}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2910,12 +3054,12 @@
 					N0UtRjc5Mi0zN0JELUFGOTEtNTIzOTBCRkM1
 					M0FEGAAAAAECAACBAAAAAQAIAO8XAAABAAgA
 					AAAAAAAAAAABAAAAAQEAAC8AAAAEAAAAAwMA
-					AAABAADCAAAAAQIAADZjNTQwMTA0MGVkZjA2
-					OGY3OWE1YTIyYzk3ZGE2YzQzYWY0OGNhNDg7
+					AAABAADCAAAAAQIAADI4NDhmNTljMzU3NDE4
+					YmY3NWM5MTU0ODU5MzU5MTcxNTQ2MmQ2NmI7
 					MDAwMDAwMDA7MDAwMDAwMDA7MDAwMDAwMDAw
 					MDAwMDAyMDtjb20uYXBwbGUuYXBwLXNhbmRi
 					b3gucmVhZC13cml0ZTswMDAwMDAwMTswMTAw
-					MDAwMTswMDAwMDAwMDAwM2UxZmU1Oy91c2Vy
+					MDAwMjswMDAwMDAwMDAwM2UxZmU1Oy91c2Vy
 					cy9odW50ZXIvZHJvcGJveC9yb2d1ZWRlY2sv
 					bW9uc3RlcnMvb296ZS5wbmcAAADwAAAA/v//
 					/wEAAAAAAAAAEwAAAAQQAABoAAAAAAAAAAUQ
@@ -2982,9 +3126,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{164, 363}, {110.75, 75.75}}</string>
+						<string>{{228, 930}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{656, 1452}, {443, 303}}</string>
+						<string>{{912, 3720}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3010,7 +3154,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{656, 1452}</string>
+						<string>{912, 3720}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3051,11 +3195,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC9AAAA
-					AQIAADE3NzRhMmRkNzUwZTBlN2JhZTMxOWRm
-					NjM3N2IzNjZkMThlMWQ5NGQ7MDAwMDAwMDA7
+					AQIAADRlMWMzMjVkNzUzNzI5YmU3MDYyNDM4
+					OGVjNTFkZjVmNmRiMzZmYmI7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjcxNTg5Oy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svcGxheWdsb3cu
 					cG5nAAAAAPAAAAD+////AQAAAAAAAAATAAAA
@@ -3194,11 +3338,11 @@
 					RC1BRjkxLTUyMzkwQkZDNTNBRBgAAAABAgAA
 					gQAAAAEACADvFwAAAQAIAAAAAAAAAAAAAQAA
 					AAEBAAAvAAAABAAAAAMDAAAAAQAAzQAAAAEC
-					AAAyZTljNjJhYmUwZTk4YTA1YmVlMDNiNWYy
-					OWNkZmUxNTE2ZWM5ZjIyOzAwMDAwMDAwOzAw
+					AABhODAzYjM3MjkzMDhlMjcwYTNmYWVlNTll
+					MWNmZTUwM2FmNWE4YjVlOzAwMDAwMDAwOzAw
 					MDAwMDAwOzAwMDAwMDAwMDAwMDAwMjA7Y29t
 					LmFwcGxlLmFwcC1zYW5kYm94LnJlYWQtd3Jp
-					dGU7MDAwMDAwMDE7MDEwMDAwMDE7MDAwMDAw
+					dGU7MDAwMDAwMDE7MDEwMDAwMDI7MDAwMDAw
 					MDAwMDQwMDExNjsvdXNlcnMvaHVudGVyL2Ry
 					b3Bib3gvcm9ndWVkZWNrL21lbnVzL3N0YXJ0
 					YnV0dG9uX25vcm1hbC5wbmcAAAAA8AAAAP7/
@@ -3266,9 +3410,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{815, 450}, {66.75, 33.75}}</string>
+						<string>{{2, 692}, {66.75, 33.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3260, 1800}, {265, 133}}</string>
+						<string>{{8, 2768}, {265, 133}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3278,7 +3422,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3294,7 +3438,7 @@
 						<key>OriginalSize</key>
 						<string>{265, 133}</string>
 						<key>Position</key>
-						<string>{3260, 1800}</string>
+						<string>{8, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3337,11 +3481,11 @@
 					RC1BRjkxLTUyMzkwQkZDNTNBRBgAAAABAgAA
 					gQAAAAEACADvFwAAAQAIAAAAAAAAAAAAAQAA
 					AAEBAAAvAAAABAAAAAMDAAAAAQAAzgAAAAEC
-					AAA3MTdiNDE1OTcwMGUzMjAxMjJmZWQ1MGQ4
-					NDAwNGQ3YzM5ZTNlOWRkOzAwMDAwMDAwOzAw
+					AAA4ZTcwZjRiMmM3ZjYzYmYxMjc4ZTA3NDVh
+					MjZhZTg1MjJjZGZmOGE0OzAwMDAwMDAwOzAw
 					MDAwMDAwOzAwMDAwMDAwMDAwMDAwMjA7Y29t
 					LmFwcGxlLmFwcC1zYW5kYm94LnJlYWQtd3Jp
-					dGU7MDAwMDAwMDE7MDEwMDAwMDE7MDAwMDAw
+					dGU7MDAwMDAwMDE7MDEwMDAwMDI7MDAwMDAw
 					MDAwMDQwMDExODsvdXNlcnMvaHVudGVyL2Ry
 					b3Bib3gvcm9ndWVkZWNrL21lbnVzL3N0YXJ0
 					YnV0dG9uX3ByZXNzZWQucG5nAAAA8AAAAP7/
@@ -3409,9 +3553,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{815, 519}, {66.75, 33.75}}</string>
+						<string>{{71, 692}, {66.75, 33.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3260, 2076}, {265, 133}}</string>
+						<string>{{284, 2768}, {265, 133}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3421,7 +3565,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3437,7 +3581,7 @@
 						<key>OriginalSize</key>
 						<string>{265, 133}</string>
 						<key>Position</key>
-						<string>{3260, 2076}</string>
+						<string>{284, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3479,12 +3623,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAwAAAAAECAABjNzcyOTVhZGEx
-					NzNjZDgzZjE0Yzk5ODI4OTNjMDE5M2QzNDRl
-					OWVjOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAwAAAAAECAABlZGNkOGQ0ZTc3
+					MzRlZDc1OGE0MGJjZTY1MWUzZWU1MGZmMDVl
+					NGUxOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDQwMDEwZTsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDQwMDEwZTsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21lbnVzL3RpdGxlLnBuZwDwAAAA/v//
 					/wEAAAAAAAAAEwAAAAQQAABsAAAAAAAAAAUQ
@@ -3551,9 +3695,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{951, 552}, {118.5, 62}}</string>
+						<string>{{288, 692}, {118.5, 62}}</string>
 						<key>Frame-HD</key>
-						<string>{{3804, 2208}, {474, 248}}</string>
+						<string>{{1152, 2768}, {474, 248}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3563,7 +3707,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3579,7 +3723,7 @@
 						<key>OriginalSize</key>
 						<string>{474, 248}</string>
 						<key>Position</key>
-						<string>{3804, 2208}</string>
+						<string>{1152, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3621,12 +3765,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAwwAAAAECAABhMGY1MzlhY2Nj
-					YTI1YzlhZDIwNGM3YTVjOGUzMDFiYjg5ZGEx
-					ZmMwOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAwwAAAAECAAAyODhjMWZhNWYx
+					OWNkZTYzODA5NWRkOWJlZmJiNjZiOTBhMDdi
+					MmNmOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDNlMWZlNzsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDNlMWZlNzsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21vbnN0ZXJzL3Ryb2xsLnBuZwAA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -3694,9 +3838,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{850, 553}, {110.75, 75.75}}</string>
+						<string>{{2, 931}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3400, 2212}, {443, 303}}</string>
+						<string>{{8, 3724}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3706,7 +3850,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3722,7 +3866,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{3400, 2212}</string>
+						<string>{8, 3724}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3764,12 +3908,12 @@
 					RUVBNTdFLUY3OTItMzdCRC1BRjkxLTUyMzkw
 					QkZDNTNBRBgAAAABAgAAgQAAAAEACADvFwAA
 					AQAIAAAAAAAAAAAAAQAAAAEBAAAvAAAABAAA
-					AAMDAAAAAQAAwgAAAAECAAA1Y2IzNDFmZjBm
-					ZGI4MmYxMjg1NjczNzNiZmUzYTM2NTc0MGY5
-					MGNkOzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
+					AAMDAAAAAQAAwgAAAAECAAA5MDA0MTVlY2Q3
+					Mzk4OTdjN2VlMWJlYTc1NzE1NTdlMWE3ZjY2
+					M2Y1OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAw
 					MDAwMDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1z
 					YW5kYm94LnJlYWQtd3JpdGU7MDAwMDAwMDE7
-					MDEwMDAwMDE7MDAwMDAwMDAwMDQwMDExMDsv
+					MDEwMDAwMDI7MDAwMDAwMDAwMDQwMDExMDsv
 					dXNlcnMvaHVudGVyL2Ryb3Bib3gvcm9ndWVk
 					ZWNrL21lbnVzL3ZpY3RvcnkucG5nAAAA8AAA
 					AP7///8BAAAAAAAAABMAAAAEEAAAbAAAAAAA
@@ -3837,9 +3981,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{574, 2}, {284, 160}}</string>
+						<string>{{288, 2}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{2296, 8}, {1136, 640}}</string>
+						<string>{{1152, 8}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3865,7 +4009,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{2296, 8}</string>
+						<string>{1152, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3906,11 +4050,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					vwAAAAECAAA1NDlkOWJlYmI5MGUzZWY1OTUy
-					NjQ4MmVjYzk5NWVmNzJhNjVmMTZkOzAwMDAw
+					vwAAAAECAAA3ZDY1ODcwNmM3Yzg0YmIzOGJj
+					M2Y0NTEyMmQ1NGNiMjE4OWI5ZTc1OzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDIxNjg0NDsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL2JhY2tn
 					cm91bmQucG5nAADwAAAA/v///wEAAAAAAAAA
@@ -4047,11 +4191,11 @@
 					QUY5MS01MjM5MEJGQzUzQUQYAAAAAQIAAIEA
 					AAABAAgA7xcAAAEACAAAAAAAAAAAAAEAAAAB
 					AQAALwAAAAQAAAADAwAAAAEAALkAAAABAgAA
-					MzhjYWZhNjkxMDNiMDliYWZkMTc2NjFlYTgx
-					NDQ0OGEwMTdlOTgwMDswMDAwMDAwMDswMDAw
+					ZGFlODU4MDYyOWEwYmE0OGFkNjZiYzZjMGY0
+					MTVmODM3ZTNkNjQ2MzswMDAwMDAwMDswMDAw
 					MDAwMDswMDAwMDAwMDAwMDAwMDIwO2NvbS5h
 					cHBsZS5hcHAtc2FuZGJveC5yZWFkLXdyaXRl
-					OzAwMDAwMDAxOzAxMDAwMDAxOzAwMDAwMDAw
+					OzAwMDAwMDAxOzAxMDAwMDAyOzAwMDAwMDAw
 					MDAyMTY4NDA7L3VzZXJzL2h1bnRlci9kcm9w
 					Ym94L3JvZ3VlZGVjay9jYXJkLnBuZwAAAADw
 					AAAA/v///wEAAAAAAAAAEwAAAAQQAABYAAAA
@@ -4119,9 +4263,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{564, 293}, {109.75, 160}}</string>
+						<string>{{280, 249}, {109.75, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{2256, 1172}, {439, 640}}</string>
+						<string>{{1120, 996}, {439, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4147,7 +4291,7 @@
 						<key>OriginalSize</key>
 						<string>{439, 640}</string>
 						<key>Position</key>
-						<string>{2256, 1172}</string>
+						<string>{1120, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4188,11 +4332,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC9AAAA
-					AQIAADM1ZmM5MTkzYzE4YzIxMzM3ODM3MWJj
-					ODZjZjFkNTc2Yzc2ZjFjZTU7MDAwMDAwMDA7
+					AQIAAGFlYzkzZTNhYzEzZjk5YWJjOThlN2M0
+					NDM2OGU2ZmY1NTc5NmQ2MTI7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjY4ZDQ4Oy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svY2FyZGJhY2su
 					cG5nAAAAAPAAAAD+////AQAAAAAAAAATAAAA
@@ -4260,9 +4404,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{325, 249}, {112, 159}}</string>
+						<string>{{233, 769}, {112, 159}}</string>
 						<key>Frame-HD</key>
-						<string>{{1300, 996}, {448, 636}}</string>
+						<string>{{932, 3076}, {448, 636}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4272,7 +4416,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4288,7 +4432,7 @@
 						<key>OriginalSize</key>
 						<string>{448, 636}</string>
 						<key>Position</key>
-						<string>{1300, 996}</string>
+						<string>{932, 3076}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4329,12 +4473,12 @@
 					RUE1N0UtRjc5Mi0zN0JELUFGOTEtNTIzOTBC
 					RkM1M0FEGAAAAAECAACBAAAAAQAIAO8XAAAB
 					AAgAAAAAAAAAAAABAAAAAQEAAC8AAAAEAAAA
-					AwMAAAABAADJAAAAAQIAAGM1YTkxYzgxMzZk
-					ZGViNWZjY2ViNmIwZjU5MzExNWY3YjdkMDg1
-					MDE7MDAwMDAwMDA7MDAwMDAwMDA7MDAwMDAw
+					AwMAAAABAADJAAAAAQIAADdjNWQ5Yjk3Yzcz
+					ZTlmOTE2Yzg1ZDQ3YTVkNjcyYWVmNzI3YjVi
+					Zjc7MDAwMDAwMDA7MDAwMDAwMDA7MDAwMDAw
 					MDAwMDAwMDAyMDtjb20uYXBwbGUuYXBwLXNh
 					bmRib3gucmVhZC13cml0ZTswMDAwMDAwMTsw
-					MTAwMDAwMTswMDAwMDAwMDAwMjY4ZDRjOy91
+					MTAwMDAwMjswMDAwMDAwMDAwMjY4ZDRjOy91
 					c2Vycy9odW50ZXIvZHJvcGJveC9yb2d1ZWRl
 					Y2svY2FyZGJhY2tfZGVzYXR1cmF0ZWQucG5n
 					AAAAAPAAAAD+////AQAAAAAAAAATAAAABBAA
@@ -4402,9 +4546,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{164, 249}, {112, 159}}</string>
+						<string>{{119, 769}, {112, 159}}</string>
 						<key>Frame-HD</key>
-						<string>{{656, 996}, {448, 636}}</string>
+						<string>{{476, 3076}, {448, 636}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4414,7 +4558,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4430,7 +4574,7 @@
 						<key>OriginalSize</key>
 						<string>{448, 636}</string>
 						<key>Position</key>
-						<string>{656, 996}</string>
+						<string>{476, 3076}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4471,11 +4615,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC9AAAA
-					AQIAAGY0NjFkZTEzOGI4MWE1ZDc3MDY1YTMz
-					NThlMGRmNjQwOGUzZjIzYjg7MDAwMDAwMDA7
+					AQIAADU3NTFlMmVjN2FkZTZlYmEzY2FkNjky
+					MDYyMDE0OTM2MzA3NWRmYTc7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjY4ZDRhOy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svY2FyZGdsb3cu
 					cG5nAAAAAPAAAAD+////AQAAAAAAAAATAAAA
@@ -4612,11 +4756,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					vwAAAAECAABmNWQzMDJkYTVhMWM0YjFjZmY3
-					OTA4ODEwOTY3NTFlNjZhZmZhNTYxOzAwMDAw
+					vwAAAAECAAA0N2YyNTE0MGIxYWJhM2UyZGRh
+					NmM5ZTc2NGE4NTY3NThlYmJlNjYxOzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDQwODYxYjsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL2RhbWFn
 					ZWljb24ucG5nAADwAAAA/v///wEAAAAAAAAA
@@ -4684,9 +4828,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{564, 405}, {130.75, 98.5}}</string>
+						<string>{{442, 249}, {130.75, 98.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2256, 1620}, {523, 394}}</string>
+						<string>{{1768, 996}, {523, 394}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4696,7 +4840,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4712,7 +4856,7 @@
 						<key>OriginalSize</key>
 						<string>{523, 394}</string>
 						<key>Position</key>
-						<string>{2256, 1620}</string>
+						<string>{1768, 996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4753,11 +4897,11 @@
 					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
 					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
 					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC9AAAA
-					AQIAADQ3YjJkOWI1NDRkYTM1MWE2MDExMjY1
-					YjExNDg4MDBiMGMyNzczNDE7MDAwMDAwMDA7
+					AQIAAGIyNTJkNTIzNzZlNjI1N2RiM2NhZjNl
+					MTkwZTIyZGRiMDhiNWQ5OTY7MDAwMDAwMDA7
 					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
 					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
-					cml0ZTswMDAwMDAwMTswMTAwMDAwMTswMDAw
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
 					MDAwMDAwMjE2ODQyOy91c2Vycy9odW50ZXIv
 					ZHJvcGJveC9yb2d1ZWRlY2svZGVja2ljb24u
 					cG5nAAAAAPAAAAD+////AQAAAAAAAAATAAAA
@@ -4825,9 +4969,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{951, 503}, {29.5, 29.75}}</string>
+						<string>{{208, 692}, {29.5, 29.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3804, 2012}, {118, 117}}</string>
+						<string>{{832, 2768}, {118, 117}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4837,7 +4981,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4853,7 +4997,7 @@
 						<key>OriginalSize</key>
 						<string>{118, 117}</string>
 						<key>Position</key>
-						<string>{3804, 2012}</string>
+						<string>{832, 2768}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4892,12 +5036,12 @@
 					NTdFLUY3OTItMzdCRC1BRjkxLTUyMzkwQkZD
 					NTNBRBgAAAABAgAAgQAAAAEACADvFwAAAQAI
 					AAAAAAAAAAAAAQAAAAEBAAAvAAAABAAAAAMD
-					AAAAAQAAsQAAAAECAAAyZDA2M2RjNTlmMWQ3
-					OGJiYTllNGE3Nzc3ZjBmNjEyZGQ2MzM1MDg2
+					AAAAAQAAsQAAAAECAAAxMTk2YWQ2MjFhNDMz
+					MDY0ZjRkZmFjYTEwY2VlYzAzZmVmNTY1ZGM2
 					OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAwMDAw
 					MDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1zYW5k
 					Ym94LnJlYWQtd3JpdGU7MDAwMDAwMDE7MDEw
-					MDAwMDE7MDAwMDAwMDAwMDFjOTNiYjsvdXNl
+					MDAwMDI7MDAwMDAwMDAwMDFjOTNiYjsvdXNl
 					cnMvaHVudGVyL2Rlc2t0b3AvaW1hZ2VzLmpw
 					ZwAAAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
 					AABIAAAAAAAAAAUQAACgAAAAAAAAABAQAADI
@@ -4964,9 +5108,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{277, 363}, {53.75, 59}}</string>
+						<string>{{349, 498}, {53.75, 59}}</string>
 						<key>Frame-HD</key>
-						<string>{{1108, 1452}, {213, 236}}</string>
+						<string>{{1396, 1992}, {213, 236}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4976,7 +5120,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4992,7 +5136,7 @@
 						<key>OriginalSize</key>
 						<string>{213, 236}</string>
 						<key>Position</key>
-						<string>{1108, 1452}</string>
+						<string>{1396, 1992}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5031,12 +5175,12 @@
 					NTdFLUY3OTItMzdCRC1BRjkxLTUyMzkwQkZD
 					NTNBRBgAAAABAgAAgQAAAAEACADvFwAAAQAI
 					AAAAAAAAAAAAAQAAAAEBAAAvAAAABAAAAAMD
-					AAAAAQAAsQAAAAECAABjZTU4NzBmYTljOGNk
-					NWE5NjE5OTc0MTc3OWU4YzU1ZTNkNGI2YjZh
+					AAAAAQAAsQAAAAECAABmNTRmZjY5YWZjMjcz
+					MTllNmJlY2M5MjM4NmFmYjJjMGJjYzQyYWM5
 					OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAwMDAw
 					MDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1zYW5k
 					Ym94LnJlYWQtd3JpdGU7MDAwMDAwMDE7MDEw
-					MDAwMDE7MDAwMDAwMDAwMDFjOTQ2OTsvdXNl
+					MDAwMDI7MDAwMDAwMDAwMDFjOTQ2OTsvdXNl
 					cnMvaHVudGVyL2Rlc2t0b3AvaW1ncmVzLmpw
 					ZwAAAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
 					AABIAAAAAAAAAAUQAACgAAAAAAAAABAQAADI
@@ -5103,9 +5247,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{104, 421}, {50, 63}}</string>
+						<string>{{284, 447}, {50, 63}}</string>
 						<key>Frame-HD</key>
-						<string>{{416, 1684}, {200, 252}}</string>
+						<string>{{1136, 1788}, {200, 252}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5115,7 +5259,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5131,7 +5275,7 @@
 						<key>OriginalSize</key>
 						<string>{200, 252}</string>
 						<key>Position</key>
-						<string>{416, 1684}</string>
+						<string>{1136, 1788}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5172,11 +5316,11 @@
 					OTItMzdCRC1BRjkxLTUyMzkwQkZDNTNBRBgA
 					AAABAgAAgQAAAAEACADvFwAAAQAIAAAAAAAA
 					AAAAAQAAAAEBAAAvAAAABAAAAAMDAAAAAQAA
-					wQAAAAECAAA4ZWFhZGE2NGVkMzAzNjJmNDdj
-					MjU4ZWViNDg4ZDAyYTNhYTY5MzkxOzAwMDAw
+					wQAAAAECAABmM2QwZjIwOTdjOGE4MWQ5Y2Fi
+					MGQyY2JlNDAzOGMxMTA2NTI5NDU4OzAwMDAw
 					MDAwOzAwMDAwMDAwOzAwMDAwMDAwMDAwMDAw
 					MjA7Y29tLmFwcGxlLmFwcC1zYW5kYm94LnJl
-					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDE7
+					YWQtd3JpdGU7MDAwMDAwMDE7MDEwMDAwMDI7
 					MDAwMDAwMDAwMDNlMWZlMzsvdXNlcnMvaHVu
 					dGVyL2Ryb3Bib3gvcm9ndWVkZWNrL21vbnN0
 					ZXJjYXJkMi5wbmcAAAAA8AAAAP7///8BAAAA
@@ -5244,9 +5388,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 249}, {114.75, 160}}</string>
+						<string>{{2, 769}, {114.75, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 996}, {457, 640}}</string>
+						<string>{{8, 3076}, {457, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5256,7 +5400,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5272,11 +5416,152 @@
 						<key>OriginalSize</key>
 						<string>{457, 640}</string>
 						<key>Position</key>
-						<string>{8, 996}</string>
+						<string>{8, 3076}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{114.25, 160}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>rows</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va9ADAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAAqAIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACAAAAAEBAAByb3dzLnBu
+					ZxQAAAABBgAABAAAABQAAAAkAAAANAAAAEgA
+					AAAIAAAABAMAAOkQAgAAAAAACAAAAAQDAAAV
+					xAUAAAAAAAgAAAAEAwAA9jwQAAAAAAAIAAAA
+					BAMAAP1kIQAAAAAACAAAAAQDAADhF00AAAAA
+					ABQAAAABBgAAdAAAAIQAAACUAAAApAAAALQA
+					AAAIAAAAAAQAAEG4lgIgAAAAGAAAAAECAAAB
+					AAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAA
+					AQUAAAQAAAADAwAABgAAAAQAAAADAwAAAwAA
+					AAgAAAAEAwAAAwAAAAAAAAAEAAAAAwMAAPUB
+					AAAMAAAAAQEAAE1hY2ludG9zaCBIRAgAAAAE
+					AwAAACCIPToAAAAIAAAAAAQAAEG275HaAAAA
+					JAAAAAEBAAAxREVFQTU3RS1GNzkyLTM3QkQt
+					QUY5MS01MjM5MEJGQzUzQUQYAAAAAQIAAIEA
+					AAABAAgA7xcAAAEACAAAAAAAAAAAAAEAAAAB
+					AQAALwAAAAQAAAADAwAAAAEAALkAAAABAgAA
+					NDIxYmRlODUyOTVkNTJmMjQyYzZhNDVhNmRj
+					ZTY2ZmRiNTc0ZTAwODswMDAwMDAwMDswMDAw
+					MDAwMDswMDAwMDAwMDAwMDAwMDIwO2NvbS5h
+					cHBsZS5hcHAtc2FuZGJveC5yZWFkLXdyaXRl
+					OzAwMDAwMDAxOzAxMDAwMDAyOzAwMDAwMDAw
+					MDA0ZDE3ZTE7L3VzZXJzL2h1bnRlci9kcm9w
+					Ym94L3JvZ3VlZGVjay9yb3dzLnBuZwAAAADw
+					AAAA/v///wEAAAAAAAAAEwAAAAQQAABYAAAA
+					AAAAAAUQAADEAAAAAAAAABAQAADwAAAAAAAA
+					AEAQAADgAAAAAAAAAFQQAAAYAQAAAAAAAFUQ
+					AAAkAQAAAAAAAFYQAAAQAQAAAAAAAAIgAADM
+					AQAAAAAAABAgAABMAQAAAAAAABEgAACAAQAA
+					AAAAABIgAABgAQAAAAAAABMgAABwAQAAAAAA
+					ACAgAACsAQAAAAAAADAgAAAQAQAAAAAAAAHA
+					AAAwAQAAAAAAABHAAAAUAAAAAAAAABLAAABA
+					AQAAAAAAABDQAADYAQAAAAAAAIDwAADkAQAA
+					AAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>rows</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{860, 406}, {284, 65}}</string>
+						<key>Frame-HD</key>
+						<string>{{3440, 1624}, {1136, 260}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>rows</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/rows.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/rows.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {1136, 260}}</string>
+						<key>OriginalSize</key>
+						<string>{1136, 260}</string>
+						<key>Position</key>
+						<string>{3440, 1624}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{284, 65}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -5311,12 +5596,12 @@
 					NTdFLUY3OTItMzdCRC1BRjkxLTUyMzkwQkZD
 					NTNBRBgAAAABAgAAgQAAAAEACADvFwAAAQAI
 					AAAAAAAAAAAAAQAAAAEBAAAvAAAABAAAAAMD
-					AAAAAQAAsAAAAAECAAA2N2Y5ZmI3OTg2ZTY5
-					NTlkZGRlMTQ0YWUyOTE3ZjdjMmRjNDgwNzEw
+					AAAAAQAAsAAAAAECAABiMjRmM2I5MzJjZDlh
+					ZmZiNWEwNzk4ZDJhZjkwZTRjMWFjZDliOGU4
 					OzAwMDAwMDAwOzAwMDAwMDAwOzAwMDAwMDAw
 					MDAwMDAwMjA7Y29tLmFwcGxlLmFwcC1zYW5k
 					Ym94LnJlYWQtd3JpdGU7MDAwMDAwMDE7MDEw
-					MDAwMDE7MDAwMDAwMDAwMDFjOTRlZjsvdXNl
+					MDAwMDI7MDAwMDAwMDAwMDFjOTRlZjsvdXNl
 					cnMvaHVudGVyL2Rlc2t0b3Avc3dvcmQuanBn
 					APAAAAD+////AQAAAAAAAAATAAAABBAAAEgA
 					AAAAAAAABRAAAKAAAAAAAAAAEBAAAMgAAAAA
@@ -5383,9 +5668,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{104, 365}, {54, 58.5}}</string>
+						<string>{{375, 361}, {54, 58.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{416, 1460}, {216, 234}}</string>
+						<string>{{1500, 1444}, {216, 234}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5411,11 +5696,152 @@
 						<key>OriginalSize</key>
 						<string>{216, 234}</string>
 						<key>Position</key>
-						<string>{416, 1460}</string>
+						<string>{1500, 1444}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{54, 58.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>topBar</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va9QDAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAArAIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACgAAAAEBAAB0b3BCYXIu
+					cG5nAAAUAAAAAQYAAAQAAAAUAAAAJAAAADQA
+					AABIAAAACAAAAAQDAADpEAIAAAAAAAgAAAAE
+					AwAAFcQFAAAAAAAIAAAABAMAAPY8EAAAAAAA
+					CAAAAAQDAAD9ZCEAAAAAAAgAAAAEAwAA4xdN
+					AAAAAAAUAAAAAQYAAHgAAACIAAAAmAAAAKgA
+					AAC4AAAACAAAAAAEAABBuJYCBQAAABgAAAAB
+					AgAAAQAAAAAAAAAPAAAAAAAAAAAAAAAAAAAA
+					AAAAAAEFAAAEAAAAAwMAAAYAAAAEAAAAAwMA
+					AAMAAAAIAAAABAMAAAMAAAAAAAAABAAAAAMD
+					AAD1AQAADAAAAAEBAABNYWNpbnRvc2ggSEQI
+					AAAABAMAAAAgiD06AAAACAAAAAAEAABBtu+R
+					2gAAACQAAAABAQAAMURFRUE1N0UtRjc5Mi0z
+					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
+					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
+					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC7AAAA
+					AQIAADE2YzRiMWRhNWY5NmIzMGIzN2ZmMTJm
+					NWJmMGQ5NmM3MGViMzQzMjI7MDAwMDAwMDA7
+					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
+					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
+					MDAwMDAwNGQxN2UzOy91c2Vycy9odW50ZXIv
+					ZHJvcGJveC9yb2d1ZWRlY2svdG9wYmFyLnBu
+					ZwAA8AAAAP7///8BAAAAAAAAABMAAAAEEAAA
+					XAAAAAAAAAAFEAAAyAAAAAAAAAAQEAAA9AAA
+					AAAAAABAEAAA5AAAAAAAAABUEAAAHAEAAAAA
+					AABVEAAAKAEAAAAAAABWEAAAFAEAAAAAAAAC
+					IAAA0AEAAAAAAAAQIAAAUAEAAAAAAAARIAAA
+					hAEAAAAAAAASIAAAZAEAAAAAAAATIAAAdAEA
+					AAAAAAAgIAAAsAEAAAAAAAAwIAAAFAEAAAAA
+					AAABwAAANAEAAAAAAAARwAAAFAAAAAAAAAAS
+					wAAARAEAAAAAAAAQ0AAA3AEAAAAAAACA8AAA
+					6AEAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>topBar</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{2, 732}, {284, 24}}</string>
+						<key>Frame-HD</key>
+						<string>{{8, 2928}, {1136, 96}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>topBar</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/topBar.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/topBar.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {1136, 96}}</string>
+						<key>OriginalSize</key>
+						<string>{1136, 96}</string>
+						<key>Position</key>
+						<string>{8, 2928}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{284, 24}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -5478,9 +5904,9 @@
 	c2ggSEQIAAAABAMAAAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQAAAABAQAAMURFRUE1
 	N0UtRjc5Mi0zN0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAAAQAIAO8XAAAB
 	AAgAAAAAAAAAAAABAAAAAQEAAC8AAAAAAAAAAQUAAAQAAAADAwAAAAEAANMAAAABAgAA
-	YmM3YzEyZWJjY2QwNDRjNzBlNTY2YzAwZWUzN2FkNTZlMzQzZTc3YTswMDAwMDAwMDsw
+	YmQ2MzQ4MjNkMWFjNmFhOTI5ZDE0MDdlNDcwZTFlZGU5YTEyNWE5ZDswMDAwMDAwMDsw
 	MDAwMDAwMDswMDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5hcHAtc2FuZGJveC5yZWFk
-	LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAxOzAwMDAwMDAwMDAxM2I2MzE7L3VzZXJzL2h1
+	LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAyOzAwMDAwMDAwMDAxM2I2MzE7L3VzZXJzL2h1
 	bnRlci9kb3dubG9hZHMvY29jb3MyZC14LTIuMi9wcm9qZWN0cy9yb2d1ZWRlY2svcmVz
 	b3VyY2VzAADMAAAA/v///wEAAAAAAAAAEAAAAAQQAACIAAAAAAAAAAUQAAAcAQAAAAAA
 	ABAQAABQAQAAAAAAAEAQAABAAQAAAAAAAAIgAAAMAgAAAAAAABAgAACMAQAAAAAAABEg

@@ -34,6 +34,15 @@ bool MonsterLayer::init()
     bg->setPosition(ccp( bg->getContentSize().width/2, bg->getContentSize().height/2 + 310));
     this->addChild(bg);
     
+    CCSprite *topBar = CCSprite::createWithSpriteFrameName("topBar");
+    topBar->setPosition(ccp( topBar->getContentSize().width/2, visibleSize.height - topBar->getContentSize().height/3));
+    this->addChild(topBar, 1000000);
+    
+    /*CCSprite *rows = CCSprite::createWithSpriteFrameName("rows");
+    rows->setPosition(ccp( rows->getContentSize().width/2, rows->getContentSize().height/2 + 270));
+    this->addChild(rows, 0);
+    */
+    
     return true;
 }
 

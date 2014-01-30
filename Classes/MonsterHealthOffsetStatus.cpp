@@ -12,6 +12,7 @@
 #include "MonsterSprite.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "Constants.h"
 
 
 USING_NS_CC;
@@ -43,7 +44,13 @@ bool MonsterHealthOffsetStatus::initWithHealthOffset(int healthOffset){
 
 void MonsterHealthOffsetStatus::addStatusToGameObject(MonsterSprite *monster){
     //damage immediate, no need to add to monster
-    monster->changeMonsterHealth(monsterHealthOffsetAmount);
+    int healthOffset = monsterHealthOffsetAmount;
+    if(GM->player->playedCards->count() <= 1){
+        //preemptive bounus
+        healthOffset += preemptiveBonus;
+    }
+    
+    monster->changeMonsterHealth(healthOffset);
 }
 
 //checks whether the status can be used

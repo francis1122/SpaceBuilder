@@ -34,6 +34,7 @@ public:
     const char *cardImageFile;
     int turnsLeftInMarket;
     int soulCost;
+    int lane;
     Action *action;
     
     
@@ -65,6 +66,8 @@ public:
     void setupDamageCard(int damage);
     
     void setupSoulGainCard(int soulGain);
+    
+
     
 private:
     CardType cardType;

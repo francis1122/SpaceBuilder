@@ -66,6 +66,7 @@ CardGenerator* CardGenerator::sharedGameManager()
         CG->registerClass(WashTemplate::CLASS_NAME, &WashTemplate::create);
         CG->registerClass(SellCardTemplate::CLASS_NAME, &SellCardTemplate::create);
         CG->registerClass(InstantMonsterTemplate::CLASS_NAME, &InstantMonsterTemplate::create);
+        CG->registerClass(PreemptiveDamageTemplate::CLASS_NAME, &PreemptiveDamageTemplate::create);
         
         
         
@@ -141,11 +142,10 @@ CardSprite* CardGenerator::cardForBlue(float powerLevel){
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 10.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 7.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(WashTemplate::CLASS_NAME, 7.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawDiscardTemplate::CLASS_NAME, 7.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(OnDefendDirectDamageTemplate::CLASS_NAME, 5.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 5.0, 0));
         templateDrops->rdsContents->addObject(new IRDSCardTemplate(InstantMonsterTemplate::CLASS_NAME, 5.0, 0));
     
     
@@ -172,10 +172,9 @@ CardSprite* CardGenerator::cardForYellow(float powerLevel){
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 10.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(WashTemplate::CLASS_NAME, 7.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(RandomTargetDamageTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 5.0, 0));
         templateDrops->rdsContents->addObject(new IRDSCardTemplate(InstantMonsterTemplate::CLASS_NAME, 5.0, 0));
     
     //randomly choose a template
@@ -199,10 +198,9 @@ CardSprite* CardGenerator::cardForGreen(float powerLevel){
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 8.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 5.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(WashTemplate::CLASS_NAME, 7.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(PosionDamageTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 5.0, 0));
         templateDrops->rdsContents->addObject(new IRDSCardTemplate(InstantMonsterTemplate::CLASS_NAME, 5.0, 0));
     //randomly choose a template
     IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);

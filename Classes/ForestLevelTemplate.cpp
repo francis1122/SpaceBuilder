@@ -20,7 +20,7 @@ MonsterSprite* ForestLevelTemplate::spawnMonster(){
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(WeakMinionTemplate::CLASS_NAME, 5.0, 0));
     templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(ArcherTemplate::CLASS_NAME, 4.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(BloodGiantTemplate::CLASS_NAME, 8.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(BloodGiantTemplate::CLASS_NAME, 3.0, 0));
     
     //randomly choose a template
     IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);

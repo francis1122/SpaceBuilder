@@ -29,9 +29,9 @@ void BloodGiantTemplate::addAugmentationStatus()
 
 void BloodGiantTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/6,2));
+    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/9,2));
     createdMonster->maxLife = createdMonster->life;
-    createdMonster->attack = (int)(powerLevel/6 + LLMath::getIntValue(0,powerLevel/8));
+    createdMonster->attack = (int)(powerLevel/5 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 5;
     createdMonster->monsterLevel = (int)powerLevel;
     monsterSpriteName =CCString::createWithFormat("BloodGiant");

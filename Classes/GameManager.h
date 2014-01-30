@@ -60,6 +60,7 @@ public:
     void endTurn();
     
     //market stuff
+    void organizeMarketAlt();
     void organizeMarket();
     void sellCard(CardSprite* card);
     void addMarketCard(CardSprite* marketCard);

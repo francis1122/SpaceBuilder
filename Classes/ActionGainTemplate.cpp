@@ -82,7 +82,6 @@ void ActionGainTemplate::addNeutralMainStatus(){
 }
 
 void ActionGainTemplate::addRedMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
     GainActionStatus *status = new GainActionStatus();
     Action *actionOne = new Action();
@@ -97,15 +96,14 @@ void ActionGainTemplate::addRedMainStatus(){
 }
 
 void ActionGainTemplate::addBlueMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
 
     GainActionStatus *status = new GainActionStatus();
     Action *actionOne = new Action();
-    actionOne->init(Neutral);
+    actionOne->init(Blue);
     actionsGained->addObject(actionOne);
     Action *actionTwo = new Action();
-    actionTwo->init(Neutral);
+    actionTwo->init(Blue);
     actionsGained->addObject(actionTwo);
     status->initWithActionGain(actionsGained);
     createdCard->cardTargets->statuses->addObject(status);
@@ -113,7 +111,6 @@ void ActionGainTemplate::addBlueMainStatus(){
 }
 
 void ActionGainTemplate::addYellowMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
 
     GainActionStatus *status = new GainActionStatus();
@@ -129,7 +126,6 @@ void ActionGainTemplate::addYellowMainStatus(){
 }
 
 void ActionGainTemplate::addGreenMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
     
 
     GainActionStatus *status = new GainActionStatus();

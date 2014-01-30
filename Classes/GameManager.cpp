@@ -80,7 +80,7 @@ void GameManager::startNewGame(){
     isInteractive = true;
     currentLevel = 1;
     currentLevelTemplate = new IntroLevelTemplate();
-    currentLevelTemplate->init(13 + (currentLevel * 3));
+    currentLevelTemplate->init(10 + (currentLevel * 5));
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -92,10 +92,10 @@ void GameManager::startNewRound(int level){
     int rand = arc4random()%2;
     if(rand == 0){
         currentLevelTemplate = new PlainsLevelTemplate();
-        currentLevelTemplate->init(13 + (currentLevel * 3));
+        currentLevelTemplate->init(10 + (currentLevel * 3));
     }else{
         currentLevelTemplate = new ForestLevelTemplate();
-        currentLevelTemplate->init(13 + (currentLevel * 3));
+        currentLevelTemplate->init(10 + (currentLevel * 3));
     }
 
     currentTurn = 1;
@@ -214,7 +214,29 @@ void GameManager::endTurn(){
 #pragma mark - market stuff
 
 //market stuff
+void GameManager::organizeMarketAlt(){
+    CCObject *object;
+    AnimationObject *cardAnimation = new AnimationObject();
+    cardAnimation->init();
+    CCARRAY_FOREACH(marketCardArray, object){
+        CardSprite *card = (CardSprite*)object;
+//        CCPoint monsterPos = ccp(170 + monster->lane * 160, 400 + monster->location * 30);
+        CCPoint cardPos = ccp(170 + card->lane * 160, 400);
+        CCMoveTo *action = CCMoveTo::create(.3, cardPos);
+        AnimationObject *animationObject = new AnimationObject();
+        animationObject->init(action, card);
+        if(!card->isZoomed){
+            cardAnimation->addAnimation(animationObject);
+        }
+    }
+    cardAnimation->duration = .05;
+    AM->addAnimation(cardAnimation);
+    
+}
+
 void GameManager::organizeMarket(){
+    organizeMarketAlt();
+    /*
     int i= 0,j = 0, k = 0;
     CCLog("Market Organize");
     AnimationObject *cardAnimation = new AnimationObject();
@@ -248,7 +270,7 @@ void GameManager::organizeMarket(){
     }
     cardAnimation->duration = .05;
     AM->addAnimation(cardAnimation);
-    
+    */
     
 }
 
@@ -262,10 +284,15 @@ void GameManager::sellCard(CardSprite* card){
 }
 
 void GameManager::addMarketCard(CardSprite* marketCard){
-    this->marketCardArray->addObject(marketCard);
-    this->gameLayer->marketLayer->addChild(marketCard);
+   // this->marketCardArray->addObject(marketCard);
+  //  this->gameLayer->marketLayer->addChild(marketCard);
     
-    this->organizeMarket();
+//    this->organizeMarket();
+    
+     this->marketCardArray->addObject(marketCard);
+      this->gameLayer->monsterLayer->addChild(marketCard);
+    
+        this->organizeMarket();
 }
 
 void GameManager::removeMarketCard(CardSprite *marketCard){
@@ -278,7 +305,7 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
     if(marketCardArray->containsObject(marketCard)){
         if(player->soul >= marketCard->soulCost){
                 GM->player->changeSoul(-marketCard->soulCost);
-            player->spendAction(Neutral);
+//            player->spendAction(Neutral);
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
@@ -312,7 +339,7 @@ void GameManager::organizeMonsters(){
     monsterAnimation->init();
     CCARRAY_FOREACH(monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
-        CCPoint monsterPos = ccp(210 + monster->lane * 150, 400 + monster->location * 30);
+        CCPoint monsterPos = ccp(170 + monster->lane * 160, 400 + monster->location * 30);
         CCMoveTo *action = CCMoveTo::create(.3, monsterPos);
         AnimationObject *animationObject = new AnimationObject();
         animationObject->init(action, monster);
@@ -329,10 +356,12 @@ void GameManager::removeMonster(MonsterSprite *monster){
     //do damage Icon
     //add card to market
     CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
-    card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
+//    card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
+    card->setPosition(monster->getPosition());
     //give player soul for killing a monster quickly
 //    player->soul += monster->location;
-    card->turnsLeftInMarket = 3;
+    card->turnsLeftInMarket = 1;
+    card->lane = monster->lane;
     this->addMarketCard(card);
     
     monster->onDeath();
@@ -380,7 +409,7 @@ void GameManager::spawnMonster(){
 
 void GameManager::addMonstersPhase(){
     //monsters allowed to spawn
-    int maxMonsters = MIN(currentTurn, 5);
+    int maxMonsters = MIN(currentTurn, currentLevelTemplate->maxLanes);
     
     while(monsterArray->count() < maxMonsters && currentLevelTemplate->monstersLeft > 0){
         this->spawnMonster();

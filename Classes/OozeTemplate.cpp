@@ -19,7 +19,7 @@ void OozeTemplate::addAugmentationStatus()
     int rand = arc4random()%1;
     if(rand == 0){
         //chance of taunt
-        int regen = (int)monsterPower/8 + LLMath::diceRoll((int)monsterPower/8, 1);
+        int regen = (int)monsterPower/10 + LLMath::diceRoll((int)monsterPower/10, 1);
         MonsterHealthOffsetDurationStatus *status = new MonsterHealthOffsetDurationStatus();
         status->initWithHealthOffset(regen, 999);
         createdMonster->activeStatusArray->addObject(status);
@@ -33,9 +33,9 @@ void OozeTemplate::addAugmentationStatus()
 
 void OozeTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/5,2));
+    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/8,2));
     createdMonster->maxLife = createdMonster->life;
-    createdMonster->attack = (int)(powerLevel/6 + LLMath::getIntValue(0,powerLevel/8));
+    createdMonster->attack = (int)(powerLevel/7 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 4 + arc4random()%2;
     createdMonster->monsterLevel = (int)powerLevel;
     monsterSpriteName =CCString::createWithFormat("Ooze"); 

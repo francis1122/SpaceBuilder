@@ -33,15 +33,18 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     CCLog("handcardselectedState");
     this->selectedCard = _selectedCard;
     selectedCard->setZOrder(10000);
-    
-    if(!GM->player->hasAction(selectedCard->action->actionType)){
+    if(selectedCard->turnsLeftInMarket > 0){
+        //set state for market card
+        GM->gameLayer->handLayer->enableDiscardInteractive();
+        GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
+    }else if(!GM->player->hasAction(selectedCard->action->actionType)){
         UIState::clearInteractiveState();
         GM->gameLayer->changeIndicatorState("Requires Actions");
     }else{
         if(selectedCard->turnsLeftInMarket > 0){
             //set state for market card
-            GM->gameLayer->handLayer->enableDiscardInteractive();
-            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
+//            GM->gameLayer->handLayer->enableDiscardInteractive();
+//            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
         }else{
             UIState::clearInteractiveState();
             this->selectedCard->cardTargets->highlightInteractiveObjects(this);
@@ -121,23 +124,22 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     this->selectedCard->setPosition(touchPoint);
     
     
-    if(GM->player->hasAction(selectedCard->action->actionType)){
-        if(selectedCard->turnsLeftInMarket > 0){
-            //used for market card play
-            
-            //check if area is the discard area
-            if(UIState::cardInDiscardArea(this->selectedCard)){
-                //add card to players hand
-                GM->buyCardFromMarket(this->selectedCard);
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-            }else{
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-            }
+    if(selectedCard->turnsLeftInMarket > 0){
+        //used for market card play
+        
+        //check if area is the discard area
+        if(UIState::cardInDiscardArea(this->selectedCard)){
+            //add card to players hand
+            GM->buyCardFromMarket(this->selectedCard);
+            selectedCard = NULL;
+            GM->organizeMarket();
+            this->transitionToNormalState();
         }else{
+            selectedCard = NULL;
+            GM->organizeMarket();
+            this->transitionToNormalState();
+        }
+    }else if(GM->player->hasAction(selectedCard->action->actionType)){
             //sell card
             if(UIState::cardInSellArea(this->selectedCard)){
                 //sell card
@@ -172,7 +174,6 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
                     this->transitionToNormalState();
                 }
             }
-        }
     }else{
         selectedCard = NULL;
         this->transitionToNormalState();

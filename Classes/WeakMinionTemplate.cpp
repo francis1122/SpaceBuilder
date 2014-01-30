@@ -20,9 +20,9 @@ void WeakMinionTemplate::addAugmentationStatus()
 
 void WeakMinionTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/6 + LLMath::diceRoll(powerLevel/3,1));
+    createdMonster->life = 1 + (int)(powerLevel/12 + LLMath::diceRoll(powerLevel/8,1));
     createdMonster->maxLife = createdMonster->life;
-    createdMonster->attack = (int)(powerLevel/6 + LLMath::getIntValue(0,powerLevel/5));
+    createdMonster->attack = (int)(powerLevel/10 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 4 + arc4random()%2;
     createdMonster->monsterLevel = (int)powerLevel;
     

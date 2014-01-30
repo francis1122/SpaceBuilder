@@ -42,7 +42,12 @@ bool GainSoulStatus::checkStart(){
 //called when status is given to object
 void GainSoulStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
-    GM->player->changeSoul(soulGainAmount);
+    int soul = soulGainAmount;
+    if(GM->player->playedCards->count() <= 1){
+        //preemptive bounus
+        soul += preemptiveBonus;
+    }
+    GM->player->changeSoul(soul);
 
 }
 

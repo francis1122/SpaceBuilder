@@ -146,7 +146,7 @@ void ZoomState::transitionToNormalState(){
         GameManager *GM = GameManager::sharedGameManager();
         selectedCard->removeFromParent();
         if(isMarketCard){
-            GM->gameLayer->marketLayer->addChild(this->selectedCard, 100);
+            GM->gameLayer->monsterLayer->addChild(this->selectedCard, 100);
         }else{
             GM->gameLayer->handLayer->addChild(this->selectedCard, 100);
         }
