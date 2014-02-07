@@ -14,9 +14,9 @@
 const std::string SellCardTemplate::CLASS_NAME = "SellCardTemplate";
 
 
-void SellCardTemplate::createCardTargets(){
+void SellCardTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new SellCardTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

@@ -31,5 +31,21 @@ MonsterSprite* ForestLevelTemplate::spawnMonster(){
     newMonster = monsterTemplate->createMonster();
     
     return newMonster;
+}
+
+MonsterSprite *ForestLevelTemplate::spawnBossMonster(){
+    //setup card drop table for cards to be chosen
+    IRDSTable *templateDrops = new IRDSTable();
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(DragonBossTemplate::CLASS_NAME, 0.0, 0));
+    
+    //randomly choose a template
+    IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);
+    // use chosen template to create card
+    MonsterSprite *newMonster;
+    MonsterTemplate *monsterTemplate = MG->createClass(colorChosen->className);
+    monsterTemplate->init(powerLevel);
+    newMonster = monsterTemplate->createMonster();
+    
+    return newMonster;
     
 }

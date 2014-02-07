@@ -15,16 +15,6 @@
 #include "Constants.h"
 #include "Statuses.h"
 
-// on "init" you need to initialize your instance
-bool PlayAreaTargets::init()
-{
-    
-    if(!CardTargets::init()){
-        return false;
-    }
-    
-    return true;
-}
 
 
 void PlayAreaTargets::highlightInteractiveObjects(UIState* state){

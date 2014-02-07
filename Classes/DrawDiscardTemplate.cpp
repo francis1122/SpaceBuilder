@@ -16,10 +16,10 @@
 
 const std::string DrawDiscardTemplate::CLASS_NAME = "DrawDiscardTemplate";
 
-void DrawDiscardTemplate::createCardTargets(){
+void DrawDiscardTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new DrawDiscardTargets();
     
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

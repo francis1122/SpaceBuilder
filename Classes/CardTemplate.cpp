@@ -16,7 +16,7 @@
 #include <streambuf>
 
 
-bool CardTemplate::init(float powerLevel, ActionType color ){
+bool CardTemplate::init(float powerLevel, ActionType color){
     cardPower = powerLevel;
     cardColor = color;
     this->powerLevel = powerLevel;
@@ -33,7 +33,7 @@ CardSprite* CardTemplate::createCard(){
     createdCard = new CardSprite();
     createdCard->init();
     
-    this->createCardTargets();
+    this->createCardTargets(createdCard);
     
     //chance of additional cost
     
@@ -58,9 +58,9 @@ CardSprite* CardTemplate::createCard(){
     return createdCard;
 }
 
-void CardTemplate::createCardTargets(){
+void CardTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new CardTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 
@@ -169,9 +169,8 @@ void CardTemplate::addGreenMainStatus(){
 }
 
 #pragma mark -
-
 int CardTemplate::calculateSoul(){
-    int cost = (int)cardPower/4;
+    int cost = (int)cardPower/3;
     cost += cardCostOffset;
     cost += LLMath::diceRoll((int)cardPower/8, 1);
     return cost;

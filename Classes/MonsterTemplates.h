@@ -15,6 +15,6 @@
 #include "BloodGiantTemplate.h"
 #include "OozeTemplate.h"
 #include "ArcherTemplate.h"
-
+#include "DragonBossTemplate.h"
 
 #endif

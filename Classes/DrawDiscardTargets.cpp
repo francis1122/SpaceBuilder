@@ -17,16 +17,6 @@
 #include "HandLayer.h"
 #include "GameLayer.h"
 
-// on "init" you need to initialize your instance
-bool DrawDiscardTargets::init()
-{
-    
-    if(!CardTargets::init()){
-        return false;
-    }
-    
-    return true;
-}
 
 
 void DrawDiscardTargets::highlightInteractiveObjects(UIState* state){

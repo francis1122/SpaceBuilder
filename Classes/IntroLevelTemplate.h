@@ -26,6 +26,8 @@ public:
     static LevelTemplate* create(){ return new IntroLevelTemplate();}
     
     virtual MonsterSprite *spawnMonster();
+    
+    virtual MonsterSprite *spawnBossMonster();
 };
 
 #endif /* defined(__RogueDeck__IntroLevelTemplate__) */

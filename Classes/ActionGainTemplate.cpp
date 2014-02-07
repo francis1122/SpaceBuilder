@@ -15,9 +15,10 @@
 
 const std::string ActionGainTemplate::CLASS_NAME = "ActionGainTemplate";
 
-void ActionGainTemplate::createCardTargets(){
+void ActionGainTemplate::createCardTargets(CardSprite *card)
+{
     CardTargets *cardTargets = new PlayAreaTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

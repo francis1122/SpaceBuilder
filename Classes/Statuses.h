@@ -20,6 +20,7 @@
 #include "MonsterHealthOffsetDurationStatus.h"
 #include "InstantKillMonsterStatus.h"
 #include "PlayerHealthOffsetStatus.h"
+#include "ComboStatus.h"
 
 
 

@@ -42,6 +42,7 @@ public:
     bool hasRange;
     float monsterLevel;
     bool isDead;
+    bool isBoss;
     
     void updateInterface();
     void turnUpdate();

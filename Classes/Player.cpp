@@ -40,13 +40,8 @@ Player::Player()
     discardCards->init();
     handCards->init();
     libraryCards->init();
-    /*
-    libraryCards->retain();
-    handCards->retain();
-    playedCards->retain();
-    discardCards->retain();
-    deckCards->retain();
-    */
+    
+    currentPlayCard = NULL;
     //addCards To library
     
     //attack cards
@@ -56,8 +51,7 @@ Player::Player()
         card->init();
         //Make card ability
         CardTargets *cardTargets = new MonsterTargets();
-        cardTargets->init();
-//        card->detailsLabel->setString("do damage to monster");
+        cardTargets->initWithCardSprite(card);
         cardTargets->targetingType = Monsters;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
         status->init(2);
@@ -74,10 +68,9 @@ Player::Player()
         CardSprite *card = new CardSprite();
         card->cardImageFile = "images";
         card->init();
-//        card->detailsLabel->setString("gain soul");
         //Make card ability
         CardTargets *cardTargets = new PlayAreaTargets();
-        cardTargets->init();
+        cardTargets->initWithCardSprite(card);
         GainSoulStatus *status = new GainSoulStatus();
         status->initWithSoulGain(2);
         cardTargets->statuses->addObject(status);
@@ -159,7 +152,7 @@ void Player::organizeHand(){
     CCObject *object;
     int handSize = handCards->count();
     int i = 0;
-        CCLog("Hand Organize");
+    CCLog("Hand Organize");
     float centralPoint = 700;
     float cardOffset = 110;
     float startPoint = centralPoint - (cardOffset/2)*handSize;
@@ -183,14 +176,14 @@ void Player::organizeHand(){
     }
     animationHolder->duration = .05;
     AM->addAnimation(animationHolder);
-//    organizePlayedCards();
+    //    organizePlayedCards();
 }
 
 void Player::organizePlayedCards(){
     CCObject *object;
     int handSize = playedCards->count();
     int i = 0;
-        CCLog("PlayedCards Organize");
+    CCLog("PlayedCards Organize");
     float centralPoint = 700;
     float cardOffset = 110;
     float startPoint = centralPoint - (cardOffset/2)*handSize;
@@ -198,14 +191,21 @@ void Player::organizePlayedCards(){
     animationHolder->init();
     CCARRAY_FOREACH(playedCards, object){
         CardSprite *card = (CardSprite*)object;
+        card->setScale(.15);
         AnimationObject *animation = new AnimationObject();
-        CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 110, 260));
+        CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 70, 260));
         animation->init(move, card);
         if(!card->isZoomed){
             animationHolder->addAnimation(animation);
         }
         i++;
     }
+    if(currentPlayCard != NULL){
+        currentPlayCard->setScale(.3);
+        currentPlayCard->setPosition(ccp(650, 250));
+    }
+    
+    
     animationHolder->duration = .05;
     AM->addAnimation(animationHolder);
 }
@@ -233,12 +233,12 @@ void Player::addCardToHand(){
         CCObject *object = libraryCards->lastObject();
         CardSprite *card = (CardSprite*)object;
         card->setScale(.25);
-    
-//        GM->gameLayer->addChild(card, 10000);
-//        card->setVisible(false);
+        
+        //        GM->gameLayer->addChild(card, 10000);
+        //        card->setVisible(false);
         
         AnimationObject *animation = new AnimationObject();
-
+        
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::addCard));
         animation->init(obj, AM);
         animation->duration = .05;
@@ -263,10 +263,20 @@ void Player::playCard(CardSprite *card){
     //execute card
     spendAction(card->action->actionType);
     card->setScale(.15);
-    playedCards->addObject(card);
+    currentPlayCard = card;
     handCards->removeObject(card);
     GM->player->organizeHand();
     GM->player->organizePlayedCards();
+}
+
+void Player::finishedPlayingCard(){
+    if(currentPlayCard != NULL){
+        playedCards->addObject(currentPlayCard);
+        currentPlayCard = NULL;
+        GM->player->organizeHand();
+        GM->player->organizePlayedCards();
+    }
+    
 }
 
 void Player::discardCard(CardSprite* card){
@@ -289,7 +299,7 @@ void Player::discardPlayedCards(){
 
 void Player::discardHand(){
     CCObject *object;
-        AnimationObject *holderAnimation = new AnimationObject();
+    AnimationObject *holderAnimation = new AnimationObject();
     holderAnimation->init();
     CCARRAY_FOREACH(handCards, object){
         AnimationObject *animation = new AnimationObject();

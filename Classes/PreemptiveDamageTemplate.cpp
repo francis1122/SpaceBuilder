@@ -20,9 +20,10 @@ const std::string PreemptiveDamageTemplate::CLASS_NAME = "PreemptiveDamageTempla
 
 
 
-void PreemptiveDamageTemplate::createCardTargets(){
+void PreemptiveDamageTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new MonsterTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
+    cardTargets->isPreemptive = true;
     createdCard->cardTargets = cardTargets;
 }
 
@@ -72,7 +73,7 @@ void PreemptiveDamageTemplate::addGreenAdditionalCost(){
 
 void PreemptiveDamageTemplate::addNeutralMainStatus(){
     
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/5, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
@@ -88,7 +89,16 @@ void PreemptiveDamageTemplate::addBlueMainStatus(){
 }
 
 void PreemptiveDamageTemplate::addYellowMainStatus(){
-    addNeutralMainStatus();
+    int attack = (int)cardPower/3 + LLMath::diceRoll((int)cardPower/6, 1);
+    MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
+    status->initWithHealthOffset(-attack);
+    powerLevel -= cardPower/3;
+    cardCostOffset += cardPower/6;
+    
+    
+    mainDescription = CCString::createWithFormat("Preemptive");
+    createdCard->setupDamageCard(attack);
+    createdCard->cardTargets->statuses->addObject(status);
 }
 
 void PreemptiveDamageTemplate::addGreenMainStatus(){

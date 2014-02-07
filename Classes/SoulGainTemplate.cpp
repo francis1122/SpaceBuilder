@@ -14,9 +14,9 @@
 const std::string SoulGainTemplate::CLASS_NAME = "SoulGainTemplate";
 
 
-void SoulGainTemplate::createCardTargets(){
+void SoulGainTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new PlayAreaTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
     preemptiveBounus = 0;
 }

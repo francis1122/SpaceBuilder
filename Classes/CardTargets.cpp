@@ -21,7 +21,7 @@ USING_NS_CC;
 
 
 // on "init" you need to initialize your instance
-bool CardTargets::init()
+bool CardTargets::initWithCardSprite(CardSprite *card)
 {
     
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -40,6 +40,10 @@ bool CardTargets::init()
     
     minMonsterLife = -1;
     maxMonsterLife = -1;
+    
+    isPreemptive = false;
+    
+    cardSprite = card;
     
     return true;
 }
@@ -68,7 +72,6 @@ void CardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* state)
 void CardTargets::unableToActivateHighlight(UIState*)
 {
     GM->gameLayer->changeIndicatorState("Cannot Play Card");
-    
 }
 
 //checks whether the ability can be activated
@@ -239,7 +242,6 @@ void CardTargets::useAbility(){
     //apply status effects to monster
 //    monster->updateInterface();
     
-    
     GM->organizeMonsters();
     GM->organizeMarket();
     GM->gameLayer->updateInterface();
@@ -248,3 +250,30 @@ void CardTargets::useAbility(){
     selectedTargets->removeAllObjects();
 }
 
+
+//utility functions
+#pragma mark - utility functions
+
+bool  CardTargets::validMonsterTargetCheck(MonsterSprite *monster)
+{
+    if(monster->life < minMonsterLife && minMonsterLife != -1){
+        return false;
+    }
+    if(monster->life > maxMonsterLife && maxMonsterLife != -1){
+        return false;
+    }
+    if(GM->tauntPresent()){
+        if(!monster->hasTaunt){
+            return false;
+        }
+    }
+    
+    if(this->isPreemptive)
+    {
+        if(GM->player->playedCards->count() > 0){
+            return false;
+        }
+    }
+
+    return true;
+}

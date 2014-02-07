@@ -35,7 +35,7 @@ bool ConvertCardToSoulStatus::init(int powerLevel)
 void ConvertCardToSoulStatus::addStatusToCardSprite(CardSprite *card){
     GameManager *GM = GameManager::sharedGameManager();
     int soul = card->soulCost + soulGainAmount;
-    if(GM->player->playedCards->count() <= 1){
+    if(GM->player->playedCards->count() <= 0){
         //preemptive bounus
         soul += preemptiveBonus;
     }

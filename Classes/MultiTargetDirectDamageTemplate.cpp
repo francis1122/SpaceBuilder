@@ -17,9 +17,9 @@
 
 const std::string MultiTargetDirectDamageTemplate::CLASS_NAME = "MultiTargetDirectDamageTemplate";
 
-void MultiTargetDirectDamageTemplate::createCardTargets(){
+void MultiTargetDirectDamageTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new PlayAreaToTargetMonstersTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

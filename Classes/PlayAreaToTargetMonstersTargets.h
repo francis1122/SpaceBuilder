@@ -19,11 +19,6 @@ USING_NS_CC;
 class PlayAreaToTargetMonstersTargets : public CardTargets
 {
 public:
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
-    
-    // implement the "static node()" method manually
-    CREATE_FUNC(PlayAreaToTargetMonstersTargets);
     
     virtual void highlightInteractiveObjects(UIState* state);
     virtual void highlightNextInteractiveObjects(UIState* state);
@@ -47,6 +42,8 @@ public:
     
     //does what the ability should do
     virtual void useAbility();
+    
+
     
 };
 

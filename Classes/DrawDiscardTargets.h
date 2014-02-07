@@ -20,12 +20,7 @@ USING_NS_CC;
 class DrawDiscardTargets : public CardTargets
 {
 public:
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
-    
-    // implement the "static node()" method manually
-    CREATE_FUNC(DrawDiscardTargets);
-        
+     
     virtual void highlightInteractiveObjects(UIState* state);
     
     virtual void highlightInteractiveObjectsWithDraggingState(UIState* state);

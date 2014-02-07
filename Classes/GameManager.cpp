@@ -355,15 +355,18 @@ void GameManager::organizeMonsters(){
 void GameManager::removeMonster(MonsterSprite *monster){
     //do damage Icon
     //add card to market
-    CardSprite *card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
-//    card->setPosition(gameLayer->monsterLayerToMarketLayer(monster->getPosition()));
+    CardSprite *card;
+    if(monster->isBoss){
+        //maybe draw cards from a different list of cards
+        card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel * 1.5);
+        card->setSoulCostOfCard(0);
+    }else{
+        card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
+    }
     card->setPosition(monster->getPosition());
-    //give player soul for killing a monster quickly
-//    player->soul += monster->location;
     card->turnsLeftInMarket = 1;
     card->lane = monster->lane;
     this->addMarketCard(card);
-    
     monster->onDeath();
     monster->removeFromParent();
     monsterArray->removeObject(monster);
@@ -372,9 +375,8 @@ void GameManager::removeMonster(MonsterSprite *monster){
 
 void GameManager::spawnMonster(){
     MonsterSprite *monster;
-    monster = currentLevelTemplate->spawnMonster();
+    monster = currentLevelTemplate->getMonster();
     //give monster the correct lane
-    
     
     
     //cycle through monsters to see what lane is open
@@ -399,7 +401,6 @@ void GameManager::spawnMonster(){
         monster->lane = newLane;
     }
     
-    currentLevelTemplate->monstersLeft--;
     this->gameLayer->monsterLayer->addChild(monster);
     monster->setPosition( ccp(210 + monster->lane * 150, 1000));
     monster->updateInterface();
@@ -418,6 +419,12 @@ void GameManager::addMonstersPhase(){
 }
 
 void GameManager::monsterTurn(){
+    //used to check if monster died during its update step
+    this->gameStateCheck();
+    
+    //if there are not enough monsters on the board, add a monster
+    this->addMonstersPhase();
+    
     CCObject *object;
     CCARRAY_FOREACH(monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
@@ -425,8 +432,8 @@ void GameManager::monsterTurn(){
     }
     //used to check if monster died during its update step
     this->gameStateCheck();
-    //if there are not enough monsters on the board, add a monster
-    this->addMonstersPhase();
+    this->organizeMonsters();
+
 }
 
 #pragma mark - utility functions

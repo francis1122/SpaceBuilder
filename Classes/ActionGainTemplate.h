@@ -22,7 +22,7 @@ public:
     static const std::string CLASS_NAME;
     static CardTemplate* create(){ return new ActionGainTemplate();}
     
-    virtual void createCardTargets();
+    virtual void createCardTargets(CardSprite *card);
     
     virtual void addNeutralAugmentationStatus();
     virtual void addRedAugmentationStatus();

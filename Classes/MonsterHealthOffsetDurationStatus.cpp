@@ -32,7 +32,7 @@ bool MonsterHealthOffsetDurationStatus::initWithHealthOffset(int healthOffset, i
 void MonsterHealthOffsetDurationStatus::addStatusToGameObject(MonsterSprite *monster){
     //damage immediate, no need to add to monster
     monster->activeStatusArray->addObject(this);
-    if(GM->player->playedCards->count() <= 1){
+    if(GM->player->playedCards->count() <= 0){
         //preemptive bounus
         isPreemptive = true;
     }

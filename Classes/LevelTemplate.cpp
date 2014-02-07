@@ -18,12 +18,23 @@ bool LevelTemplate::init(float _powerLevel){
     return true;
 }
 
-MonsterSprite* LevelTemplate::spawnMonster(){
 
-    
+MonsterSprite *LevelTemplate::getMonster(){
     MonsterSprite *monster;
-    
-
-    
+    if(monstersLeft <= 1){
+        monster = spawnBossMonster();
+    }else{
+        monster = spawnMonster();
+    }
+    monstersLeft--;
     return monster;
+}
+
+MonsterSprite* LevelTemplate::spawnMonster(){
+    return NULL;
+}
+
+
+MonsterSprite *LevelTemplate::spawnBossMonster(){
+    return NULL;
 }

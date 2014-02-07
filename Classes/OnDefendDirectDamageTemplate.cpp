@@ -15,11 +15,11 @@
 
 const std::string OnDefendDirectDamageTemplate::CLASS_NAME = "OnDefendDirectDamageTemplate";
 
-void OnDefendDirectDamageTemplate::createCardTargets(){
+void OnDefendDirectDamageTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new DefendMonsterTargets();
     //DrawCard_DiscardCard
     
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

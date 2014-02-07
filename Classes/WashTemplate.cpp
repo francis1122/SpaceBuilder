@@ -15,9 +15,9 @@
 
 const std::string WashTemplate::CLASS_NAME = "WashTemplate";
 
-void WashTemplate::createCardTargets(){
+void WashTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new PlayAreaTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

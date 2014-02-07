@@ -14,6 +14,7 @@
 class CardSprite;
 class UIState;
 class BaseObject;
+class MonsterSprite;
 USING_NS_CC;
 
 
@@ -37,10 +38,10 @@ class CardTargets : public CCObject
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
+    virtual bool initWithCardSprite(CardSprite *card);
     
-    // implement the "static node()" method manually
-    CREATE_FUNC(CardTargets);
+    //cardsprite
+    CardSprite *cardSprite;
     
     //amount of targets that must be targetted, used for dragging as well
     int targetAmount;
@@ -48,12 +49,12 @@ public:
     int minMonsterLife;
     int maxMonsterLife;
     
+    bool isPreemptive;
+    
     //type of targets to highlight
     TargetingType targetingType;
     
     //Dragging stuff
-    
-    
     CCArray *selectedTargets;
     
     //array of statuses
@@ -96,6 +97,9 @@ public:
     
     //does what the ability should do
     virtual void useAbility();
+
+    //utility functions
+    virtual bool validMonsterTargetCheck(MonsterSprite *monster);
     
 };
 

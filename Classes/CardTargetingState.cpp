@@ -113,6 +113,7 @@ void CardTargetingState::transitionToNormalState(){
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();
+    GM->player->finishedPlayingCard();
     GM->gameLayer->changeState(NS);
     GM->gameLayer->updateInterface();
 }

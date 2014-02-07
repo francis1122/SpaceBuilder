@@ -310,6 +310,8 @@
 		5A6D33F4183EEEBE00CB0174 /* CardTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */; };
 		5AADD32218961890002E06FE /* PreemptiveDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */; };
 		5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */; };
+		5AADD355189AFC44002E06FE /* DragonBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */; };
+		5AAE5C5018A34C530019A86B /* ComboStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C4E18A34C530019A86B /* ComboStatus.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
@@ -964,6 +966,10 @@
 		5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PreemptiveDamageTemplate.cpp; path = ../Classes/PreemptiveDamageTemplate.cpp; sourceTree = "<group>"; };
 		5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHealthOffsetStatus.cpp; sourceTree = "<group>"; };
 		5AADD34E189A2C83002E06FE /* PlayerHealthOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerHealthOffsetStatus.h; sourceTree = "<group>"; };
+		5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DragonBossTemplate.cpp; sourceTree = "<group>"; };
+		5AADD354189AFC44002E06FE /* DragonBossTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonBossTemplate.h; sourceTree = "<group>"; };
+		5AAE5C4E18A34C530019A86B /* ComboStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComboStatus.cpp; path = ../Classes/ComboStatus.cpp; sourceTree = "<group>"; };
+		5AAE5C4F18A34C530019A86B /* ComboStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboStatus.h; path = ../Classes/ComboStatus.h; sourceTree = "<group>"; };
 		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
@@ -1991,6 +1997,8 @@
 			children = (
 				5A0438DB185270D4008EF3F5 /* DeathBlowStatus.cpp */,
 				5A0438DC185270D4008EF3F5 /* DeathBlowStatus.h */,
+				5AAE5C4E18A34C530019A86B /* ComboStatus.cpp */,
+				5AAE5C4F18A34C530019A86B /* ComboStatus.h */,
 			);
 			name = ConditionalStatus;
 			sourceTree = "<group>";
@@ -2063,8 +2071,8 @@
 			children = (
 				5A3B00AE1845C6EE004384CD /* MonsterGenerator.cpp */,
 				5A3B00AF1845C6EE004384CD /* MonsterGenerator.h */,
-				5A4488FE188721510024E488 /* LevelTemplate */,
 				5A04392E187F4ADB008EF3F5 /* MonsterTemplate */,
+				5A4488FE188721510024E488 /* LevelTemplate */,
 			);
 			name = MonsterGenerator;
 			sourceTree = "<group>";
@@ -2073,6 +2081,7 @@
 			isa = PBXGroup;
 			children = (
 				5A043932187F4C2F008EF3F5 /* MonsterTemplates.h */,
+				5AADD352189AFBFC002E06FE /* BossMonsters */,
 				5A04392F187F4AE6008EF3F5 /* MonsterTemplate.cpp */,
 				5A043930187F4AE6008EF3F5 /* MonsterTemplate.h */,
 				5A043933187F4FE2008EF3F5 /* WeakMinionTemplate.cpp */,
@@ -2275,6 +2284,15 @@
 			name = PlayerStatus;
 			sourceTree = "<group>";
 		};
+		5AADD352189AFBFC002E06FE /* BossMonsters */ = {
+			isa = PBXGroup;
+			children = (
+				5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */,
+				5AADD354189AFC44002E06FE /* DragonBossTemplate.h */,
+			);
+			name = BossMonsters;
+			sourceTree = "<group>";
+		};
 		5ABBEA9C188BA92D00EE8A8A /* utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -2461,6 +2479,7 @@
 				15A3D91F1682F7D5002FB0C5 /* b2PolygonContact.cpp in Sources */,
 				15A3D9201682F7D5002FB0C5 /* b2DistanceJoint.cpp in Sources */,
 				15A3D9211682F7D5002FB0C5 /* b2FrictionJoint.cpp in Sources */,
+				5AAE5C5018A34C530019A86B /* ComboStatus.cpp in Sources */,
 				15A3D9221682F7D5002FB0C5 /* b2GearJoint.cpp in Sources */,
 				15A3D9231682F7D5002FB0C5 /* b2Joint.cpp in Sources */,
 				5A043925187C8481008EF3F5 /* AnimationManager.cpp in Sources */,
@@ -2692,6 +2711,7 @@
 				379BB9C817F03F3700829B88 /* UISwitch.cpp in Sources */,
 				5A6D33CF1839DCF000CB0174 /* GameLayer.cpp in Sources */,
 				5A04392C187F3620008EF3F5 /* OnDefendDirectDamageTemplate.cpp in Sources */,
+				5AADD355189AFC44002E06FE /* DragonBossTemplate.cpp in Sources */,
 				379BB9C917F03F3700829B88 /* UITextField.cpp in Sources */,
 				379BB9CA17F03F3700829B88 /* CSContentJsonDictionary.cpp in Sources */,
 				379BB9CB17F03F3700829B88 /* DictionaryHelper.cpp in Sources */,

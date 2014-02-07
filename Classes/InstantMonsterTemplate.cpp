@@ -19,9 +19,9 @@ const std::string InstantMonsterTemplate::CLASS_NAME = "InstantMonsterTemplate";
 
 
 
-void InstantMonsterTemplate::createCardTargets(){
+void InstantMonsterTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new MonsterTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 
@@ -71,14 +71,14 @@ void InstantMonsterTemplate::addGreenAdditionalCost(){
 
 void InstantMonsterTemplate::addNeutralMainStatus(){
     
-    int attack = (int)cardPower/5 + LLMath::diceRoll((int)cardPower/3, 1);
+    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/4, 1);
     createdCard->cardTargets->maxMonsterLife = attack;
     InstantKillMonsterStatus *status = new InstantKillMonsterStatus();
     status->init();
     createdCard->cardTargets->statuses->addObject(status);
     
     createdCard->setCardType(Spell);
-    mainDescription = CCString::createWithFormat("Destroy monster with less than %i life", (attack + 1));
+    mainDescription = CCString::createWithFormat("Destroy monster with %i or less life", (attack));
 }
 
 void InstantMonsterTemplate::addRedMainStatus(){

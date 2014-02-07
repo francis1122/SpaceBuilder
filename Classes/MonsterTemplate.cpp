@@ -65,9 +65,9 @@ void MonsterTemplate::addRewards()
 void MonsterTemplate::addDescriptionText()
 {
     const char* augDesc = "";
-    if(augmentationDescription) augDesc = augmentationDescription->getCString();
+    if(augmentationDescription){  augmentationDescription = CCString::createWithFormat("%s\r", augmentationDescription->getCString()); augDesc = augmentationDescription->getCString();}
     const char* reward = "";
-    if(rewardDescription) reward= rewardDescription->getCString();
+    if(rewardDescription) {rewardDescription = CCString::createWithFormat("%s\r", rewardDescription->getCString()); reward = rewardDescription->getCString();}
     CCString *detailsString =CCString::createWithFormat("%s%s", augDesc, reward);
     createdMonster->detailsLabel->setString(detailsString->getCString());
     

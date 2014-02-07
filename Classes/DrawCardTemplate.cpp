@@ -14,9 +14,10 @@
 
 const std::string DrawCardTemplate::CLASS_NAME = "DrawCardTemplate";
 
-void DrawCardTemplate::createCardTargets(){
+void DrawCardTemplate::createCardTargets(CardSprite *card)
+{
     CardTargets *cardTargets = new PlayAreaTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

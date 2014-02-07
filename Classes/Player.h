@@ -33,6 +33,7 @@ public:
     //deck variables
     CCArray *deckCards;
     
+    CCSprite *currentPlayCard;
     CCArray *playedCards;
     CCArray *libraryCards;
     CCArray *discardCards;
@@ -53,6 +54,7 @@ public:
     void acquireCard(CardSprite *card);
     void addCardToHand();
     void playCard(CardSprite *card);
+    void finishedPlayingCard();
     void discardCard(CardSprite* card);
     void discardPlayedCards();
     void discardHand();

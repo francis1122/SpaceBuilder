@@ -107,6 +107,8 @@ void NormalState::transitionToCardTargetingState(CardSprite* selectedCard){
     
 }
 
+
+
 //type 0 = hand card, 1 = monster card, 2 = market card
 void NormalState::transitionToZoomState(CCObject *selectedObject, int type){
     //this function sucks balls, i hate the type stuff

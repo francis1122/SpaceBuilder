@@ -15,11 +15,11 @@
 
 const std::string PosionDamageTemplate::CLASS_NAME = "PosionDamageTemplate";
 
-void PosionDamageTemplate::createCardTargets(){
+void PosionDamageTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new MonsterTargets();
     //DrawCard_DiscardCard
     
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

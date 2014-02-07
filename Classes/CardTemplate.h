@@ -32,7 +32,7 @@ public:
 
     virtual CardSprite* createCard();
     
-    virtual void createCardTargets();
+    virtual void createCardTargets(CardSprite *card);
     
     virtual void addAugmentationStatus();
     virtual void addNeutralAugmentationStatus();

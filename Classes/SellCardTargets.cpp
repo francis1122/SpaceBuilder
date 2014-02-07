@@ -18,16 +18,6 @@
 #include "GameLayer.h"
 #include "MarketLayer.h"
 
-// on "init" you need to initialize your instance
-bool SellCardTargets::init()
-{
-    
-    if(!CardTargets::init()){
-        return false;
-    }
-    
-    return true;
-}
 
 
 void SellCardTargets::highlightInteractiveObjects(UIState* state){

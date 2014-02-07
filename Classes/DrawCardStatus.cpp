@@ -49,7 +49,7 @@ bool DrawCardStatus::checkStart(){
 void DrawCardStatus::applyStatus(){
     GameManager *GM = GameManager::sharedGameManager();
     int cards = drawCards;
-    if(GM->player->playedCards->count() <= 1){
+    if(GM->player->playedCards->count() <= 0){
         //preemptive bounus
         cards += preemptiveBonus;
     }

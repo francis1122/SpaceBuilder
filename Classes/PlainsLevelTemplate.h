@@ -25,6 +25,8 @@ public:
     static LevelTemplate* create(){ return new PlainsLevelTemplate();}
     
     virtual MonsterSprite *spawnMonster();
+    
+    virtual MonsterSprite *spawnBossMonster();
 };
 
 

@@ -19,9 +19,10 @@ const std::string DirectDamageTemplate::CLASS_NAME = "DirectDamageTemplate";
 
 
 
-void DirectDamageTemplate::createCardTargets(){
+void DirectDamageTemplate::createCardTargets(CardSprite *card)
+{
     CardTargets *cardTargets = new MonsterTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 
@@ -39,7 +40,7 @@ void DirectDamageTemplate::addRedAugmentationStatus(){
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
         Status *killStatus;
-        int soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/8, 1);
+        int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/8, 1);
         GainSoulStatus *status = new GainSoulStatus();
         status->initWithSoulGain(soulGain);
         killStatus = status;
@@ -49,43 +50,54 @@ void DirectDamageTemplate::addRedAugmentationStatus(){
         
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);
-
+        
     }
 }
 
 void DirectDamageTemplate::addBlueAugmentationStatus(){
-    int rand = arc4random()%3;
+    int rand = arc4random()%5;
     if(rand == 0){
         //choose status
-            GainActionStatus *status = new GainActionStatus();
-            CCArray *actions = new CCArray();
-            actions->init();
-            Action *action = new Action();
-            action->init(Blue);
-            actions->addObject(action);
-            status->initWithActionGain(actions);
-            powerLevel -= cardPower/2;
-            cardCostOffset += cardPower/4;
+        GainActionStatus *status = new GainActionStatus();
+        CCArray *actions = new CCArray();
+        actions->init();
+        Action *action = new Action();
+        action->init(Blue);
+        actions->addObject(action);
+        status->initWithActionGain(actions);
+        powerLevel -= cardPower/2;
+        cardCostOffset += cardPower/4;
         //used for the card interface
         actionsGained->addObject(action);
         createdCard->cardTargets->statuses->addObject(status);
+    }else if(rand == 1){
+        //killing blow augmentation
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
+        //choose status
+        DrawCardStatus *status = new DrawCardStatus();
+        status->initWithDrawAmount(2);
+        powerLevel -= cardPower/6;
+        cardCostOffset += cardPower/4;
         
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
+        deathStatus->initWithStatus(status);
+        createdCard->cardTargets->statuses->addObject(deathStatus);
     }
 }
 
 void DirectDamageTemplate::addYellowAugmentationStatus(){
     int rand = arc4random()%2;
     if(rand == 0){
+        // combo
         //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
-            DrawCardStatus *status = new DrawCardStatus();
-            status->initWithDrawAmount(2);
-            powerLevel -= cardPower/6;
-            cardCostOffset += cardPower/4;
-            
-            augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
+        DrawCardStatus *status = new DrawCardStatus();
+        status->initWithDrawAmount(2);
+        powerLevel -= cardPower/6;
+        cardCostOffset += cardPower/4;
         
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
         deathStatus->initWithStatus(status);
         createdCard->cardTargets->statuses->addObject(deathStatus);
     }
@@ -96,16 +108,6 @@ void DirectDamageTemplate::addGreenAugmentationStatus(){
     if(rand == 0){
         //killing blow augmentation
         
-        int damage = cardPower/4;
-        MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->initWithHealthOffset(0);
-        status->preemptiveBonus = -damage;
-        powerLevel -= cardPower/3;
-        cardCostOffset += cardPower/6;
-        
-        augmentationDescription = CCString::createWithFormat("Preemptive %i", -damage);
-        
-        createdCard->cardTargets->statuses->addObject(status);
     }
 }
 

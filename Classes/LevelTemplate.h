@@ -29,7 +29,10 @@ public:
     virtual bool init(float _powerLevel);
     static LevelTemplate* create(){ return new LevelTemplate();}
     
+    
+    virtual MonsterSprite *getMonster();
     virtual MonsterSprite *spawnMonster();
+    virtual MonsterSprite *spawnBossMonster();
 };
 
 #endif /* defined(__RogueDeck__LevelTemplate__) */

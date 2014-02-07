@@ -19,9 +19,9 @@
 
 const std::string RandomTargetDamageTemplate::CLASS_NAME = "RandomTargetDamageTemplate";
 
-void RandomTargetDamageTemplate::createCardTargets(){
+void RandomTargetDamageTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new PlayAreaTargets();
-    cardTargets->init();
+    cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
 }
 

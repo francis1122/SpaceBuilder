@@ -37,6 +37,7 @@ bool MonsterSprite::init()
     location = 3;
     hasTaunt = false;
     hasRange = false;
+    isBoss = false;
     
     //details of card
     CCSize detailSize = CCSizeMake(325, 240);
