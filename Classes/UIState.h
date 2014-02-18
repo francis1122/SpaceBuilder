@@ -62,6 +62,7 @@ public:
     virtual void transitionToSelectMonsterState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     virtual void transitionToCardDraggingState(CardSprite* selectedCard);
+    virtual void transitionToMonsterTurnState();
     //type 0 = hand card, 1 = monster card, 2 = market card
     virtual void transitionToZoomState(CCObject *selectedObject, int type);
     

@@ -312,6 +312,10 @@
 		5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */; };
 		5AADD355189AFC44002E06FE /* DragonBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */; };
 		5AAE5C5018A34C530019A86B /* ComboStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C4E18A34C530019A86B /* ComboStatus.cpp */; };
+		5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */; };
+		5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */; };
+		5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CAD18AB218B0019A86B /* CCShake.cpp */; };
+		5AAE5CB218AB44930019A86B /* BasicDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CB018AB44930019A86B /* BasicDamageTemplate.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
@@ -970,6 +974,14 @@
 		5AADD354189AFC44002E06FE /* DragonBossTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DragonBossTemplate.h; sourceTree = "<group>"; };
 		5AAE5C4E18A34C530019A86B /* ComboStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ComboStatus.cpp; path = ../Classes/ComboStatus.cpp; sourceTree = "<group>"; };
 		5AAE5C4F18A34C530019A86B /* ComboStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboStatus.h; path = ../Classes/ComboStatus.h; sourceTree = "<group>"; };
+		5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterTurnState.cpp; sourceTree = "<group>"; };
+		5AAE5C7E18A611D80019A86B /* MonsterTurnState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterTurnState.h; sourceTree = "<group>"; };
+		5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LabelWrapper.cpp; sourceTree = "<group>"; };
+		5AAE5C8118A61B810019A86B /* LabelWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelWrapper.h; sourceTree = "<group>"; };
+		5AAE5CAD18AB218B0019A86B /* CCShake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCShake.cpp; sourceTree = "<group>"; };
+		5AAE5CAE18AB218B0019A86B /* CCShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCShake.h; sourceTree = "<group>"; };
+		5AAE5CB018AB44930019A86B /* BasicDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicDamageTemplate.cpp; sourceTree = "<group>"; };
+		5AAE5CB118AB44930019A86B /* BasicDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDamageTemplate.h; sourceTree = "<group>"; };
 		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
@@ -2044,10 +2056,10 @@
 		5A043922187C8451008EF3F5 /* Singletons */ = {
 			isa = PBXGroup;
 			children = (
-				5A0438F61863EFA8008EF3F5 /* DropTable */,
-				5A043926187C8665008EF3F5 /* AnimationManager */,
 				5A6D33D01839E53100CB0174 /* GameManager.cpp */,
 				5A6D33D11839E53100CB0174 /* GameManager.h */,
+				5A0438F61863EFA8008EF3F5 /* DropTable */,
+				5A043926187C8665008EF3F5 /* AnimationManager */,
 				5A04392D187F47CD008EF3F5 /* MonsterGenerator */,
 				5A0438F11858468C008EF3F5 /* Player */,
 				5A0438DE18529EF9008EF3F5 /* CardGenerator */,
@@ -2159,6 +2171,8 @@
 		5A4488FD18865FBC0024E488 /* Damage Cards */ = {
 			isa = PBXGroup;
 			children = (
+				5AAE5CB018AB44930019A86B /* BasicDamageTemplate.cpp */,
+				5AAE5CB118AB44930019A86B /* BasicDamageTemplate.h */,
 				5A0438E31852A395008EF3F5 /* DirectDamageTemplate.cpp */,
 				5A0438E41852A395008EF3F5 /* DirectDamageTemplate.h */,
 				5A043906187270DB008EF3F5 /* RandomTargetDamageTemplate.cpp */,
@@ -2221,6 +2235,8 @@
 				5A0438D018524F15008EF3F5 /* CardDraggingState.h */,
 				5A3B00BC18471012004384CD /* ZoomState.cpp */,
 				5A3B00BD18471012004384CD /* ZoomState.h */,
+				5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */,
+				5AAE5C7E18A611D80019A86B /* MonsterTurnState.h */,
 			);
 			name = UIStates;
 			sourceTree = "<group>";
@@ -2300,6 +2316,8 @@
 				5A0439041864FC19008EF3F5 /* LLMath.h */,
 				5ABBEAA0188BADC900EE8A8A /* Utility.cpp */,
 				5ABBEAA1188BADCA00EE8A8A /* Utility.h */,
+				5AAE5CAD18AB218B0019A86B /* CCShake.cpp */,
+				5AAE5CAE18AB218B0019A86B /* CCShake.h */,
 			);
 			name = utility;
 			sourceTree = "<group>";
@@ -2309,6 +2327,8 @@
 			children = (
 				5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */,
 				5ABBEAAE188E109500EE8A8A /* DamageIcon.h */,
+				5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */,
+				5AAE5C8118A61B810019A86B /* LabelWrapper.h */,
 			);
 			name = Visuals;
 			sourceTree = "<group>";
@@ -2464,6 +2484,7 @@
 				15A3D9141682F7D5002FB0C5 /* b2Island.cpp in Sources */,
 				15A3D9151682F7D5002FB0C5 /* b2World.cpp in Sources */,
 				15A3D9161682F7D5002FB0C5 /* b2WorldCallbacks.cpp in Sources */,
+				5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */,
 				15A3D9171682F7D5002FB0C5 /* b2ChainAndCircleContact.cpp in Sources */,
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
@@ -2622,12 +2643,14 @@
 				5A04391E18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
+				5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				5A44891B1889C0240024E488 /* WashTemplate.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
+				5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */,
 				5A4488F0188097EE0024E488 /* MonsterTargets.cpp in Sources */,
 				5A6D33E2183C3D4100CB0174 /* HandLayer.cpp in Sources */,
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
@@ -2644,6 +2667,7 @@
 				1A8F3B82175E05DA00049216 /* spine-cocos2dx.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
+				5AAE5CB218AB44930019A86B /* BasicDamageTemplate.cpp in Sources */,
 				379BB99517F03F3700829B88 /* CCActionFrame.cpp in Sources */,
 				379BB99617F03F3700829B88 /* CCActionFrameEasing.cpp in Sources */,
 				379BB99717F03F3700829B88 /* CCActionManager.cpp in Sources */,

@@ -36,8 +36,7 @@ bool PlayerHealthOffsetStatus::checkStart(){
 
 //called when status is given to object
 void PlayerHealthOffsetStatus::applyStatus(){
-    GM->player->health += playerHeatlhOffset;
-
+    GM->player->changeHealth(playerHeatlhOffset);
 }
 
 //called when the status ends

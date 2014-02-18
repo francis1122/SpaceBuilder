@@ -14,6 +14,12 @@
 
 
 
+bool IntroLevelTemplate::init(float _powerLevel){
+    LevelTemplate::init(_powerLevel);
+    monstersLeft = 10;
+    return true;
+}
+
 MonsterSprite* IntroLevelTemplate::spawnMonster(){
 
     //setup card drop table for cards to be chosen

@@ -92,7 +92,7 @@ void SellCardTemplate::addBlueMainStatus(){
     status->initWithActionGain(actionsGained);
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setCardType(Spell);
-    mainDescription = CCString::createWithFormat("Destroy Card a Card");
+    mainDescription = CCString::createWithFormat("Destroy a Card");
 }
 
 void SellCardTemplate::addYellowMainStatus(){

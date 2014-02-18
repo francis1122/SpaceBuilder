@@ -13,6 +13,8 @@
 #include "Constants.h"
 #include "Utility.h"
 #include "AnimationManager.h"
+#include "AnimationObject.h"
+#include "CCShake.h"
 
 USING_NS_CC;
 
@@ -29,7 +31,6 @@ bool MonsterSprite::init()
     BaseObject::initDefaultState();
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    
     
     life = 4;
     maxLife = 4;
@@ -54,8 +55,6 @@ bool MonsterSprite::init()
     attackLabel->setPosition(CCPointMake(85, 92));
     lifeLabel->setPosition(CCPointMake(379, 92));
     
-
-    
     this->addChild(lifeLabel, 1);
     this->addChild(attackLabel, 1);
     
@@ -65,7 +64,7 @@ bool MonsterSprite::init()
     killingBlowArray->init();
     afterDeathEffectArray = new CCArray();
     afterDeathEffectArray->init();
-    this->setScale(.25);
+    this->setScale(.30);
     
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 21,glowSprite->getContentSize().height/2 - 21));
@@ -74,7 +73,6 @@ bool MonsterSprite::init()
     glowSprite->setScaleY(.7);
     this->addChild(glowSprite, -1);
     lifeRender = NULL;
-    
     return true;
 }
 
@@ -106,9 +104,7 @@ void MonsterSprite::updateInterface(){
     attackRender = Utility::createTTFStroke(attackLabel, 7, ccBLACK, 255);
     this->addChild(lifeRender);
     this->addChild(attackRender);
-    
 }
-
 
 
 void MonsterSprite::onDeath(){
@@ -120,8 +116,6 @@ void MonsterSprite::onDeath(){
 }
 
 void MonsterSprite::turnUpdate(){
-    
-    
     //update status first
     for(int i = activeStatusArray->count() - 1; i >= 0 ;i--){
         Status *status = (Status*)activeStatusArray->objectAtIndex(i);
@@ -132,29 +126,93 @@ void MonsterSprite::turnUpdate(){
             activeStatusArray->removeObjectAtIndex(i);
         }
     }
-    
     if(life > maxLife){
         life = maxLife;
     }
-    
     if(life > 0){
         if(hasRange){
-            GM->player->health -= attack;
+//            GM->player->changeHealth(-attack);
+            CCPoint monsterPos = ccp(180 + this->lane * 190, 520);
+            CCMoveTo *action = CCMoveTo::create(.2, monsterPos);
+            monsterPos = ccp(180 + this->lane * 190, 350);
+            CCMoveTo *actionTwo = CCMoveTo::create(.1, monsterPos);
+            monsterPos = ccp(180 + this->lane * 190, 400 + location * 30);
+            CCMoveTo *actionThree = CCMoveTo::create(.05, monsterPos);
+            
+            CCSequence *seq = CCSequence::create(action, actionTwo, actionThree, NULL);
+            AnimationObject *animationObject = new AnimationObject();
+            animationObject->init(seq, this);
+            if(!this->isZoomed){
+                animationObject->duration = .30;
+                AM->addAnimation(animationObject);
+            }
+            
+            //screen shake
+            //            CCDelayTime *delay = CCDelayTime::create(.3);
+            CCShake *shakeAction = new CCShake();
+            shakeAction->init(.3, ccp(10, 10), true, 0);
+            //              CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
+            //                GM->gameLayer->runAction(shakeSeq);
+            animationObject = new AnimationObject();
+            animationObject->init(shakeAction, GM->gameLayer);
+            animationObject->duration = .05;
+            AM->addAnimation(animationObject);
+            
+            //add damage
+            //                GM->player->changeHealth(-attack);
+            CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
+            AnimationObject *animationObject2 = new AnimationObject();
+            animationObject->init(obj, this);
+            animationObject->duration = .04;
+            AM->addAnimation(animationObject2);
+            
+            
         }else{
-
             if(location > 0){
                 //move monster
                 location--;
             }else{
                 //attack human
-                GM->player->health -= attack;
+                //do attack animation
+                
+                CCPoint monsterPos = ccp(180 + this->lane * 190, 520);
+                CCMoveTo *action = CCMoveTo::create(.2, monsterPos);
+                monsterPos = ccp(180 + this->lane * 190, 350);
+                CCMoveTo *actionTwo = CCMoveTo::create(.1, monsterPos);
+                monsterPos = ccp(180 + this->lane * 190, 400);
+                CCMoveTo *actionThree = CCMoveTo::create(.05, monsterPos);
+                
+                CCSequence *seq = CCSequence::create(action, actionTwo, actionThree, NULL);
+                AnimationObject *animationObject = new AnimationObject();
+                animationObject->init(seq, this);
+                if(!this->isZoomed){
+                    animationObject->duration = .30;
+                    AM->addAnimation(animationObject);
+                }
+                
+                //screen shake
+    //            CCDelayTime *delay = CCDelayTime::create(.3);
+                CCShake *shakeAction = new CCShake();
+                shakeAction->init(.3, ccp(10, 10), true, 0);
+  //              CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
+//                GM->gameLayer->runAction(shakeSeq);
+                animationObject = new AnimationObject();
+                animationObject->init(shakeAction, GM->gameLayer);
+                animationObject->duration = .05;
+                AM->addAnimation(animationObject);
+                
+                //add damage
+//                GM->player->changeHealth(-attack);
+                 CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
+                 AnimationObject *animationObject2 = new AnimationObject();
+                 animationObject->init(obj, this);
+                 animationObject->duration = .04;
+                 AM->addAnimation(animationObject2);
             }
-
         }
     }else{
         isDead = true;
     }
-
     
     //update monster labels
     updateInterface();
@@ -173,3 +231,9 @@ void MonsterSprite::changeMonsterHealth(int healthOffset){
     }
     life += healthOffset;
 }
+
+void MonsterSprite::doDamage()
+{
+    GM->player->changeHealth(-attack, ccp(this->getPosition().x, 290));
+}
+

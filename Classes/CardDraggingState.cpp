@@ -47,7 +47,6 @@ void CardDraggingState::highlightInteractiveObjects(CardSprite *card){
     if(card->turnsLeftInMarket > 0){
         //if it's a market card lead the user to the discard pile
         GM->gameLayer->handLayer->enableDiscardInteractive();
-//        GM->gameLayer->changeIndicatorState(BuyCard);
         return;
     }else{
         GM->gameLayer->marketLayer->enableSellInteractive();
@@ -119,50 +118,28 @@ void CardDraggingState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* 
 
 void CardDraggingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     
-    
+
     if(selectedCard->cardTargets->targetObjectWithDraggingCard(touch, this, draggingCard))
     {
         if(selectedCard->cardTargets->isAbilityReady()){
             selectedCard->cardTargets->useAbility();
             this->transitionToNormalState();
         }else{
+            UIState::clearInteractiveState();
             this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
         }
     }else{
+        UIState::clearInteractiveState();
         this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
     }
     
     
     GM->player->organizeHand();
     draggingCard = NULL;
-    
-    
-    //
-    /*
-    
-    if(selectedCard->cardTargets->targetingType == DiscardCard || selectedCard->cardTargets->targetingType == DrawCard_DiscardCard){
-        //can only land in discard Area
-        if(UIState::cardInDiscardArea(draggingCard)){
-            selectedCard->cardTargets->selectedTargets->addObject(draggingCard);
-            GM->player->discardCard(draggingCard);
-            //check if card is ready to be played
-            if(selectedCard->cardTargets->isAbilityReady()){
-                selectedCard->cardTargets->useAbility();
-                this->transitionToNormalState();
-            }else{
-                this->highlightInteractiveObjects(selectedCard);
-            }
-        }else{
-            this->highlightInteractiveObjects(selectedCard);
-        }
-    }
-
-    GM->player->organizeHand();
-    draggingCard = NULL;
-     */
 }
 
 void CardDraggingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
+    UIState::clearInteractiveState();
     this->selectedCard->cardTargets->highlightInteractiveObjectsWithDraggingState(this);
     GM->player->organizeHand();
     draggingCard = NULL;

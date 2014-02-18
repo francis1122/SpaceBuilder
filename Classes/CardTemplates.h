@@ -23,5 +23,6 @@
 #include "SellCardTemplate.h"
 #include "InstantMonsterTemplate.h"
 #include "PreemptiveDamageTemplate.h"
+#include "BasicDamageTemplate.h"
 
 #endif

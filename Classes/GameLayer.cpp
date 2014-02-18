@@ -49,10 +49,12 @@ void GameLayer::setupButtons(){
                                           this,
                                           menu_selector(GameLayer::leftButtonPressed));
     
-	rightButton->setPosition(ccp(visibleSize.width - 80,
-                                 270));
-	leftButton->setPosition(ccp( 240,
-                                270));
+    rightButton->setScale(.7);
+    leftButton->setScale(.7);
+	rightButton->setPosition(ccp(visibleSize.width - 60,
+                                 240));
+	leftButton->setPosition(ccp( 180,
+                                240));
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
@@ -63,7 +65,8 @@ void GameLayer::setupButtons(){
     leftButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
     rightButtonGlow->setPosition(rightButton->getPosition());
     leftButtonGlow->setPosition(leftButton->getPosition());
-    
+    rightButtonGlow->setScale(rightButton->getScale());
+    leftButtonGlow->setScale(leftButtonGlow->getScale());
     this->addChild(rightButtonGlow, 101);
     this->addChild(leftButtonGlow, 101);
     
@@ -75,14 +78,15 @@ void GameLayer::setupButtons(){
     rightButtonLabel = CCLabelTTF::create("End Turn", Main_Font, 32);
     //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
-    leftButtonLabel->setPosition(ccp(240, 270));
-    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 273));
+    leftButtonLabel->setPosition(ccp(240, 250));
+    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 250));
     
     this->addChild(leftButtonLabel, 103);
     this->addChild(rightButtonLabel, 103);
     
+    this->scheduleUpdate();
     
-    
+
     
 }
 
@@ -122,25 +126,31 @@ bool GameLayer::init()
     // create and initialize a label
     
     visualIndicatorLabel = CCLabelTTF::create("GAME LAYER", Main_Font, 24);
-    monstersLeftLabel  = CCLabelTTF::create("1", Main_Font, 32);
+    monstersLeftLabel  = CCLabelTTF::create("1", Main_Bold_Font, 48);
+    monstersLeftLabel->setColor(ccWHITE);
 
     
     // position the label on the center of the screen
     visualIndicatorLabel->setPosition(ccp(origin.x + visibleSize.width/2,
                                           origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
-    monstersLeftLabel->setPosition(ccp( 50, visibleSize.height - 20));
-
+    visualIndicatorLabel->setColor(ccWHITE);
+    monstersLeftLabel->setPosition(ccp( 60, visibleSize.height - 50));
+    
+    CCSprite *monsterIcon = CCSprite::createWithSpriteFrameName("monsterIcon");
+    monsterIcon->setPosition(ccp(60, visibleSize.height - 50));
+    monsterIcon->setScale(.5);
     // add the label as a child to this layer
-    this->addChild(visualIndicatorLabel, 100);
-    this->addChild(monstersLeftLabel, 100);
+    this->addChild(visualIndicatorLabel, 102);
+    this->addChild(monstersLeftLabel, 102);
+    this->addChild(monsterIcon, 101);
 
     
     // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("background");
+    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("lowerBG");
     //    pSprite->initWithSpriteFrameName("background");
     
     // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 160));
     
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
@@ -154,12 +164,12 @@ bool GameLayer::init()
     marketLayer = MarketLayer::create();
     zoomLayer = ZoomLayer::create();
     monsterLayer = MonsterLayer::create();
-    topSlideLayer = TopSlideLayer::create();
-    this->addChild(topSlideLayer);
-    this->addChild(handLayer, 99);
+//    topSlideLayer = TopSlideLayer::create();
+//    this->addChild(topSlideLayer);
+    this->addChild(handLayer, 101);
 
-    topSlideLayer->addChild(monsterLayer, 99);
-    topSlideLayer->addChild(marketLayer, 99);
+    this->addChild(monsterLayer, 100);
+    this->addChild(marketLayer, 100);
     this->addChild(zoomLayer, 1000000);
     
     
@@ -170,13 +180,13 @@ bool GameLayer::init()
     
     //set game layer to gamemanager
     GM->gameLayer = this;
-    GM->player->drawHand();
-    GM->player->organizeHand();
+//    GM->player->drawHand();
+//    GM->player->organizeHand();
     this->setCurrentState(new NormalState());
     currentState->init();
     
-    GM->addMonstersPhase();
-    GM->organizeMonsters();
+  //  GM->addMonstersPhase();
+//   / GM->organizeMonsters();
     
     
     //market/monster switch button
@@ -196,6 +206,20 @@ bool GameLayer::init()
     */
     
     
+
+    
+    
+    
+    for(int i = 0; i < 5; i++){
+        CCSprite *row = CCSprite::createWithSpriteFrameName("line");
+        row->setOpacity(200);
+        row->setScaleX(1.65 - .15 * i);
+        row->setPosition(ccp(visibleSize.width/2 + 70, 350 + i * 30));
+        monsterLayer->addChild(row);
+        
+        //        400 + monster->location * 30
+    }
+    
     
     this->updateInterface();
     
@@ -204,6 +228,10 @@ bool GameLayer::init()
     return true;
 }
 
+void GameLayer::update(float dt)
+{
+    CCNode::update(dt);
+}
 
 
 void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
@@ -216,9 +244,7 @@ void GameLayer::rightButtonPressed(CCObject *pSender){
     if(GM->isInteractive){
         currentState->rightButtonTouch();
     }
-    
 }
-
 
 void GameLayer::leftButtonPressed(CCObject *pSender){
     if(GM->isInteractive){
@@ -319,7 +345,6 @@ void GameLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
                 //is a double tap
                 currentState->doubleTap(touch, event);
             }
-            
             previousTouchTime = currentTouchTime;
         }
     }
@@ -379,8 +404,11 @@ void GameLayer::leaveZoomState(){
 
 void GameLayer::updateInterface(){
     handLayer->updateInterface();
-    CCString *monstersLeftString =CCString::createWithFormat("%i", GM->currentLevelTemplate->monstersLeft);
-    monstersLeftLabel->setString(monstersLeftString->getCString());
+    monsterLayer->updateInterface();
+    if(GM->currentLevelTemplate){
+        CCString *monstersLeftString =CCString::createWithFormat("%i", GM->currentLevelTemplate->monstersLeft);
+        monstersLeftLabel->setString(monstersLeftString->getCString());
+    }
 }
 
 void GameLayer::enableRightButtonInteractive(){
@@ -422,3 +450,10 @@ CCPoint GameLayer::monsterLayerToMarketLayer(CCPoint monsterPoint){
     
 }
 
+
+
+void GameLayer::newRound()
+{
+    currentState->transitionToNormalState();
+}
+    

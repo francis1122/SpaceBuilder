@@ -23,7 +23,7 @@ void WeakMinionTemplate::addMainStats()
     createdMonster->life = 1 + (int)(powerLevel/12 + LLMath::diceRoll(powerLevel/8,1));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/10 + LLMath::getIntValue(0,powerLevel/10));
-    createdMonster->location = 4 + arc4random()%2;
+    createdMonster->location = 3 + arc4random()%2;
     createdMonster->monsterLevel = (int)powerLevel;
     
     monsterSpriteName =CCString::createWithFormat("Minion");

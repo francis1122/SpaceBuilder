@@ -21,7 +21,7 @@ void DragonBossTemplate::addAugmentationStatus()
 
 void DragonBossTemplate::addMainStats()
 {
-    createdMonster->life = 1 + (int)(powerLevel/3 + LLMath::diceRoll(powerLevel/8,1));
+    createdMonster->life = 1 + (int)(powerLevel/2 + LLMath::diceRoll(powerLevel/5,1));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/4 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 4;

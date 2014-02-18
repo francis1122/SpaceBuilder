@@ -23,6 +23,7 @@
 #include "GameLayer.h"
 #include "MonsterLayer.h"
 #include "HandLayer.h"
+#include "LabelWrapper.h"
 
 using namespace cocos2d;
 
@@ -102,9 +103,20 @@ void AnimationManager::runAnimation(AnimationObject *animation){
             this->runAnimation(nextObject);
         }
     }else{
-        animation->getObject()->stopAllActions();
-        if(!animation->getObject()->isZoomed){
-            animation->getObject()->runAction(animation->getAction());
+        CCNode *object = animation->getObject();
+        if(object == NULL){
+            object = animation->getNodeObject();
+        }
+
+        if(animation->getObject() != NULL){
+            if(!animation->getObject()->isZoomed){
+                object->stopAllActions();
+                animation->getObject()->runAction(animation->getAction());
+            }
+        }else{
+            if(object != NULL){
+                animation->getNodeObject()->runAction(animation->getAction());
+            }
         }
     }
 
@@ -137,26 +149,52 @@ void AnimationManager::createDamageIcon(int damage ,CCPoint point){
 }
 
 void AnimationManager::createSoulIcon(int soul, CCPoint point){
-    DamageIcon *icon = new DamageIcon();
-    icon->init(soul);
-    icon->autorelease();
-    icon->setColor(ccMAGENTA);
-    GM->gameLayer->handLayer->addChild(icon, 1000000);
-    icon->setPosition(point);
-    icon->setScale(0.4);
-    
-    
+    CCString *string = CCString::createWithFormat("+%i", soul);
+    CCLabelTTF *soulGainLabel = CCLabelTTF::create(string->getCString(), Main_Font, 128);
+    soulGainLabel->setColor(ccMAGENTA);
+
+    LabelWrapper *labelWrapper = new LabelWrapper();
+    labelWrapper->initWithLabel(soulGainLabel);
+    labelWrapper->setPosition(point);
+    GM->gameLayer->addChild(labelWrapper, 1000000);
     //    CCScaleTo *action = CCScaleTo::create(.05, .4);
     //    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
     CCDelayTime *delay = CCDelayTime::create(.8);
     CCFadeOut *fade = CCFadeOut::create(.4);
-    CCCallFunc *obj = CCCallFunc::create(icon, callfunc_selector(BaseObject::removeBaseObject));
+    CCCallFunc *obj = CCCallFunc::create(labelWrapper, callfunc_selector(BaseObject::removeBaseObject));
     
     CCSequence *seq = CCSequence::create( delay, fade, obj, NULL);
-    icon->runAction(seq);
+    labelWrapper->runAction(seq);
     /*    AnimationObject *animationObject = new AnimationObject();
      animationObject->init(seq, icon);
      animationObject->duration = .04;*/
     
     //this->addAnimation(animationObject);
 }
+
+
+void AnimationManager::endTurnAnimation(){
+    
+    CCLabelTTF *label = CCLabelTTF::create("Monsters Turn", LARGE_NUMBER_FONT, 114);
+
+    LabelWrapper *labelWrapper = new LabelWrapper();
+    labelWrapper->initWithLabel(label);
+    labelWrapper->setPosition(ccp(570, 250));
+    GM->gameLayer->addChild(labelWrapper, 100000000);
+    //    CCScaleTo *action = CCScaleTo::create(.05, .4);
+    //    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
+    CCDelayTime *delay = CCDelayTime::create(.6);
+    CCFadeOut *fade = CCFadeOut::create(1.0);
+    CCCallFunc *obj = CCCallFunc::create(labelWrapper, callfunc_selector(BaseObject::removeBaseObject));
+    
+    CCSequence *seq = CCSequence::create( delay, fade, obj, NULL);
+    labelWrapper->runAction(seq);
+    /*    AnimationObject *animationObject = new AnimationObject();
+     animationObject->init(seq, icon);
+     animationObject->duration = .04;*/
+    
+    //this->addAnimation(animationObject);
+}
+
+
+

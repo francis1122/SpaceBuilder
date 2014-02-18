@@ -29,7 +29,18 @@ bool AnimationObject::init(CCFiniteTimeAction *_action, BaseObject *_object)
 {
     isArray = false;
     duration = -1.0;
+    this->setNodeObject(NULL);
     this->setObject(_object);
+    this->setAction(_action);
+    return true;
+}
+
+bool AnimationObject::init(CCFiniteTimeAction *_action, CCNode *_object)
+{
+    isArray = false;
+    duration = -1.0;
+    this->setObject(NULL);
+    this->setNodeObject(_object);
     this->setAction(_action);
     return true;
 }
@@ -42,3 +53,5 @@ void AnimationObject::addAnimation(AnimationObject *animationObject)
     }*/
     this->animationArray->addObject(animationObject);
 }
+
+

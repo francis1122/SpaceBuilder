@@ -17,7 +17,14 @@ bool BaseObject::initDefaultState()
 }
 
 
-void BaseObject::removeBaseObject(){
+void BaseObject::removeBaseObject()
+{
     this->removeFromParentAndCleanup(true);
+    
+}
+
+
+void BaseObject::doDamage()
+{
     
 }

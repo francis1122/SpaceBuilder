@@ -57,6 +57,7 @@ public:
     CCMenuItemSprite *leftButton;
     CCSprite *rightButtonGlow, *leftButtonGlow;
     CCSprite *playAreaGlow;
+
     
     void setButtonLabels(const char *leftLabel, const char *rightLabel);
     
@@ -68,7 +69,7 @@ public:
     
     
     bool isTap;
-    
+    virtual void update(float dt);
     #pragma mark - touch code
     
     cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
@@ -97,6 +98,11 @@ public:
 
     #pragma mark - positioning
     CCPoint monsterLayerToMarketLayer(CCPoint monsterPoint);
+    
+    
+    //start new round callback
+    void newRound();
+    
     
 private:
     

@@ -29,12 +29,18 @@ public:
     cocos2d::CCLabelTTF *healthLabel;
     cocos2d::CCLabelTTF *soulLabel;
     cocos2d::CCLabelTTF *discardCountLabel;
-    cocos2d::CCLabelTTF *actionLabel;
     
     cocos2d::CCLayerColor *healthBG;
     cocos2d::CCLayerColor *healthIndicator;
     cocos2d::CCLayerColor *soulBG;
     cocos2d::CCLayerColor *soulIndicator;
+    
+    cocos2d::CCSprite *voidAreaSprite;
+    cocos2d::CCSprite *voidAreaGlowSprite;
+    
+ 
+    cocos2d::CCSprite *healthHolder;
+    cocos2d::CCSprite *soulHolder;
     
     cocos2d::CCSprite *handGlow;
     
@@ -51,6 +57,8 @@ public:
     void disableDiscardInterative();
     void enableHandInteractive();
     void disableHandInteractive();
+    void enableVoidAreaInteractive();
+    void disableVoidAreaInteractive();
     
     
 private:

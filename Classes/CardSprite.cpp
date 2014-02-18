@@ -73,6 +73,7 @@ bool CardSprite::init()
     
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 14 ,glowSprite->getContentSize().height/2 - 9));
+    glowSprite->setColor(ccGREEN);
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
 
@@ -84,6 +85,7 @@ bool CardSprite::init()
 void CardSprite::addCard()
 {
     this->setPosition(GM->gameLayer->handLayer->deckCardSprite->getPosition());
+    this->removeFromParentAndCleanup(true);
     GM->gameLayer->handLayer->addChild(this, 10000);
 }
 

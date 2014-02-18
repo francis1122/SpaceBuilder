@@ -20,6 +20,7 @@ public:
     bool isInteractive;
 
     void removeBaseObject();
+    virtual void doDamage();
     
 };
 

@@ -41,7 +41,7 @@ void MultiTargetDirectDamageTemplate::addRedAugmentationStatus(){
         GainSoulStatus *status = new GainSoulStatus();
         status->initWithSoulGain(soulGain);
         killStatus = status;
-        powerLevel -= cardPower/4;
+        powerLevel -= cardPower/3;
         cardCostOffset += cardPower/4;
         augmentationDescription = CCString::createWithFormat("Killing Blow: Gain %i soul", soulGain);
         
@@ -125,7 +125,7 @@ void MultiTargetDirectDamageTemplate::addNeutralMainStatus(){
     createdCard->cardTargets->targetingType = Monsters;
     createdCard->cardTargets->targetAmount = 2;
     
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/4, 1);
+    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/10, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);

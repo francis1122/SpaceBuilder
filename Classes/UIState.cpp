@@ -14,6 +14,7 @@
 #include "MonsterSprite.h"
 #include "HandLayer.h"
 #include "MarketLayer.h"
+#include "MonsterTurnState.h"
 
 USING_NS_CC;
 
@@ -132,6 +133,7 @@ void UIState::clearInteractiveState(){
     GM->gameLayer->disablePlayAreaInteractive();
     GM->gameLayer->disableLeftButtonInteractive();
     GM->gameLayer->disableRightButtonInteractive();
+    GM->gameLayer->handLayer->disableVoidAreaInteractive();
     
 }
 
@@ -289,6 +291,15 @@ void UIState::transitionToCardTargetingState(CardSprite* selectedCard){
 
 void UIState::transitionToCardDraggingState(CardSprite* selectedCard){
     CCLog("empty transitionToCardDraggingState");
+}
+
+void UIState::transitionToMonsterTurnState()
+{
+    GameManager *GM = GameManager::sharedGameManager();
+    MonsterTurnState *MTS = new MonsterTurnState();
+    MTS->init();
+    MTS->autorelease();
+    GM->gameLayer->changeState(MTS);
 }
 
 //type 0 = hand card, 1 = monster card, 2 = market card

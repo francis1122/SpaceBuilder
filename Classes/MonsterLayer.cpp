@@ -10,7 +10,7 @@
 #include "GameManager.h"
 #include "UIState.h"
 #include "GameLayer.h"
-
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -36,14 +36,40 @@ bool MonsterLayer::init()
     
     CCSprite *topBar = CCSprite::createWithSpriteFrameName("topBar");
     topBar->setPosition(ccp( topBar->getContentSize().width/2, visibleSize.height - topBar->getContentSize().height/3));
-    this->addChild(topBar, 1000000);
+//    this->addChild(topBar, 1000000);
     
     /*CCSprite *rows = CCSprite::createWithSpriteFrameName("rows");
     rows->setPosition(ccp( rows->getContentSize().width/2, rows->getContentSize().height/2 + 270));
     this->addChild(rows, 0);
     */
     
+    this->monsterSpawnArray = new CCArray();
+    this->monsterSpawnArray->init();
+    
+    for(int i = 0; i < 5; i++){
+        CCSprite *spawnSprite = CCSprite::createWithSpriteFrameName("Card_Image_Attack2");
+        spawnSprite->setPosition(ccp(180 + i * 185, visibleSize.height));
+        spawnSprite->setScale(.5);
+        spawnSprite->setOpacity(50);
+        this->monsterSpawnArray->addObject(spawnSprite);
+        this->addChild(spawnSprite);
+    }
     return true;
 }
 
+
+void MonsterLayer::updateInterface()
+{
+    CCArray *locationsArray = GM->locationArray;
+    for(int i = 0; i < locationsArray->count(); i++){
+        CCInteger *value = (CCInteger*)locationsArray->objectAtIndex(i);
+        CCSprite *spawnSprite = (CCSprite*)monsterSpawnArray->objectAtIndex(i);
+        if(value->getValue() == 0){
+            spawnSprite->setVisible(false);
+        }else if(value->getValue()){
+            spawnSprite->setVisible(true);
+            spawnSprite->setColor(ccRED);
+        }
+    }
+}
 

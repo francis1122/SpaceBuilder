@@ -80,7 +80,7 @@ bool TitleLayer::init()
                            pSprite->getContentSize().height/2));
     
     // position the sprite on the center of the screen
-//    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//  pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
@@ -90,7 +90,7 @@ bool TitleLayer::init()
 
 void TitleLayer::startGame(CCObject* pSender)
 {
-    GM->startNewGame();
+
     //load game scene
     // create a scene. it's an autorelease object
     CCDirector* pDirector = CCDirector::sharedDirector();
@@ -98,4 +98,6 @@ void TitleLayer::startGame(CCObject* pSender)
     
     // run
     pDirector->replaceScene(pScene);
+    GM->startNewGame();
+
 }

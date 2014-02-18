@@ -62,6 +62,7 @@ public:
     void setupMonsterImage(cocos2d::CCString* monserSpriteName);
     
     void changeMonsterHealth(int healthOffset);
+    virtual void doDamage();
     
 private:
     

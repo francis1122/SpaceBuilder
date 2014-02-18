@@ -29,11 +29,6 @@ public:
     //Get instance of singleton
     static GameManager* sharedGameManager();
     
-    //A function that returns zero "0"
-    int ReturnZero(){return 0;}
-    // another test function
-    void runScene() { CCLOG("test");};
-    
     bool isInteractive;
     
     GameLayer *gameLayer;
@@ -44,6 +39,7 @@ public:
     int currentTurn;
     
     //monster variables
+    CCArray *locationArray;
     CCArray *monsterArray;
     CCArray *marketCardArray;
     

@@ -29,19 +29,19 @@ bool HandLayer::init()
     
     deckCardSprite = CCSprite::createWithSpriteFrameName("cardBack");
     discardCardSprite  = CCSprite::createWithSpriteFrameName("cardBack");
-    deckCardSprite->setScale(.25);
-    discardCardSprite->setScale(.25);
-    deckCardSprite->setPosition(ccp(220, 100));
-    discardCardSprite->setPosition(ccp(visibleSize.width - 80, 100));
+    deckCardSprite->setScale(.20);
+    discardCardSprite->setScale(.20);
+    deckCardSprite->setPosition(ccp(190, 85));
+    discardCardSprite->setPosition(ccp(visibleSize.width - 50, 90));
     
     this->addChild(deckCardSprite, 2);
-    this->addChild(discardCardSprite,2);
+    this->addChild(discardCardSprite, 2);
     deckGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     discardGlowCardSprite  = CCSprite::createWithSpriteFrameName("cardGlow");
-    deckGlowCardSprite->setScale(.25);
-    discardGlowCardSprite->setScale(.25);
-    deckGlowCardSprite->setPosition(ccp(220, 100));
-    discardGlowCardSprite->setPosition(ccp(visibleSize.width - 80, 100));
+    deckGlowCardSprite->setScale(.20);
+    discardGlowCardSprite->setScale(.20);
+    deckGlowCardSprite->setPosition(deckCardSprite->getPosition());
+    discardGlowCardSprite->setPosition(discardCardSprite->getPosition());
     deckGlowCardSprite->setVisible(false);
     discardGlowCardSprite->setVisible(false);
     this->addChild(deckGlowCardSprite, 1);
@@ -66,30 +66,38 @@ bool HandLayer::init()
     
     libraryCountLabel = CCLabelTTF::create("10", Main_Font, 48);
     discardCountLabel = CCLabelTTF::create("0", Main_Font, 48);
-    healthLabel = CCLabelTTF::create("10\n10", Main_Font, 32);
-    soulLabel = CCLabelTTF::create("0\n10", Main_Font, 32);
-    actionLabel = CCLabelTTF::create("A:2", Main_Font, 32);
+    healthLabel = CCLabelTTF::create("10\r10", Main_Font, 32);
+    soulLabel = CCLabelTTF::create("0\r10", Main_Font, 32);
     
-    libraryCountLabel->setPosition(CCPointMake(220, 80));
-    discardCountLabel->setPosition(CCPointMake(visibleSize.width - 80, 80));
-    healthLabel->setPosition(CCPointMake(68, 80));
-    soulLabel->setPosition(CCPointMake(125, 80));
-    actionLabel->setPosition(ccp(200,160));
+    libraryCountLabel->setPosition(ccp(160, 75));
+    discardCountLabel->setPosition(ccp(visibleSize.width - 60, 75));
+    healthLabel->setPosition(ccp(40, 60));
+    soulLabel->setPosition(ccp(95, 60));
     
     this->addChild(libraryCountLabel, 3);
     this->addChild(discardCountLabel, 3);
     this->addChild(healthLabel, 3);
     this->addChild(soulLabel, 3);
-    this->addChild(actionLabel, 3);
+    
+    /*
+    healthHolder = CCSprite::createWithSpriteFrameName("statsholder");
+    soulHolder = CCSprite::createWithSpriteFrameName("statsholder");
+    healthHolder->setColor(ccRED);
+    soulHolder->setColor(ccMAGENTA);
+    healthHolder->setPosition(ccp(180, 121));
+    soulHolder->setPosition(ccp(180, 40));
+    this->addChild(healthHolder, 2);
+    this->addChild(soulHolder, 2);
+    */
     
 //    GameManager *GM = GameManager::sharedGameManager();
     //health meter setup
     
-    healthBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 50, 300);
-    healthIndicator = CCLayerColor::create(ccc4(0, 100, 0, 255), 40, 290);;
+    healthBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 40, 300);
+    healthIndicator = CCLayerColor::create(ccc4(0, 100, 0, 255), 30, 290);;
     
-    healthBG->setPosition( 40,20);
-    healthIndicator->setPosition(45, 20);
+    healthBG->setPosition( 25,20);
+    healthIndicator->setPosition(30, 20);
     
     healthIndicator->setAnchorPoint(ccp(.5, 0));
     
@@ -97,11 +105,11 @@ bool HandLayer::init()
     this->addChild(healthIndicator, 2);
     
     //soul meter setup
-    soulBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 50, 300);
-    soulIndicator = CCLayerColor::create(ccc4(75, 20, 150, 255), 40, 290);
+    soulBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 40, 300);
+    soulIndicator = CCLayerColor::create(ccc4(75, 20, 150, 255), 30, 290);
     
-    soulBG->setPosition( 100,20);
-    soulIndicator->setPosition(105, 20);
+    soulBG->setPosition( 75,20);
+    soulIndicator->setPosition(80, 20);
     
     soulIndicator->setAnchorPoint(ccp(.5, 0));
     
@@ -110,12 +118,26 @@ bool HandLayer::init()
     
     
     //action holder
-    CCLayerColor *actionHolder = CCLayerColor::create(ccc4(90, 90, 90, 255), 300, 70);
-    actionHolder->setPosition(ccp(500, 150));
+    CCLayerColor *actionHolder = CCLayerColor::create(ccc4(40, 40, 40, 255), 300, 40);
+    actionHolder->setPosition(ccp(450, 150));
+    actionHolder->setOpacity(220);
     this->addChild(actionHolder, ZORDERING_ACTIONHOLDER);
     
     actionArray = new CCArray();
     actionArray->init();
+    
+    
+    voidAreaSprite = CCSprite::createWithSpriteFrameName("cardBack");
+    voidAreaGlowSprite = CCSprite::createWithSpriteFrameName("cardGlow");;
+    voidAreaSprite->setScale(.2);
+    voidAreaGlowSprite->setScale(.2);
+    voidAreaSprite->setPosition(ccp(visibleSize.width - 65, visibleSize.height - 75));
+    voidAreaGlowSprite->setColor(ccGREEN);
+    voidAreaGlowSprite->setVisible(false);
+    voidAreaGlowSprite->setPosition(voidAreaSprite->getPosition());
+    this->addChild(voidAreaGlowSprite, 101);
+    this->addChild(voidAreaSprite, 102);
+    
     
     return true;
 }
@@ -129,19 +151,17 @@ void HandLayer::updateInterface(){
     libraryCountLabel->setString(libraryCountString->getCString());
     CCString *discardCountString =CCString::createWithFormat("%i", GM->player->discardCards->count());
     discardCountLabel->setString(discardCountString->getCString());
-    CCString *healthString =CCString::createWithFormat("%i\n%i", GM->player->health, GM->player->maxHealth);
+    CCString *healthString =CCString::createWithFormat("%i\r%i", GM->player->health, GM->player->maxHealth);
     healthLabel->setString(healthString->getCString());
-    CCString *soulString =CCString::createWithFormat("%i\n%i", GM->player->soul, GM->player->maxSoul);
+    CCString *soulString =CCString::createWithFormat("%i\r%i", GM->player->soul, GM->player->maxSoul);
     soulLabel->setString(soulString->getCString());
-    CCString *actionString = CCString::createWithFormat("A:%i", GM->player->actionsLeftArray->count());
-    actionLabel->setString(actionString->getCString());
     
     //setHealth
     int health = GM->player->health;
     int maxHealth = GM->player->maxHealth;
     float percentHealth = (float)health/(float)maxHealth;
     if(percentHealth > 1.0) percentHealth = 1.0;
-    healthIndicator->setScale(1, percentHealth);
+  healthIndicator->setScale(1, percentHealth);
     
     //setSoul
     int soul = GM->player->soul;
@@ -163,7 +183,7 @@ void HandLayer::updateInterface(){
         Action *action = (Action*)GM->player->actionsLeftArray->objectAtIndex(i);
         sprite->setColor(action->getActionColor());
         sprite->setScale(.5);
-        sprite->setPosition(ccp(540 + i * 60, 185));
+        sprite->setPosition(ccp(500 + i * 50, 170));
         //change color depending on action
         
         addChild(sprite, ZORDERING_ACTIONSPRITE);
@@ -193,4 +213,14 @@ void HandLayer::enableHandInteractive(){
 
 void HandLayer::disableHandInteractive(){
     handGlow->setVisible(false);
+}
+
+void HandLayer::enableVoidAreaInteractive()
+{
+    voidAreaGlowSprite->setVisible(true);
+}
+
+void HandLayer::disableVoidAreaInteractive()
+{
+    voidAreaGlowSprite->setVisible(false);
 }

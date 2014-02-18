@@ -63,5 +63,7 @@ public:
     void shuffle(CCArray *array);
     
     void changeSoul(int soulOffset);
+    void changeHealth(int healthOffset);
+    void changeHealth(int healthOffset, CCPoint point);
 };
 #endif /* defined(__RogueDeck__Player__) */

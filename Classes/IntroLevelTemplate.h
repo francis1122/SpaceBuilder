@@ -23,6 +23,7 @@ class IntroLevelTemplate : public LevelTemplate
     
 public:
 
+    virtual bool init(float _powerLevel);
     static LevelTemplate* create(){ return new IntroLevelTemplate();}
     
     virtual MonsterSprite *spawnMonster();

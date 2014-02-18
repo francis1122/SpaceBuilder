@@ -27,6 +27,7 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     if(!UIState::init()){
         return false;
     }
+    _selectedCard->setScale(.35);
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     GameManager *GM = GameManager::sharedGameManager();

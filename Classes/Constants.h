@@ -11,6 +11,7 @@
 
 
 #define Main_Font "BlueHighway-Regular"
+//#define Main_Font "Marmelad-Regular"
 #define Main_Bold_Font "BlueHighway-Bold"
 //#define LARGE_NUMBER_FONT "FetteEgyptienne"
 #define LARGE_NUMBER_FONT "BambiBold"

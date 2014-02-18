@@ -41,6 +41,7 @@ public:
     void createDamageIcon(int damage, CCPoint point);
     
     void createSoulIcon(int soul ,CCPoint point);
+    void endTurnAnimation();
     
 private:
     CCArray *animationQueue;

@@ -161,6 +161,7 @@ void Player::organizeHand(){
     
     CCARRAY_FOREACH(handCards, object){
         CardSprite *card = (CardSprite*)object;
+        card->setScale(.25);
         //card->setPosition(CCPointMake(startPoint + i * 110, 75));
         AnimationObject *animation = new AnimationObject();
         CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 110, 75));
@@ -204,14 +205,13 @@ void Player::organizePlayedCards(){
         currentPlayCard->setScale(.3);
         currentPlayCard->setPosition(ccp(650, 250));
     }
-    
-    
     animationHolder->duration = .05;
     AM->addAnimation(animationHolder);
 }
 
 
-void Player::removeCard(CardSprite *card){
+void Player::removeCard(CardSprite *card)
+{
     card->removeFromParent();
     deckCards->removeObject(card);
     handCards->removeObject(card);
@@ -219,7 +219,8 @@ void Player::removeCard(CardSprite *card){
     this->maxSoul--;
 }
 
-void Player::acquireCard(CardSprite *card){
+void Player::acquireCard(CardSprite *card)
+{
     card->turnsLeftInMarket = 0;
     this->deckCards->addObject(card);
     this->discardCards->addObject(card);
@@ -227,8 +228,8 @@ void Player::acquireCard(CardSprite *card){
     this->maxSoul++;
 }
 
-void Player::addCardToHand(){
-    
+void Player::addCardToHand()
+{
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CardSprite *card = (CardSprite*)object;
@@ -279,13 +280,15 @@ void Player::finishedPlayingCard(){
     
 }
 
-void Player::discardCard(CardSprite* card){
+void Player::discardCard(CardSprite* card)
+{
     discardCards->addObject(card);
     card->removeFromParent();
     handCards->removeObject(card);
 }
 
-void Player::discardPlayedCards(){
+void Player::discardPlayedCards()
+{
     CCObject *object;
     CCARRAY_FOREACH(playedCards, object){
         
@@ -297,7 +300,8 @@ void Player::discardPlayedCards(){
     playedCards->removeAllObjects();
 }
 
-void Player::discardHand(){
+void Player::discardHand()
+{
     CCObject *object;
     AnimationObject *holderAnimation = new AnimationObject();
     holderAnimation->init();
@@ -317,13 +321,15 @@ void Player::discardHand(){
     handCards->removeAllObjects();
 }
 
-void Player::drawHand(){
+void Player::drawHand()
+{
     for(int i = 0; i < 5; i++){
         addCardToHand();
     }
 }
 
-void Player::reshuffleLibrary(){
+void Player::reshuffleLibrary()
+{
     libraryCards->addObjectsFromArray(discardCards);
     shuffle(libraryCards);
     discardCards->removeAllObjects();
@@ -341,15 +347,26 @@ void Player::shuffle(CCArray *array)
 }
 
 
-void Player::changeSoul(int soulOffset){
+void Player::changeSoul(int soulOffset)
+{
     if(soulOffset > 0){
-        AM->createSoulIcon(soulOffset, ccp(70, 90));
+        AM->createSoulIcon(soulOffset, ccp(545,260));
     }
     this->soul += soulOffset;
     
 }
 
+void Player::changeHealth(int healthOffset)
+{
+    Player::changeHealth(healthOffset, ccp(470, 300));
+}
 
+void Player::changeHealth(int healthOffset, CCPoint point)
+{
+    if(healthOffset < 0){
+        AM->createDamageIcon(healthOffset, point);
+    }
+}
 
 
 

@@ -24,7 +24,6 @@ public:
     float powerLevel; //static powerLevel of monster
     float levelPower; //changes while making the monster to balance elements that go into monster
     int monstersLeft;
-    int maxLanes;
     
     virtual bool init(float _powerLevel);
     static LevelTemplate* create(){ return new LevelTemplate();}

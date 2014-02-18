@@ -133,7 +133,6 @@ void DirectDamageTemplate::addGreenAdditionalCost(){
 #pragma mark - main status
 
 void DirectDamageTemplate::addNeutralMainStatus(){
-    
     int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/7, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
@@ -146,6 +145,7 @@ void DirectDamageTemplate::addRedMainStatus(){
 }
 
 void DirectDamageTemplate::addBlueMainStatus(){
+    cardPower -= cardPower/4;
     addNeutralMainStatus();
 }
 

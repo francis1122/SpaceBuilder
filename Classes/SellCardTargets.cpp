@@ -28,6 +28,7 @@ void SellCardTargets::highlightInteractiveObjects(UIState* state){
 void SellCardTargets::highlightInteractiveObjectsWithDraggingState(UIState* state)
 {
     GM->gameLayer->changeIndicatorState("Drag Card to Pit");
+    
     CCObject *object;
     CCARRAY_FOREACH(GM->player->handCards, object){
         CardSprite *card = (CardSprite*)object;
@@ -37,12 +38,13 @@ void SellCardTargets::highlightInteractiveObjectsWithDraggingState(UIState* stat
 
 void SellCardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* state)
 {
-    GM->gameLayer->marketLayer->enableSellInteractive();
+    GM->gameLayer->handLayer->enableVoidAreaInteractive();
 }
 
 //checks whether the ability can be activated
 bool SellCardTargets::isAbilityActivatable(UIState* state){
-    if(GM->player->handCards->count() > targetAmount){
+    // -1 accounts for the card that is getting played
+    if((GM->player->handCards->count() - 1) > targetAmount){
         return true;
     }
     return false;

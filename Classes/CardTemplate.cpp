@@ -170,9 +170,9 @@ void CardTemplate::addGreenMainStatus(){
 
 #pragma mark -
 int CardTemplate::calculateSoul(){
-    int cost = (int)cardPower/3;
+    int cost = (int)powerLevel/2;
     cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/8, 1);
+    cost += LLMath::diceRoll((int)cardPower/6, 1);
     return cost;
 }
 
