@@ -8,12 +8,17 @@
 
 #include "BaseObject.h"
 
+USING_NS_CC;
 
 bool BaseObject::initDefaultState()
 {
     isZoomed = false;
     isInteractive = false;
+    
+
     return true;
+    
+    
 }
 
 

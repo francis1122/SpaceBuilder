@@ -20,7 +20,7 @@ bool LevelTemplate::init(float _powerLevel){
 
 MonsterSprite *LevelTemplate::getMonster(){
     MonsterSprite *monster;
-    if(monstersLeft <=0){
+    if(monstersLeft <= 0){
         return NULL;
     }
     if(monstersLeft <= 1){

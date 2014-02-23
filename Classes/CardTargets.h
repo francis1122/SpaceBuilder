@@ -49,6 +49,9 @@ public:
     int minMonsterLife;
     int maxMonsterLife;
     
+    int timesCardCanBePlayed;
+    int timesCardHasBeenPlayed;
+    
     bool isPreemptive;
     
     //type of targets to highlight
@@ -97,6 +100,9 @@ public:
     
     //does what the ability should do
     virtual void useAbility();
+
+    //check if card should be destroyed after it has been used
+    virtual bool shouldCardBeDestroyed();
 
     //utility functions
     virtual bool validMonsterTargetCheck(MonsterSprite *monster);

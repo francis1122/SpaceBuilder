@@ -12,7 +12,7 @@
 #include "CardTemplate.h"
 #include "DirectDamageTemplate.h"
 #include "SoulGainTemplate.h"
-#include "DrawCardTemplate.H"
+#include "DrawCardTemplate.h"
 #include "ActionGainTemplate.h"
 #include "RandomTargetDamageTemplate.h"
 #include "MultiTargetDirectDamageTemplate.h"
@@ -24,5 +24,11 @@
 #include "InstantMonsterTemplate.h"
 #include "PreemptiveDamageTemplate.h"
 #include "BasicDamageTemplate.h"
+#include "DamageAllTemplate.h"
+#include "MarketCardDiscountTemplate.h"
+#include "DiscardForActionsTemplate.h"
+#include "PushMonstersTemplate.h"
+#include "DamageActionTemplate.h"
+#include "SoulActionTemplate.h"
 
 #endif

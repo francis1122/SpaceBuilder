@@ -32,16 +32,18 @@ bool AnimationObject::init(CCFiniteTimeAction *_action, BaseObject *_object)
     this->setNodeObject(NULL);
     this->setObject(_object);
     this->setAction(_action);
+    this->setDebugString(CCString::create("nothing"));
     return true;
 }
 
-bool AnimationObject::init(CCFiniteTimeAction *_action, CCNode *_object)
+bool AnimationObject::initWithNode(CCFiniteTimeAction *_action, CCNode *_object)
 {
     isArray = false;
     duration = -1.0;
     this->setObject(NULL);
     this->setNodeObject(_object);
     this->setAction(_action);
+    this->setDebugString(CCString::create("nothing"));
     return true;
 }
 

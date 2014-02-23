@@ -20,9 +20,9 @@ MonsterSprite* PlainsLevelTemplate::spawnMonster(){
     
     //setup card drop table for cards to be chosen
     IRDSTable *templateDrops = new IRDSTable();
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(WeakMinionTemplate::CLASS_NAME, 5.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(RushMinionTemplate::CLASS_NAME, 10.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(OozeTemplate::CLASS_NAME, 5.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(WeakMinionTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(RushMinionTemplate::CLASS_NAME, 8.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(OozeTemplate::CLASS_NAME, 4.0, 0));
     
     //randomly choose a template
     IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);

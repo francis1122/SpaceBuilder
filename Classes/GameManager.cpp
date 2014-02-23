@@ -90,19 +90,22 @@ void GameManager::startNewGame(){
     isInteractive = true;
     currentLevel = 1;
     currentLevelTemplate = new IntroLevelTemplate();
-    currentLevelTemplate->init(10 + (currentLevel * 4));
+    currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
     addMonstersPhase();
+    CCObject *object;
+    CCARRAY_FOREACH(monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+        monster->turnUpdate();
+    }
     player->drawHand();
     player->organizeHand();
     gameLayer->updateInterface();
     gameLayer->getCurrentState()->defaultInteractiveState();
     
     isInteractive = true;
-    
-    
 }
 
 void GameManager::startNewRound(int level){
@@ -115,16 +118,21 @@ void GameManager::startNewRound(int level){
     int rand = arc4random()%2;
     if(rand == 0){
         currentLevelTemplate = new PlainsLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * 3));
+        currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
     }else{
         currentLevelTemplate = new ForestLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * 3));
+        currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
     }
 
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
     addMonstersPhase();
+    CCObject *object;
+    CCARRAY_FOREACH(monsterArray, object){
+        MonsterSprite *monster = (MonsterSprite*)object;
+        monster->turnUpdate();
+    }
     player->drawHand();
     player->organizeHand();
     gameLayer->updateInterface();
@@ -328,7 +336,7 @@ void GameManager::addMarketCard(CardSprite* marketCard){
   //  this->gameLayer->marketLayer->addChild(marketCard);
     
 //    this->organizeMarket();
-    
+    marketCard->turnsLeftInMarket = 2;
      this->marketCardArray->addObject(marketCard);
       this->gameLayer->monsterLayer->addChild(marketCard);
     
@@ -346,9 +354,11 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
         if(player->soul >= marketCard->soulCost){
                 GM->player->changeSoul(-marketCard->soulCost);
 //            player->spendAction(Neutral);
+            marketCard->turnsLeftInMarket = 0;
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
+
             return true;
         }else{
             CCLog("need more soul");
@@ -385,7 +395,7 @@ void GameManager::organizeMonsters(){
         if(!monster->isZoomed){
             monsterAnimation->addAnimation(animationObject);
         }
-            monster->updateInterface();
+        monster->updateInterface();
     }
     monsterAnimation->duration = .05;
     AM->addAnimation(monsterAnimation);
@@ -432,9 +442,10 @@ void GameManager::spawnMonster(){
             if(monster != NULL){
                 monster->lane = i;
                 this->gameLayer->monsterLayer->addChild(monster, 100);
-                monster->setPosition( ccp(210 + monster->lane * 150, 1000));
+                monster->setPosition( ccp(180 + monster->lane * 190, 1000));
                 monster->updateInterface();
                 this->monsterArray->addObject(monster);
+                CCLog("monster added to layer");
             }
         }
     }
@@ -466,6 +477,7 @@ void GameManager::addMonstersPhase(){
         this->spawnMonster();
     }
     this->organizeMonsters();
+    gameLayer->updateInterface();
 }
 
 void GameManager::monsterTurn(){

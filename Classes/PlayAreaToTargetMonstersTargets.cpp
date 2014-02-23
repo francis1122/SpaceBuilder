@@ -49,7 +49,7 @@ bool PlayAreaToTargetMonstersTargets::isAbilityActivatable(UIState* state){
     }
     
     
-    if(targetCount >= 1){
+    if(targetCount >= targetAmount){
         return true;
     }else{
         return false;
@@ -126,6 +126,7 @@ void PlayAreaToTargetMonstersTargets::useInitialAbility(){
 
 //does what the ability should do
 void PlayAreaToTargetMonstersTargets::useAbility(){
+    CardTargets::useAbility();
     CCObject *object;
     CCARRAY_FOREACH(selectedTargets, object){
         //TODO: can target more than just monsters

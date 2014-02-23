@@ -40,6 +40,8 @@ bool CardTargets::initWithCardSprite(CardSprite *card)
     
     minMonsterLife = -1;
     maxMonsterLife = -1;
+    timesCardCanBePlayed = -1;
+    timesCardHasBeenPlayed = 0;
     
     isPreemptive = false;
     
@@ -217,39 +219,21 @@ void CardTargets::useInitialAbility(){
 }
 
 //does what the ability should do
-void CardTargets::useAbility(){
-    if(targetingType == Monsters ||
-       targetingType == MonsterDefend){
-        CCObject *object;
-        CCARRAY_FOREACH(selectedTargets, object){
-        //TODO: can target more than just monsters
-            MonsterSprite *monster = (MonsterSprite*)object;
-            CCObject *object2;
-            CCARRAY_FOREACH(statuses, object2){
-                Status *status = (Status*)object2;
-                status->addStatusToGameObject(monster);
-            }
-        }
-    }else{
-        //do status
-        CCObject *object;
-        //GameManager *GM = GameManager::sharedGameManager();
-        CCARRAY_FOREACH(statuses, object){
-            Status *status = (Status*)object;
-            status->applyStatus();
-        }
-    }
-    //apply status effects to monster
-//    monster->updateInterface();
-    
-    GM->organizeMonsters();
-    GM->organizeMarket();
-    GM->gameLayer->updateInterface();
-    GM->afterCardPlayedStateCheck();
-    //clear targetArray
-    selectedTargets->removeAllObjects();
+void CardTargets::useAbility()
+{
+    timesCardHasBeenPlayed++;
 }
 
+
+bool CardTargets::shouldCardBeDestroyed()
+{
+    if(timesCardCanBePlayed != -1){
+        if(timesCardHasBeenPlayed >= timesCardCanBePlayed ){
+            return true;
+        }
+    }
+    return false;
+}
 
 //utility functions
 #pragma mark - utility functions

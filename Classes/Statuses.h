@@ -21,7 +21,9 @@
 #include "InstantKillMonsterStatus.h"
 #include "PlayerHealthOffsetStatus.h"
 #include "ComboStatus.h"
-
+#include "AllMonsterStatus.h"
+#include "MarketCardPriceOffsetStatus.h"
+#include "OffsetMonsterLocationStatus.h"
 
 
 #endif

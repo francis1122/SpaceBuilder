@@ -20,11 +20,12 @@ class AnimationObject : public CCObject
 public:
     virtual bool init();
     virtual bool init(CCFiniteTimeAction *_action, BaseObject *_object );
-    virtual bool init(CCFiniteTimeAction *_action, CCNode *_object);
+    virtual bool initWithNode(CCFiniteTimeAction *_action, CCNode *_object);
     
     CC_SYNTHESIZE_RETAIN(CCFiniteTimeAction *, action, Action);
     CC_SYNTHESIZE_RETAIN(BaseObject *, object, Object);
     CC_SYNTHESIZE_RETAIN(CCNode *, nodeObject, NodeObject);
+    CC_SYNTHESIZE_RETAIN(CCString *, debugString, DebugString);
     bool isArray;
     float duration;
     CCArray *animationArray;

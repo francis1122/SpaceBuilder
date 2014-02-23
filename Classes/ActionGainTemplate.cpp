@@ -71,13 +71,13 @@ void ActionGainTemplate::addGreenAdditionalCost(){
 void ActionGainTemplate::addNeutralMainStatus(){
     
     GainActionStatus *status = new GainActionStatus();
-    Action *actionOne = new Action();
-    actionOne->init(Neutral);
-    actionsGained->addObject(actionOne);
-    Action *actionTwo = new Action();
-    actionTwo->init(Neutral);
-    actionsGained->addObject(actionTwo);
-    status->initWithActionGain(actionsGained);
+    int actionCount = 1 + cardPower/15;
+    for(int i = 0; i < actionCount; i++){
+        Action *actionOne = new Action();
+        actionOne->init(Blue);
+        actionsGained->addObject(actionOne);
+        status->initWithActionGain(actionsGained);
+    }
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setCardType(Spell);
 }
@@ -113,17 +113,19 @@ void ActionGainTemplate::addBlueMainStatus(){
 
 void ActionGainTemplate::addYellowMainStatus(){
     
-
     GainActionStatus *status = new GainActionStatus();
-    Action *actionOne = new Action();
-    actionOne->init(Neutral);
-    actionsGained->addObject(actionOne);
-    Action *actionTwo = new Action();
-    actionTwo->init(Yellow);
-    actionsGained->addObject(actionTwo);
-    status->initWithActionGain(actionsGained);
+    int actionCount = 1 + cardPower/16;
+    for(int i = 0; i < actionCount; i++){
+        Action *actionOne = new Action();
+        actionOne->init(Neutral);
+        actionsGained->addObject(actionOne);
+        status->initWithActionGain(actionsGained);
+    }
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setCardType(Spell);
+    
+    //force two discards, gain
+    
 }
 
 void ActionGainTemplate::addGreenMainStatus(){

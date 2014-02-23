@@ -44,6 +44,9 @@ public:
     bool isDead;
     bool isBoss;
     
+    //given to a monster on there first turn so they don't attack or move or have any fun
+    bool summoningSickness;
+    
     void updateInterface();
     void turnUpdate();
     void onDeath();

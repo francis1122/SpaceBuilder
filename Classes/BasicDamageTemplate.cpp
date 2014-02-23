@@ -71,7 +71,7 @@ void BasicDamageTemplate::addGreenAdditionalCost(){
 #pragma mark - main status
 
 void BasicDamageTemplate::addNeutralMainStatus(){
-    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/7, 1);
+    int attack = 1 + (int)cardPower/7 + LLMath::diceRoll((int)cardPower/7, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);

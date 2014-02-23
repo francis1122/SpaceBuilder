@@ -95,8 +95,8 @@ void WashTemplate::addGreenMainStatus(){
 }
 
 int WashTemplate::calculateSoul(){
-    int cost = (int)cardPower/2;
+    int cost = (int)cardPower/5;
     cost += cardCostOffset;
-    cost += LLMath::diceRoll((int)cardPower/3, 1);
+    cost += LLMath::diceRoll((int)cardPower/6, 1);
     return cost;
 }

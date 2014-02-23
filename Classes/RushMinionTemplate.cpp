@@ -22,7 +22,7 @@ void RushMinionTemplate::addAugmentationStatus()
 
 void RushMinionTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/8,1));
+    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/6,1));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/8 + LLMath::getIntValue(0,powerLevel/8));
     createdMonster->location = 2 + arc4random()%2;

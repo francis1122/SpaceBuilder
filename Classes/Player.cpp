@@ -234,18 +234,11 @@ void Player::addCardToHand()
         CCObject *object = libraryCards->lastObject();
         CardSprite *card = (CardSprite*)object;
         card->setScale(.25);
-        
-        //        GM->gameLayer->addChild(card, 10000);
-        //        card->setVisible(false);
-        
         AnimationObject *animation = new AnimationObject();
-        
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::addCard));
-        animation->init(obj, AM);
-        animation->duration = .05;
+        animation->initWithNode(obj, GM->gameLayer);
+        animation->duration = .001;
         AM->addAnimation(animation);
-        
-        
         handCards->addObject(card);
         libraryCards->removeLastObject();
     }else{
@@ -257,7 +250,6 @@ void Player::addCardToHand()
             CCLog("No Cards To Draw");
         }
     }
-    
 }
 
 void Player::playCard(CardSprite *card){
@@ -272,10 +264,18 @@ void Player::playCard(CardSprite *card){
 
 void Player::finishedPlayingCard(){
     if(currentPlayCard != NULL){
-        playedCards->addObject(currentPlayCard);
-        currentPlayCard = NULL;
-        GM->player->organizeHand();
-        GM->player->organizePlayedCards();
+        //check if card should either go to discard, or be destroyed, or do anything else
+        if(currentPlayCard->cardTargets->shouldCardBeDestroyed()){
+            currentPlayCard->removeFromParent();
+            currentPlayCard = NULL;
+            GM->player->organizeHand();
+            GM->player->organizePlayedCards();
+        }else{
+            playedCards->addObject(currentPlayCard);
+            currentPlayCard = NULL;
+            GM->player->organizeHand();
+            GM->player->organizePlayedCards();
+        }
     }
     
 }
@@ -346,14 +346,12 @@ void Player::shuffle(CCArray *array)
     }
 }
 
-
 void Player::changeSoul(int soulOffset)
 {
     if(soulOffset > 0){
         AM->createSoulIcon(soulOffset, ccp(545,260));
     }
     this->soul += soulOffset;
-    
 }
 
 void Player::changeHealth(int healthOffset)
@@ -365,6 +363,15 @@ void Player::changeHealth(int healthOffset, CCPoint point)
 {
     if(healthOffset < 0){
         AM->createDamageIcon(healthOffset, point);
+        health += healthOffset;
+        GM->gameLayer->updateInterface();
+        GM->gameStateCheck();
+    }else{
+//        AM->createDamageIcon(healthOffset, point);
+        //need a heal icon of sorts
+        health += healthOffset;
+        GM->gameLayer->updateInterface();
+        GM->gameStateCheck();
     }
 }
 

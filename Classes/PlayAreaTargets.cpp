@@ -62,6 +62,7 @@ void PlayAreaTargets::useInitialAbility(){
 
 //does what the ability should do
 void PlayAreaTargets::useAbility(){
+    CardTargets::useAbility();
     //do status
     CCObject *object;
     CCARRAY_FOREACH(statuses, object){

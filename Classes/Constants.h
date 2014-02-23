@@ -16,6 +16,10 @@
 //#define LARGE_NUMBER_FONT "FetteEgyptienne"
 #define LARGE_NUMBER_FONT "BambiBold"
 
+#define MONSTER_IMPROVEMENT_PER_LEVEL 4
+#define DEFAULT_CARD_SCALE .25
+#define DEFAULT_MONSTER_CARD_SCALE .3
+
 
 #define GM GameManager::sharedGameManager()
 #define AM AnimationManager::sharedAnimationManager()

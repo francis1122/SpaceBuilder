@@ -18,6 +18,7 @@
 #include "MonsterLayer.h"
 #include "MarketLayer.h"
 #include "HandLayer.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
@@ -25,7 +26,6 @@ bool ZoomState::init(){
     if(!UIState::init()){
         return false;
     }
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->enterZoomState();
     GM->gameLayer->setButtonLabels("", "");
     return true;
@@ -43,7 +43,6 @@ bool ZoomState::initCardSprite(CardSprite *_selectedCard)
     this->selectedCard = _selectedCard;
     this->selectedMonsterCard = NULL;
     this->selectedCard->removeFromParent();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->zoomLayer->addChild(this->selectedCard, 100);
     this->selectedCard->setScale(1);
     this->selectedCard->stopAllActions();
@@ -65,7 +64,6 @@ bool ZoomState::initMonsterSprite(MonsterSprite *_selectedMonsterCard){
     this->selectedCard = NULL;
     
     this->selectedMonsterCard->removeFromParent();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->zoomLayer->addChild(this->selectedMonsterCard, 100);
     
     this->selectedMonsterCard->setScale(1);
@@ -88,7 +86,6 @@ bool ZoomState::initMarketCard(CardSprite *_selectedCard){
     this->selectedCard = _selectedCard;
     this->selectedMonsterCard = NULL;
     this->selectedCard->removeFromParent();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->zoomLayer->addChild(this->selectedCard, 100);
     this->selectedCard->setScale(1);
     this->selectedCard->setZOrder(1000000);
@@ -130,20 +127,17 @@ void ZoomState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *even
 #pragma mark - state transitions
 
 void ZoomState::transitionToNormalState(){
-    GameManager *GM = GameManager::sharedGameManager();
 
     GM->gameLayer->leaveZoomState();
     if(selectedMonsterCard != NULL){
-        GameManager *GM = GameManager::sharedGameManager();
         this->selectedMonsterCard->removeFromParent();
         GM->gameLayer->monsterLayer->addChild(this->selectedMonsterCard, 10000);
         
-        selectedMonsterCard->setScale(.25);
+        selectedMonsterCard->setScale(DEFAULT_MONSTER_CARD_SCALE);
         this->selectedMonsterCard->isZoomed = false;
         GM->organizeMonsters();
         
     }else{
-        GameManager *GM = GameManager::sharedGameManager();
         selectedCard->removeFromParent();
         if(isMarketCard){
             GM->gameLayer->monsterLayer->addChild(this->selectedCard, 100);
@@ -151,7 +145,7 @@ void ZoomState::transitionToNormalState(){
             GM->gameLayer->handLayer->addChild(this->selectedCard, 100);
         }
         
-        selectedCard->setScale(.25);
+        selectedCard->setScale(DEFAULT_CARD_SCALE);
         selectedCard->setZOrder(10000);
         this->selectedCard->isZoomed = false;
         GM->player->organizeHand();
@@ -160,14 +154,11 @@ void ZoomState::transitionToNormalState(){
     selectedCard = NULL;
     selectedMonsterCard = NULL;
     
-    
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();
     GM->gameLayer->changeState(NS);
     GM->gameLayer->updateInterface();
-
-
 }
 
 void ZoomState::transitionToHandCardSelectedState(CardSprite* selectedCard){
@@ -177,7 +168,6 @@ void ZoomState::transitionToHandCardSelectedState(CardSprite* selectedCard){
 void ZoomState::transitionToSelectMonsterState(CardSprite* selectedCard){
     
 }
-
 
 void ZoomState::transitionToCardTargetingState(CardSprite* selectedCard){
     

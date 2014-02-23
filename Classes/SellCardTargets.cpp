@@ -94,6 +94,7 @@ void SellCardTargets::useInitialAbility(){
 
 //does what the ability should do
 void SellCardTargets::useAbility(){
+    CardTargets::useAbility();
     CCObject *object;
     CCARRAY_FOREACH(statuses, object){
         Status *status = (Status*)object;

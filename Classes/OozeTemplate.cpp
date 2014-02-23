@@ -33,7 +33,7 @@ void OozeTemplate::addAugmentationStatus()
 
 void OozeTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/8,2));
+    createdMonster->life = (int)(powerLevel/3 + LLMath::diceRoll(powerLevel/8,2));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/7 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 4 + arc4random()%2;

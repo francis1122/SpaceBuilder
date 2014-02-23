@@ -102,9 +102,9 @@ void CardSprite::setCardType(CardType newCardType){
     }else if(cardType == Soul){
         textBox->setPosition(ccp(240, 200));
     }else if(cardType == Spell){
-        textBox->setPosition(ccp(240, 420));
+        textBox->setPosition(ccp(240, 200));
     }else if(cardType == Equipment){
-        
+        textBox->setPosition(ccp(240, 200));
     }
 
 }
@@ -130,8 +130,8 @@ void CardSprite::setSoulCostOfCard(int newSoulCost){
     costLabel->setString(newString->getCString());
     soulCost = newSoulCost;
     
-    CCRenderTexture *damageShadow = Utility::createTTFStroke(costLabel, 7, ccBLACK, 255);
-    costBox->addChild(damageShadow, 1);
+//    CCRenderTexture *damageShadow = Utility::createTTFStroke(costLabel, 7, ccBLACK, 255);
+//    costBox->addChild(damageShadow, 1);
 }
 
 
@@ -144,7 +144,7 @@ void CardSprite::addActionGain(CCArray* actionArray){
         CCSprite *sprite = CCSprite::createWithSpriteFrameName("Card_Action");
         sprite->setColor(action->getActionColor());
         sprite->setScale(1.0);
-        sprite->setPosition(ccpAdd(textBox->getPosition(), ccp(-20 + i * 80, textBox->getPosition().y - 320)));
+        sprite->setPosition(ccpAdd(textBox->getPosition(), ccp(-20 + i * 80, textBox->getPosition().y - 100)));
         addChild(sprite, 2);
         
 //        CCRenderTexture *damageShadow = Utility::createTTFStroke(sprite, 7, ccBLACK, 255);

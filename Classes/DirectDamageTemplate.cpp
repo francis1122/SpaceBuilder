@@ -34,8 +34,6 @@ void DirectDamageTemplate::addNeutralAugmentationStatus(){
 }
 
 void DirectDamageTemplate::addRedAugmentationStatus(){
-    int rand = arc4random()%2;
-    if(rand == 0){
         //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
@@ -50,27 +48,9 @@ void DirectDamageTemplate::addRedAugmentationStatus(){
         
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);
-        
-    }
 }
 
 void DirectDamageTemplate::addBlueAugmentationStatus(){
-    int rand = arc4random()%5;
-    if(rand == 0){
-        //choose status
-        GainActionStatus *status = new GainActionStatus();
-        CCArray *actions = new CCArray();
-        actions->init();
-        Action *action = new Action();
-        action->init(Blue);
-        actions->addObject(action);
-        status->initWithActionGain(actions);
-        powerLevel -= cardPower/2;
-        cardCostOffset += cardPower/4;
-        //used for the card interface
-        actionsGained->addObject(action);
-        createdCard->cardTargets->statuses->addObject(status);
-    }else if(rand == 1){
         //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
@@ -82,12 +62,9 @@ void DirectDamageTemplate::addBlueAugmentationStatus(){
         augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
         deathStatus->initWithStatus(status);
         createdCard->cardTargets->statuses->addObject(deathStatus);
-    }
 }
 
 void DirectDamageTemplate::addYellowAugmentationStatus(){
-    int rand = arc4random()%2;
-    if(rand == 0){
         // combo
         //killing blow augmentation
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
@@ -100,15 +77,21 @@ void DirectDamageTemplate::addYellowAugmentationStatus(){
         augmentationDescription = CCString::createWithFormat("Killing Blow: Draw 2 Cards");
         deathStatus->initWithStatus(status);
         createdCard->cardTargets->statuses->addObject(deathStatus);
-    }
 }
 
 void DirectDamageTemplate::addGreenAugmentationStatus(){
-    int rand = arc4random()%2;
-    if(rand == 0){
         //killing blow augmentation
+        DeathBlowStatus *deathStatus = new DeathBlowStatus();
+        //choose status
+        PlayerHealthOffsetStatus *status = new PlayerHealthOffsetStatus();
+        int healthGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/8, 1);
+        status->initWithHealthOffset(healthGain);
+        powerLevel -= cardPower/6;
+        cardCostOffset += cardPower/4;
         
-    }
+        augmentationDescription = CCString::createWithFormat("Killing blow: Gain %i health", healthGain);
+        deathStatus->initWithStatus(status);
+        createdCard->cardTargets->statuses->addObject(deathStatus);
 }
 
 #pragma mark - additional cost

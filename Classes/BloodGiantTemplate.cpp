@@ -29,7 +29,7 @@ void BloodGiantTemplate::addAugmentationStatus()
 
 void BloodGiantTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/4 + LLMath::diceRoll(powerLevel/9,2));
+    createdMonster->life = (int)(powerLevel/5 + LLMath::diceRoll(powerLevel/10,2));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/5 + LLMath::getIntValue(0,powerLevel/10));
     createdMonster->location = 5;

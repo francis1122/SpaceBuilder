@@ -15,7 +15,7 @@
 #include "Action.h"
 
 USING_NS_CC;
-
+class CardSprite;
 class Player
 {
     
@@ -33,7 +33,7 @@ public:
     //deck variables
     CCArray *deckCards;
     
-    CCSprite *currentPlayCard;
+    CardSprite *currentPlayCard;
     CCArray *playedCards;
     CCArray *libraryCards;
     CCArray *discardCards;

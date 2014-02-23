@@ -138,6 +138,7 @@ void DefendMonsterTargets::useInitialAbility(){
 
 //does what the ability should do
 void DefendMonsterTargets::useAbility(){
+    CardTargets::useAbility();
     CCObject *object;
     CCARRAY_FOREACH(selectedTargets, object){
         //TODO: can target more than just monsters

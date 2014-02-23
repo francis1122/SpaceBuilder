@@ -69,11 +69,9 @@ void DrawCardTemplate::addGreenAdditionalCost(){
 
 
 void DrawCardTemplate::addNeutralMainStatus(){
-    createdCard->cardTargets->targetingType = PlayArea;
-    
-    drawCardAmount = 2;
+    drawCardAmount = 1 + cardPower/20;
     DrawCardStatus *status = new DrawCardStatus();
-    status->initWithDrawAmount(2);
+    status->initWithDrawAmount(drawCardAmount);
     createdCard->cardTargets->statuses->addObject(status);
     mainDescription = CCString::createWithFormat("Draw %i Cards", drawCardAmount);
     createdCard->setCardType(Spell);
@@ -84,7 +82,22 @@ void DrawCardTemplate::addRedMainStatus(){
 }
 
 void DrawCardTemplate::addBlueMainStatus(){
-    addNeutralMainStatus();
+    
+    //gain an action
+    GainActionStatus *statusGainAction = new GainActionStatus();
+    Action *actionTwo = new Action();
+    actionTwo->init(Blue);
+    actionsGained->addObject(actionTwo);
+    statusGainAction->initWithActionGain(actionsGained);
+    createdCard->cardTargets->statuses->addObject(statusGainAction);
+    
+    //draw some cards
+    drawCardAmount = 1 + cardPower/20;
+    DrawCardStatus *status = new DrawCardStatus();
+    status->initWithDrawAmount(drawCardAmount);
+    createdCard->cardTargets->statuses->addObject(status);
+    mainDescription = CCString::createWithFormat("Draw %i Cards", drawCardAmount);
+    createdCard->setCardType(Spell);
 }
 
 void DrawCardTemplate::addYellowMainStatus(){

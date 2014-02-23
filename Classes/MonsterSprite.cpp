@@ -39,6 +39,7 @@ bool MonsterSprite::init()
     hasTaunt = false;
     hasRange = false;
     isBoss = false;
+    summoningSickness = true;
     
     //details of card
     CCSize detailSize = CCSizeMake(325, 240);
@@ -64,7 +65,7 @@ bool MonsterSprite::init()
     killingBlowArray->init();
     afterDeathEffectArray = new CCArray();
     afterDeathEffectArray->init();
-    this->setScale(.30);
+    this->setScale(DEFAULT_MONSTER_CARD_SCALE);
     
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 - 21,glowSprite->getContentSize().height/2 - 21));
@@ -89,6 +90,12 @@ void MonsterSprite::disableInteractive(){
 void MonsterSprite::updateInterface(){
     CCString *lifeString = CCString::createWithFormat("%i", life);
     lifeLabel->setString(lifeString->getCString());
+    if(life < maxLife){
+        lifeLabel->setColor(ccRED);
+    }else{
+        lifeLabel->setColor(ccWHITE);
+    }
+    
     CCString *attackString = CCString::createWithFormat("%i", attack);
     attackLabel->setString(attackString->getCString());
     if(lifeRender){
@@ -116,70 +123,28 @@ void MonsterSprite::onDeath(){
 }
 
 void MonsterSprite::turnUpdate(){
-    //update status first
-    for(int i = activeStatusArray->count() - 1; i >= 0 ;i--){
-        Status *status = (Status*)activeStatusArray->objectAtIndex(i);
-        status->updateStatus(this);
-        if(status->checkEnd()){
-            //should remove status
-            status->applyEndStatus();
-            activeStatusArray->removeObjectAtIndex(i);
-        }
-    }
-    if(life > maxLife){
-        life = maxLife;
-    }
-    if(life > 0){
-        if(hasRange){
-//            GM->player->changeHealth(-attack);
-            CCPoint monsterPos = ccp(180 + this->lane * 190, 520);
-            CCMoveTo *action = CCMoveTo::create(.2, monsterPos);
-            monsterPos = ccp(180 + this->lane * 190, 350);
-            CCMoveTo *actionTwo = CCMoveTo::create(.1, monsterPos);
-            monsterPos = ccp(180 + this->lane * 190, 400 + location * 30);
-            CCMoveTo *actionThree = CCMoveTo::create(.05, monsterPos);
-            
-            CCSequence *seq = CCSequence::create(action, actionTwo, actionThree, NULL);
-            AnimationObject *animationObject = new AnimationObject();
-            animationObject->init(seq, this);
-            if(!this->isZoomed){
-                animationObject->duration = .30;
-                AM->addAnimation(animationObject);
+    if(!summoningSickness){
+        //update status first
+        for(int i = activeStatusArray->count() - 1; i >= 0 ;i--){
+            Status *status = (Status*)activeStatusArray->objectAtIndex(i);
+            status->updateStatus(this);
+            if(status->checkEnd()){
+                //should remove status
+                status->applyEndStatus();
+                activeStatusArray->removeObjectAtIndex(i);
             }
-            
-            //screen shake
-            //            CCDelayTime *delay = CCDelayTime::create(.3);
-            CCShake *shakeAction = new CCShake();
-            shakeAction->init(.3, ccp(10, 10), true, 0);
-            //              CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
-            //                GM->gameLayer->runAction(shakeSeq);
-            animationObject = new AnimationObject();
-            animationObject->init(shakeAction, GM->gameLayer);
-            animationObject->duration = .05;
-            AM->addAnimation(animationObject);
-            
-            //add damage
-            //                GM->player->changeHealth(-attack);
-            CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
-            AnimationObject *animationObject2 = new AnimationObject();
-            animationObject->init(obj, this);
-            animationObject->duration = .04;
-            AM->addAnimation(animationObject2);
-            
-            
-        }else{
-            if(location > 0){
-                //move monster
-                location--;
-            }else{
-                //attack human
-                //do attack animation
-                
+        }
+        if(life > maxLife){
+            life = maxLife;
+        }
+        if(life > 0){
+            if(hasRange){
+                //            GM->player->changeHealth(-attack);
                 CCPoint monsterPos = ccp(180 + this->lane * 190, 520);
                 CCMoveTo *action = CCMoveTo::create(.2, monsterPos);
                 monsterPos = ccp(180 + this->lane * 190, 350);
                 CCMoveTo *actionTwo = CCMoveTo::create(.1, monsterPos);
-                monsterPos = ccp(180 + this->lane * 190, 400);
+                monsterPos = ccp(180 + this->lane * 190, 400 + location * 30);
                 CCMoveTo *actionThree = CCMoveTo::create(.05, monsterPos);
                 
                 CCSequence *seq = CCSequence::create(action, actionTwo, actionThree, NULL);
@@ -191,28 +156,77 @@ void MonsterSprite::turnUpdate(){
                 }
                 
                 //screen shake
-    //            CCDelayTime *delay = CCDelayTime::create(.3);
+                //            CCDelayTime *delay = CCDelayTime::create(.3);
                 CCShake *shakeAction = new CCShake();
                 shakeAction->init(.3, ccp(10, 10), true, 0);
-  //              CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
-//                GM->gameLayer->runAction(shakeSeq);
+                //              CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
+                //                GM->gameLayer->runAction(shakeSeq);
                 animationObject = new AnimationObject();
-                animationObject->init(shakeAction, GM->gameLayer);
+                animationObject->initWithNode(shakeAction, GM->gameLayer);
                 animationObject->duration = .05;
                 AM->addAnimation(animationObject);
                 
                 //add damage
-//                GM->player->changeHealth(-attack);
-                 CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
-                 AnimationObject *animationObject2 = new AnimationObject();
-                 animationObject->init(obj, this);
-                 animationObject->duration = .04;
-                 AM->addAnimation(animationObject2);
+                //                            GM->player->changeHealth(-attack);
+                CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
+                AnimationObject *animationObject2 = new AnimationObject();
+                animationObject->init(obj, this);
+                animationObject->duration = .04;
+                AM->addAnimation(animationObject2);
+                
+                
+            }else{
+                if(location > 0){
+                    //move monster
+                    location--;
+                }else{
+                    //attack human
+                    //do attack animation
+                    
+                    CCPoint monsterPos = ccp(180 + this->lane * 190, 520);
+                    CCMoveTo *action = CCMoveTo::create(.2, monsterPos);
+                    monsterPos = ccp(180 + this->lane * 190, 350);
+                    CCMoveTo *actionTwo = CCMoveTo::create(.1, monsterPos);
+                    monsterPos = ccp(180 + this->lane * 190, 400);
+                    CCMoveTo *actionThree = CCMoveTo::create(.05, monsterPos);
+                    
+                    CCSequence *seq = CCSequence::create(action, actionTwo, actionThree, NULL);
+                    AnimationObject *animationObject = new AnimationObject();
+                    animationObject->init(seq, this);
+                    if(!this->isZoomed){
+                        animationObject->duration = .28;
+                        AM->addAnimation(animationObject);
+                    }
+                    
+                    //screen shake
+                    //                CCDelayTime *delay = CCDelayTime::create(.3);
+                    
+                    //                CCSequence *shakeSeq = CCSequence::create(delay, shakeAction, NULL);
+                    //                GM->gameLayer->runAction(shakeSeq);
+                    CCShake *shakeAction = new CCShake();
+                    shakeAction->init(.3, ccp(10, 10), true, 0);
+                    AnimationObject *animationObjectShake = new AnimationObject();
+                    animationObjectShake->initWithNode(shakeAction, GM->gameLayer);
+                    animationObjectShake->setDebugString(CCString::create("Shake Screen Animation"));
+                    animationObjectShake->duration = .01;
+                    AM->addAnimation(animationObjectShake);
+                    
+                    //add damage
+                    //                GM->player->changeHealth(-attack);
+                    CCCallFunc *obj = CCCallFunc::create(this, callfunc_selector(MonsterSprite::doDamage));
+                    AnimationObject *animationObject2 = new AnimationObject();
+                    animationObject2->initWithNode(obj, this);
+                    animationObject2->duration = .01;
+                    AM->addAnimation(animationObject2);
+                }
             }
         }
-    }else{
+    }
+    
+    if(life <= 0){
         isDead = true;
     }
+    summoningSickness = false;
     
     //update monster labels
     updateInterface();

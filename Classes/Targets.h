@@ -16,5 +16,6 @@
 #include "DrawDiscardTargets.h"
 #include "DefendMonsterTargets.h"
 #include "SellCardTargets.h"
+#include "MarketCardTarget.h"
 
 #endif

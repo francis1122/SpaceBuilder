@@ -71,6 +71,13 @@ void AnimationManager::updateAnimations(){
     //run the next animation in the queue
     if(this->animationQueue->count() >= 1){
         AnimationObject *animation = (AnimationObject*)animationQueue->objectAtIndex(0);
+        
+        CCString *test = animation->getDebugString();
+        if(test){
+            const char * bah = test->getCString();
+            CCLog("AnimationManager::animation object %s", bah);
+        }
+        
         this->runAnimation(animation);
         float duration;
         if(animation->isArray || duration > 0.0){
@@ -116,8 +123,10 @@ void AnimationManager::runAnimation(AnimationObject *animation){
         }else{
             if(object != NULL){
                 animation->getNodeObject()->runAction(animation->getAction());
+
             }
         }
+
     }
 
 }
@@ -128,15 +137,15 @@ void AnimationManager::createDamageIcon(int damage ,CCPoint point){
     DamageIcon *icon = new DamageIcon();
     icon->init(damage);
     icon->autorelease();
-    GM->gameLayer->monsterLayer->addChild(icon, 1000000);
+    GM->gameLayer->addChild(icon, 1000000);
     icon->setPosition(point);
     icon->setScale(0.4);
 
 
 //    CCScaleTo *action = CCScaleTo::create(.05, .4);
 //    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
-    CCDelayTime *delay = CCDelayTime::create(.8);
-    CCFadeOut *fade = CCFadeOut::create(.4);
+    CCDelayTime *delay = CCDelayTime::create(.6);
+    CCFadeOut *fade = CCFadeOut::create(.5);
     CCCallFunc *obj = CCCallFunc::create(icon, callfunc_selector(BaseObject::removeBaseObject));
     
     CCSequence *seq = CCSequence::create( delay, fade, obj, NULL);

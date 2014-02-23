@@ -17,7 +17,9 @@ class IRDSCardTemplate : public IRDSObject
     
 public:
     IRDSCardTemplate(std::string chosenClassName, double odds, float _minLevelRequired);
+    IRDSCardTemplate(std::string chosenClassName, double odds, float _minLevelRequired, float _maxLevelRequired);
     float minLevelRequired;
+    float maxLevelRequired;
     std::string className;
     virtual void checkIfUsable(float powerLevel);
 };
