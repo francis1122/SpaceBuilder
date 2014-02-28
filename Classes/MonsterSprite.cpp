@@ -239,6 +239,14 @@ void MonsterSprite::setupMonsterImage(CCString* monserSpriteName)
     this->addChild(image);
 }
 
+void MonsterSprite::changeMonsterAttack(int attackOffset)
+{
+    attack += attackOffset;
+    if(attack < 1){
+        attack = 1;
+    }
+}
+
 void MonsterSprite::changeMonsterHealth(int healthOffset){
     if(healthOffset < 0){
         AM->createDamageIcon(healthOffset, this->getPosition());

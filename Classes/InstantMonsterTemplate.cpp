@@ -23,6 +23,7 @@ void InstantMonsterTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new MonsterTargets();
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 #pragma mark - augmentation

@@ -24,6 +24,9 @@
 #include "AllMonsterStatus.h"
 #include "MarketCardPriceOffsetStatus.h"
 #include "OffsetMonsterLocationStatus.h"
+#include "LeechMonsterLifeStatus.h"
+#include "MonsterSelfDamageStatus.h"
+#include "MonsterAttackOffsetStatus.h"
 
 
 #endif

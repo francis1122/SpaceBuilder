@@ -30,5 +30,11 @@
 #include "PushMonstersTemplate.h"
 #include "DamageActionTemplate.h"
 #include "SoulActionTemplate.h"
+#include "HugeSoulGainTemplate.h"
+#include "LeechLifeTemplate.h"
+#include "DamageForHealthTemplate.h"
+#include "DamageWithMonsterAttackIncreaseTemplate.h"
+#include "MonsterSelfDamageTemplate.h"
+
 
 #endif

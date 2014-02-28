@@ -40,6 +40,16 @@ bool DrawCardStatus::initWithDrawAmount(int drawAmount){
 }
 
 
+void DrawCardStatus::addStatusToGameObject(MonsterSprite *monster)
+{
+    this->applyStatus();
+}
+
+void DrawCardStatus::addStatusToCardSprite(CardSprite *card)
+{
+    this->applyStatus();    
+}
+
 //checks whether the status can be used
 bool DrawCardStatus::checkStart(){
     return true;

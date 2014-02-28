@@ -36,6 +36,7 @@ public:
     int life;
     int maxLife;
     int attack;
+    int default_attack;
     int location;
     int lane;
     bool hasTaunt;
@@ -64,6 +65,7 @@ public:
     
     void setupMonsterImage(cocos2d::CCString* monserSpriteName);
     
+    void changeMonsterAttack(int attackOffset);
     void changeMonsterHealth(int healthOffset);
     virtual void doDamage();
     

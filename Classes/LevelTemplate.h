@@ -17,15 +17,18 @@ USING_NS_CC;
 
 
 class MonsterSprite;
-class LevelTemplate
+class LevelTemplate : public CCObject
 {
     
 public:
     float powerLevel; //static powerLevel of monster
     float levelPower; //changes while making the monster to balance elements that go into monster
+    int levelNumber;
     int monstersLeft;
+    CCString *levelName;
+    CCString *levelDescription;
     
-    virtual bool init(float _powerLevel);
+    virtual bool init(int _levelNumber);
     static LevelTemplate* create(){ return new LevelTemplate();}
     
     

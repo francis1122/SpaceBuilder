@@ -48,13 +48,13 @@ Player::Player()
     for(int i = 0; i < 6; i++){
         CardSprite *card = new CardSprite();
         card->cardImageFile = "sword";
-        card->init();
+        card->initWithSpriteFrameName("NeutralCard");
         //Make card ability
         CardTargets *cardTargets = new MonsterTargets();
         cardTargets->initWithCardSprite(card);
         cardTargets->targetingType = Monsters;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->init(2);
+        status->initWithHealthOffset(-2);
         cardTargets->statuses->addObject(status);
         
         card->cardTargets = cardTargets;
@@ -67,7 +67,7 @@ Player::Player()
     for(int i = 0; i < 4; i++){
         CardSprite *card = new CardSprite();
         card->cardImageFile = "images";
-        card->init();
+        card->initWithSpriteFrameName("NeutralCard");
         //Make card ability
         CardTargets *cardTargets = new PlayAreaTargets();
         cardTargets->initWithCardSprite(card);
@@ -161,7 +161,7 @@ void Player::organizeHand(){
     
     CCARRAY_FOREACH(handCards, object){
         CardSprite *card = (CardSprite*)object;
-        card->setScale(.25);
+        card->setScale(DEFAULT_CARD_SCALE);
         //card->setPosition(CCPointMake(startPoint + i * 110, 75));
         AnimationObject *animation = new AnimationObject();
         CCMoveTo *move = CCMoveTo::create(.3, CCPointMake(startPoint + i * 110, 75));
@@ -233,7 +233,7 @@ void Player::addCardToHand()
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CardSprite *card = (CardSprite*)object;
-        card->setScale(.25);
+        card->setScale(DEFAULT_CARD_SCALE);
         AnimationObject *animation = new AnimationObject();
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::addCard));
         animation->initWithNode(obj, GM->gameLayer);
@@ -294,7 +294,7 @@ void Player::discardPlayedCards()
         
         CardSprite *card = (CardSprite*)object;
         card->removeFromParent();
-        
+        card->disableInteractive();
         discardCards->addObject(object);
     }
     playedCards->removeAllObjects();
@@ -308,7 +308,7 @@ void Player::discardHand()
     CCARRAY_FOREACH(handCards, object){
         AnimationObject *animation = new AnimationObject();
         CardSprite *card = (CardSprite*)object;
-        
+        card->disableInteractive();
         discardCards->addObject(object);
         CCMoveTo *move = CCMoveTo::create(.4, GM->gameLayer->handLayer->discardCardSprite->getPosition());
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::removeCard));

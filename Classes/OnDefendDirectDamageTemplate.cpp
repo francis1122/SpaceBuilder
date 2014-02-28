@@ -21,6 +21,7 @@ void OnDefendDirectDamageTemplate::createCardTargets(CardSprite *card){
     
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+
 }
 
 #pragma mark - augmentation
@@ -67,7 +68,7 @@ void OnDefendDirectDamageTemplate::addGreenAdditionalCost(){
 #pragma mark - main status
 
 void OnDefendDirectDamageTemplate::addNeutralMainStatus(){
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/3, 1);
+    int attack = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);

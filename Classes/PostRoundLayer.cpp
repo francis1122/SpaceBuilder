@@ -51,6 +51,9 @@ bool PostRoundLayer::init()
                                                           this,
                                                           menu_selector(PostRoundLayer::nextRound));
     */
+
+    
+    
     CCMenuItemSprite *pCloseItem = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("StartButton_Normal"),
                                                             CCSprite::createWithSpriteFrameName("StartButton_Pressed"),
                                                             this,

@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "TitleLayer.h"
+#include "PostRoundLayer.h"
+#include "BetweenRoundLayer.h"
 
 USING_NS_CC;
 

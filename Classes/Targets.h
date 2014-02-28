@@ -17,5 +17,6 @@
 #include "DefendMonsterTargets.h"
 #include "SellCardTargets.h"
 #include "MarketCardTarget.h"
+#include "MonsterAdjacentTargets.h"
 
 #endif

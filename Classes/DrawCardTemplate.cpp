@@ -19,6 +19,7 @@ void DrawCardTemplate::createCardTargets(CardSprite *card)
     CardTargets *cardTargets = new PlayAreaTargets();
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 

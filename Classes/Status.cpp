@@ -26,11 +26,11 @@ bool Status::init()
 
 
 void Status::addStatusToGameObject(MonsterSprite *monster){
-    CCLog("Status::addStatusToGameObject fail");
+    this->applyStatus();
 }
 
 void Status::addStatusToCardSprite(CardSprite *card){
-    CCLog("Status::addStatusToCardSprite fail");
+    this->applyStatus();
 }
 
 //checks whether the status can be used

@@ -24,7 +24,7 @@
 			<key>MaxSheetSize</key>
 			<integer>4096</integer>
 			<key>NpotSize</key>
-			<string>{4092, 4084}</string>
+			<string>{4080, 4096}</string>
 			<key>Padding</key>
 			<integer>8</integer>
 			<key>PixelFormat</key>
@@ -137,9 +137,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{288, 574}, {110.75, 75.75}}</string>
+						<string>{{377, 767}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1152, 2296}, {443, 303}}</string>
+						<string>{{1508, 3068}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -165,7 +165,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1152, 2296}</string>
+						<string>{1508, 3068}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -280,9 +280,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{574, 2}, {284, 160}}</string>
+						<string>{{2, 574}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{2296, 8}, {1136, 640}}</string>
+						<string>{{8, 2296}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -292,7 +292,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -308,7 +308,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{2296, 8}</string>
+						<string>{8, 2296}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -423,9 +423,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{747, 758}, {117, 38.5}}</string>
+						<string>{{723, 285}, {117, 38.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2988, 3032}, {468, 154}}</string>
+						<string>{{2892, 1140}, {468, 154}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -435,7 +435,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -451,7 +451,7 @@
 						<key>OriginalSize</key>
 						<string>{468, 154}</string>
 						<key>Position</key>
-						<string>{2988, 3032}</string>
+						<string>{2892, 1140}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -566,9 +566,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{401, 574}, {110.75, 75.75}}</string>
+						<string>{{288, 844}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1604, 2296}, {443, 303}}</string>
+						<string>{{1152, 3376}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -594,11 +594,154 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1604, 2296}</string>
+						<string>{1152, 3376}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{110.75, 75.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>BlueCard</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vawwEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA5AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAMAAAAAQEAAEJsdWVDYXJkLnBuZxgA
+					AAABBgAABAAAABQAAAAkAAAANAAAAEgAAABc
+					AAAACAAAAAQDAADpEAIAAAAAAAgAAAAEAwAA
+					FcQFAAAAAAAIAAAABAMAAPY8EAAAAAAACAAA
+					AAQDAAD9ZCEAAAAAAAgAAAAEAwAAi0IwAAAA
+					AAAIAAAABAMAAPW/ZwAAAAAAGAAAAAEGAACQ
+					AAAAoAAAALAAAADAAAAA0AAAAOAAAAAIAAAA
+					AAQAAEG4u0B3AAAAGAAAAAECAAABAAAAAAAA
+					AA8AAAAAAAAAAAAAAAAAAAAAAAAAAQUAAAQA
+					AAADAwAABgAAAAQAAAADAwAABAAAAAgAAAAE
+					AwAABAAAAAAAAAAEAAAAAwMAAPUBAAAMAAAA
+					AQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAACCI
+					PToAAAAIAAAAAAQAAEG275HaAAAAJAAAAAEB
+					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
+					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
+					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
+					AAQAAAADAwAAAAEAAMcAAAABAgAAZTM4Yjg2
+					Mjg4N2E2ZTk4N2RkMDczODMxMzkyMTZkODFk
+					YmM3YjM2ODswMDAwMDAwMDswMDAwMDAwMDsw
+					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
+					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDA2N2Jm
+					ZjU7L3VzZXJzL2h1bnRlci9kcm9wYm94L3Jv
+					Z3VlZGVjay9jYXJkcGFydHMvYmx1ZWNhcmQu
+					cG5nAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
+					AABwAAAAAAAAAAUQAADwAAAAAAAAABAQAAAg
+					AQAAAAAAAEAQAAAQAQAAAAAAAFQQAABIAQAA
+					AAAAAFUQAABUAQAAAAAAAFYQAABAAQAAAAAA
+					AAIgAAD8AQAAAAAAABAgAAB8AQAAAAAAABEg
+					AACwAQAAAAAAABIgAACQAQAAAAAAABMgAACg
+					AQAAAAAAACAgAADcAQAAAAAAADAgAABAAQAA
+					AAAAAAHAAABgAQAAAAAAABHAAAAUAAAAAAAA
+					ABLAAABwAQAAAAAAABDQAAAIAgAAAAAAAIDw
+					AAAUAgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>BlueCard</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{723, 860}, {127.75, 173.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{2892, 3440}, {511, 693}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>BlueCard</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/BlueCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/BlueCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {511, 693}}</string>
+						<key>OriginalSize</key>
+						<string>{511, 693}</string>
+						<key>Position</key>
+						<string>{2892, 3440}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{127.75, 173.25}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -707,9 +850,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{866, 800}, {42.75, 40.5}}</string>
+						<string>{{957, 749}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3464, 3200}, {171, 162}}</string>
+						<string>{{3828, 2996}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -719,7 +862,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -735,7 +878,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{3464, 3200}</string>
+						<string>{3828, 2996}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -848,9 +991,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{962, 758}, {42.75, 40.5}}</string>
+						<string>{{957, 706}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3848, 3032}, {171, 162}}</string>
+						<string>{{3828, 2824}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -876,7 +1019,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{3848, 3032}</string>
+						<string>{3828, 2824}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -990,9 +1133,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{909, 800}, {42.75, 40.5}}</string>
+						<string>{{957, 664}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3636, 3200}, {171, 162}}</string>
+						<string>{{3828, 2656}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1002,7 +1145,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1018,7 +1161,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{3636, 3200}</string>
+						<string>{3828, 2656}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1131,9 +1274,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{951, 800}, {42.75, 40.5}}</string>
+						<string>{{957, 621}, {42.75, 40.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3804, 3200}, {171, 162}}</string>
+						<string>{{3828, 2484}, {171, 162}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1159,7 +1302,7 @@
 						<key>OriginalSize</key>
 						<string>{171, 162}</string>
 						<key>Position</key>
-						<string>{3804, 3200}</string>
+						<string>{3828, 2484}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1274,9 +1417,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{131, 842}, {115.5, 164.5}}</string>
+						<string>{{898, 860}, {115.5, 164.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{524, 3368}, {462, 658}}</string>
+						<string>{{3592, 3440}, {462, 658}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1302,7 +1445,7 @@
 						<key>OriginalSize</key>
 						<string>{462, 658}</string>
 						<key>Position</key>
-						<string>{524, 3368}</string>
+						<string>{3592, 3440}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1417,9 +1560,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{843, 941}, {31.75, 40.75}}</string>
+						<string>{{723, 990}, {31.75, 40.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3372, 3764}, {125, 163}}</string>
+						<string>{{2892, 3960}, {125, 163}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1445,7 +1588,7 @@
 						<key>OriginalSize</key>
 						<string>{125, 163}</string>
 						<key>Position</key>
-						<string>{3372, 3764}</string>
+						<string>{2892, 3960}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1560,9 +1703,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{705, 922}, {88.75, 84.5}}</string>
+						<string>{{756, 767}, {88.75, 84.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2820, 3688}, {355, 338}}</string>
+						<string>{{3024, 3068}, {355, 338}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1588,7 +1731,7 @@
 						<key>OriginalSize</key>
 						<string>{355, 338}</string>
 						<key>Position</key>
-						<string>{2820, 3688}</string>
+						<string>{3024, 3068}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1703,9 +1846,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{705, 822}, {98, 79.5}}</string>
+						<string>{{575, 765}, {98, 79.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2820, 3288}, {392, 318}}</string>
+						<string>{{2300, 3060}, {392, 318}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1715,7 +1858,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1731,7 +1874,7 @@
 						<key>OriginalSize</key>
 						<string>{392, 318}</string>
 						<key>Position</key>
-						<string>{2820, 3288}</string>
+						<string>{2300, 3060}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1846,9 +1989,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{173, 725}, {35, 24.75}}</string>
+						<string>{{763, 285}, {35, 24.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{692, 2900}, {140, 99}}</string>
+						<string>{{3052, 1140}, {140, 99}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -1858,7 +2001,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -1874,7 +2017,7 @@
 						<key>OriginalSize</key>
 						<string>{140, 99}</string>
 						<key>Position</key>
-						<string>{692, 2900}</string>
+						<string>{3052, 1140}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -1990,9 +2133,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{421, 652}, {98.75, 90.75}}</string>
+						<string>{{164, 767}, {98.75, 90.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1684, 2608}, {393, 363}}</string>
+						<string>{{656, 3068}, {393, 363}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2002,7 +2145,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2018,7 +2161,7 @@
 						<key>OriginalSize</key>
 						<string>{393, 363}</string>
 						<key>Position</key>
-						<string>{1684, 2608}</string>
+						<string>{656, 3068}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2134,9 +2277,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{786, 798}, {78, 79.75}}</string>
+						<string>{{675, 765}, {78, 79.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3144, 3192}, {312, 319}}</string>
+						<string>{{2700, 3060}, {312, 319}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2146,7 +2289,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2162,11 +2305,154 @@
 						<key>OriginalSize</key>
 						<string>{312, 319}</string>
 						<key>Position</key>
-						<string>{3144, 3192}</string>
+						<string>{2700, 3060}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{78, 79.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>GreenCard</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxAEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA6AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAANAAAAAQEAAEdyZWVuQ2FyZC5wbmcA
+					AAAYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABI
+					AAAAXAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAA/WQhAAAAAAAIAAAABAMAAItC
+					MAAAAAAACAAAAAQDAAD3v2cAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuLs+/wAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADIAAAAAQIAADE4
+					MzdiMjRiODA1NzM0OGQ2NTU3Y2I4ODhiOWYz
+					Mzg5ZWFmMmI1NzM7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					NjdiZmY3Oy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL2dyZWVu
+					Y2FyZC5wbmcA8AAAAP7///8BAAAAAAAAABMA
+					AAAEEAAAdAAAAAAAAAAFEAAA9AAAAAAAAAAQ
+					EAAAJAEAAAAAAABAEAAAFAEAAAAAAABUEAAA
+					TAEAAAAAAABVEAAAWAEAAAAAAABWEAAARAEA
+					AAAAAAACIAAAAAIAAAAAAAAQIAAAgAEAAAAA
+					AAARIAAAtAEAAAAAAAASIAAAlAEAAAAAAAAT
+					IAAApAEAAAAAAAAgIAAA4AEAAAAAAAAwIAAA
+					RAEAAAAAAAABwAAAZAEAAAAAAAARwAAAFAAA
+					AAAAAAASwAAAdAEAAAAAAAAQ0AAADAIAAAAA
+					AACA8AAAGAIAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>GreenCard</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{575, 635}, {127.75, 173.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{2300, 2540}, {511, 693}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>GreenCard</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/GreenCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/GreenCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {511, 693}}</string>
+						<key>OriginalSize</key>
+						<string>{511, 693}</string>
+						<key>Position</key>
+						<string>{2300, 2540}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{127.75, 173.25}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -2275,9 +2561,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{945, 2}, {283.5, 67.75}}</string>
+						<string>{{952, 2}, {283.5, 67.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3780, 8}, {1134, 271}}</string>
+						<string>{{3808, 8}, {1134, 271}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2303,7 +2589,7 @@
 						<key>OriginalSize</key>
 						<string>{1134, 271}</string>
 						<key>Position</key>
-						<string>{3780, 8}</string>
+						<string>{3808, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2418,9 +2704,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{288, 2}, {284, 160}}</string>
+						<string>{{790, 2}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{1152, 8}, {1136, 640}}</string>
+						<string>{{3160, 8}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2430,7 +2716,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2446,7 +2732,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{1152, 8}</string>
+						<string>{3160, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2561,9 +2847,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{401, 758}, {110.75, 75.75}}</string>
+						<string>{{265, 767}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1604, 3032}, {443, 303}}</string>
+						<string>{{1060, 3068}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2589,7 +2875,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1604, 3032}</string>
+						<string>{1060, 3068}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2702,9 +2988,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 758}, {284, 82.5}}</string>
+						<string>{{790, 288}, {284, 82.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 3032}, {1136, 330}}</string>
+						<string>{{3160, 1152}, {1136, 330}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2714,7 +3000,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2730,7 +3016,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 330}</string>
 						<key>Position</key>
-						<string>{8, 3032}</string>
+						<string>{3160, 1152}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2843,9 +3129,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{860, 2}, {284, 82.5}}</string>
+						<string>{{2, 860}, {284, 82.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3440, 8}, {1136, 330}}</string>
+						<string>{{8, 3440}, {1136, 330}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2855,7 +3141,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -2871,7 +3157,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 330}</string>
 						<key>Position</key>
-						<string>{3440, 8}</string>
+						<string>{8, 3440}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -2984,9 +3270,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1012, 288}, {261.75, 10.5}}</string>
+						<string>{{253, 1013}, {261.75, 10.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{4048, 1152}, {1045, 42}}</string>
+						<string>{{1012, 4052}, {1045, 42}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -2996,7 +3282,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3012,11 +3298,154 @@
 						<key>OriginalSize</key>
 						<string>{1045, 42}</string>
 						<key>Position</key>
-						<string>{4048, 1152}</string>
+						<string>{1012, 4052}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{261.25, 10.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>NeutralCard</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA7AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAPAAAAAQEAAE5ldXRyYWxDYXJkLnBu
+					ZwAYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABI
+					AAAAXAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAA/WQhAAAAAAAIAAAABAMAAItC
+					MAAAAAAACAAAAAQDAABlyWcAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuLtPqQAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAAGVl
+					NjJlMjhmNzU4YjJkNDNlZjE2N2QxZjQ5OTBl
+					ZjVkYjhkYzViYmU7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					NjdjOTY1Oy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL25ldXRy
+					YWxjYXJkLnBuZwAAAPAAAAD+////AQAAAAAA
+					AAATAAAABBAAAHQAAAAAAAAABRAAAPQAAAAA
+					AAAAEBAAACQBAAAAAAAAQBAAABQBAAAAAAAA
+					VBAAAEwBAAAAAAAAVRAAAFgBAAAAAAAAVhAA
+					AEQBAAAAAAAAAiAAAAACAAAAAAAAECAAAIAB
+					AAAAAAAAESAAALQBAAAAAAAAEiAAAJQBAAAA
+					AAAAEyAAAKQBAAAAAAAAICAAAOABAAAAAAAA
+					MCAAAEQBAAAAAAAAAcAAAGQBAAAAAAAAEcAA
+					ABQAAAAAAAAAEsAAAHQBAAAAAAAAENAAAAwC
+					AAAAAAAAgPAAABgCAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>NeutralCard</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{164, 164}, {127.75, 173.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{656, 656}, {511, 693}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>NeutralCard</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/NeutralCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/NeutralCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {511, 693}}</string>
+						<key>OriginalSize</key>
+						<string>{511, 693}</string>
+						<key>Position</key>
+						<string>{656, 656}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{127.75, 173.25}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -3126,9 +3555,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{514, 758}, {110.75, 75.75}}</string>
+						<string>{{874, 401}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2056, 3032}, {443, 303}}</string>
+						<string>{{3496, 1604}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3138,7 +3567,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3154,11 +3583,297 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{2056, 3032}</string>
+						<string>{3496, 1604}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{110.75, 75.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>PictureCard</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA7AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAPAAAAAQEAAFBpY3R1cmVDYXJkLnBu
+					ZwAYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABI
+					AAAAXAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAA/WQhAAAAAAAIAAAABAMAAItC
+					MAAAAAAACAAAAAQDAAD7v2cAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuLtDNQAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAAGFi
+					NDQ1NTkyODhhZDI4NmNhZDkxNzRjZDFjNTNm
+					Nzk1MTc4MTNiZjA7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					NjdiZmZiOy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL3BpY3R1
+					cmVjYXJkLnBuZwAAAPAAAAD+////AQAAAAAA
+					AAATAAAABBAAAHQAAAAAAAAABRAAAPQAAAAA
+					AAAAEBAAACQBAAAAAAAAQBAAABQBAAAAAAAA
+					VBAAAEwBAAAAAAAAVRAAAFgBAAAAAAAAVhAA
+					AEQBAAAAAAAAAiAAAAACAAAAAAAAECAAAIAB
+					AAAAAAAAESAAALQBAAAAAAAAEiAAAJQBAAAA
+					AAAAEyAAAKQBAAAAAAAAICAAAOABAAAAAAAA
+					MCAAAEQBAAAAAAAAAcAAAGQBAAAAAAAAEcAA
+					ABQAAAAAAAAAEsAAAHQBAAAAAAAAENAAAAwC
+					AAAAAAAAgPAAABgCAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>PictureCard</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{401, 844}, {93.5, 84.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{1604, 3376}, {374, 339}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>PictureCard</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/PictureCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/PictureCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {374, 339}}</string>
+						<key>OriginalSize</key>
+						<string>{374, 339}</string>
+						<key>Position</key>
+						<string>{1604, 3376}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{93.5, 84.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>PictureCard_1</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA7AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAPAAAAAQEAAFBpY3R1cmVDYXJkLnBu
+					ZwAYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABI
+					AAAAXAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAA/WQhAAAAAAAIAAAABAMAAItC
+					MAAAAAAACAAAAAQDAAD7v2cAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuLtDNQAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADKAAAAAQIAAGFi
+					NDQ1NTkyODhhZDI4NmNhZDkxNzRjZDFjNTNm
+					Nzk1MTc4MTNiZjA7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					NjdiZmZiOy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL3BpY3R1
+					cmVjYXJkLnBuZwAAAPAAAAD+////AQAAAAAA
+					AAATAAAABBAAAHQAAAAAAAAABRAAAPQAAAAA
+					AAAAEBAAACQBAAAAAAAAQBAAABQBAAAAAAAA
+					VBAAAEwBAAAAAAAAVRAAAFgBAAAAAAAAVhAA
+					AEQBAAAAAAAAAiAAAAACAAAAAAAAECAAAIAB
+					AAAAAAAAESAAALQBAAAAAAAAEiAAAJQBAAAA
+					AAAAEyAAAKQBAAAAAAAAICAAAOABAAAAAAAA
+					MCAAAEQBAAAAAAAAAcAAAGQBAAAAAAAAEcAA
+					ABQAAAAAAAAAEsAAAHQBAAAAAAAAENAAAAwC
+					AAAAAAAAgPAAABgCAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>PictureCard_1</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{488, 844}, {93.5, 84.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{1952, 3376}, {374, 339}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<true/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>PictureCard_1</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/PictureCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/PictureCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {374, 339}}</string>
+						<key>OriginalSize</key>
+						<string>{374, 339}</string>
+						<key>Position</key>
+						<string>{1952, 3376}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{93.5, 84.75}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -3267,9 +3982,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{135, 656}, {284, 40.75}}</string>
+						<string>{{253, 944}, {284, 40.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{540, 2624}, {1136, 163}}</string>
+						<string>{{1012, 3776}, {1136, 163}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3295,11 +4010,154 @@
 						<key>OriginalSize</key>
 						<string>{1136, 163}</string>
 						<key>Position</key>
-						<string>{540, 2624}</string>
+						<string>{1012, 3776}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{284, 40.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>RedCard</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vawwEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA5AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAALAAAAAQEAAFJlZENhcmQucG5nABgA
+					AAABBgAABAAAABQAAAAkAAAANAAAAEgAAABc
+					AAAACAAAAAQDAADpEAIAAAAAAAgAAAAEAwAA
+					FcQFAAAAAAAIAAAABAMAAPY8EAAAAAAACAAA
+					AAQDAAD9ZCEAAAAAAAgAAAAEAwAAi0IwAAAA
+					AAAIAAAABAMAAPO/ZwAAAAAAGAAAAAEGAACQ
+					AAAAoAAAALAAAADAAAAA0AAAAOAAAAAIAAAA
+					AAQAAEG4u0FHAAAAGAAAAAECAAABAAAAAAAA
+					AA8AAAAAAAAAAAAAAAAAAAAAAAAAAQUAAAQA
+					AAADAwAABgAAAAQAAAADAwAABAAAAAgAAAAE
+					AwAABAAAAAAAAAAEAAAAAwMAAPUBAAAMAAAA
+					AQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAACCI
+					PToAAAAIAAAAAAQAAEG275HaAAAAJAAAAAEB
+					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
+					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
+					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
+					AAQAAAADAwAAAAEAAMYAAAABAgAANTg5Y2Rl
+					YWI1NzI5ODkzZDc2NjE5ZDk3ZWU5NDU1NzBj
+					YTYwYzUwNDswMDAwMDAwMDswMDAwMDAwMDsw
+					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
+					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDA2N2Jm
+					ZjM7L3VzZXJzL2h1bnRlci9kcm9wYm94L3Jv
+					Z3VlZGVjay9jYXJkcGFydHMvcmVkY2FyZC5w
+					bmcAAADwAAAA/v///wEAAAAAAAAAEwAAAAQQ
+					AABwAAAAAAAAAAUQAADwAAAAAAAAABAQAAAg
+					AQAAAAAAAEAQAAAQAQAAAAAAAFQQAABIAQAA
+					AAAAAFUQAABUAQAAAAAAAFYQAABAAQAAAAAA
+					AAIgAAD8AQAAAAAAABAgAAB8AQAAAAAAABEg
+					AACwAQAAAAAAABIgAACQAQAAAAAAABMgAACg
+					AQAAAAAAACAgAADcAQAAAAAAADAgAABAAQAA
+					AAAAAAHAAABgAQAAAAAAABHAAAAUAAAAAAAA
+					ABLAAABwAQAAAAAAABDQAAAIAgAAAAAAAIDw
+					AAAUAgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>RedCard</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{2, 164}, {127.75, 173.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{8, 656}, {511, 693}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>RedCard</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/RedCard.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/RedCard.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {511, 693}}</string>
+						<key>OriginalSize</key>
+						<string>{511, 693}</string>
+						<key>Position</key>
+						<string>{8, 656}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{127.75, 173.25}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -3410,9 +4268,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{786, 880}, {66.75, 33.75}}</string>
+						<string>{{874, 514}, {66.75, 33.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3144, 3520}, {265, 133}}</string>
+						<string>{{3496, 2056}, {265, 133}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3438,7 +4296,7 @@
 						<key>OriginalSize</key>
 						<string>{265, 133}</string>
 						<key>Position</key>
-						<string>{3144, 3520}</string>
+						<string>{3496, 2056}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3553,9 +4411,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{791, 980}, {66.75, 33.75}}</string>
+						<string>{{723, 567}, {66.75, 33.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3164, 3920}, {265, 133}}</string>
+						<string>{{2892, 2268}, {265, 133}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3565,7 +4423,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3581,7 +4439,7 @@
 						<key>OriginalSize</key>
 						<string>{265, 133}</string>
 						<key>Position</key>
-						<string>{3164, 3920}</string>
+						<string>{2892, 2268}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3695,9 +4553,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{627, 758}, {118.5, 62}}</string>
+						<string>{{723, 164}, {118.5, 62}}</string>
 						<key>Frame-HD</key>
-						<string>{{2508, 3032}, {474, 248}}</string>
+						<string>{{2892, 656}, {474, 248}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3707,7 +4565,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3723,7 +4581,7 @@
 						<key>OriginalSize</key>
 						<string>{474, 248}</string>
 						<key>Position</key>
-						<string>{2508, 3032}</string>
+						<string>{2892, 656}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3838,9 +4696,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{288, 758}, {110.75, 75.75}}</string>
+						<string>{{874, 288}, {110.75, 75.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{1152, 3032}, {443, 303}}</string>
+						<string>{{3496, 1152}, {443, 303}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3850,7 +4708,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -3866,7 +4724,7 @@
 						<key>OriginalSize</key>
 						<string>{443, 303}</string>
 						<key>Position</key>
-						<string>{1152, 3032}</string>
+						<string>{3496, 1152}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3981,9 +4839,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 2}, {284, 160}}</string>
+						<string>{{504, 2}, {284, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 8}, {1136, 640}}</string>
+						<string>{{2016, 8}, {1136, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4009,7 +4867,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 640}</string>
 						<key>Position</key>
-						<string>{8, 8}</string>
+						<string>{2016, 8}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4026,47 +4884,49 @@
 						<integer>0</integer>
 					</dict>
 				</dict>
-				<key>card</key>
+				<key>YellowCard</key>
 				<dict>
 					<key>DocumentSecurityImageBookmark</key>
 					<data>
-					Ym9va9ADAAAAAAQQMAAAAAAAAAAAAAAAAAAA
-					AAAAAAAAAAAAAAAAAAAAAAAAAAAAqAIAAAUA
+					Ym9vaxQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA7AIAAAUA
 					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
 					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
-					Um9ndWVEZWNrAAAACAAAAAEBAABjYXJkLnBu
-					ZxQAAAABBgAABAAAABQAAAAkAAAANAAAAEgA
-					AAAIAAAABAMAAOkQAgAAAAAACAAAAAQDAAAV
-					xAUAAAAAAAgAAAAEAwAA9jwQAAAAAAAIAAAA
-					BAMAAP1kIQAAAAAACAAAAAQDAABAaCEAAAAA
-					ABQAAAABBgAAdAAAAIQAAACUAAAApAAAALQA
-					AAAIAAAAAAQAAEG4TrAdAAAAGAAAAAECAAAB
-					AAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAA
-					AQUAAAQAAAADAwAABgAAAAQAAAADAwAAAwAA
-					AAgAAAAEAwAAAwAAAAAAAAAEAAAAAwMAAPUB
-					AAAMAAAAAQEAAE1hY2ludG9zaCBIRAgAAAAE
-					AwAAACCIPToAAAAIAAAAAAQAAEG275HaAAAA
-					JAAAAAEBAAAxREVFQTU3RS1GNzkyLTM3QkQt
-					QUY5MS01MjM5MEJGQzUzQUQYAAAAAQIAAIEA
-					AAABAAgA7xcAAAEACAAAAAAAAAAAAAEAAAAB
-					AQAALwAAAAQAAAADAwAAAAEAALkAAAABAgAA
-					OGZkZTRiNTA0ZmYyNmU2MmZmMTUzOGY1M2Q2
-					ZGYzZTQ4NjdjNDAwZTswMDAwMDAwMDswMDAw
-					MDAwMDswMDAwMDAwMDAwMDAwMDIwO2NvbS5h
-					cHBsZS5hcHAtc2FuZGJveC5yZWFkLXdyaXRl
-					OzAwMDAwMDAxOzAxMDAwMDAyOzAwMDAwMDAw
-					MDAyMTY4NDA7L3VzZXJzL2h1bnRlci9kcm9w
-					Ym94L3JvZ3VlZGVjay9jYXJkLnBuZwAAAADw
-					AAAA/v///wEAAAAAAAAAEwAAAAQQAABYAAAA
-					AAAAAAUQAADEAAAAAAAAABAQAADwAAAAAAAA
-					AEAQAADgAAAAAAAAAFQQAAAYAQAAAAAAAFUQ
-					AAAkAQAAAAAAAFYQAAAQAQAAAAAAAAIgAADM
-					AQAAAAAAABAgAABMAQAAAAAAABEgAACAAQAA
-					AAAAABIgAABgAQAAAAAAABMgAABwAQAAAAAA
-					ACAgAACsAQAAAAAAADAgAAAQAQAAAAAAAAHA
-					AAAwAQAAAAAAABHAAAAUAAAAAAAAABLAAABA
-					AQAAAAAAABDQAADYAQAAAAAAAIDwAADkAQAA
-					AAAAAA==
+					Um9ndWVEZWNrAAAACQAAAAEBAABjYXJkcGFy
+					dHMAAAAOAAAAAQEAAFllbGxvd0NhcmQucG5n
+					AAAYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABI
+					AAAAXAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAA/WQhAAAAAAAIAAAABAMAAItC
+					MAAAAAAACAAAAAQDAAD5v2cAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuLtC6QAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADJAAAAAQIAADI5
+					NWZmZGU5NWIzNjJhZWM4NTc2NjllYWY1ZGNk
+					ZjI5YTk5OTBjNzM7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					NjdiZmY5Oy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9yb2d1ZWRlY2svY2FyZHBhcnRzL3llbGxv
+					d2NhcmQucG5nAAAAAPAAAAD+////AQAAAAAA
+					AAATAAAABBAAAHQAAAAAAAAABRAAAPQAAAAA
+					AAAAEBAAACQBAAAAAAAAQBAAABQBAAAAAAAA
+					VBAAAEwBAAAAAAAAVRAAAFgBAAAAAAAAVhAA
+					AEQBAAAAAAAAAiAAAAACAAAAAAAAECAAAIAB
+					AAAAAAAAESAAALQBAAAAAAAAEiAAAJQBAAAA
+					AAAAEyAAAKQBAAAAAAAAICAAAOABAAAAAAAA
+					MCAAAEQBAAAAAAAAAcAAAGQBAAAAAAAAEcAA
+					ABQAAAAAAAAAEsAAAHQBAAAAAAAAENAAAAwC
+					AAAAAAAAgPAAABgCAAAAAAAA
 					</data>
 					<key>IsSHSprite</key>
 					<true/>
@@ -4098,7 +4958,7 @@
 					<key>SHSheetName</key>
 					<string>RougeCards</string>
 					<key>SHSpriteName</key>
-					<string>card</string>
+					<string>YellowCard</string>
 					<key>SheetImage</key>
 					<string>RogueCardsDoc_RougeCards.png</string>
 					<key>SheetImage-HD</key>
@@ -4122,9 +4982,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{593, 836}, {109.75, 160}}</string>
+						<string>{{340, 164}, {127.75, 173.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2372, 3344}, {439, 640}}</string>
+						<string>{{1360, 656}, {511, 693}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4134,27 +4994,27 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
-						<string>card</string>
+						<string>YellowCard</string>
 						<key>Opacity</key>
 						<real>1</real>
 						<key>OriginalImage</key>
-						<string>/Users/Hunter/Dropbox/RogueDeck/card.png</string>
+						<string>/Users/Hunter/Dropbox/RogueDeck/cardparts/YellowCard.png</string>
 						<key>OriginalImage_RelativePath</key>
-						<string>../../../../../Dropbox/RogueDeck/card.png/</string>
+						<string>../../../../../Dropbox/RogueDeck/cardparts/YellowCard.png/</string>
 						<key>OriginalRect</key>
-						<string>{{0, 0}, {439, 640}}</string>
+						<string>{{0, 0}, {511, 693}}</string>
 						<key>OriginalSize</key>
-						<string>{439, 640}</string>
+						<string>{511, 693}</string>
 						<key>Position</key>
-						<string>{2372, 3344}</string>
+						<string>{1360, 656}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
-						<string>{109.75, 160}</string>
+						<string>{127.75, 173.25}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -4263,9 +5123,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{479, 836}, {112, 159}}</string>
+						<string>{{515, 293}, {112, 159}}</string>
 						<key>Frame-HD</key>
-						<string>{{1916, 3344}, {448, 636}}</string>
+						<string>{{2060, 1172}, {448, 636}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4275,7 +5135,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4291,7 +5151,7 @@
 						<key>OriginalSize</key>
 						<string>{448, 636}</string>
 						<key>Position</key>
-						<string>{1916, 3344}</string>
+						<string>{2060, 1172}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4405,9 +5265,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{365, 836}, {112, 159}}</string>
+						<string>{{575, 847}, {112, 159}}</string>
 						<key>Frame-HD</key>
-						<string>{{1460, 3344}, {448, 636}}</string>
+						<string>{{2300, 3388}, {448, 636}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4433,7 +5293,7 @@
 						<key>OriginalSize</key>
 						<string>{448, 636}</string>
 						<key>Position</key>
-						<string>{1460, 3344}</string>
+						<string>{2300, 3388}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4546,9 +5406,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 842}, {126.75, 171}}</string>
+						<string>{{515, 164}, {126.75, 171}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 3368}, {507, 684}}</string>
+						<string>{{2060, 656}, {507, 684}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4558,7 +5418,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4574,7 +5434,7 @@
 						<key>OriginalSize</key>
 						<string>{507, 684}</string>
 						<key>Position</key>
-						<string>{8, 3368}</string>
+						<string>{2060, 656}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4687,9 +5547,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 656}, {130.75, 98.5}}</string>
+						<string>{{132, 294}, {130.75, 98.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 2624}, {523, 394}}</string>
+						<string>{{528, 1176}, {523, 394}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4699,7 +5559,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4715,7 +5575,7 @@
 						<key>OriginalSize</key>
 						<string>{523, 394}</string>
 						<key>Position</key>
-						<string>{8, 2624}</string>
+						<string>{528, 1176}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4828,9 +5688,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{210, 725}, {29.5, 29.75}}</string>
+						<string>{{765, 990}, {29.5, 29.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{840, 2900}, {118, 117}}</string>
+						<string>{{3060, 3960}, {118, 117}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4856,7 +5716,7 @@
 						<key>OriginalSize</key>
 						<string>{118, 117}</string>
 						<key>Position</key>
-						<string>{840, 2900}</string>
+						<string>{3060, 3960}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4967,9 +5827,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{907, 941}, {53.75, 59}}</string>
+						<string>{{723, 512}, {53.75, 59}}</string>
 						<key>Frame-HD</key>
-						<string>{{3628, 3764}, {213, 236}}</string>
+						<string>{{2892, 2048}, {213, 236}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4979,7 +5839,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4995,7 +5855,7 @@
 						<key>OriginalSize</key>
 						<string>{213, 236}</string>
 						<key>Position</key>
-						<string>{3628, 3764}</string>
+						<string>{2892, 2048}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5106,9 +5966,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{791, 915}, {50, 63}}</string>
+						<string>{{723, 460}, {50, 63}}</string>
 						<key>Frame-HD</key>
-						<string>{{3164, 3660}, {200, 252}}</string>
+						<string>{{2892, 1840}, {200, 252}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5118,7 +5978,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5134,7 +5994,7 @@
 						<key>OriginalSize</key>
 						<string>{200, 252}</string>
 						<key>Position</key>
-						<string>{3164, 3660}</string>
+						<string>{2892, 1840}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5247,9 +6107,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{1012, 551}, {204.75, 10.5}}</string>
+						<string>{{516, 1013}, {204.75, 10.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{4048, 2204}, {819, 42}}</string>
+						<string>{{2064, 4052}, {819, 42}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5259,7 +6119,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5275,7 +6135,7 @@
 						<key>OriginalSize</key>
 						<string>{819, 42}</string>
 						<key>Position</key>
-						<string>{4048, 2204}</string>
+						<string>{2064, 4052}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5388,9 +6248,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{2, 574}, {284, 80.5}}</string>
+						<string>{{874, 574}, {284, 80.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{8, 2296}, {1136, 322}}</string>
+						<string>{{3496, 2296}, {1136, 322}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5400,7 +6260,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5416,11 +6276,151 @@
 						<key>OriginalSize</key>
 						<string>{1136, 322}</string>
 						<key>Position</key>
-						<string>{8, 2296}</string>
+						<string>{3496, 2296}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{284, 80.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>map</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va8wDAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAApAIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAABwAAAAEBAABtYXAucG5n
+					ABQAAAABBgAABAAAABQAAAAkAAAANAAAAEgA
+					AAAIAAAABAMAAOkQAgAAAAAACAAAAAQDAAAV
+					xAUAAAAAAAgAAAAEAwAA9jwQAAAAAAAIAAAA
+					BAMAAP1kIQAAAAAACAAAAAQDAAA2CWcAAAAA
+					ABQAAAABBgAAdAAAAIQAAACUAAAApAAAALQA
+					AAAIAAAAAAQAAEG4udjfAAAAGAAAAAECAAAB
+					AAAAAAAAAA8AAAAAAAAAAAAAAAAAAAAAAAAA
+					AQUAAAQAAAADAwAABgAAAAQAAAADAwAAAwAA
+					AAgAAAAEAwAAAwAAAAAAAAAEAAAAAwMAAPUB
+					AAAMAAAAAQEAAE1hY2ludG9zaCBIRAgAAAAE
+					AwAAACCIPToAAAAIAAAAAAQAAEG275HaAAAA
+					JAAAAAEBAAAxREVFQTU3RS1GNzkyLTM3QkQt
+					QUY5MS01MjM5MEJGQzUzQUQYAAAAAQIAAIEA
+					AAABAAgA7xcAAAEACAAAAAAAAAAAAAEAAAAB
+					AQAALwAAAAQAAAADAwAAAAEAALgAAAABAgAA
+					MWMyYThiY2UyZjM5YmViZjU5NWU2NTQzNDhh
+					ZjRjMjgyZGIyMDE5OTswMDAwMDAwMDswMDAw
+					MDAwMDswMDAwMDAwMDAwMDAwMDIwO2NvbS5h
+					cHBsZS5hcHAtc2FuZGJveC5yZWFkLXdyaXRl
+					OzAwMDAwMDAxOzAxMDAwMDAyOzAwMDAwMDAw
+					MDA2NzA5MzY7L3VzZXJzL2h1bnRlci9kcm9w
+					Ym94L3JvZ3VlZGVjay9tYXAucG5nAPAAAAD+
+					////AQAAAAAAAAATAAAABBAAAFgAAAAAAAAA
+					BRAAAMQAAAAAAAAAEBAAAPAAAAAAAAAAQBAA
+					AOAAAAAAAAAAVBAAABgBAAAAAAAAVRAAACQB
+					AAAAAAAAVhAAABABAAAAAAAAAiAAAMwBAAAA
+					AAAAECAAAEwBAAAAAAAAESAAAIABAAAAAAAA
+					EiAAAGABAAAAAAAAEyAAAHABAAAAAAAAICAA
+					AKwBAAAAAAAAMCAAABABAAAAAAAAAcAAADAB
+					AAAAAAAAEcAAABQAAAAAAAAAEsAAAEABAAAA
+					AAAAENAAANgBAAAAAAAAgPAAAOQBAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>map</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{2, 2}, {500, 160}}</string>
+						<key>Frame-HD</key>
+						<string>{{8, 8}, {2000, 640}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>map</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/map.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/map.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {2000, 640}}</string>
+						<key>OriginalSize</key>
+						<string>{2000, 640}</string>
+						<key>Position</key>
+						<string>{8, 8}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{500, 160}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -5529,9 +6529,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{859, 974}, {45.5, 46.75}}</string>
+						<string>{{957, 574}, {45.5, 46.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3436, 3896}, {182, 187}}</string>
+						<string>{{3828, 2296}, {182, 187}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5541,7 +6541,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5557,7 +6557,7 @@
 						<key>OriginalSize</key>
 						<string>{182, 187}</string>
 						<key>Position</key>
-						<string>{3436, 3896}</string>
+						<string>{3828, 2296}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5670,9 +6670,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{249, 842}, {114.75, 160}}</string>
+						<string>{{758, 605}, {114.75, 160}}</string>
 						<key>Frame-HD</key>
-						<string>{{996, 3368}, {457, 640}}</string>
+						<string>{{3032, 2420}, {457, 640}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5698,7 +6698,7 @@
 						<key>OriginalSize</key>
 						<string>{457, 640}</string>
 						<key>Position</key>
-						<string>{996, 3368}</string>
+						<string>{3032, 2420}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5811,9 +6811,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{945, 288}, {284, 65}}</string>
+						<string>{{952, 288}, {284, 65}}</string>
 						<key>Frame-HD</key>
-						<string>{{3780, 1152}, {1136, 260}}</string>
+						<string>{{3808, 1152}, {1136, 260}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5839,7 +6839,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 260}</string>
 						<key>Position</key>
-						<string>{3780, 1152}</string>
+						<string>{3808, 1152}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5952,9 +6952,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{135, 725}, {35.5, 26}}</string>
+						<string>{{758, 567}, {35.5, 26}}</string>
 						<key>Frame-HD</key>
-						<string>{{540, 2900}, {142, 104}}</string>
+						<string>{{3032, 2268}, {142, 104}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5964,7 +6964,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -5980,7 +6980,7 @@
 						<key>OriginalSize</key>
 						<string>{142, 104}</string>
 						<key>Position</key>
-						<string>{540, 2900}</string>
+						<string>{3032, 2268}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -6091,9 +7091,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{854, 880}, {54, 58.5}}</string>
+						<string>{{723, 404}, {54, 58.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{3416, 3520}, {216, 234}}</string>
+						<string>{{2892, 1616}, {216, 234}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -6103,7 +7103,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<false/>
+						<true/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -6119,11 +7119,152 @@
 						<key>OriginalSize</key>
 						<string>{216, 234}</string>
 						<key>Position</key>
-						<string>{3416, 3520}</string>
+						<string>{2892, 1616}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{54, 58.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>textbox</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9va9QDAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAArAIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAkAAAABAQAA
+					Um9ndWVEZWNrAAAACwAAAAEBAAB0ZXh0Ym94
+					LnBuZwAUAAAAAQYAAAQAAAAUAAAAJAAAADQA
+					AABIAAAACAAAAAQDAADpEAIAAAAAAAgAAAAE
+					AwAAFcQFAAAAAAAIAAAABAMAAPY8EAAAAAAA
+					CAAAAAQDAAD9ZCEAAAAAAAgAAAAEAwAAOAln
+					AAAAAAAUAAAAAQYAAHgAAACIAAAAmAAAAKgA
+					AAC4AAAACAAAAAAEAABBuLnYlAAAABgAAAAB
+					AgAAAQAAAAAAAAAPAAAAAAAAAAAAAAAAAAAA
+					AAAAAAEFAAAEAAAAAwMAAAYAAAAEAAAAAwMA
+					AAMAAAAIAAAABAMAAAMAAAAAAAAABAAAAAMD
+					AAD1AQAADAAAAAEBAABNYWNpbnRvc2ggSEQI
+					AAAABAMAAAAgiD06AAAACAAAAAAEAABBtu+R
+					2gAAACQAAAABAQAAMURFRUE1N0UtRjc5Mi0z
+					N0JELUFGOTEtNTIzOTBCRkM1M0FEGAAAAAEC
+					AACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAAB
+					AAAAAQEAAC8AAAAEAAAAAwMAAAABAAC8AAAA
+					AQIAAGUwZmZiODY3ZDBmNTY5MmQyOWNmZmJm
+					MGM0ZDgxZDhkYWJiODliNjI7MDAwMDAwMDA7
+					MDAwMDAwMDA7MDAwMDAwMDAwMDAwMDAyMDtj
+					b20uYXBwbGUuYXBwLXNhbmRib3gucmVhZC13
+					cml0ZTswMDAwMDAwMTswMTAwMDAwMjswMDAw
+					MDAwMDAwNjcwOTM4Oy91c2Vycy9odW50ZXIv
+					ZHJvcGJveC9yb2d1ZWRlY2svdGV4dGJveC5w
+					bmcA8AAAAP7///8BAAAAAAAAABMAAAAEEAAA
+					XAAAAAAAAAAFEAAAyAAAAAAAAAAQEAAA9AAA
+					AAAAAABAEAAA5AAAAAAAAABUEAAAHAEAAAAA
+					AABVEAAAKAEAAAAAAABWEAAAFAEAAAAAAAAC
+					IAAA0AEAAAAAAAAQIAAAUAEAAAAAAAARIAAA
+					hAEAAAAAAAASIAAAZAEAAAAAAAATIAAAdAEA
+					AAAAAAAgIAAAsAEAAAAAAAAwIAAAFAEAAAAA
+					AAABwAAANAEAAAAAAAARwAAAFAAAAAAAAAAS
+					wAAARAEAAAAAAAAQ0AAA3AEAAAAAAACA8AAA
+					6AEAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>textbox</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{2, 944}, {248.75, 75}}</string>
+						<key>Frame-HD</key>
+						<string>{{8, 3776}, {993, 300}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>textbox</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/RogueDeck/textbox.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/RogueDeck/textbox.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {993, 300}}</string>
+						<key>OriginalSize</key>
+						<string>{993, 300}</string>
+						<key>Position</key>
+						<string>{8, 3776}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{248.25, 75}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -6232,9 +7373,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{135, 699}, {284, 24}}</string>
+						<string>{{253, 987}, {284, 24}}</string>
 						<key>Frame-HD</key>
-						<string>{{540, 2796}, {1136, 96}}</string>
+						<string>{{1012, 3948}, {1136, 96}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -6260,7 +7401,7 @@
 						<key>OriginalSize</key>
 						<string>{1136, 96}</string>
 						<key>Position</key>
-						<string>{540, 2796}</string>
+						<string>{1012, 3948}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>

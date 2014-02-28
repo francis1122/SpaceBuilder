@@ -93,8 +93,6 @@ bool ZoomState::initMarketCard(CardSprite *_selectedCard){
 
     this->selectedCard->isZoomed = true;
     isMarketCard = true;
-
-//    GameManager *GM = GameManager::sharedGameManager();
     
     return true;
 }
@@ -153,7 +151,6 @@ void ZoomState::transitionToNormalState(){
     }
     selectedCard = NULL;
     selectedMonsterCard = NULL;
-    
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();

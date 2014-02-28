@@ -10,6 +10,7 @@
 #define __RogueDeck__PostRoundLayer__
 
 #include "cocos2d.h"
+USING_NS_CC;
 
 class PostRoundLayer : public cocos2d::CCLayer
 {
@@ -24,6 +25,9 @@ public:
     CREATE_FUNC(PostRoundLayer);
     
     void nextRound(CCObject* pSender);
+    
+    
+
     
 private:
     

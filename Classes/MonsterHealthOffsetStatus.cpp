@@ -17,22 +17,6 @@
 
 USING_NS_CC;
 
-
-// on "init" you need to initialize your instance
-bool MonsterHealthOffsetStatus::init(int powerLevel)
-{    
-    if(!Status::init()){
-        return false;
-    }
-    //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    
-    className = new CCString();
-    className->initWithFormat("MonsterHealthOffsetStatus");
-    monsterHealthOffsetAmount = -powerLevel;
-    return true;
-}
-
 bool MonsterHealthOffsetStatus::initWithHealthOffset(int healthOffset){
     if(!Status::init()){
         return false;

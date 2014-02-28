@@ -52,37 +52,47 @@ void BasicDamageTemplate::addGreenAugmentationStatus(){
 #pragma mark - additional cost
 
 
-void BasicDamageTemplate::addNeutralAdditionalCost(){
+void BasicDamageTemplate::addNeutralAdditionalCost()
+{
 }
 
-void BasicDamageTemplate::addRedAdditionalCost(){
+void BasicDamageTemplate::addRedAdditionalCost()
+{
 }
 
-void BasicDamageTemplate::addBlueAdditionalCost(){
+void BasicDamageTemplate::addBlueAdditionalCost()
+{
 }
 
-void BasicDamageTemplate::addYellowAdditionalCost(){
+void BasicDamageTemplate::addYellowAdditionalCost()
+{
 }
 
-void BasicDamageTemplate::addGreenAdditionalCost(){
+void BasicDamageTemplate::addGreenAdditionalCost()
+{
 }
-
 
 #pragma mark - main status
-
-void BasicDamageTemplate::addNeutralMainStatus(){
+void BasicDamageTemplate::addNeutralMainStatus()
+{
     int attack = 1 + (int)cardPower/7 + LLMath::diceRoll((int)cardPower/7, 1);
+    //set limit on basic attack
+    if(attack > 7){
+        attack = 7;
+    }
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupDamageCard(attack);
 }
 
-void BasicDamageTemplate::addRedMainStatus(){
+void BasicDamageTemplate::addRedMainStatus()
+{
     addNeutralMainStatus();
 }
 
-void BasicDamageTemplate::addBlueMainStatus(){
+void BasicDamageTemplate::addBlueMainStatus()
+{
     addNeutralMainStatus();
 }
 

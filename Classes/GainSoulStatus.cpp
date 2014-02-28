@@ -17,7 +17,6 @@ USING_NS_CC;
 // on "init" you need to initialize your instance
 bool GainSoulStatus::initWithSoulGain(int soulGain)
 {
-    
     if(!Status::init()){
         return false;
     }
@@ -31,7 +30,14 @@ bool GainSoulStatus::initWithSoulGain(int soulGain)
 }
 
 
-void GainSoulStatus::addStatusToGameObject(MonsterSprite *monster){
+void GainSoulStatus::addStatusToGameObject(MonsterSprite *monster)
+{
+    this->applyStatus();    
+}
+
+void GainSoulStatus::createCardTargets(CardSprite *card)
+{
+    this->applyStatus();
 }
 
 //checks whether the status can be used

@@ -43,7 +43,8 @@ GameManager::GameManager()
     this->marketCardArray->init();
     this->locationArray = new CCArray();
     this->player = new Player();
-    
+    this->possibleLevelArray = new CCArray();
+    this->possibleLevelArray->init();
     
     this->locationArray->init();
     for(int i = 0;i < 5; i++){
@@ -82,15 +83,63 @@ GameManager* GameManager::sharedGameManager()
     return m_mySingleton;
 }
 
+void GameManager::generateLevels()
+{
+    for(int i = 1; i < 9; i++){
+        CCArray *levelOptions = new CCArray();
+        levelOptions->init();
+        for(int j = 0; j < 2; j++){
+            //should randomly choose levels here
+            if(i == 1){
+                LevelTemplate *levelTemplate = new IntroLevelTemplate();
+                levelTemplate->init(i);
+                levelOptions->addObject(levelTemplate);
+                j++;
+            }else{
+                LevelTemplate *levelTemplate;
+                int rand = arc4random()%3;
+                rand = arc4random()%3;
+                if(rand == 0){
+                    levelTemplate = new PlainsLevelTemplate();
+                    levelTemplate->init(i);
+                }else if(rand == 1){
+                    levelTemplate = new ForestLevelTemplate();
+                    levelTemplate->init(i);
+                }else if(rand == 2 ){
+                    levelTemplate = new DemonLevelTemplate();
+                    levelTemplate->init(i);
+                }
+                levelOptions->addObject(levelTemplate);
+            }
+        }
+        this->possibleLevelArray->addObject(levelOptions);
+    }
+}
+
+
 void GameManager::startNewGame(){
     delete player;
     player = NULL;
     player = new Player();
     
+    //generate levels
+    this->generateLevels();
+    currentLevel = 1;
+    CCArray *levels = (CCArray*)this->possibleLevelArray->objectAtIndex(0);
+    
+    
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    CCScene *pScene = GameLayer::scene();
+    
+    // run
+    pDirector->replaceScene(pScene);
+    
+    this->startNewRound((LevelTemplate*)levels->objectAtIndex(0));
+    
+
+    /*
     isInteractive = true;
     currentLevel = 1;
-    currentLevelTemplate = new IntroLevelTemplate();
-    currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -106,22 +155,19 @@ void GameManager::startNewGame(){
     gameLayer->getCurrentState()->defaultInteractiveState();
     
     isInteractive = true;
+    */
+
 }
 
-void GameManager::startNewRound(int level){
+void GameManager::startNewRound(LevelTemplate *newLevel){
     player->reset();
-    currentLevel = level;
-    for(int i = 0;i < 5; i++){
+    currentLevelTemplate = newLevel;
+    currentLevel = newLevel->levelNumber;
+    
+    //used to control spawning rate of creatures, reseting values for that feature
+    for(int i = 0; i < 5; i++){
         CCInteger *value = (CCInteger*)this->locationArray->objectAtIndex(i);
         value->setValue(1);
-    }
-    int rand = arc4random()%2;
-    if(rand == 0){
-        currentLevelTemplate = new PlainsLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
-    }else{
-        currentLevelTemplate = new ForestLevelTemplate();
-        currentLevelTemplate->init(10 + (currentLevel * MONSTER_IMPROVEMENT_PER_LEVEL));
     }
 
     currentTurn = 1;
@@ -138,6 +184,8 @@ void GameManager::startNewRound(int level){
     gameLayer->updateInterface();
     gameLayer->getCurrentState()->defaultInteractiveState();
     isInteractive = true;
+    
+    
 }
 
 
@@ -275,10 +323,12 @@ void GameManager::organizeMarketAlt(){
         animationObject->init(action, card);
         if(!card->isZoomed){
             cardAnimation->addAnimation(animationObject);
+            card->setScale(DEFAULT_CARD_SCALE);
         }
     }
     cardAnimation->duration = .05;
     AM->addAnimation(cardAnimation);
+
     
 }
 
@@ -337,6 +387,7 @@ void GameManager::addMarketCard(CardSprite* marketCard){
     
 //    this->organizeMarket();
     marketCard->turnsLeftInMarket = 2;
+    marketCard->setScale(DEFAULT_CARD_SCALE);
      this->marketCardArray->addObject(marketCard);
       this->gameLayer->monsterLayer->addChild(marketCard);
     

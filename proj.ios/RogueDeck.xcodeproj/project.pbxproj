@@ -318,6 +318,18 @@
 		5A7382C118B7674B00E872B1 /* OffsetMonsterLocationStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382BF18B7674B00E872B1 /* OffsetMonsterLocationStatus.cpp */; };
 		5A7382C518B8698F00E872B1 /* DamageActionTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382C318B8698F00E872B1 /* DamageActionTemplate.cpp */; };
 		5A7382C918B86E7F00E872B1 /* SoulActionTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382C718B86E7F00E872B1 /* SoulActionTemplate.cpp */; };
+		5A7382CC18BA070A00E872B1 /* DemonTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382CA18BA070A00E872B1 /* DemonTemplate.cpp */; };
+		5A7382CF18BA07A000E872B1 /* DemonMinionTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382CD18BA07A000E872B1 /* DemonMinionTemplate.cpp */; };
+		5A7382D218BA08EC00E872B1 /* DemonLevelTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382D018BA08EC00E872B1 /* DemonLevelTemplate.cpp */; };
+		5A7382D518BAA51200E872B1 /* MonsterAdjacentTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7382D318BAA51200E872B1 /* MonsterAdjacentTargets.cpp */; };
+		5A83855718BD3FFB00420592 /* HugeSoulGainTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83855518BD3FFB00420592 /* HugeSoulGainTemplate.cpp */; };
+		5A83855A18BD412A00420592 /* LeechLifeTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83855818BD412A00420592 /* LeechLifeTemplate.cpp */; };
+		5A83856018BD41CB00420592 /* LeechMonsterLifeStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83855E18BD41CB00420592 /* LeechMonsterLifeStatus.cpp */; };
+		5A83856318BD453400420592 /* DamageForHealthTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83856118BD453400420592 /* DamageForHealthTemplate.cpp */; };
+		5A83856718BD694E00420592 /* MonsterSelfDamageStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83856518BD694E00420592 /* MonsterSelfDamageStatus.cpp */; };
+		5A83856A18BD6A5400420592 /* MonsterAttackOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83856818BD6A5400420592 /* MonsterAttackOffsetStatus.cpp */; };
+		5A83856D18BD6D3D00420592 /* MonsterSelfDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83856B18BD6D3D00420592 /* MonsterSelfDamageTemplate.cpp */; };
+		5A83857318BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A83857118BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.cpp */; };
 		5AADD32218961890002E06FE /* PreemptiveDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */; };
 		5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */; };
 		5AADD355189AFC44002E06FE /* DragonBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */; };
@@ -996,6 +1008,30 @@
 		5A7382C418B8698F00E872B1 /* DamageActionTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageActionTemplate.h; path = ../Classes/DamageActionTemplate.h; sourceTree = "<group>"; };
 		5A7382C718B86E7F00E872B1 /* SoulActionTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoulActionTemplate.cpp; path = ../Classes/SoulActionTemplate.cpp; sourceTree = "<group>"; };
 		5A7382C818B86E7F00E872B1 /* SoulActionTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoulActionTemplate.h; path = ../Classes/SoulActionTemplate.h; sourceTree = "<group>"; };
+		5A7382CA18BA070A00E872B1 /* DemonTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemonTemplate.cpp; path = ../Classes/DemonTemplate.cpp; sourceTree = "<group>"; };
+		5A7382CB18BA070A00E872B1 /* DemonTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemonTemplate.h; path = ../Classes/DemonTemplate.h; sourceTree = "<group>"; };
+		5A7382CD18BA07A000E872B1 /* DemonMinionTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemonMinionTemplate.cpp; path = ../Classes/DemonMinionTemplate.cpp; sourceTree = "<group>"; };
+		5A7382CE18BA07A000E872B1 /* DemonMinionTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemonMinionTemplate.h; path = ../Classes/DemonMinionTemplate.h; sourceTree = "<group>"; };
+		5A7382D018BA08EC00E872B1 /* DemonLevelTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemonLevelTemplate.cpp; path = ../Classes/DemonLevelTemplate.cpp; sourceTree = "<group>"; };
+		5A7382D118BA08EC00E872B1 /* DemonLevelTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemonLevelTemplate.h; path = ../Classes/DemonLevelTemplate.h; sourceTree = "<group>"; };
+		5A7382D318BAA51200E872B1 /* MonsterAdjacentTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MonsterAdjacentTargets.cpp; path = ../Classes/MonsterAdjacentTargets.cpp; sourceTree = "<group>"; };
+		5A7382D418BAA51200E872B1 /* MonsterAdjacentTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterAdjacentTargets.h; path = ../Classes/MonsterAdjacentTargets.h; sourceTree = "<group>"; };
+		5A83855518BD3FFB00420592 /* HugeSoulGainTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HugeSoulGainTemplate.cpp; path = ../Classes/HugeSoulGainTemplate.cpp; sourceTree = "<group>"; };
+		5A83855618BD3FFB00420592 /* HugeSoulGainTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HugeSoulGainTemplate.h; path = ../Classes/HugeSoulGainTemplate.h; sourceTree = "<group>"; };
+		5A83855818BD412A00420592 /* LeechLifeTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LeechLifeTemplate.cpp; path = ../Classes/LeechLifeTemplate.cpp; sourceTree = "<group>"; };
+		5A83855918BD412A00420592 /* LeechLifeTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeechLifeTemplate.h; path = ../Classes/LeechLifeTemplate.h; sourceTree = "<group>"; };
+		5A83855E18BD41CB00420592 /* LeechMonsterLifeStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LeechMonsterLifeStatus.cpp; path = ../Classes/LeechMonsterLifeStatus.cpp; sourceTree = "<group>"; };
+		5A83855F18BD41CB00420592 /* LeechMonsterLifeStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeechMonsterLifeStatus.h; path = ../Classes/LeechMonsterLifeStatus.h; sourceTree = "<group>"; };
+		5A83856118BD453400420592 /* DamageForHealthTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageForHealthTemplate.cpp; path = ../Classes/DamageForHealthTemplate.cpp; sourceTree = "<group>"; };
+		5A83856218BD453400420592 /* DamageForHealthTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageForHealthTemplate.h; path = ../Classes/DamageForHealthTemplate.h; sourceTree = "<group>"; };
+		5A83856518BD694E00420592 /* MonsterSelfDamageStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MonsterSelfDamageStatus.cpp; path = ../Classes/MonsterSelfDamageStatus.cpp; sourceTree = "<group>"; };
+		5A83856618BD694E00420592 /* MonsterSelfDamageStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterSelfDamageStatus.h; path = ../Classes/MonsterSelfDamageStatus.h; sourceTree = "<group>"; };
+		5A83856818BD6A5400420592 /* MonsterAttackOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MonsterAttackOffsetStatus.cpp; path = ../Classes/MonsterAttackOffsetStatus.cpp; sourceTree = "<group>"; };
+		5A83856918BD6A5400420592 /* MonsterAttackOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterAttackOffsetStatus.h; path = ../Classes/MonsterAttackOffsetStatus.h; sourceTree = "<group>"; };
+		5A83856B18BD6D3D00420592 /* MonsterSelfDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MonsterSelfDamageTemplate.cpp; path = ../Classes/MonsterSelfDamageTemplate.cpp; sourceTree = "<group>"; };
+		5A83856C18BD6D3D00420592 /* MonsterSelfDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MonsterSelfDamageTemplate.h; path = ../Classes/MonsterSelfDamageTemplate.h; sourceTree = "<group>"; };
+		5A83857118BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageWithMonsterAttackIncreaseTemplate.cpp; path = ../Classes/DamageWithMonsterAttackIncreaseTemplate.cpp; sourceTree = "<group>"; };
+		5A83857218BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageWithMonsterAttackIncreaseTemplate.h; path = ../Classes/DamageWithMonsterAttackIncreaseTemplate.h; sourceTree = "<group>"; };
 		5AADD32018961890002E06FE /* PreemptiveDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreemptiveDamageTemplate.h; path = ../Classes/PreemptiveDamageTemplate.h; sourceTree = "<group>"; };
 		5AADD32118961890002E06FE /* PreemptiveDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PreemptiveDamageTemplate.cpp; path = ../Classes/PreemptiveDamageTemplate.cpp; sourceTree = "<group>"; };
 		5AADD34D189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHealthOffsetStatus.cpp; sourceTree = "<group>"; };
@@ -2142,6 +2178,10 @@
 				5A448911188785C10024E488 /* OozeTemplate.h */,
 				5A448913188787BD0024E488 /* ArcherTemplate.cpp */,
 				5A448914188787BD0024E488 /* ArcherTemplate.h */,
+				5A7382CA18BA070A00E872B1 /* DemonTemplate.cpp */,
+				5A7382CB18BA070A00E872B1 /* DemonTemplate.h */,
+				5A7382CD18BA07A000E872B1 /* DemonMinionTemplate.cpp */,
+				5A7382CE18BA07A000E872B1 /* DemonMinionTemplate.h */,
 			);
 			name = MonsterTemplate;
 			sourceTree = "<group>";
@@ -2158,16 +2198,9 @@
 				5A3B0077183F40A1004384CD /* GainSoulStatus.h */,
 				5A0438D818526501008EF3F5 /* DrawCardStatus.cpp */,
 				5A0438D918526501008EF3F5 /* DrawCardStatus.h */,
-				5A3B0079183F42E6004384CD /* MonsterHealthOffsetStatus.cpp */,
-				5A3B007A183F42E6004384CD /* MonsterHealthOffsetStatus.h */,
 				5A0438D5185261D9008EF3F5 /* ConvertCardToSoulStatus.cpp */,
 				5A0438D6185261D9008EF3F5 /* ConvertCardToSoulStatus.h */,
-				5A04391C18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp */,
-				5A04391D18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.h */,
-				5A448925188B10E30024E488 /* InstantKillMonsterStatus.cpp */,
-				5A448926188B10E30024E488 /* InstantKillMonsterStatus.h */,
-				5A7382BF18B7674B00E872B1 /* OffsetMonsterLocationStatus.cpp */,
-				5A7382C018B7674B00E872B1 /* OffsetMonsterLocationStatus.h */,
+				5A83856418BD692B00420592 /* Monster Status */,
 				5A7382A318B34A0800E872B1 /* MarketCardPriceOffsetStatus.cpp */,
 				5A7382A418B34A0800E872B1 /* MarketCardPriceOffsetStatus.h */,
 				5AADD350189A2C8E002E06FE /* PlayerStatus */,
@@ -2204,6 +2237,8 @@
 				5A4488F31880B1F50024E488 /* PlayAreaToTargetMonstersTargets.h */,
 				5A4488FA18865DEE0024E488 /* DefendMonsterTargets.cpp */,
 				5A4488FB18865DEE0024E488 /* DefendMonsterTargets.h */,
+				5A7382D318BAA51200E872B1 /* MonsterAdjacentTargets.cpp */,
+				5A7382D418BAA51200E872B1 /* MonsterAdjacentTargets.h */,
 			);
 			name = "Monster targets";
 			sourceTree = "<group>";
@@ -2229,6 +2264,14 @@
 				5AADD32018961890002E06FE /* PreemptiveDamageTemplate.h */,
 				5A34D56C18B34844004E39D1 /* DamageAllTemplate.cpp */,
 				5A34D56D18B34844004E39D1 /* DamageAllTemplate.h */,
+				5A83855818BD412A00420592 /* LeechLifeTemplate.cpp */,
+				5A83855918BD412A00420592 /* LeechLifeTemplate.h */,
+				5A83856118BD453400420592 /* DamageForHealthTemplate.cpp */,
+				5A83856218BD453400420592 /* DamageForHealthTemplate.h */,
+				5A83856B18BD6D3D00420592 /* MonsterSelfDamageTemplate.cpp */,
+				5A83856C18BD6D3D00420592 /* MonsterSelfDamageTemplate.h */,
+				5A83857118BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.cpp */,
+				5A83857218BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.h */,
 			);
 			name = "Damage Cards";
 			sourceTree = "<group>";
@@ -2245,6 +2288,8 @@
 				5A44890818872F0A0024E488 /* PlainsLevelTemplate.h */,
 				5A44891618878A950024E488 /* ForestLevelTemplate.cpp */,
 				5A44891718878A950024E488 /* ForestLevelTemplate.h */,
+				5A7382D018BA08EC00E872B1 /* DemonLevelTemplate.cpp */,
+				5A7382D118BA08EC00E872B1 /* DemonLevelTemplate.h */,
 			);
 			name = LevelTemplate;
 			sourceTree = "<group>";
@@ -2342,6 +2387,8 @@
 			children = (
 				5A7382BC18B761B700E872B1 /* PushMonstersTemplate.cpp */,
 				5A7382BD18B761B700E872B1 /* PushMonstersTemplate.h */,
+				5A83855518BD3FFB00420592 /* HugeSoulGainTemplate.cpp */,
+				5A83855618BD3FFB00420592 /* HugeSoulGainTemplate.h */,
 			);
 			name = "Limited Use Cards";
 			sourceTree = "<group>";
@@ -2355,6 +2402,27 @@
 				5A7382C818B86E7F00E872B1 /* SoulActionTemplate.h */,
 			);
 			name = "Soul Cards";
+			sourceTree = "<group>";
+		};
+		5A83856418BD692B00420592 /* Monster Status */ = {
+			isa = PBXGroup;
+			children = (
+				5A83855E18BD41CB00420592 /* LeechMonsterLifeStatus.cpp */,
+				5A83855F18BD41CB00420592 /* LeechMonsterLifeStatus.h */,
+				5A3B0079183F42E6004384CD /* MonsterHealthOffsetStatus.cpp */,
+				5A3B007A183F42E6004384CD /* MonsterHealthOffsetStatus.h */,
+				5A04391C18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.cpp */,
+				5A04391D18790C6E008EF3F5 /* MonsterHealthOffsetDurationStatus.h */,
+				5A448925188B10E30024E488 /* InstantKillMonsterStatus.cpp */,
+				5A448926188B10E30024E488 /* InstantKillMonsterStatus.h */,
+				5A7382BF18B7674B00E872B1 /* OffsetMonsterLocationStatus.cpp */,
+				5A7382C018B7674B00E872B1 /* OffsetMonsterLocationStatus.h */,
+				5A83856518BD694E00420592 /* MonsterSelfDamageStatus.cpp */,
+				5A83856618BD694E00420592 /* MonsterSelfDamageStatus.h */,
+				5A83856818BD6A5400420592 /* MonsterAttackOffsetStatus.cpp */,
+				5A83856918BD6A5400420592 /* MonsterAttackOffsetStatus.h */,
+			);
+			name = "Monster Status";
 			sourceTree = "<group>";
 		};
 		5AADD350189A2C8E002E06FE /* PlayerStatus */ = {
@@ -2541,6 +2609,7 @@
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
 				15A3D90B1682F7D5002FB0C5 /* b2BlockAllocator.cpp in Sources */,
 				15A3D90C1682F7D5002FB0C5 /* b2Draw.cpp in Sources */,
+				5A83855A18BD412A00420592 /* LeechLifeTemplate.cpp in Sources */,
 				15A3D90D1682F7D5002FB0C5 /* b2Math.cpp in Sources */,
 				15A3D90E1682F7D5002FB0C5 /* b2Settings.cpp in Sources */,
 				5A0438DD185270D4008EF3F5 /* DeathBlowStatus.cpp in Sources */,
@@ -2554,6 +2623,7 @@
 				15A3D9161682F7D5002FB0C5 /* b2WorldCallbacks.cpp in Sources */,
 				5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */,
 				15A3D9171682F7D5002FB0C5 /* b2ChainAndCircleContact.cpp in Sources */,
+				5A83856018BD41CB00420592 /* LeechMonsterLifeStatus.cpp in Sources */,
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				5A3B0075183F3E37004384CD /* Status.cpp in Sources */,
@@ -2593,6 +2663,7 @@
 				5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
+				5A7382D518BAA51200E872B1 /* MonsterAdjacentTargets.cpp in Sources */,
 				15A3D99E1682F7F9002FB0C5 /* cpRatchetJoint.c in Sources */,
 				15A3D99F1682F7F9002FB0C5 /* cpRotaryLimitJoint.c in Sources */,
 				5A043921187C83C9008EF3F5 /* BaseObject.cpp in Sources */,
@@ -2643,6 +2714,7 @@
 				15A3DA3D1682F826002FB0C5 /* CCLayerColorLoader.cpp in Sources */,
 				15A3DA3E1682F826002FB0C5 /* CCLayerGradientLoader.cpp in Sources */,
 				5A7382C118B7674B00E872B1 /* OffsetMonsterLocationStatus.cpp in Sources */,
+				5A83856718BD694E00420592 /* MonsterSelfDamageStatus.cpp in Sources */,
 				5A3B00AD184571FF004384CD /* MarketLayer.cpp in Sources */,
 				5A6D33DC183A062700CB0174 /* NormalState.cpp in Sources */,
 				5A7382A818B34DF900E872B1 /* MarketCardDiscountTemplate.cpp in Sources */,
@@ -2672,6 +2744,7 @@
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				5A6D33D9183A00A600CB0174 /* UIState.cpp in Sources */,
+				5A7382CF18BA07A000E872B1 /* DemonMinionTemplate.cpp in Sources */,
 				5A3B00B51845CD73004384CD /* PostRoundLayer.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
@@ -2692,6 +2765,7 @@
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
+				5A83856A18BD6A5400420592 /* MonsterAttackOffsetStatus.cpp in Sources */,
 				15A3DAEE1682F8A6002FB0C5 /* SimpleAudioEngine.mm in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
 				5A0438D118524F15008EF3F5 /* CardDraggingState.cpp in Sources */,
@@ -2720,6 +2794,8 @@
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
 				5A44891B1889C0240024E488 /* WashTemplate.cpp in Sources */,
+				5A83856D18BD6D3D00420592 /* MonsterSelfDamageTemplate.cpp in Sources */,
+				5A83857318BD729200420592 /* DamageWithMonsterAttackIncreaseTemplate.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
 				5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */,
 				5A4488F0188097EE0024E488 /* MonsterTargets.cpp in Sources */,
@@ -2728,6 +2804,7 @@
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
+				5A7382CC18BA070A00E872B1 /* DemonTemplate.cpp in Sources */,
 				5A04391B1878B9CD008EF3F5 /* PosionDamageTemplate.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
@@ -2735,6 +2812,7 @@
 				1A8F3B7F175E05DA00049216 /* Skin.cpp in Sources */,
 				1A8F3B80175E05DA00049216 /* Slot.cpp in Sources */,
 				1A8F3B81175E05DA00049216 /* SlotData.cpp in Sources */,
+				5A7382D218BA08EC00E872B1 /* DemonLevelTemplate.cpp in Sources */,
 				1A8F3B82175E05DA00049216 /* spine-cocos2dx.cpp in Sources */,
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
@@ -2768,6 +2846,7 @@
 				379BB9A917F03F3700829B88 /* CCSpriteFrameCacheHelper.cpp in Sources */,
 				379BB9AA17F03F3700829B88 /* CCTransformHelp.cpp in Sources */,
 				379BB9AB17F03F3700829B88 /* CCTweenFunction.cpp in Sources */,
+				5A83856318BD453400420592 /* DamageForHealthTemplate.cpp in Sources */,
 				379BB9AC17F03F3700829B88 /* CCUtilMath.cpp in Sources */,
 				379BB9AD17F03F3700829B88 /* CCComAttribute.cpp in Sources */,
 				5A7382BE18B761B700E872B1 /* PushMonstersTemplate.cpp in Sources */,
@@ -2787,6 +2866,7 @@
 				379BB9B917F03F3700829B88 /* UIHelper.cpp in Sources */,
 				379BB9BA17F03F3700829B88 /* UIInputManager.cpp in Sources */,
 				379BB9BB17F03F3700829B88 /* UILayer.cpp in Sources */,
+				5A83855718BD3FFB00420592 /* HugeSoulGainTemplate.cpp in Sources */,
 				379BB9BC17F03F3700829B88 /* UIDragPanel.cpp in Sources */,
 				5A7382B618B6061700E872B1 /* DiscardForActionsTemplate.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,

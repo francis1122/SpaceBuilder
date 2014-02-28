@@ -79,6 +79,7 @@ void PushMonstersTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->statuses->addObject(allStatus);
     mainDescription = CCString::createWithFormat("One Use\r Push all monsters back a space");
+    createdCard->setCardPicture("PictureCard");
 }
 
 void PushMonstersTemplate::addRedMainStatus(){

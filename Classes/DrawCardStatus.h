@@ -23,6 +23,9 @@ public:
     
     virtual bool initWithDrawAmount(int drawAmount);
     
+    virtual void addStatusToGameObject(MonsterSprite *monster);
+    virtual void addStatusToCardSprite(CardSprite *card);
+    
     //checks whether the status can be used
     virtual bool checkStart();
     

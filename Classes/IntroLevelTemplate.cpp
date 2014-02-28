@@ -13,10 +13,13 @@
 #include "IRDS.h"
 
 
-
-bool IntroLevelTemplate::init(float _powerLevel){
-    LevelTemplate::init(_powerLevel);
+bool IntroLevelTemplate::init(int _levelNumber){
+    LevelTemplate::init(_levelNumber);
     monstersLeft = 10;
+    levelName = new CCString();
+    levelName->initWithFormat("Start Town");
+    levelDescription = new CCString();
+    levelDescription->initWithFormat("The very first battle.");
     return true;
 }
 

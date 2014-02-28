@@ -18,9 +18,10 @@
 const std::string MultiTargetDirectDamageTemplate::CLASS_NAME = "MultiTargetDirectDamageTemplate";
 
 void MultiTargetDirectDamageTemplate::createCardTargets(CardSprite *card){
-    CardTargets *cardTargets = new PlayAreaToTargetMonstersTargets();
+    CardTargets *cardTargets = new MonsterAdjacentTargets();
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+
 }
 
 
@@ -123,14 +124,13 @@ void MultiTargetDirectDamageTemplate::addGreenAdditionalCost(){
 void MultiTargetDirectDamageTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->targetingType = Monsters;
-    createdCard->cardTargets->targetAmount = 2;
     
-    int attack = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/10, 1);
+    int attack = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/10, 1);
     MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
     status->initWithHealthOffset(-attack);
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupDamageCard(attack);
-    mainDescription = CCString::createWithFormat("Multi Shot 2");
+    mainDescription = CCString::createWithFormat("Hits adjacent monsters");
 }
 
 void MultiTargetDirectDamageTemplate::addRedMainStatus(){

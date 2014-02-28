@@ -7,16 +7,20 @@
 //
 
 #include "LevelTemplate.h"
+#include "Constants.h"
 
 
-
-bool LevelTemplate::init(float _powerLevel){
-    levelPower = _powerLevel;
-    this->powerLevel = _powerLevel;
+bool LevelTemplate::init(int _levelNumber){
+    this->levelNumber = _levelNumber;
+    levelPower = 10 + (levelNumber * MONSTER_IMPROVEMENT_PER_LEVEL);
+    this->powerLevel = levelPower;
     monstersLeft = 15;
+    levelName = new CCString();
+    levelName->initWithFormat("LevelName");
+    levelDescription = new CCString();
+    levelDescription->initWithFormat("Level Description");
     return true;
 }
-
 
 MonsterSprite *LevelTemplate::getMonster(){
     MonsterSprite *monster;

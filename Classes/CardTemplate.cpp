@@ -14,6 +14,7 @@
 #include "DirectDamageTemplate.h"
 #include <string>
 #include <streambuf>
+#include "Action.h"
 
 
 bool CardTemplate::init(float powerLevel, ActionType color){
@@ -29,9 +30,20 @@ bool CardTemplate::init(float powerLevel, ActionType color){
 
 CardSprite* CardTemplate::createCard(){
     CCLog("CardTemplate::createCard");
+    const char *cardSpriteName = "";
+
+    if(cardColor == Green){
+        cardSpriteName = "GreenCard";
+    }else if(cardColor == Blue){
+        cardSpriteName = "BlueCard";
+    }else if(cardColor == Red){
+        cardSpriteName = "RedCard";
+    }else if(cardColor == Yellow){
+        cardSpriteName = "YellowCard";
+    }
     cardCostOffset = 0;
     createdCard = new CardSprite();
-    createdCard->init();
+    createdCard->initWithSpriteFrameName(cardSpriteName);
     
     this->createCardTargets(createdCard);
     

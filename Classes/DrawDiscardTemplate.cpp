@@ -21,6 +21,7 @@ void DrawDiscardTemplate::createCardTargets(CardSprite *card){
     
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 #pragma mark - augmentation

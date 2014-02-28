@@ -34,6 +34,12 @@ public:
     GameLayer *gameLayer;
     Player *player;
     
+    //holds levels that can be played, used to create the BetweenRoundLayer Map
+    CCArray *possibleLevelArray;
+    
+    //monster spawn stuff
+    LevelTemplate *currentLevelTemplate;
+    
     //level/round information
     int currentLevel;
     int currentTurn;
@@ -43,9 +49,9 @@ public:
     CCArray *monsterArray;
     CCArray *marketCardArray;
     
-    
+    void generateLevels();
     void startNewGame();
-    void startNewRound(int level);
+    void startNewRound(LevelTemplate *newLevel);
     void setIsInteractive(bool value);
     //checked to remove monsters or update cards that weren't affected directly
     
@@ -64,8 +70,7 @@ public:
     bool buyCardFromMarket(CardSprite *marketCard);
     void marketTurn();
     
-    //monster spawn stuff
-    LevelTemplate *currentLevelTemplate;
+
     
     void organizeMonsters();
     void removeMonster(MonsterSprite *monster);

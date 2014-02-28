@@ -13,6 +13,16 @@
 #include "IRDS.h"
 
 
+bool ForestLevelTemplate::init(int _levelNumber){
+    LevelTemplate::init(_levelNumber);
+    monstersLeft = 15;
+    levelName = new CCString();
+    levelName->initWithFormat("Forest");
+    levelDescription = new CCString();
+    levelDescription->initWithFormat("A dark forest full of ancient evils.");
+    return true;
+}
+
 
 MonsterSprite* ForestLevelTemplate::spawnMonster(){
     

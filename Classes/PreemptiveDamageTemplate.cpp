@@ -25,6 +25,7 @@ void PreemptiveDamageTemplate::createCardTargets(CardSprite *card){
     cardTargets->initWithCardSprite(card);
     cardTargets->isPreemptive = true;
     createdCard->cardTargets = cardTargets;
+
 }
 
 #pragma mark - augmentation

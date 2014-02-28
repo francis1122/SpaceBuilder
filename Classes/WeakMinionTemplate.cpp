@@ -26,7 +26,7 @@ void WeakMinionTemplate::addMainStats()
     createdMonster->location = 3 + arc4random()%2;
     createdMonster->monsterLevel = (int)powerLevel;
     
-    monsterSpriteName =CCString::createWithFormat("Minion");
+    monsterSpriteName = CCString::createWithFormat("Minion");
 }
 
 

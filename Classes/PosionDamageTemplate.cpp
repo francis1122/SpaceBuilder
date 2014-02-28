@@ -21,6 +21,7 @@ void PosionDamageTemplate::createCardTargets(CardSprite *card){
     
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+
 }
 
 #pragma mark - augmentation

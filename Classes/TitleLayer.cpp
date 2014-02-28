@@ -9,6 +9,7 @@
 #include "TitleLayer.h"
 #include "GameLayer.h"
 #include "GameManager.h"
+#include "BetweenRoundLayer.h"
 #include "Constants.h"
 
 USING_NS_CC;
@@ -93,11 +94,12 @@ void TitleLayer::startGame(CCObject* pSender)
 
     //load game scene
     // create a scene. it's an autorelease object
-    CCDirector* pDirector = CCDirector::sharedDirector();
-    CCScene *pScene = GameLayer::scene();
+    GM->startNewGame();
+//    CCDirector* pDirector = CCDirector::sharedDirector();
+   // CCScene *pScene = BetweenRoundLayer::scene();
     
     // run
-    pDirector->replaceScene(pScene);
-    GM->startNewGame();
+ //   pDirector->replaceScene(pScene);
+
 
 }

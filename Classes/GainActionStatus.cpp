@@ -41,7 +41,12 @@ bool GainActionStatus::initWithActionGain(CCArray *actions){
 }
 
 void GainActionStatus::addStatusToGameObject(MonsterSprite *monster){
-    
+    this->applyStatus();
+}
+
+void GainActionStatus::createCardTargets(CardSprite *card)
+{
+    this->applyStatus();
 }
 
 //checks whether the status can be used

@@ -24,6 +24,8 @@ public:
     
     virtual void addStatusToGameObject(MonsterSprite *monster);
     
+    virtual void createCardTargets(CardSprite *card);
+    
     //checks whether the status can be used
     virtual bool checkStart();
     

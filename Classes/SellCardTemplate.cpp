@@ -18,6 +18,7 @@ void SellCardTemplate::createCardTargets(CardSprite *card){
     CardTargets *cardTargets = new SellCardTargets();
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 #pragma mark - augmentation
@@ -71,11 +72,11 @@ void SellCardTemplate::addGreenAdditionalCost(){
 void SellCardTemplate::addNeutralMainStatus(){
     
     //    cardPower -= LLMath::getIntValue(cardPower/3);
-    int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
+    int soulGain = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/6, 1);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(soulGain);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription = CCString::createWithFormat("Destroy Card For %i Soul", soulGain);
+    mainDescription = CCString::createWithFormat("Destroy a card from your hand, gain %i soul", soulGain);
     createdCard->setCardType(Spell);
 
 }
@@ -96,20 +97,20 @@ void SellCardTemplate::addBlueMainStatus(){
 }
 
 void SellCardTemplate::addYellowMainStatus(){
-    int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
+    int soulGain = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/6, 1);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(soulGain);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription = CCString::createWithFormat("Destroy Card For %i Soul", soulGain);
+    mainDescription = CCString::createWithFormat("Destroy a card from your hand, gain %i soul", soulGain);
     createdCard->setCardType(Spell);
 }
 
 void SellCardTemplate::addGreenMainStatus(){
-    int healthGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/6, 1);
+    int healthGain = (int)cardPower/8 + LLMath::diceRoll((int)cardPower/6, 1);
     PlayerHealthOffsetStatus *status = new PlayerHealthOffsetStatus();
     status->initWithHealthOffset(healthGain);
     createdCard->cardTargets->statuses->addObject(status);
-    mainDescription = CCString::createWithFormat("Destroy Card For %i Health", healthGain);
+    mainDescription = CCString::createWithFormat("Destroy a card from your hand, gain %i health", healthGain);
     createdCard->setCardType(Spell);
 }
 

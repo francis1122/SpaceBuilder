@@ -14,7 +14,15 @@
 #include "MonsterGenerator.h"
 #include "IRDS.h"
 
-
+bool PlainsLevelTemplate::init(int _levelNumber){
+    LevelTemplate::init(_levelNumber);
+    monstersLeft = 15;
+    levelName = new CCString();
+    levelName->initWithFormat("Plains");
+    levelDescription = new CCString();
+    levelDescription->initWithFormat("Lots of creepy monsters that have that are oozy.");
+    return true;
+}
 
 MonsterSprite* PlainsLevelTemplate::spawnMonster(){
     

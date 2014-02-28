@@ -13,5 +13,6 @@
 #include "IntroLevelTemplate.h"
 #include "PlainsLevelTemplate.h"
 #include "ForestLevelTemplate.h"
+#include "DemonLevelTemplate.h"
 
 #endif

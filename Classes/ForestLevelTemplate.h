@@ -21,7 +21,7 @@ class ForestLevelTemplate : public LevelTemplate
 {
     
 public:
-    
+    virtual bool init(int _levelNumber);
     static LevelTemplate* create(){ return new ForestLevelTemplate();}
     
     virtual MonsterSprite *spawnMonster();

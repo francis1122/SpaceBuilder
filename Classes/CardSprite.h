@@ -26,7 +26,7 @@ class CardSprite : public BaseObject
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
+    virtual bool initWithSpriteFrameName(const char *pszSpriteFrameName);
     
     void addCard();
     void removeCard();
@@ -40,8 +40,9 @@ public:
     
 
     
-    cocos2d::CCSprite *textBox;
+//    cocos2d::CCSprite *textBox;
     cocos2d::CCSprite *costBox;
+    cocos2d::CCSprite *cardImage;
     cocos2d::CCLabelTTF *detailsLabel;
     cocos2d::CCLabelTTF *costLabel;
     
@@ -59,7 +60,7 @@ public:
     void setCardType(CardType newCardType);
     CardType getCardType(){ return cardType;}
     void setSoulCostOfCard(int newSoulCost);
-    
+    void setCardPicture(const char* pictureName);
     void setAction(Action* newAction);
 #pragma mark - card creation
     void addActionGain(cocos2d::CCArray* actionArray);

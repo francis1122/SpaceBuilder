@@ -23,11 +23,9 @@ MonsterGenerator* MonsterGenerator::m_mySingleton = NULL;
 MonsterGenerator::MonsterGenerator()
 {
     
-    
     //        Monster *card = CardSprite::create();
     //      libraryCards->addObject(card);
     //    deckCards->addObject(card);
-    
     
     /*
      CCSprite *sprite1 = CCSprite::create();
@@ -57,7 +55,9 @@ MonsterGenerator* MonsterGenerator::sharedMonsterGeneratorManager()
         MG->registerClass(BloodGiantTemplate::CLASS_NAME, &BloodGiantTemplate::create);
         MG->registerClass(OozeTemplate::CLASS_NAME, &OozeTemplate::create);
         MG->registerClass(ArcherTemplate::CLASS_NAME, &ArcherTemplate::create);
-        MG->registerClass(DragonBossTemplate::CLASS_NAME, &DragonBossTemplate::create);   
+        MG->registerClass(DragonBossTemplate::CLASS_NAME, &DragonBossTemplate::create);
+        MG->registerClass(DemonTemplate::CLASS_NAME, &DemonTemplate::create);
+        MG->registerClass(DemonMinionTemplate::CLASS_NAME, &DemonMinionTemplate::create);
     }
     
     //Return the singleton object

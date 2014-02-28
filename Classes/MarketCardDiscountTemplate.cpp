@@ -24,6 +24,7 @@ void MarketCardDiscountTemplate::createCardTargets(CardSprite *card)
     CardTargets *cardTargets = new MarketCardTarget();
     cardTargets->initWithCardSprite(card);
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 #pragma mark - augmentation
