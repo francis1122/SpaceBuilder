@@ -85,6 +85,7 @@ GameManager* GameManager::sharedGameManager()
 
 void GameManager::generateLevels()
 {
+    this->possibleLevelArray->removeAllObjects();
     for(int i = 1; i < 9; i++){
         CCArray *levelOptions = new CCArray();
         levelOptions->init();
@@ -184,8 +185,6 @@ void GameManager::startNewRound(LevelTemplate *newLevel){
     gameLayer->updateInterface();
     gameLayer->getCurrentState()->defaultInteractiveState();
     isInteractive = true;
-    
-    
 }
 
 
@@ -471,7 +470,6 @@ void GameManager::removeMonster(MonsterSprite *monster){
     monster->removeFromParent();
     monsterArray->removeObject(monster);
 }
-
 
 void GameManager::spawnMonster(){
 

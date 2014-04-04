@@ -15,7 +15,7 @@
 
 bool ForestLevelTemplate::init(int _levelNumber){
     LevelTemplate::init(_levelNumber);
-    monstersLeft = 15;
+    monstersLeft = 12;
     levelName = new CCString();
     levelName->initWithFormat("Forest");
     levelDescription = new CCString();
@@ -28,9 +28,9 @@ MonsterSprite* ForestLevelTemplate::spawnMonster(){
     
     //setup card drop table for cards to be chosen
     IRDSTable *templateDrops = new IRDSTable();
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(WeakMinionTemplate::CLASS_NAME, 5.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(ArcherTemplate::CLASS_NAME, 4.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(BloodGiantTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(NormalMinionTemplate::CLASS_NAME, 8.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(ArcherTemplate::CLASS_NAME, 3.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(BloodGiantTemplate::CLASS_NAME, 1.0, 0));
     
     //randomly choose a template
     IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);
@@ -46,7 +46,7 @@ MonsterSprite* ForestLevelTemplate::spawnMonster(){
 MonsterSprite *ForestLevelTemplate::spawnBossMonster(){
     //setup card drop table for cards to be chosen
     IRDSTable *templateDrops = new IRDSTable();
-    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(DragonBossTemplate::CLASS_NAME, 0.0, 0));
+    templateDrops->rdsContents->addObject(new IRDSMonsterTemplate(ArcherBossTemplate::CLASS_NAME, 0.0, 0));
     
     //randomly choose a template
     IRDSMonsterTemplate *colorChosen = (IRDSMonsterTemplate*)templateDrops->rdsResult(powerLevel);

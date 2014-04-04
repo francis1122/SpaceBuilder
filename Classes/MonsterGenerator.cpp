@@ -55,11 +55,16 @@ MonsterGenerator* MonsterGenerator::sharedMonsterGeneratorManager()
         MG->registerClass(BloodGiantTemplate::CLASS_NAME, &BloodGiantTemplate::create);
         MG->registerClass(OozeTemplate::CLASS_NAME, &OozeTemplate::create);
         MG->registerClass(ArcherTemplate::CLASS_NAME, &ArcherTemplate::create);
-        MG->registerClass(DragonBossTemplate::CLASS_NAME, &DragonBossTemplate::create);
         MG->registerClass(DemonTemplate::CLASS_NAME, &DemonTemplate::create);
         MG->registerClass(DemonMinionTemplate::CLASS_NAME, &DemonMinionTemplate::create);
+        MG->registerClass(NormalMinionTemplate::CLASS_NAME, &NormalMinionTemplate::create);
+        
+        //bosses
+        MG->registerClass(ArcherBossTemplate::CLASS_NAME, &ArcherBossTemplate::create);
+        MG->registerClass(DemonBossTemplate::CLASS_NAME, &DemonBossTemplate::create);
+        MG->registerClass(OozeBossTemplate::CLASS_NAME, &OozeBossTemplate::create);
+        MG->registerClass(DragonBossTemplate::CLASS_NAME, &DragonBossTemplate::create);
     }
-    
     //Return the singleton object
     return m_mySingleton;
 }

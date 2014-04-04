@@ -96,7 +96,6 @@ void SoulActionTemplate::addNeutralMainStatus(){
     int soulGain = (int)cardPower/6 + LLMath::diceRoll((int)cardPower/8, 1);
     GainSoulStatus *status = new GainSoulStatus();
     status->initWithSoulGain(soulGain);
-    status->preemptiveBonus = preemptiveBounus;
     createdCard->cardTargets->statuses->addObject(status);
     createdCard->setupSoulGainCard(soulGain);
 }

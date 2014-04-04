@@ -43,7 +43,9 @@ public:
     CCLayer *bottomNode;
     CCSprite *selectedSprite;
     CCMenuItemSprite *startButton;
+    CCLabelTTF* levelTitle;
     CCLabelTTF* levelDescription;
+    
     LevelTemplate *selectedLevel;
     
     //scrolling view

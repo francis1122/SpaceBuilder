@@ -263,6 +263,8 @@
 		5A043931187F4AE6008EF3F5 /* MonsterTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A04392F187F4AE6008EF3F5 /* MonsterTemplate.cpp */; };
 		5A043935187F4FE2008EF3F5 /* WeakMinionTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A043933187F4FE2008EF3F5 /* WeakMinionTemplate.cpp */; };
 		5A043938187F52A4008EF3F5 /* IRDSMonsterTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A043936187F52A4008EF3F5 /* IRDSMonsterTemplate.cpp */; };
+		5A188ED218C02DD300F4EE0E /* HugeLifeGainTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A188ED018C02DD300F4EE0E /* HugeLifeGainTemplate.cpp */; };
+		5A188ED518C0330300F4EE0E /* NormalMinionTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A188ED318C0330300F4EE0E /* NormalMinionTemplate.cpp */; };
 		5A34D56B18B346C7004E39D1 /* AllMonsterStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A34D56918B346C7004E39D1 /* AllMonsterStatus.cpp */; };
 		5A34D56E18B34844004E39D1 /* DamageAllTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A34D56C18B34844004E39D1 /* DamageAllTemplate.cpp */; };
 		5A3B0075183F3E37004384CD /* Status.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B0073183F3E37004384CD /* Status.cpp */; };
@@ -338,8 +340,12 @@
 		5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */; };
 		5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CAD18AB218B0019A86B /* CCShake.cpp */; };
 		5AAE5CB218AB44930019A86B /* BasicDamageTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CB018AB44930019A86B /* BasicDamageTemplate.cpp */; };
+		5AAF7DE618C80F9B00B80FB3 /* SpawnMonstersStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAF7DE418C80F9B00B80FB3 /* SpawnMonstersStatus.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
+		5AFEA3B518C0360300B18085 /* ArcherBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEA3B318C0360300B18085 /* ArcherBossTemplate.cpp */; };
+		5AFEA3B818C0360B00B18085 /* DemonBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEA3B618C0360B00B18085 /* DemonBossTemplate.cpp */; };
+		5AFEA3BB18C0362800B18085 /* OozeBossTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AFEA3B918C0362800B18085 /* OozeBossTemplate.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -898,6 +904,10 @@
 		5A043934187F4FE2008EF3F5 /* WeakMinionTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeakMinionTemplate.h; path = ../Classes/WeakMinionTemplate.h; sourceTree = "<group>"; };
 		5A043936187F52A4008EF3F5 /* IRDSMonsterTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IRDSMonsterTemplate.cpp; path = ../Classes/IRDSMonsterTemplate.cpp; sourceTree = "<group>"; };
 		5A043937187F52A4008EF3F5 /* IRDSMonsterTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IRDSMonsterTemplate.h; path = ../Classes/IRDSMonsterTemplate.h; sourceTree = "<group>"; };
+		5A188ED018C02DD300F4EE0E /* HugeLifeGainTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HugeLifeGainTemplate.cpp; path = ../Classes/HugeLifeGainTemplate.cpp; sourceTree = "<group>"; };
+		5A188ED118C02DD300F4EE0E /* HugeLifeGainTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HugeLifeGainTemplate.h; path = ../Classes/HugeLifeGainTemplate.h; sourceTree = "<group>"; };
+		5A188ED318C0330300F4EE0E /* NormalMinionTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NormalMinionTemplate.cpp; path = ../Classes/NormalMinionTemplate.cpp; sourceTree = "<group>"; };
+		5A188ED418C0330300F4EE0E /* NormalMinionTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NormalMinionTemplate.h; path = ../Classes/NormalMinionTemplate.h; sourceTree = "<group>"; };
 		5A34D56918B346C7004E39D1 /* AllMonsterStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AllMonsterStatus.cpp; path = ../Classes/AllMonsterStatus.cpp; sourceTree = "<group>"; };
 		5A34D56A18B346C7004E39D1 /* AllMonsterStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllMonsterStatus.h; path = ../Classes/AllMonsterStatus.h; sourceTree = "<group>"; };
 		5A34D56C18B34844004E39D1 /* DamageAllTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageAllTemplate.cpp; path = ../Classes/DamageAllTemplate.cpp; sourceTree = "<group>"; };
@@ -1048,10 +1058,18 @@
 		5AAE5CAE18AB218B0019A86B /* CCShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCShake.h; sourceTree = "<group>"; };
 		5AAE5CB018AB44930019A86B /* BasicDamageTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BasicDamageTemplate.cpp; sourceTree = "<group>"; };
 		5AAE5CB118AB44930019A86B /* BasicDamageTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDamageTemplate.h; sourceTree = "<group>"; };
+		5AAF7DE418C80F9B00B80FB3 /* SpawnMonstersStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SpawnMonstersStatus.cpp; path = ../Classes/SpawnMonstersStatus.cpp; sourceTree = "<group>"; };
+		5AAF7DE518C80F9B00B80FB3 /* SpawnMonstersStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpawnMonstersStatus.h; path = ../Classes/SpawnMonstersStatus.h; sourceTree = "<group>"; };
 		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
 		5ABBEAAE188E109500EE8A8A /* DamageIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageIcon.h; path = ../Classes/DamageIcon.h; sourceTree = "<group>"; };
+		5AFEA3B318C0360300B18085 /* ArcherBossTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ArcherBossTemplate.cpp; path = ../Classes/ArcherBossTemplate.cpp; sourceTree = "<group>"; };
+		5AFEA3B418C0360300B18085 /* ArcherBossTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcherBossTemplate.h; path = ../Classes/ArcherBossTemplate.h; sourceTree = "<group>"; };
+		5AFEA3B618C0360B00B18085 /* DemonBossTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DemonBossTemplate.cpp; path = ../Classes/DemonBossTemplate.cpp; sourceTree = "<group>"; };
+		5AFEA3B718C0360B00B18085 /* DemonBossTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemonBossTemplate.h; path = ../Classes/DemonBossTemplate.h; sourceTree = "<group>"; };
+		5AFEA3B918C0362800B18085 /* OozeBossTemplate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OozeBossTemplate.cpp; path = ../Classes/OozeBossTemplate.cpp; sourceTree = "<group>"; };
+		5AFEA3BA18C0362800B18085 /* OozeBossTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OozeBossTemplate.h; path = ../Classes/OozeBossTemplate.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -2168,6 +2186,8 @@
 				5AADD352189AFBFC002E06FE /* BossMonsters */,
 				5A04392F187F4AE6008EF3F5 /* MonsterTemplate.cpp */,
 				5A043930187F4AE6008EF3F5 /* MonsterTemplate.h */,
+				5A188ED318C0330300F4EE0E /* NormalMinionTemplate.cpp */,
+				5A188ED418C0330300F4EE0E /* NormalMinionTemplate.h */,
 				5A043933187F4FE2008EF3F5 /* WeakMinionTemplate.cpp */,
 				5A043934187F4FE2008EF3F5 /* WeakMinionTemplate.h */,
 				5A44890A1887331A0024E488 /* RushMinionTemplate.cpp */,
@@ -2203,6 +2223,7 @@
 				5A83856418BD692B00420592 /* Monster Status */,
 				5A7382A318B34A0800E872B1 /* MarketCardPriceOffsetStatus.cpp */,
 				5A7382A418B34A0800E872B1 /* MarketCardPriceOffsetStatus.h */,
+				5AAF7DE318C80F8100B80FB3 /* Special Boss */,
 				5AADD350189A2C8E002E06FE /* PlayerStatus */,
 				5A043909187271AE008EF3F5 /* Targeting status */,
 				5A0438F018581907008EF3F5 /* ConditionalStatus */,
@@ -2389,6 +2410,8 @@
 				5A7382BD18B761B700E872B1 /* PushMonstersTemplate.h */,
 				5A83855518BD3FFB00420592 /* HugeSoulGainTemplate.cpp */,
 				5A83855618BD3FFB00420592 /* HugeSoulGainTemplate.h */,
+				5A188ED018C02DD300F4EE0E /* HugeLifeGainTemplate.cpp */,
+				5A188ED118C02DD300F4EE0E /* HugeLifeGainTemplate.h */,
 			);
 			name = "Limited Use Cards";
 			sourceTree = "<group>";
@@ -2439,8 +2462,23 @@
 			children = (
 				5AADD353189AFC44002E06FE /* DragonBossTemplate.cpp */,
 				5AADD354189AFC44002E06FE /* DragonBossTemplate.h */,
+				5AFEA3B318C0360300B18085 /* ArcherBossTemplate.cpp */,
+				5AFEA3B418C0360300B18085 /* ArcherBossTemplate.h */,
+				5AFEA3B618C0360B00B18085 /* DemonBossTemplate.cpp */,
+				5AFEA3B718C0360B00B18085 /* DemonBossTemplate.h */,
+				5AFEA3B918C0362800B18085 /* OozeBossTemplate.cpp */,
+				5AFEA3BA18C0362800B18085 /* OozeBossTemplate.h */,
 			);
 			name = BossMonsters;
+			sourceTree = "<group>";
+		};
+		5AAF7DE318C80F8100B80FB3 /* Special Boss */ = {
+			isa = PBXGroup;
+			children = (
+				5AAF7DE418C80F9B00B80FB3 /* SpawnMonstersStatus.cpp */,
+				5AAF7DE518C80F9B00B80FB3 /* SpawnMonstersStatus.h */,
+			);
+			name = "Special Boss";
 			sourceTree = "<group>";
 		};
 		5ABBEA9C188BA92D00EE8A8A /* utility */ = {
@@ -2696,6 +2734,7 @@
 				5A043935187F4FE2008EF3F5 /* WeakMinionTemplate.cpp in Sources */,
 				15A3DA311682F826002FB0C5 /* CCBAnimationManager.cpp in Sources */,
 				5A6D33D21839E53100CB0174 /* GameManager.cpp in Sources */,
+				5A188ED218C02DD300F4EE0E /* HugeLifeGainTemplate.cpp in Sources */,
 				15A3DA321682F826002FB0C5 /* CCBFileLoader.cpp in Sources */,
 				5A6D33DF183B45BA00CB0174 /* HandCardSelectedState.cpp in Sources */,
 				5A7382A518B34A0800E872B1 /* MarketCardPriceOffsetStatus.cpp in Sources */,
@@ -2703,6 +2742,7 @@
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
+				5AFEA3BB18C0362800B18085 /* OozeBossTemplate.cpp in Sources */,
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,
@@ -2755,6 +2795,7 @@
 				5A04390C187271C5008EF3F5 /* RandomMonsterStatus.cpp in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
+				5AFEA3B518C0360300B18085 /* ArcherBossTemplate.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				5AADD34F189A2C83002E06FE /* PlayerHealthOffsetStatus.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
@@ -2790,6 +2831,7 @@
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
 				5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
+				5AAF7DE618C80F9B00B80FB3 /* SpawnMonstersStatus.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
@@ -2833,6 +2875,7 @@
 				379BB9A117F03F3700829B88 /* CCDecorativeDisplay.cpp in Sources */,
 				379BB9A217F03F3700829B88 /* CCDisplayFactory.cpp in Sources */,
 				5A44892A188B287F0024E488 /* InstantMonsterTemplate.cpp in Sources */,
+				5AFEA3B818C0360B00B18085 /* DemonBossTemplate.cpp in Sources */,
 				379BB9A317F03F3700829B88 /* CCDisplayManager.cpp in Sources */,
 				5A043938187F52A4008EF3F5 /* IRDSMonsterTemplate.cpp in Sources */,
 				379BB9A417F03F3700829B88 /* CCSkin.cpp in Sources */,
@@ -2885,6 +2928,7 @@
 				379BB9C417F03F3700829B88 /* UILabelAtlas.cpp in Sources */,
 				379BB9C517F03F3700829B88 /* UILabelBMFont.cpp in Sources */,
 				379BB9C617F03F3700829B88 /* UILoadingBar.cpp in Sources */,
+				5A188ED518C0330300F4EE0E /* NormalMinionTemplate.cpp in Sources */,
 				379BB9C717F03F3700829B88 /* UISlider.cpp in Sources */,
 				379BB9C817F03F3700829B88 /* UISwitch.cpp in Sources */,
 				5A6D33CF1839DCF000CB0174 /* GameLayer.cpp in Sources */,

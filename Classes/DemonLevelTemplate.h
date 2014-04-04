@@ -24,7 +24,7 @@ public:
     virtual bool init(int _levelNumber);
     
     static LevelTemplate* create(){ return new DemonLevelTemplate();}
-    
+    virtual MonsterSprite *getMonster();
     virtual MonsterSprite *spawnMonster();
     
     virtual MonsterSprite *spawnBossMonster();

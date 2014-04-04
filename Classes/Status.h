@@ -41,6 +41,8 @@ public:
     
     //called at end of turn
     virtual void updateStatus();
+    
+    //if status is used by monster, monster must be passed with it
     virtual void updateStatus(MonsterSprite *monster);
     
     CCString *className;

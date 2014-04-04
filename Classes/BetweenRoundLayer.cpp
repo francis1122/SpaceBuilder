@@ -69,6 +69,18 @@ bool BetweenRoundLayer::init()
     
     
     //topdescription
+    CCSize titleSize = CCSizeMake(visibleSize.width - 500, 100);
+    this->levelTitle = CCLabelTTF::create("",
+                                               Main_Bold_Font,
+                                               48,
+                                               titleSize,
+                                               kCCTextAlignmentCenter,
+                                               kCCVerticalTextAlignmentCenter);
+    this->levelTitle->setColor(ccBLACK);
+    this->levelTitle->setPosition(ccp(visibleSize.width/2 - 80   , 140));
+    topNode->addChild(levelTitle, 10);
+    
+    
         CCSize detailSize = CCSizeMake(visibleSize.width - 500, TOP_BAR_HEIGHT);
     this->levelDescription =CCLabelTTF::create("",
                                                Main_Font,
@@ -172,6 +184,7 @@ void BetweenRoundLayer::levelSelected(CCObject* pSender)
     LevelTemplate *levelTemplate = (LevelTemplate*)levels->objectAtIndex(pCloseItem->getTag());
     if(levelTemplate){
         levelDescription->setString(levelTemplate->levelDescription->getCString());
+        levelTitle->setString(levelTemplate->levelName->getCString());
         selectedLevel = levelTemplate;
     }
 //    pSender->setSel

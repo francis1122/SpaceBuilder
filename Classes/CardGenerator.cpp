@@ -74,6 +74,8 @@ CardGenerator* CardGenerator::sharedGameManager()
         CG->registerClass(DamageForHealthTemplate::CLASS_NAME, &DamageForHealthTemplate::create);
         CG->registerClass(DamageWithMonsterAttackIncreaseTemplate::CLASS_NAME, &DamageWithMonsterAttackIncreaseTemplate::create);
         CG->registerClass(MonsterSelfDamageTemplate::CLASS_NAME, &MonsterSelfDamageTemplate::create);
+        CG->registerClass(HugeLifeGainTemplate::CLASS_NAME, &HugeLifeGainTemplate::create);
+        
 
     }
     //Return the singleton object
@@ -214,6 +216,8 @@ CardSprite* CardGenerator::cardForGreen(float powerLevel){
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageAllTemplate::CLASS_NAME, 4.0, 15));
 //    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(PushMonstersTemplate::CLASS_NAME, 3.0, 15));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(HugeLifeGainTemplate::CLASS_NAME, 1.0, 15));
+    
 
     //randomly choose a template
     IRDSCardTemplate *colorChosen = (IRDSCardTemplate*)templateDrops->rdsResult(powerLevel);

@@ -10,7 +10,7 @@
 #include "Statuses.h"
 #include "CardSprite.h"
 #include "Targets.h"
-#include "Targets.h"
+
 const std::string HugeSoulGainTemplate::CLASS_NAME = "HugeSoulGainTemplate";
 
 

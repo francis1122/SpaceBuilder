@@ -18,5 +18,9 @@
 #include "DragonBossTemplate.h"
 #include "DemonTemplate.h"
 #include "DemonMinionTemplate.h"
+#include "NormalMinionTemplate.h"
+#include "ArcherBossTemplate.h"
+#include "DemonBossTemplate.h"
+#include "OozeBossTemplate.h"
 
 #endif

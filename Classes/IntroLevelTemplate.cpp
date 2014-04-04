@@ -15,7 +15,7 @@
 
 bool IntroLevelTemplate::init(int _levelNumber){
     LevelTemplate::init(_levelNumber);
-    monstersLeft = 10;
+    monstersLeft = 12;
     levelName = new CCString();
     levelName->initWithFormat("Start Town");
     levelDescription = new CCString();

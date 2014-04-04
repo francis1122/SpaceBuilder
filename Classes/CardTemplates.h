@@ -35,6 +35,7 @@
 #include "DamageForHealthTemplate.h"
 #include "DamageWithMonsterAttackIncreaseTemplate.h"
 #include "MonsterSelfDamageTemplate.h"
+#include "HugeLifeGainTemplate.h"
 
 
 #endif

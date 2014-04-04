@@ -27,6 +27,6 @@
 #include "LeechMonsterLifeStatus.h"
 #include "MonsterSelfDamageStatus.h"
 #include "MonsterAttackOffsetStatus.h"
-
+#include "SpawnMonstersStatus.h"
 
 #endif

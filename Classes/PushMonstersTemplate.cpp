@@ -19,6 +19,7 @@ void PushMonstersTemplate::createCardTargets(CardSprite *card){
     cardTargets->initWithCardSprite(card);
     cardTargets->timesCardCanBePlayed = 1;
     createdCard->cardTargets = cardTargets;
+    createdCard->setCardPicture("PictureCard");
 }
 
 #pragma mark - augmentation
@@ -79,7 +80,6 @@ void PushMonstersTemplate::addNeutralMainStatus(){
     
     createdCard->cardTargets->statuses->addObject(allStatus);
     mainDescription = CCString::createWithFormat("One Use\r Push all monsters back a space");
-    createdCard->setCardPicture("PictureCard");
 }
 
 void PushMonstersTemplate::addRedMainStatus(){
