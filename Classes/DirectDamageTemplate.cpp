@@ -39,13 +39,14 @@ void DirectDamageTemplate::addRedAugmentationStatus(){
         DeathBlowStatus *deathStatus = new DeathBlowStatus();
         //choose status
         Status *killStatus;
-        int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/8, 1);
+//        int soulGain = (int)cardPower/4 + LLMath::diceRoll((int)cardPower/8, 1);
+        int soulGain = 1;
         GainSoulStatus *status = new GainSoulStatus();
         status->initWithSoulGain(soulGain);
         killStatus = status;
         powerLevel -= cardPower/4;
         cardCostOffset += cardPower/4;
-        augmentationDescription = CCString::createWithFormat("Killing Blow: Gain %i soul", soulGain);
+        augmentationDescription = CCString::createWithFormat("Killing Blow: Gain 1 soul");
         
         deathStatus->initWithStatus(killStatus);
         createdCard->cardTargets->statuses->addObject(deathStatus);

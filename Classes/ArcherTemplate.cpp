@@ -36,12 +36,12 @@ void ArcherTemplate::addMainStats()
 void ArcherTemplate::addRewards()
 {
     //add monster rewards
-    int rand = arc4random()%5;
+    int rand = arc4random()%7;
     if(rand == 0){
         GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(powerLevel/5);
+        status->initWithSoulGain(1);
         createdMonster->afterDeathEffectArray->addObject(status);
-        rewardDescription = CCString::createWithFormat("Gain %i Soul", status->soulGainAmount);
+        rewardDescription = CCString::createWithFormat("Gain 1 Soul");
     }
     //also gives life gain
     

@@ -15,7 +15,7 @@
 
 bool ForestLevelTemplate::init(int _levelNumber){
     LevelTemplate::init(_levelNumber);
-    monstersLeft = 12;
+    monstersLeft = 17;
     levelName = new CCString();
     levelName->initWithFormat("Forest");
     levelDescription = new CCString();

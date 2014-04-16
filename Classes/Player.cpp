@@ -62,7 +62,7 @@ Player::Player()
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
-    
+    /*
     //soul cards
     for(int i = 0; i < 4; i++){
         CardSprite *card = new CardSprite();
@@ -80,6 +80,7 @@ Player::Player()
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
+     */
     reset();
 }
 

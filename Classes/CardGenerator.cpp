@@ -118,10 +118,10 @@ CardSprite* CardGenerator::cardForRed(float powerLevel)
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(BasicDamageTemplate::CLASS_NAME, 5.0, 0, 20));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 7.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 3.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 1.0, 0));
 //    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 3.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(MultiTargetDirectDamageTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(MarketCardDiscountTemplate::CLASS_NAME, 5.0, 15));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(MarketCardDiscountTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(LeechLifeTemplate::CLASS_NAME, 4.0, 15));
     
     //randomly choose a template
@@ -143,16 +143,16 @@ CardSprite* CardGenerator::cardForBlue(float powerLevel){
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(BasicDamageTemplate::CLASS_NAME, 6.0, 0, 20));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 7.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 4.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawDiscardTemplate::CLASS_NAME, 7.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(InstantMonsterTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 15));
 //    templateDrops->rdsContents->addObject(new IRDSCardTemplate(WashTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(PushMonstersTemplate::CLASS_NAME, 3.0, 15));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(PushMonstersTemplate::CLASS_NAME, 3.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageActionTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulActionTemplate::CLASS_NAME, 8.0, 15));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulActionTemplate::CLASS_NAME, 8.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(MonsterSelfDamageTemplate::CLASS_NAME, 2.0, 20));
     
 
@@ -174,8 +174,8 @@ CardSprite* CardGenerator::cardForYellow(float powerLevel){
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(BasicDamageTemplate::CLASS_NAME, 6.0, 0, 20));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 7.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
 //    templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 15));
 
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(RandomTargetDamageTemplate::CLASS_NAME, 5.0, 15));
@@ -183,8 +183,8 @@ CardSprite* CardGenerator::cardForYellow(float powerLevel){
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(PreemptiveDamageTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DiscardForActionsTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageActionTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulActionTemplate::CLASS_NAME, 8.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(HugeSoulGainTemplate::CLASS_NAME, 2.0, 15));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulActionTemplate::CLASS_NAME, 8.0, 15));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(HugeSoulGainTemplate::CLASS_NAME, 1.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageForHealthTemplate::CLASS_NAME, 4.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageWithMonsterAttackIncreaseTemplate::CLASS_NAME, 4.0, 15));
     
@@ -208,14 +208,14 @@ CardSprite* CardGenerator::cardForGreen(float powerLevel){
     IRDSTable *templateDrops = new IRDSTable();
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(BasicDamageTemplate::CLASS_NAME, 6.0, 0, 20));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DirectDamageTemplate::CLASS_NAME, 7.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SoulGainTemplate::CLASS_NAME, 6.0, 0));
+//    templateDrops->rdsContents->addObject(new IRDSCardTemplate(SellCardTemplate::CLASS_NAME, 4.0, 0));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(ActionGainTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(PosionDamageTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(OnDefendDirectDamageTemplate::CLASS_NAME, 5.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(DamageAllTemplate::CLASS_NAME, 4.0, 15));
 //    templateDrops->rdsContents->addObject(new IRDSCardTemplate(DrawCardTemplate::CLASS_NAME, 5.0, 15));
-    templateDrops->rdsContents->addObject(new IRDSCardTemplate(PushMonstersTemplate::CLASS_NAME, 3.0, 15));
+    templateDrops->rdsContents->addObject(new IRDSCardTemplate(PushMonstersTemplate::CLASS_NAME, 1.0, 15));
     templateDrops->rdsContents->addObject(new IRDSCardTemplate(HugeLifeGainTemplate::CLASS_NAME, 1.0, 15));
     
 

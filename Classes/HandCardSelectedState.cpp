@@ -36,8 +36,13 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     selectedCard->setZOrder(10000);
     if(selectedCard->turnsLeftInMarket > 0){
         //set state for market card
-        GM->gameLayer->handLayer->enableDiscardInteractive();
-        GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
+        if(GM->player->hasAction(Neutral)){
+            GM->gameLayer->handLayer->enableDiscardInteractive();
+            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
+        }else{
+            GM->gameLayer->handLayer->disableDiscardInterative();
+            GM->gameLayer->changeIndicatorState("Requires Action");
+        }
     }else if(!GM->player->hasAction(selectedCard->action->actionType)){
         UIState::clearInteractiveState();
         GM->gameLayer->changeIndicatorState("Requires Actions");
@@ -130,18 +135,50 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
         
         //check if area is the discard area
         if(UIState::cardInDiscardArea(this->selectedCard)){
-            //add card to players hand
-            GM->buyCardFromMarket(this->selectedCard);
-            selectedCard = NULL;
-            GM->organizeMarket();
-            this->transitionToNormalState();
+            //buying a card costs an action
+            if(GM->player->hasAction(Neutral)){
+                //add card to players deck
+                GM->buyCardFromMarket(this->selectedCard);
+                selectedCard = NULL;
+                GM->organizeMarket();
+                this->transitionToNormalState();
+            }else{
+                selectedCard = NULL;
+                GM->organizeMarket();
+                this->transitionToNormalState();
+                
+            }
         }else{
             selectedCard = NULL;
             GM->organizeMarket();
             this->transitionToNormalState();
         }
+    }else if(UIState::cardInSellArea(this->selectedCard)){
+        if(GM->player->hasAction(Neutral)){
+            //remove card to players deck
+            if(GM->player->soul >= this->selectedCard->soulCost){
+                GM->player->changeSoul(-this->selectedCard->soulCost);
+                GM->player->removeCard(this->selectedCard);
+                GM->player->spendAction(Neutral);
+                selectedCard = NULL;
+                GM->organizeMarket();
+                this->transitionToNormalState();
+            }else{
+                selectedCard = NULL;
+                GM->organizeMarket();
+                this->transitionToNormalState();
+            }
+        }else{
+            selectedCard = NULL;
+            GM->organizeMarket();
+            this->transitionToNormalState();
+        }
+        
+        
+        
     }else if(GM->player->hasAction(selectedCard->action->actionType)){
-        //sell card
+        
+        
         CardTargets *target = this->selectedCard->cardTargets;
         //check if there are targets that the card can use
         if(target->isAbilityActivatable(this)){
@@ -196,7 +233,7 @@ void HandCardSelectedState::transitionToNormalState(){
     GM->player->organizeHand();
     //    GM->organizeMarket();
     GM->gameLayer->updateInterface();
-
+    
 }
 
 void HandCardSelectedState::transitionToHandCardSelectedState(CardSprite* selectedCard){

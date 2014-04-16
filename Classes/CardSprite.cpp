@@ -65,11 +65,12 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     costLabel->setPosition(ccp(178,89));
     costBox->addChild(costLabel, 2);
     
-    setSoulCostOfCard(3);
+    setSoulCostOfCard(2);
     
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 + 15 ,glowSprite->getContentSize().height/2 - 9));
     glowSprite->setColor(ccGREEN);
+    glowSprite->setScale(1.05);
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
 
@@ -120,10 +121,6 @@ void CardSprite::disableInteractive(){
     glowSprite->setVisible(false);
     isInteractive = false;
 }
-
-
-
-
 
 #pragma mark - card creation
 void CardSprite::setSoulCostOfCard(int newSoulCost){
@@ -190,7 +187,6 @@ void CardSprite::setupSoulGainCard(int soulGain){
     
     CCRenderTexture *damageShadow = Utility::createTTFStroke(damageLabel, 9, ccBLACK, 255);
     this->addChild(damageShadow, 1);
-
 }
 
 

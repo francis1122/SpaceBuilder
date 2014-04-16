@@ -16,7 +16,7 @@
 
 bool PlainsLevelTemplate::init(int _levelNumber){
     LevelTemplate::init(_levelNumber);
-    monstersLeft = 14;
+    monstersLeft = 20;
     levelName = new CCString();
     levelName->initWithFormat("Plains");
     levelDescription = new CCString();

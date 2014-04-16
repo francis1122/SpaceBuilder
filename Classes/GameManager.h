@@ -59,6 +59,7 @@ public:
     void afterCardPlayedStateCheck();
     
     //endTurn
+    bool hasMorePlayerInteraction();
     void endTurn();
     
     //market stuff

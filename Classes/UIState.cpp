@@ -152,6 +152,12 @@ void UIState::defaultInteractiveState(){
     GM->gameLayer->changeIndicatorState("");
     GM->gameLayer->enableRightButtonInteractive();
     GM->gameLayer->setButtonLabels("", "End Turn");
+    
+    //if there are no actions left, make right action glow
+    if(!GM->hasMorePlayerInteraction()){
+        GM->gameLayer->enableRightButtonMustEndTurnInteractive();
+    }
+    
     //TODO: more exact action count required
     CCARRAY_FOREACH(GM->player->handCards, object){
         CardSprite *card = (CardSprite*)object;
@@ -159,14 +165,14 @@ void UIState::defaultInteractiveState(){
             card->enableInteractive();
         }
     }
-        CCARRAY_FOREACH(GM->marketCardArray, object){
-            CardSprite *card = (CardSprite*)object;
-            if(card->soulCost <= GM->player->soul){
-                card->enableInteractive();
-            }else{
-                card->disableInteractive();
-            }
+    CCARRAY_FOREACH(GM->marketCardArray, object){
+        CardSprite *card = (CardSprite*)object;
+        if(card->soulCost <= GM->player->soul && GM->player->hasAction(Neutral)){
+            card->enableInteractive();
+        }else{
+            card->disableInteractive();
         }
+    }
     
     CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;

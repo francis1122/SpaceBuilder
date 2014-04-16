@@ -137,27 +137,27 @@ void GameManager::startNewGame(){
     
     this->startNewRound((LevelTemplate*)levels->objectAtIndex(0));
     
-
-    /*
-    isInteractive = true;
-    currentLevel = 1;
-    currentTurn = 1;
-    monsterArray->removeAllObjects();
-    marketCardArray->removeAllObjects();
-    addMonstersPhase();
-    CCObject *object;
-    CCARRAY_FOREACH(monsterArray, object){
-        MonsterSprite *monster = (MonsterSprite*)object;
-        monster->turnUpdate();
-    }
-    player->drawHand();
-    player->organizeHand();
-    gameLayer->updateInterface();
-    gameLayer->getCurrentState()->defaultInteractiveState();
     
-    isInteractive = true;
-    */
-
+    /*
+     isInteractive = true;
+     currentLevel = 1;
+     currentTurn = 1;
+     monsterArray->removeAllObjects();
+     marketCardArray->removeAllObjects();
+     addMonstersPhase();
+     CCObject *object;
+     CCARRAY_FOREACH(monsterArray, object){
+     MonsterSprite *monster = (MonsterSprite*)object;
+     monster->turnUpdate();
+     }
+     player->drawHand();
+     player->organizeHand();
+     gameLayer->updateInterface();
+     gameLayer->getCurrentState()->defaultInteractiveState();
+     
+     isInteractive = true;
+     */
+    
 }
 
 void GameManager::startNewRound(LevelTemplate *newLevel){
@@ -170,7 +170,7 @@ void GameManager::startNewRound(LevelTemplate *newLevel){
         CCInteger *value = (CCInteger*)this->locationArray->objectAtIndex(i);
         value->setValue(1);
     }
-
+    
     currentTurn = 1;
     monsterArray->removeAllObjects();
     marketCardArray->removeAllObjects();
@@ -267,10 +267,50 @@ void GameManager::setIsInteractive(bool value)
     }
 }
 
+bool GameManager::hasMorePlayerInteraction(){
+    bool hasCardToPlay = false;
+    bool hasMarketAction = false;
+    bool hasCardToDestroy = false;
+    
+    //check if cards from player hand can be played
+    for(int i = 0; i < player->handCards->count(); i++){
+        CardSprite *card = (CardSprite*)player->handCards->objectAtIndex(i);
+        if(player->hasAction(card->action->actionType)){
+            CardTargets *target = card->cardTargets;
+            if(target->isAbilityActivatable(GM->gameLayer->getCurrentState())){
+                hasCardToPlay = true;
+            }
+        }
+    }
+    
+    //check if player can buy cards from market
+    for(int i = 0; i < marketCardArray->count(); i++){
+        CardSprite *card = (CardSprite*)marketCardArray->objectAtIndex(i);
+        if(player->hasAction(Neutral)){
+            if(player->soul >= card->soulCost){
+                hasMarketAction = true;
+            }
+        }
+    }
+    
+    //check if player can destroy cards from hand
+    for(int i = 0; i < player->handCards->count(); i++){
+        CardSprite *card = (CardSprite*)player->handCards->objectAtIndex(i);
+        if(player->hasAction(Neutral)){
+            if(player->soul >= card->soulCost){
+                hasCardToDestroy = true;
+            }
+        }
+    }
+    
+    
+    return (hasCardToPlay || hasMarketAction || hasCardToDestroy);
+}
+
 void GameManager::endTurn()
 {
     gameLayer->getCurrentState()->transitionToMonsterTurnState();
-
+    
     player->discardHand();
     player->discardPlayedCards();
     
@@ -295,7 +335,7 @@ void GameManager::endTurn()
     gameLayer->updateInterface();
     
     //transition back to normal state after all animations are done
-
+    
     //    CCScaleTo *action = CCScaleTo::create(.05, .4);
     //    CCEaseIn *ease = CCEaseIn::create(action, 1.0);
     CCDelayTime *delay = CCDelayTime::create(1.5);
@@ -315,7 +355,7 @@ void GameManager::organizeMarketAlt(){
     cardAnimation->init();
     CCARRAY_FOREACH(marketCardArray, object){
         CardSprite *card = (CardSprite*)object;
-//        CCPoint monsterPos = ccp(170 + monster->lane * 160, 400 + monster->location * 30);
+        //        CCPoint monsterPos = ccp(170 + monster->lane * 160, 400 + monster->location * 30);
         CCPoint cardPos = ccp(180 + card->lane * 190, 400);
         CCMoveTo *action = CCMoveTo::create(.3, cardPos);
         AnimationObject *animationObject = new AnimationObject();
@@ -327,47 +367,47 @@ void GameManager::organizeMarketAlt(){
     }
     cardAnimation->duration = .05;
     AM->addAnimation(cardAnimation);
-
+    
     
 }
 
 void GameManager::organizeMarket(){
     organizeMarketAlt();
     /*
-    int i= 0,j = 0, k = 0;
-    CCLog("Market Organize");
-    AnimationObject *cardAnimation = new AnimationObject();
-    cardAnimation->init();
-    CCObject *object;
-    CCARRAY_FOREACH(marketCardArray, object){
-        CardSprite *card = (CardSprite*)object;
-        CCPoint cardPos;
-        if(card->turnsLeftInMarket == 1){
-            k++;
-            cardPos = ccp(140 + k * 130, 390);
-        }else if(card->turnsLeftInMarket == 2){
-            k++;
-            //            card->setPosition(CCPointMake(170 + j * 140, 540));
-            cardPos = ccp(140 + k * 130, 465);
-        }else if( card->turnsLeftInMarket== 3){
-            k++;
-            //            card->setPosition(CCPointMake(170 + j * 140, 540));
-            cardPos = ccp(140 + k * 130, 540);
-        }else if( card->turnsLeftInMarket== 0){
-            CCLog("card should be removed from market and destroyed");
-            cardPos = CCPoint(0,0);
-        }
-        CCMoveTo *action = CCMoveTo::create(.3, cardPos);
-        AnimationObject *animationObject = new AnimationObject();
-        animationObject->init(action, card);
-        if(!card->isZoomed){
-            cardAnimation->addAnimation(animationObject);
-        }
-        
-    }
-    cardAnimation->duration = .05;
-    AM->addAnimation(cardAnimation);
-    */
+     int i= 0,j = 0, k = 0;
+     CCLog("Market Organize");
+     AnimationObject *cardAnimation = new AnimationObject();
+     cardAnimation->init();
+     CCObject *object;
+     CCARRAY_FOREACH(marketCardArray, object){
+     CardSprite *card = (CardSprite*)object;
+     CCPoint cardPos;
+     if(card->turnsLeftInMarket == 1){
+     k++;
+     cardPos = ccp(140 + k * 130, 390);
+     }else if(card->turnsLeftInMarket == 2){
+     k++;
+     //            card->setPosition(CCPointMake(170 + j * 140, 540));
+     cardPos = ccp(140 + k * 130, 465);
+     }else if( card->turnsLeftInMarket== 3){
+     k++;
+     //            card->setPosition(CCPointMake(170 + j * 140, 540));
+     cardPos = ccp(140 + k * 130, 540);
+     }else if( card->turnsLeftInMarket== 0){
+     CCLog("card should be removed from market and destroyed");
+     cardPos = CCPoint(0,0);
+     }
+     CCMoveTo *action = CCMoveTo::create(.3, cardPos);
+     AnimationObject *animationObject = new AnimationObject();
+     animationObject->init(action, card);
+     if(!card->isZoomed){
+     cardAnimation->addAnimation(animationObject);
+     }
+     
+     }
+     cardAnimation->duration = .05;
+     AM->addAnimation(cardAnimation);
+     */
     
 }
 
@@ -381,16 +421,16 @@ void GameManager::sellCard(CardSprite* card){
 }
 
 void GameManager::addMarketCard(CardSprite* marketCard){
-   // this->marketCardArray->addObject(marketCard);
-  //  this->gameLayer->marketLayer->addChild(marketCard);
+    // this->marketCardArray->addObject(marketCard);
+    //  this->gameLayer->marketLayer->addChild(marketCard);
     
-//    this->organizeMarket();
+    //    this->organizeMarket();
     marketCard->turnsLeftInMarket = 2;
     marketCard->setScale(DEFAULT_CARD_SCALE);
-     this->marketCardArray->addObject(marketCard);
-      this->gameLayer->monsterLayer->addChild(marketCard);
+    this->marketCardArray->addObject(marketCard);
+    this->gameLayer->monsterLayer->addChild(marketCard);
     
-        this->organizeMarket();
+    this->organizeMarket();
 }
 
 void GameManager::removeMarketCard(CardSprite *marketCard){
@@ -402,13 +442,12 @@ bool GameManager::buyCardFromMarket(CardSprite *marketCard){
     //check if card is a market card
     if(marketCardArray->containsObject(marketCard)){
         if(player->soul >= marketCard->soulCost){
-                GM->player->changeSoul(-marketCard->soulCost);
-//            player->spendAction(Neutral);
+            GM->player->changeSoul(-marketCard->soulCost);
+            player->spendAction(Neutral);
             marketCard->turnsLeftInMarket = 0;
             this->player->acquireCard(marketCard);
             marketCard->removeFromParent();
             this->removeMarketCard(marketCard);
-
             return true;
         }else{
             CCLog("need more soul");
@@ -454,6 +493,7 @@ void GameManager::organizeMonsters(){
 void GameManager::removeMonster(MonsterSprite *monster){
     //do damage Icon
     //add card to market
+    player->changeSoul(1);
     CardSprite *card;
     if(monster->isBoss){
         //maybe draw cards from a different list of cards
@@ -461,6 +501,7 @@ void GameManager::removeMonster(MonsterSprite *monster){
         card->setSoulCostOfCard(0);
     }else{
         card = CardGenerator::sharedGameManager()->createCard(monster->monsterLevel);
+        card->setSoulCostOfCard(2);
     }
     card->setPosition(monster->getPosition());
     card->turnsLeftInMarket = 1;
@@ -472,14 +513,14 @@ void GameManager::removeMonster(MonsterSprite *monster){
 }
 
 void GameManager::spawnMonster(){
-
+    
     //add value to all locations
     for(int i = 0; i < 5; i++ ){
         CCInteger *value = (CCInteger*)this->locationArray->objectAtIndex(i);
         value->setValue((value->getValue()) + 1);
     }
     //reset location value if monster exists there
-    int maxMonsters = MIN(currentTurn, 5);
+    int maxMonsters = MIN(currentTurn + 1, 5);
     for(int i = 0; i < maxMonsters; i++ ){
         CCInteger *value = (CCInteger*)this->locationArray->objectAtIndex(i);
         int isOpen = value->getValue();
@@ -542,12 +583,12 @@ void GameManager::monsterTurn(){
         monster->turnUpdate();
     }
     
-
+    
     
     //used to check if monster died during its update step
     this->gameStateCheck();
     this->organizeMonsters();
-
+    
 }
 
 #pragma mark - utility functions

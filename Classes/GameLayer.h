@@ -91,6 +91,7 @@ public:
     
     void enablePlayAreaInteractive();
     void disablePlayAreaInteractive();
+    void enableRightButtonMustEndTurnInteractive();
     void enableRightButtonInteractive();
     void disableRightButtonInteractive();
     void enableLeftButtonInteractive();

@@ -14,7 +14,7 @@ bool LevelTemplate::init(int _levelNumber){
     this->levelNumber = _levelNumber;
     levelPower = 10 + (levelNumber * MONSTER_IMPROVEMENT_PER_LEVEL);
     this->powerLevel = levelPower;
-    monstersLeft = 15;
+    monstersLeft = 20;
     levelName = new CCString();
     levelName->initWithFormat("LevelName");
     levelDescription = new CCString();

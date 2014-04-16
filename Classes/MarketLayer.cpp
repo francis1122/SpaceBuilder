@@ -43,7 +43,8 @@ bool MarketLayer::init()
     this->addChild(sellCardSprite, 2);
     
     sellGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
-    sellGlowCardSprite->setScale(.25);
+    sellGlowCardSprite->setScale(.28);
+    sellGlowCardSprite->setColor(ccGREEN);
     sellGlowCardSprite->setPosition(ccp(visibleSize.width - 80, visibleSize.height- 100));
     sellGlowCardSprite->setVisible(false);
     this->addChild(sellGlowCardSprite, 1);

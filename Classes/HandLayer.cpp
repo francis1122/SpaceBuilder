@@ -39,7 +39,8 @@ bool HandLayer::init()
     deckGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     discardGlowCardSprite  = CCSprite::createWithSpriteFrameName("cardGlow");
     deckGlowCardSprite->setScale(.20);
-    discardGlowCardSprite->setScale(.20);
+    discardGlowCardSprite->setScale(.23);
+    discardGlowCardSprite->setColor(ccGREEN);
     deckGlowCardSprite->setPosition(deckCardSprite->getPosition());
     discardGlowCardSprite->setPosition(discardCardSprite->getPosition());
     deckGlowCardSprite->setVisible(false);

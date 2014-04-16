@@ -20,7 +20,7 @@ void DemonTemplate::addAugmentationStatus()
 
 void DemonTemplate::addMainStats()
 {
-    createdMonster->life = (int)(powerLevel/1.4 + LLMath::diceRoll(powerLevel/4,1));
+    createdMonster->life = (int)(powerLevel/1.6 + LLMath::diceRoll(powerLevel/4,1));
     createdMonster->maxLife = createdMonster->life;
     createdMonster->attack = (int)(powerLevel/5 + LLMath::getIntValue(0,powerLevel/5));
     createdMonster->location = 4 + arc4random()%2;

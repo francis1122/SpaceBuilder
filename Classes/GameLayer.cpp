@@ -411,8 +411,21 @@ void GameLayer::updateInterface(){
     }
 }
 
+void GameLayer::enableRightButtonMustEndTurnInteractive()
+{
+    rightButton->setEnabled(true);
+    
+    rightButton->setColor(ccGREEN);
+    rightButtonLabel->setColor(ccRED);
+    rightButtonLabel->setScale(1.4);
+    rightButtonGlow->setVisible(true);
+}
+
 void GameLayer::enableRightButtonInteractive(){
     rightButton->setEnabled(true);
+    rightButton->setColor(ccWHITE);
+    rightButtonLabel->setColor(ccWHITE);
+    rightButtonLabel->setScale(1.0);
     rightButtonGlow->setVisible(true);
 }
 

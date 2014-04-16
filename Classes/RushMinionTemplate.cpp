@@ -35,12 +35,12 @@ void RushMinionTemplate::addMainStats()
 void RushMinionTemplate::addRewards()
 {
     //add monster rewards
-    int rand = arc4random()%3;
+    int rand = arc4random()%6;
     if(rand == 0){
         GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(powerLevel/5);
+        status->initWithSoulGain(1);
         createdMonster->afterDeathEffectArray->addObject(status);
-        rewardDescription = CCString::createWithFormat("Gain %i Soul", status->soulGainAmount);
+        rewardDescription = CCString::createWithFormat("Gain 1 Soul");
         
     }else if(rand ==1){
         GainActionStatus *status = new GainActionStatus();
