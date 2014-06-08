@@ -9,7 +9,6 @@
 #ifndef __RogueDeck__IRDSMonsterTemplate__
 #define __RogueDeck__IRDSMonsterTemplate__
 
-#include "Action.h"
 #include "IRDSObject.h"
 
 class IRDSMonsterTemplate : public IRDSObject

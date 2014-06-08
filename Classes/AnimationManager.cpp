@@ -8,11 +8,7 @@
 
 #include "AnimationManager.h"
 
-
-#include "MonsterGenerator.h"
-#include "MonsterSprite.h"
 #include "Statuses.h"
-#include "Action.h"
 #include "LLMath.h"
 #include "BaseObject.h"
 #include "AnimationObject.h"

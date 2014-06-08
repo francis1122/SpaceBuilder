@@ -10,7 +10,6 @@
 #define __RogueDeck__IRDSCardTemplate__
 
 #include "IRDSObject.h"
-#include "Action.h"
 
 class IRDSCardTemplate : public IRDSObject
 {

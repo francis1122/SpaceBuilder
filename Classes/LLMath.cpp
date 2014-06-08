@@ -53,3 +53,13 @@ int LLMath::diceRoll(int range, int count){
     return total;
 }
 
+CCPoint LLMath::truncate(CCPoint vector, float max){
+    float magnitude = ccpLength(vector);
+    //	float magnitude = sqrt(pow(vector.x,2) + pow(vector.y,2));
+	if (magnitude > max) {
+		return CCPointMake((vector.x / (magnitude + .001)) * max, (vector.y / (magnitude + .001)) * max);
+	}
+	else {
+		return vector;
+	}
+}

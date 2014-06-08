@@ -9,7 +9,6 @@
 #include "DrawDiscardTargets.h"
 #include "GameManager.h"
 #include "CardSprite.h"
-#include "MonsterSprite.h"
 #include "UIState.h"
 #include "Player.h"
 #include "Constants.h"
@@ -99,8 +98,6 @@ void DrawDiscardTargets::useAbility(){
     //    monster->updateInterface();
     
     
-    GM->organizeMonsters();
-    GM->organizeMarket();
     GM->gameLayer->updateInterface();
     GM->afterCardPlayedStateCheck();
     //clear targetArray

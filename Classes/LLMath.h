@@ -25,6 +25,8 @@ public:
     
     static int diceRoll(int range, int count);
     
+    static CCPoint truncate(CCPoint vector, float max);
+    
 };
 
 #endif /* defined(__RogueDeck__LLMath__) */

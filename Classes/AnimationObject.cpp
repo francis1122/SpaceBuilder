@@ -10,7 +10,6 @@
 
 #include "CardSprite.h"
 #include "CardTargets.h"
-#include "Action.h"
 
 USING_NS_CC;
 

@@ -1,27 +1,26 @@
 //
-//  NormalState.h
+//  SolarSystemDetailsState.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 11/18/13.
+//  Created by Hunter Francis on 6/7/14.
 //
 //
 
-#ifndef __RogueDeck__NormalState__
-#define __RogueDeck__NormalState__
+#ifndef __RogueDeck__SolarSystemDetailsState__
+#define __RogueDeck__SolarSystemDetailsState__
 
 #include "cocos2d.h"
 #include "UIState.h"
 
 class SolarSystemObject;
-
-class NormalState : public UIState
+class SolarSystemDetailsState : public UIState
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();
-    
+    virtual bool init(SolarSystemObject *_selectedSolarSystemObject);
     // implement the "static node()" method manually
-    CREATE_FUNC(NormalState);
+    
+    SolarSystemObject *selectedSolarSystemObject;
     
     //cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
@@ -39,12 +38,12 @@ public:
     
     virtual void transitionToNormalState();
     virtual void transitionToSolarSystemDetailsState(SolarSystemObject *selectedSolarSystem);
-    virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     //type 0 = hand card, 1 = monster card, 2 = market card
-    virtual void transitionToZoomState(CCObject *selectedObject, int type);
-
+    void transitionToCardDraggingState(CardSprite* selectedCard);
+    
 private:
     
 };
-#endif /* defined(__RogueDeck__NormalState__) */
+
+#endif /* defined(__RogueDeck__SolarSystemDetailsState__) */

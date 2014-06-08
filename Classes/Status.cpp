@@ -7,7 +7,6 @@
 //
 
 #include "Status.h"
-#include "MonsterSprite.h"
 
 
 USING_NS_CC;

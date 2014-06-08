@@ -8,7 +8,6 @@
 
 #include "CardSprite.h"
 #include "CardTargets.h"
-#include "Action.h"
 #include "GameManager.h"
 #include "GameLayer.h"
 #include "Constants.h"
@@ -33,12 +32,10 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
 
 //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    turnsLeftInMarket = 0;
-    lane = 0;
+    costToBuy = 20;
+    costToPlay = 0;
+    commandPointsToPlay = 4;
     this->setScale(DEFAULT_CARD_SCALE);
-    
-    action = new Action();
-    action->init(Neutral);
     
 //    textBox = CCSprite::createWithSpriteFrameName("CardTextBox");
 //    textBox->setPosition(ccp(240, 180));
@@ -65,7 +62,7 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     costLabel->setPosition(ccp(178,89));
     costBox->addChild(costLabel, 2);
     
-    setSoulCostOfCard(2);
+
     
     glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 + 15 ,glowSprite->getContentSize().height/2 - 9));
@@ -74,7 +71,11 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
 
-        
+    CCString *newString = CCString::createWithFormat("%i", costToBuy);
+    costLabel->setString(newString->getCString());
+    
+    detailsLabel->setString("cost to buy 20, command Points - 4");
+    
     return true;
 }
 
@@ -94,23 +95,9 @@ void CardSprite::removeCard()
 void CardSprite::setCardType(CardType newCardType){
     cardType = newCardType;
     //set textbox and image of card
-    if(cardType == Attack){
-//        textBox->setPosition(ccp(240, 200));
-    }else if(cardType == Soul){
-  //      textBox->setPosition(ccp(240, 200));
-    }else if(cardType == Spell){
-    //    textBox->setPosition(ccp(240, 200));
-    }else if(cardType == Equipment){
-      //≥  textBox->setPosition(ccp(240, 200));
-    }
 
 }
 
-void CardSprite::setAction(Action* newAction){
-    this->action = newAction;
-    //set color of card
-//    this->setColor(newAction->getActionColor());
-}
 
 void CardSprite::enableInteractive(){
     glowSprite->setVisible(true);
@@ -123,7 +110,7 @@ void CardSprite::disableInteractive(){
 }
 
 #pragma mark - card creation
-void CardSprite::setSoulCostOfCard(int newSoulCost){
+/*void CardSprite::setSoulCostOfCard(int newSoulCost){
     CCString *newString = CCString::createWithFormat("%i", newSoulCost);
     costLabel->setString(newString->getCString());
     soulCost = newSoulCost;
@@ -131,7 +118,7 @@ void CardSprite::setSoulCostOfCard(int newSoulCost){
     //    CCRenderTexture *damageShadow = Utility::createTTFStroke(costLabel, 7, ccBLACK, 255);
     //    costBox->addChild(damageShadow, 1);
 }
-
+*/
 void CardSprite::setCardPicture(const char* pictureName)
 {
     //setup card basics
@@ -140,22 +127,7 @@ void CardSprite::setCardPicture(const char* pictureName)
     this->addChild(this->cardImage, 100);
 }
 
-void CardSprite::addActionGain(CCArray* actionArray){
-    for( int i = 0; i < actionArray->count(); i++){
-        //add object to text area
-        Action *action = (Action*)actionArray->objectAtIndex(i);
-        CCSprite *sprite = CCSprite::createWithSpriteFrameName("Card_Action");
-        sprite->setColor(action->getActionColor());
-        sprite->setScale(1.0);
-        sprite->setPosition(ccp(180 + i * 80, 215));
-        addChild(sprite, 2);
-        
-//        CCRenderTexture *damageShadow = Utility::createTTFStroke(sprite, 7, ccBLACK, 255);
-  //      this->addChild(damageShadow, 1);
-    }
-}
-
-
+/*
 void CardSprite::setupDamageCard(int damage){
     setCardType(Attack);
     CCSprite *cardImage = CCSprite::createWithSpriteFrameName("Card_Image_Attack2");
@@ -189,4 +161,4 @@ void CardSprite::setupSoulGainCard(int soulGain){
     this->addChild(damageShadow, 1);
 }
 
-
+*/

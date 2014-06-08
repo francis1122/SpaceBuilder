@@ -11,12 +11,10 @@
 #include "HandCardSelectedState.h"
 #include "GameManager.h"
 #include "NormalState.h"
-#include "MonsterSprite.h"
 #include "CardTargets.h"
 #include "Constants.h"
 #include "HandLayer.h"
 #include "GameLayer.h"
-#include "MarketLayer.h"
 
 USING_NS_CC;
 
@@ -40,41 +38,6 @@ bool CardDraggingState::init(CardSprite *_selectedCard)
 
 void CardDraggingState::highlightInteractiveObjects(CardSprite *card){
     clearInteractiveState();
-    CCObject *object;
-    TargetingType indicatorState = card->cardTargets->targetingType;
-   // GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
-    
-    if(card->turnsLeftInMarket > 0){
-        //if it's a market card lead the user to the discard pile
-        GM->gameLayer->handLayer->enableDiscardInteractive();
-        return;
-    }else{
-        GM->gameLayer->marketLayer->enableSellInteractive();
-    }
-    if(indicatorState == None){
-        
-    }else if(indicatorState == PlayArea){
-        GM->gameLayer->enablePlayAreaInteractive();
-    }else if (indicatorState == Monsters){
-        GM->gameLayer->enablePlayAreaInteractive();
-        CCARRAY_FOREACH(GM->monsterArray, object){
-            MonsterSprite *monster = (MonsterSprite*)object;
-            monster->enableInteractive();
-        }
-    }else if(indicatorState == DiscardArea){
-        GM->gameLayer->handLayer->enableDiscardInteractive();
-    }else if(indicatorState == RequireActions){
-        //      visualIndicatorLabel->setString("More Actions Required");
-    }else if(indicatorState == DiscardCard){
-        //    visualIndicatorLabel->setString("Must Discard a Card");
-    }else if(indicatorState == DrawCard){
-        GM->gameLayer->handLayer->enableDeckInteractive();
-    }else if(indicatorState == DrawCard_DiscardCard){
-        CCARRAY_FOREACH(GM->player->handCards, object){
-            CardSprite *card = (CardSprite*)object;
-            card->enableInteractive();
-        }
-    }
 }
 
 #pragma mark - touch events

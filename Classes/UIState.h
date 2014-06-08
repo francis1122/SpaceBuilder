@@ -11,9 +11,12 @@
 
 #include "cocos2d.h"
 
+USING_NS_CC;
+
 class CardSprite;
 class MonsterSprite;
 class CardTargets;
+class SolarSystemObject;
 class UIState : public cocos2d::CCObject
 {
 public:
@@ -26,6 +29,7 @@ public:
     
     #pragma mark - utility functions
     CardSprite *handCardAtPoint(cocos2d::CCTouch*touch);
+    SolarSystemObject *solarSystemObjectAtPoint(cocos2d::CCTouch *touch);
     CardSprite *marketCardAtPoint(cocos2d::CCTouch*touch);
     MonsterSprite *monsterCardAtPoint(cocos2d::CCTouch*touch);
     cocos2d::CCObject* objectAtPoint(cocos2d::CCTouch* touch);
@@ -55,10 +59,30 @@ public:
     MonsterSprite* doesCardTouchMonster(CardSprite* card);
     MonsterSprite* doesPointTouchMonster(cocos2d::CCTouch *touch);
     
+    //camera
+    CCPoint previousTouchPoint;
+    CCPoint deltaTouch;
+    CCPoint cameraVelocity;
+    bool moveCameraUp;
+    bool moveCameraDown;
+    bool moveCameraLeft;
+    bool moveCameraRight;
+    
+    virtual void sideCameraMovement(cocos2d::CCTouch* touch);
+    virtual void cameraOnTouchBegan(cocos2d::CCTouch* touch);
+    virtual void cameraOnTouchMoved(cocos2d::CCTouch* touch);
+    virtual void cameraOnTouchEnded(cocos2d::CCTouch* touch);
+    virtual void cameraOnTouchCancelled(cocos2d::CCTouch* touch);
+    virtual void updateCamera(float dt);
+    virtual void checkCameraBounds();
+    virtual void cleanCameraVariables();
+    
+    
     
     //State Transitions
     virtual void transitionToNormalState();
     virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
+    virtual void transitionToSolarSystemDetailsState(SolarSystemObject *selectedSolarSystem);
     virtual void transitionToSelectMonsterState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     virtual void transitionToCardDraggingState(CardSprite* selectedCard);

@@ -11,12 +11,5 @@
 
 #include "CardTargets.h"
 #include "PlayAreaTargets.h"
-#include "MonsterTargets.h"
-#include "PlayAreaToTargetMonstersTargets.h"
-#include "DrawDiscardTargets.h"
-#include "DefendMonsterTargets.h"
-#include "SellCardTargets.h"
-#include "MarketCardTarget.h"
-#include "MonsterAdjacentTargets.h"
 
 #endif

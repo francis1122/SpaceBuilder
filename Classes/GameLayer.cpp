@@ -12,14 +12,12 @@
 #include "NormalState.h"
 #include "UIState.h"
 #include "HandLayer.h"
-#include "MarketLayer.h"
 #include "ZoomLayer.h"
-#include "TopSlideLayer.h"
 #include "Player.h"
 #include "MonsterLayer.h"
 #include "AnimationManager.h"
 #include "Constants.h"
-#include "LevelTemplates.h"
+#include "SolarSystemDetailsLayer.h"
 
 USING_NS_CC;
 
@@ -53,7 +51,7 @@ void GameLayer::setupButtons(){
     leftButton->setScale(.7);
 	rightButton->setPosition(ccp(visibleSize.width - 60,
                                  240));
-	leftButton->setPosition(ccp( 180,
+	leftButton->setPosition(ccp( 50,
                                 240));
     
     // create menu, it's an autorelease object
@@ -126,23 +124,16 @@ bool GameLayer::init()
     // create and initialize a label
     
     visualIndicatorLabel = CCLabelTTF::create("GAME LAYER", Main_Font, 24);
-    monstersLeftLabel  = CCLabelTTF::create("1", Main_Bold_Font, 48);
-    monstersLeftLabel->setColor(ccWHITE);
+
 
     
     // position the label on the center of the screen
     visualIndicatorLabel->setPosition(ccp(origin.x + visibleSize.width/2,
                                           origin.y + visibleSize.height - visualIndicatorLabel->getContentSize().height - 255));
     visualIndicatorLabel->setColor(ccWHITE);
-    monstersLeftLabel->setPosition(ccp( 60, visibleSize.height - 50));
-    
-    CCSprite *monsterIcon = CCSprite::createWithSpriteFrameName("monsterIcon");
-    monsterIcon->setPosition(ccp(60, visibleSize.height - 50));
-    monsterIcon->setScale(.5);
+
     // add the label as a child to this layer
     this->addChild(visualIndicatorLabel, 102);
-    this->addChild(monstersLeftLabel, 102);
-    this->addChild(monsterIcon, 101);
 
     
     // add "HelloWorld" splash screen"
@@ -150,7 +141,7 @@ bool GameLayer::init()
     //    pSprite->initWithSpriteFrameName("background");
     
     // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 160));
+    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 360));
     
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
@@ -161,22 +152,19 @@ bool GameLayer::init()
     
     //layer creation
     handLayer = HandLayer::create();
-    marketLayer = MarketLayer::create();
     zoomLayer = ZoomLayer::create();
     monsterLayer = MonsterLayer::create();
+    solarSystemDetailsLayer = SolarSystemDetailsLayer::create();
 //    topSlideLayer = TopSlideLayer::create();
 //    this->addChild(topSlideLayer);
     this->addChild(handLayer, 101);
-
+    this->addChild(solarSystemDetailsLayer, 1000);
     this->addChild(monsterLayer, 100);
-    this->addChild(marketLayer, 100);
     this->addChild(zoomLayer, 1000000);
     
-    
-    marketLayer->setPosition(ccp(visibleSize.width, 0));
+    solarSystemDetailsLayer->setVisible(false);
     
     this->leaveZoomState();
-    
     
     //set game layer to gamemanager
     GM->gameLayer = this;
@@ -206,20 +194,6 @@ bool GameLayer::init()
     */
     
     
-
-    
-    
-    
-    for(int i = 0; i < 5; i++){
-        CCSprite *row = CCSprite::createWithSpriteFrameName("line");
-        row->setOpacity(200);
-        row->setScaleX(1.65 - .15 * i);
-        row->setPosition(ccp(visibleSize.width/2 + 70, 350 + i * 30));
-        monsterLayer->addChild(row);
-        
-        //        400 + monster->location * 30
-    }
-    
     
     this->updateInterface();
     
@@ -231,6 +205,9 @@ bool GameLayer::init()
 void GameLayer::update(float dt)
 {
     CCNode::update(dt);
+//    updateCamera
+    currentState->updateCamera(dt);
+  //  setCurrentState
 }
 
 
@@ -250,19 +227,6 @@ void GameLayer::leftButtonPressed(CCObject *pSender){
     if(GM->isInteractive){
         currentState->leftButtonTouch();
     }
-}
-
-void GameLayer::switchButtonPressed(CCObject *pSender){
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    isOnMonsters = !isOnMonsters;
-    CCAction *move;
-    topSlideLayer->stopAllActions();
-    if(isOnMonsters){
-        move = CCMoveTo::create(0.3, ccp(0, 0));
-    }else{
-        move = CCMoveTo::create(0.3, ccp(-visibleSize.width, 0));
-    }
-    topSlideLayer->runAction(move);
 }
 
 #pragma mark - touch code
@@ -405,10 +369,6 @@ void GameLayer::leaveZoomState(){
 void GameLayer::updateInterface(){
     handLayer->updateInterface();
     monsterLayer->updateInterface();
-    if(GM->currentLevelTemplate){
-        CCString *monstersLeftString =CCString::createWithFormat("%i", GM->currentLevelTemplate->monstersLeft);
-        monstersLeftLabel->setString(monstersLeftString->getCString());
-    }
 }
 
 void GameLayer::enableRightButtonMustEndTurnInteractive()
@@ -455,13 +415,6 @@ void GameLayer::disablePlayAreaInteractive(){
 
 
 #pragma mark - global positioning
-
-CCPoint GameLayer::monsterLayerToMarketLayer(CCPoint monsterPoint){
-    return ccp(monsterPoint.x + monsterLayer->getPosition().x + topSlideLayer->getPosition().x - marketLayer->getPosition().x,
-               monsterPoint.y + monsterLayer->getPosition().y + topSlideLayer->getPosition().y - marketLayer->getPosition().y);
-    
-    
-}
 
 
 

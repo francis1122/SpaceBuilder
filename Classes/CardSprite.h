@@ -14,14 +14,12 @@
 
 
 typedef enum CardType{
-    Attack,
-    Soul,
-    Equipment,
-    Spell
+    Utility,
+    Building,
+    Unit
 } CardType;
 
 class CardTargets;
-class Action;
 class CardSprite : public BaseObject
 {
 public:
@@ -32,10 +30,9 @@ public:
     void removeCard();
     
     const char *cardImageFile;
-    int turnsLeftInMarket;
-    int soulCost;
-    int lane;
-    Action *action;
+    int costToBuy;
+    int costToPlay;
+    int commandPointsToPlay;
     
     
 
@@ -59,16 +56,7 @@ public:
     
     void setCardType(CardType newCardType);
     CardType getCardType(){ return cardType;}
-    void setSoulCostOfCard(int newSoulCost);
     void setCardPicture(const char* pictureName);
-    void setAction(Action* newAction);
-#pragma mark - card creation
-    void addActionGain(cocos2d::CCArray* actionArray);
-    void setupDamageCard(int damage);
-    
-    void setupSoulGainCard(int soulGain);
-    
-
     
 private:
     CardType cardType;

@@ -26,25 +26,20 @@ public:
     CREATE_FUNC(HandLayer);
     
     cocos2d::CCLabelTTF *libraryCountLabel;
-    cocos2d::CCLabelTTF *healthLabel;
-    cocos2d::CCLabelTTF *soulLabel;
+    cocos2d::CCLabelTTF *moneyLabel;
+    cocos2d::CCLabelTTF *commandPointsLabel;
     cocos2d::CCLabelTTF *discardCountLabel;
     
     cocos2d::CCLayerColor *healthBG;
-    cocos2d::CCLayerColor *healthIndicator;
     cocos2d::CCLayerColor *soulBG;
-    cocos2d::CCLayerColor *soulIndicator;
     
-    cocos2d::CCSprite *voidAreaSprite;
-    cocos2d::CCSprite *voidAreaGlowSprite;
     
  
-    cocos2d::CCSprite *healthHolder;
-    cocos2d::CCSprite *soulHolder;
+    cocos2d::CCSprite *moneyHolder;
+    cocos2d::CCSprite *commandPointHolder;
     
     cocos2d::CCSprite *handGlow;
     
-    cocos2d::CCArray *actionArray;
 
     void updateInterface();
     
@@ -57,8 +52,6 @@ public:
     void disableDiscardInterative();
     void enableHandInteractive();
     void disableHandInteractive();
-    void enableVoidAreaInteractive();
-    void disableVoidAreaInteractive();
     
     
 private:

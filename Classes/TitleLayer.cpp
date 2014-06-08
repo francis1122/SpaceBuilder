@@ -9,7 +9,6 @@
 #include "TitleLayer.h"
 #include "GameLayer.h"
 #include "GameManager.h"
-#include "BetweenRoundLayer.h"
 #include "Constants.h"
 
 USING_NS_CC;

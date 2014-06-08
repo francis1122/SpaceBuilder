@@ -10,8 +10,6 @@
 #include "GameManager.h"
 #include "CardSprite.h"
 #include "Constants.h"
-#include "Action.h"
-
 
 USING_NS_CC;
 
@@ -31,7 +29,7 @@ bool HandLayer::init()
     discardCardSprite  = CCSprite::createWithSpriteFrameName("cardBack");
     deckCardSprite->setScale(.20);
     discardCardSprite->setScale(.20);
-    deckCardSprite->setPosition(ccp(190, 85));
+    deckCardSprite->setPosition(ccp(50, 85));
     discardCardSprite->setPosition(ccp(visibleSize.width - 50, 90));
     
     this->addChild(deckCardSprite, 2);
@@ -67,18 +65,18 @@ bool HandLayer::init()
     
     libraryCountLabel = CCLabelTTF::create("10", Main_Font, 48);
     discardCountLabel = CCLabelTTF::create("0", Main_Font, 48);
-    healthLabel = CCLabelTTF::create("10\r10", Main_Font, 32);
-    soulLabel = CCLabelTTF::create("0\r10", Main_Font, 32);
+    moneyLabel = CCLabelTTF::create("10\r10", Main_Font, 32);
+    commandPointsLabel = CCLabelTTF::create("0\r10", Main_Font, 32);
     
     libraryCountLabel->setPosition(ccp(160, 75));
     discardCountLabel->setPosition(ccp(visibleSize.width - 60, 75));
-    healthLabel->setPosition(ccp(40, 60));
-    soulLabel->setPosition(ccp(95, 60));
+    moneyLabel->setPosition(ccp(90, visibleSize.height - 50));
+    commandPointsLabel->setPosition(ccp(355, visibleSize.height - 50));
     
     this->addChild(libraryCountLabel, 3);
     this->addChild(discardCountLabel, 3);
-    this->addChild(healthLabel, 3);
-    this->addChild(soulLabel, 3);
+    this->addChild(moneyLabel, 3);
+    this->addChild(commandPointsLabel, 3);
     
     /*
     healthHolder = CCSprite::createWithSpriteFrameName("statsholder");
@@ -95,51 +93,19 @@ bool HandLayer::init()
     //health meter setup
     
     healthBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 40, 300);
-    healthIndicator = CCLayerColor::create(ccc4(0, 100, 0, 255), 30, 290);;
+    healthBG->setPosition(25, 20);
     
-    healthBG->setPosition( 25,20);
-    healthIndicator->setPosition(30, 20);
     
-    healthIndicator->setAnchorPoint(ccp(.5, 0));
-    
-    this->addChild(healthBG, 1);
-    this->addChild(healthIndicator, 2);
+   // this->addChild(healthBG, 1);
     
     //soul meter setup
     soulBG = CCLayerColor::create(ccc4(0, 0, 0, 255), 40, 300);
-    soulIndicator = CCLayerColor::create(ccc4(75, 20, 150, 255), 30, 290);
     
-    soulBG->setPosition( 75,20);
-    soulIndicator->setPosition(80, 20);
+    soulBG->setPosition(75,20);
     
-    soulIndicator->setAnchorPoint(ccp(.5, 0));
-    
-    this->addChild(soulBG, 1);
-    this->addChild(soulIndicator, 2);
-    
-    
-    //action holder
-    CCLayerColor *actionHolder = CCLayerColor::create(ccc4(40, 40, 40, 255), 300, 40);
-    actionHolder->setPosition(ccp(450, 150));
-    actionHolder->setOpacity(220);
-    this->addChild(actionHolder, ZORDERING_ACTIONHOLDER);
-    
-    actionArray = new CCArray();
-    actionArray->init();
-    
-    
-    voidAreaSprite = CCSprite::createWithSpriteFrameName("cardBack");
-    voidAreaGlowSprite = CCSprite::createWithSpriteFrameName("cardGlow");;
-    voidAreaSprite->setScale(.2);
-    voidAreaGlowSprite->setScale(.2);
-    voidAreaSprite->setPosition(ccp(visibleSize.width - 65, visibleSize.height - 75));
-    voidAreaGlowSprite->setColor(ccGREEN);
-    voidAreaGlowSprite->setVisible(false);
-    voidAreaGlowSprite->setPosition(voidAreaSprite->getPosition());
-    this->addChild(voidAreaGlowSprite, 101);
-    this->addChild(voidAreaSprite, 102);
-    
-    
+    //this->addChild(soulBG, 1);
+    //action holder    
+
     return true;
 }
 
@@ -152,44 +118,11 @@ void HandLayer::updateInterface(){
     libraryCountLabel->setString(libraryCountString->getCString());
     CCString *discardCountString =CCString::createWithFormat("%i", GM->player->discardCards->count());
     discardCountLabel->setString(discardCountString->getCString());
-    CCString *healthString =CCString::createWithFormat("%i\r%i", GM->player->health, GM->player->maxHealth);
-    healthLabel->setString(healthString->getCString());
-    CCString *soulString =CCString::createWithFormat("%i\r%i", GM->player->soul, GM->player->maxSoul);
-    soulLabel->setString(soulString->getCString());
+    CCString *moneyString =CCString::createWithFormat("money:%i", GM->player->money);
+    moneyLabel->setString(moneyString->getCString());
+    CCString *commandPointsString =CCString::createWithFormat("command:%i-%i", GM->player->commandPoints, GM->player->commandPointsMax);
+    commandPointsLabel->setString(commandPointsString->getCString());
     
-    //setHealth
-    int health = GM->player->health;
-    int maxHealth = GM->player->maxHealth;
-    float percentHealth = (float)health/(float)maxHealth;
-    if(percentHealth > 1.0) percentHealth = 1.0;
-  healthIndicator->setScale(1, percentHealth);
-    
-    //setSoul
-    int soul = GM->player->soul;
-    int maxSoul = GM->player->maxSoul;
-    float percentSoul = (float)soul/(float)maxSoul;
-    if(percentSoul > 1.0) percentSoul = 1.0;
-    soulIndicator->setScale(1,percentSoul);
-    
-    // actions
-    //clear old actions
-    for(int i = 0; i < actionArray->count(); i++){
-        CCSprite *sprite = (CCSprite*)(actionArray->objectAtIndex(i));
-        sprite->removeFromParent();
-    }
-    actionArray->removeAllObjects();
-    
-    for (int i = 0; i < GM->player->actionsLeftArray->count(); i++) {
-        CCSprite *sprite = CCSprite::createWithSpriteFrameName("Card_Action");
-        Action *action = (Action*)GM->player->actionsLeftArray->objectAtIndex(i);
-        sprite->setColor(action->getActionColor());
-        sprite->setScale(.5);
-        sprite->setPosition(ccp(500 + i * 50, 170));
-        //change color depending on action
-        
-        addChild(sprite, ZORDERING_ACTIONSPRITE);
-        actionArray->addObject(sprite);
-    }
 }
 
 void HandLayer::enableDeckInteractive(){
@@ -216,12 +149,3 @@ void HandLayer::disableHandInteractive(){
     handGlow->setVisible(false);
 }
 
-void HandLayer::enableVoidAreaInteractive()
-{
-    voidAreaGlowSprite->setVisible(true);
-}
-
-void HandLayer::disableVoidAreaInteractive()
-{
-    voidAreaGlowSprite->setVisible(false);
-}

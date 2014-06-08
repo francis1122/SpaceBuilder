@@ -9,7 +9,6 @@
 #include "CardTargets.h"
 #include "GameManager.h"
 #include "CardSprite.h"
-#include "MonsterSprite.h"
 #include "UIState.h"
 #include "Player.h"
 #include "Statuses.h"
@@ -79,7 +78,7 @@ void CardTargets::unableToActivateHighlight(UIState*)
 //checks whether the ability can be activated
 bool CardTargets::isAbilityActivatable(UIState* state){
     //check if proper amount is possible
-    if(targetingType == PlayArea_TargetMonsters){
+   /* if(targetingType == PlayArea_TargetMonsters){
         if(GM->monsterArray->count() >= targetAmount){
             return true;
         }else{
@@ -116,6 +115,7 @@ bool CardTargets::isAbilityActivatable(UIState* state){
         }
     }
     CCLog("CardTargets::isAbilityActivatable error");
+    */
     return false;
 }
 
@@ -128,7 +128,7 @@ bool CardTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardS
     
     //TODO: make this target specific objects such as cards in hand or market cards
     
-    
+    /*
     if(targetingType == MonsterDefend){
         for(int i = 0; i < GM->monsterArray->count(); i++){
             MonsterSprite *monster = (MonsterSprite*)GM->monsterArray->objectAtIndex(i);
@@ -155,6 +155,7 @@ bool CardTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardS
             return true;
         }
     }
+     */
     return false;
 }
 
@@ -237,27 +238,3 @@ bool CardTargets::shouldCardBeDestroyed()
 
 //utility functions
 #pragma mark - utility functions
-
-bool  CardTargets::validMonsterTargetCheck(MonsterSprite *monster)
-{
-    if(monster->life < minMonsterLife && minMonsterLife != -1){
-        return false;
-    }
-    if(monster->life > maxMonsterLife && maxMonsterLife != -1){
-        return false;
-    }
-    if(GM->tauntPresent()){
-        if(!monster->hasTaunt){
-            return false;
-        }
-    }
-    
-    if(this->isPreemptive)
-    {
-        if(GM->player->playedCards->count() > 0){
-            return false;
-        }
-    }
-
-    return true;
-}

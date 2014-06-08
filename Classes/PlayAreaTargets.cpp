@@ -9,7 +9,6 @@
 #include "PlayAreaTargets.h"
 #include "GameManager.h"
 #include "CardSprite.h"
-#include "MonsterSprite.h"
 #include "UIState.h"
 #include "Player.h"
 #include "Constants.h"
@@ -70,8 +69,6 @@ void PlayAreaTargets::useAbility(){
         status->applyStatus();
     }
     //apply status effects to monster
-    GM->organizeMonsters();
-    GM->organizeMarket();
     GM->gameLayer->updateInterface();
     GM->afterCardPlayedStateCheck();
     //clear targetArray

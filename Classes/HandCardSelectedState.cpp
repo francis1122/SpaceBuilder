@@ -13,10 +13,8 @@
 #include "NormalState.h"
 #include "CardTargets.h"
 #include "CardSprite.h"
-#include "MonsterSprite.h"
 #include "GameLayer.h"
 #include "HandLayer.h"
-#include "MarketLayer.h"
 
 
 USING_NS_CC;
@@ -34,29 +32,7 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     CCLog("handcardselectedState");
     this->selectedCard = _selectedCard;
     selectedCard->setZOrder(10000);
-    if(selectedCard->turnsLeftInMarket > 0){
-        //set state for market card
-        if(GM->player->hasAction(Neutral)){
-            GM->gameLayer->handLayer->enableDiscardInteractive();
-            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
-        }else{
-            GM->gameLayer->handLayer->disableDiscardInterative();
-            GM->gameLayer->changeIndicatorState("Requires Action");
-        }
-    }else if(!GM->player->hasAction(selectedCard->action->actionType)){
-        UIState::clearInteractiveState();
-        GM->gameLayer->changeIndicatorState("Requires Actions");
-    }else{
-        if(selectedCard->turnsLeftInMarket > 0){
-            //set state for market card
-            //            GM->gameLayer->handLayer->enableDiscardInteractive();
-            //            GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
-        }else{
-            UIState::clearInteractiveState();
-            this->selectedCard->cardTargets->highlightInteractiveObjects(this);
-        }
-    }
-    //highlight should take care of buttons as well
+        //highlight should take care of buttons as well
     GM->gameLayer->setButtonLabels("", "");
     return true;
 }
@@ -64,7 +40,7 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
 
 void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
     clearInteractiveState();
-    GameManager *GM = GameManager::sharedGameManager();
+   /* GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
     TargetingType indicatorState = card->cardTargets->targetingType;
     //    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
@@ -81,12 +57,6 @@ void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
         
     }else if(indicatorState == PlayArea){
         GM->gameLayer->enablePlayAreaInteractive();
-    }else if (indicatorState == Monsters){
-        GM->gameLayer->enablePlayAreaInteractive();
-        CCARRAY_FOREACH(GM->monsterArray, object){
-            MonsterSprite *monster = (MonsterSprite*)object;
-            monster->enableInteractive();
-        }
     }else if(indicatorState == DiscardArea){
         GM->gameLayer->handLayer->enableDiscardInteractive();
     }else if(indicatorState == RequireActions){
@@ -99,14 +69,7 @@ void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
         GM->gameLayer->enablePlayAreaInteractive();
     }else if(indicatorState == PlayArea_TargetMonsters){
         GM->gameLayer->enablePlayAreaInteractive();
-    }else if(indicatorState == MonsterDefend){
-        for(int i = 0; i < GM->monsterArray->count(); i++){
-            MonsterSprite *monsterSprite = (MonsterSprite*)GM->monsterArray->objectAtIndex(i);
-            if(monsterSprite->location <= 0){
-                monsterSprite->enableInteractive();
-            }
-        }
-    }
+    }*/
     
 }
 
@@ -128,57 +91,8 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     this->selectedCard->setPosition(touchPoint);
-    
-    
-    if(selectedCard->turnsLeftInMarket > 0){
-        //used for market card play
-        
-        //check if area is the discard area
-        if(UIState::cardInDiscardArea(this->selectedCard)){
-            //buying a card costs an action
-            if(GM->player->hasAction(Neutral)){
-                //add card to players deck
-                GM->buyCardFromMarket(this->selectedCard);
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-            }else{
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-                
-            }
-        }else{
-            selectedCard = NULL;
-            GM->organizeMarket();
-            this->transitionToNormalState();
-        }
-    }else if(UIState::cardInSellArea(this->selectedCard)){
-        if(GM->player->hasAction(Neutral)){
-            //remove card to players deck
-            if(GM->player->soul >= this->selectedCard->soulCost){
-                GM->player->changeSoul(-this->selectedCard->soulCost);
-                GM->player->removeCard(this->selectedCard);
-                GM->player->spendAction(Neutral);
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-            }else{
-                selectedCard = NULL;
-                GM->organizeMarket();
-                this->transitionToNormalState();
-            }
-        }else{
-            selectedCard = NULL;
-            GM->organizeMarket();
-            this->transitionToNormalState();
-        }
-        
-        
-        
-    }else if(GM->player->hasAction(selectedCard->action->actionType)){
-        
-        
+    //if can play card
+    if(GM->player->canPlayCard(selectedCard)){
         CardTargets *target = this->selectedCard->cardTargets;
         //check if there are targets that the card can use
         if(target->isAbilityActivatable(this)){
@@ -211,14 +125,12 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     }
     
     GM->player->organizeHand();
-    GM->organizeMarket();
 }
 
 void HandCardSelectedState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     this->transitionToNormalState();
     GameManager *GM = GameManager::sharedGameManager();
     GM->player->organizeHand();
-    GM->organizeMarket();
 }
 
 #pragma mark - state transitions

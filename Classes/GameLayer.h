@@ -14,10 +14,9 @@
 #include "CardTargets.h"
 
 class HandLayer;
-class MarketLayer;
 class ZoomLayer;
 class MonsterLayer;
-class TopSlideLayer;
+class SolarSystemDetailsLayer;
 class GameLayer : public cocos2d::CCLayer
 {
 public:
@@ -44,10 +43,9 @@ public:
     
     //layers
     HandLayer *handLayer;
-    MarketLayer *marketLayer;
     MonsterLayer *monsterLayer;
     ZoomLayer *zoomLayer;
-    TopSlideLayer *topSlideLayer;
+    SolarSystemDetailsLayer *solarSystemDetailsLayer;
     
     
     

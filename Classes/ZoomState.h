@@ -19,8 +19,6 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     virtual bool initCardSprite(CardSprite *_selectedCard);
-    virtual bool initMonsterSprite(MonsterSprite *_selectedMonsterCard);
-    virtual bool initMarketCard(CardSprite *_selectedCard);
     
     bool isMarketCard;
     CardSprite *selectedCard;

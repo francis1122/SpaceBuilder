@@ -11,7 +11,6 @@
 
 #include "IRDSObject.h"
 #include "IRDSTable.h"
-#include "IRDSColor.h"
 #include "IRDSCardTemplate.h"
 #include "IRDSMonsterTemplate.h"
 

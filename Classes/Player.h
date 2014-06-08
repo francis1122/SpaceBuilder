@@ -12,7 +12,6 @@
 #include "cocos2d.h"
 #include "GameLayer.h"
 #include "CardSprite.h"
-#include "Action.h"
 
 USING_NS_CC;
 class CardSprite;
@@ -23,13 +22,12 @@ public:
     Player();
     
     //player variables
-    int health;
-    int maxHealth;
-    int soul;
-    int maxSoul;
+    int money;
+    int commandPoints;
+    int commandPointsMax;
     CCArray *actionsLeftArray;
     
-    
+    CCArray *solarSystemArray;
     //deck variables
     CCArray *deckCards;
     
@@ -41,18 +39,13 @@ public:
     
     void reset();
     
-    //action manipulation
-    void addAction(ActionType actionType);
-    void spendAction(ActionType actionType);
-    void clearActions();
-    bool hasAction(ActionType actionType);
-    
     //card manipulation
     void organizeHand();
     void organizePlayedCards();
     void removeCard(CardSprite *card);
     void acquireCard(CardSprite *card);
     void addCardToHand();
+    bool canPlayCard(CardSprite *card);
     void playCard(CardSprite *card);
     void finishedPlayingCard();
     void discardCard(CardSprite* card);
@@ -62,8 +55,8 @@ public:
     void reshuffleLibrary();
     void shuffle(CCArray *array);
     
-    void changeSoul(int soulOffset);
-    void changeHealth(int healthOffset);
-    void changeHealth(int healthOffset, CCPoint point);
+    void changeMoney(int moneyOffset);
+    void changeCommandPoints(int commandPointsOffset);
+    void changeCommandPoints(int commandPointsOffset, CCPoint point);
 };
 #endif /* defined(__RogueDeck__Player__) */

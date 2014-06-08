@@ -11,12 +11,11 @@
 #include "HandCardSelectedState.h"
 #include "GameManager.h"
 #include "NormalState.h"
-#include "MonsterSprite.h"
+
 #include "CardTargets.h"
 #include "GameLayer.h"
 #include "ZoomLayer.h"
 #include "MonsterLayer.h"
-#include "MarketLayer.h"
 #include "HandLayer.h"
 #include "Constants.h"
 
@@ -53,50 +52,6 @@ bool ZoomState::initCardSprite(CardSprite *_selectedCard)
     return true;
 }
 
-bool ZoomState::initMonsterSprite(MonsterSprite *_selectedMonsterCard){
-    if(!ZoomState::init()){
-        return false;
-    }
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    CCLog("card monster sprite");
-    this->selectedMonsterCard = _selectedMonsterCard;
-    this->selectedCard = NULL;
-    
-    this->selectedMonsterCard->removeFromParent();
-    GM->gameLayer->zoomLayer->addChild(this->selectedMonsterCard, 100);
-    
-    this->selectedMonsterCard->setScale(1);
-    this->selectedMonsterCard->setPosition(ccp(350, visibleSize.height/2));
-
-    this->selectedMonsterCard->isZoomed = true;
-//    GameManager *GM = GameManager::sharedGameManager();
-
-    
-    return true;
-}
-
-bool ZoomState::initMarketCard(CardSprite *_selectedCard){
-    if(!ZoomState::init()){
-        return false;
-    }
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    CCLog("card market card");
-    this->selectedCard = _selectedCard;
-    this->selectedMonsterCard = NULL;
-    this->selectedCard->removeFromParent();
-    GM->gameLayer->zoomLayer->addChild(this->selectedCard, 100);
-    this->selectedCard->setScale(1);
-    this->selectedCard->setZOrder(1000000);
-    this->selectedCard->setPosition(ccp(350, visibleSize.height/2));
-
-    this->selectedCard->isZoomed = true;
-    isMarketCard = true;
-    
-    return true;
-}
-
 
 
 #pragma mark - touch events
@@ -127,15 +82,7 @@ void ZoomState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *even
 void ZoomState::transitionToNormalState(){
 
     GM->gameLayer->leaveZoomState();
-    if(selectedMonsterCard != NULL){
-        this->selectedMonsterCard->removeFromParent();
-        GM->gameLayer->monsterLayer->addChild(this->selectedMonsterCard, 10000);
-        
-        selectedMonsterCard->setScale(DEFAULT_MONSTER_CARD_SCALE);
-        this->selectedMonsterCard->isZoomed = false;
-        GM->organizeMonsters();
-        
-    }else{
+
         selectedCard->removeFromParent();
         if(isMarketCard){
             GM->gameLayer->monsterLayer->addChild(this->selectedCard, 100);
@@ -147,8 +94,6 @@ void ZoomState::transitionToNormalState(){
         selectedCard->setZOrder(10000);
         this->selectedCard->isZoomed = false;
         GM->player->organizeHand();
-        GM->organizeMarket();
-    }
     selectedCard = NULL;
     selectedMonsterCard = NULL;
     NormalState *NS =  new NormalState();

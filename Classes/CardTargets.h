@@ -104,8 +104,6 @@ public:
     //check if card should be destroyed after it has been used
     virtual bool shouldCardBeDestroyed();
 
-    //utility functions
-    virtual bool validMonsterTargetCheck(MonsterSprite *monster);
     
 };
 

@@ -7,7 +7,6 @@
 //
 
 #include "PostRoundLayer.h"
-#include "BetweenRoundLayer.h"
 #include "Constants.h"
 
 
@@ -87,11 +86,11 @@ void PostRoundLayer::nextRound(CCObject* pSender)
 {
     //load game scene
     // create a scene. it's an autorelease object
-    CCDirector* pDirector = CCDirector::sharedDirector();
-    CCScene *pScene = BetweenRoundLayer::scene();
+ //   CCDirector* pDirector = CCDirector::sharedDirector();
+//    CCScene *pScene = BetweenRoundLayer::scene();
     
     // run
-    pDirector->replaceScene(pScene);
+//    pDirector->replaceScene(pScene);
 }
 
 

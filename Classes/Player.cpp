@@ -12,7 +12,6 @@
 #include "HandLayer.h"
 #include "Statuses.h"
 #include "CardTargets.h"
-#include "Action.h"
 #include "Constants.h"
 #include "AnimationManager.h"
 #include "AnimationObject.h"
@@ -23,10 +22,9 @@ USING_NS_CC;
 
 Player::Player()
 {
-    health = 10;
-    maxHealth = 10;
-    soul = 0;
-    maxSoul = 10;
+    money = 10;
+    commandPoints = 10;
+    commandPointsMax = 10;
     this->actionsLeftArray = new CCArray();
     this->actionsLeftArray->init();
     
@@ -35,33 +33,36 @@ Player::Player()
     this->discardCards = new CCArray();
     this->handCards = new CCArray();
     this->libraryCards = new CCArray();
+    this->solarSystemArray = new CCArray();
     deckCards->init();
     playedCards->init();
     discardCards->init();
     handCards->init();
     libraryCards->init();
+    solarSystemArray->init();
     
     currentPlayCard = NULL;
     //addCards To library
     
     //attack cards
-    for(int i = 0; i < 6; i++){
+    for(int i = 0; i < 12; i++){
         CardSprite *card = new CardSprite();
         card->cardImageFile = "sword";
         card->initWithSpriteFrameName("NeutralCard");
         //Make card ability
-        CardTargets *cardTargets = new MonsterTargets();
+        CardTargets *cardTargets = new PlayAreaTargets();
         cardTargets->initWithCardSprite(card);
-        cardTargets->targetingType = Monsters;
+
+        /*cardTargets->targetingType = Monsters;
         MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
         status->initWithHealthOffset(-2);
         cardTargets->statuses->addObject(status);
-        
+        */
         card->cardTargets = cardTargets;
-        card->setupDamageCard(2);
         libraryCards->addObject(card);
         deckCards->addObject(card);
     }
+    
     /*
     //soul cards
     for(int i = 0; i < 4; i++){
@@ -84,56 +85,10 @@ Player::Player()
     reset();
 }
 
-#pragma mark - action manipulation
-
-void Player::addAction(ActionType actionType){
-    Action *action = new Action();
-    action->init(actionType);
-    action->autorelease();
-    this->actionsLeftArray->addObject(action);
-}
-
-void Player::spendAction(ActionType actionType){
-    //check for specific match first
-    CCObject *object;
-    CCARRAY_FOREACH( actionsLeftArray, object){
-        Action *action = (Action*)object;
-        if(actionType ==  action->actionType || actionType == Neutral){
-            actionsLeftArray->removeObject(object);
-            return;
-        }
-    }
-    
-    //check for neutral match
-    CCARRAY_FOREACH( actionsLeftArray, object){
-        Action *action = (Action*)object;
-        if(action->actionType == Neutral){
-            actionsLeftArray->removeObject(object);
-            return;
-        }
-    }
-    
-}
-
-void Player::clearActions(){
-    actionsLeftArray->removeAllObjects();
-}
-
-bool Player::hasAction(ActionType actionType){
-    CCObject *object;
-    CCARRAY_FOREACH( actionsLeftArray, object){
-        Action *action = (Action*)object;
-        if(actionType ==  action->actionType || action->actionType == Neutral){
-            return true;
-        }
-    }
-    return false;
-}
 
 #pragma mark - card manipulation
 
 void Player::reset(){
-    clearActions();
     discardHand();
     discardCards->removeAllObjects();
     playedCards->removeAllObjects();
@@ -142,10 +97,8 @@ void Player::reset(){
     
     libraryCards->addObjectsFromArray(deckCards);
     shuffle(libraryCards);
-    health = deckCards->count();
-    soul = 0;
-    addAction(Neutral);
-    addAction(Neutral);
+    money = 10;
+    commandPoints = commandPointsMax;
 }
 
 
@@ -216,17 +169,12 @@ void Player::removeCard(CardSprite *card)
     card->removeFromParent();
     deckCards->removeObject(card);
     handCards->removeObject(card);
-    this->maxHealth--;
-    this->maxSoul--;
 }
 
 void Player::acquireCard(CardSprite *card)
 {
-    card->turnsLeftInMarket = 0;
     this->deckCards->addObject(card);
     this->discardCards->addObject(card);
-    this->maxHealth++;
-    this->maxSoul++;
 }
 
 void Player::addCardToHand()
@@ -253,10 +201,21 @@ void Player::addCardToHand()
     }
 }
 
+bool Player::canPlayCard(CardSprite *card)
+{
+    if(commandPoints < card->commandPointsToPlay){
+        return false;
+    }
+    if(money < card->costToPlay){
+        return false;
+    }
+    return true;
+}
+
 void Player::playCard(CardSprite *card){
     //execute card
-    spendAction(card->action->actionType);
     card->setScale(.15);
+    commandPoints -= card->commandPointsToPlay;
     currentPlayCard = card;
     handCards->removeObject(card);
     GM->player->organizeHand();
@@ -347,33 +306,27 @@ void Player::shuffle(CCArray *array)
     }
 }
 
-void Player::changeSoul(int soulOffset)
+void changeCommandPoints(int commandPointsOffset);
+void changeCommandPoints(int commandPointsOffset, CCPoint point);
+
+void Player::changeMoney(int moneyOffset)
 {
-    if(soulOffset > 0){
-        AM->createSoulIcon(soulOffset, ccp(545,260));
+    if(moneyOffset > 0){
+//        AM->createSoulIcon(moneyOffset, ccp(545,260));
     }
-    this->soul += soulOffset;
+    this->money += moneyOffset;
 }
 
-void Player::changeHealth(int healthOffset)
+void Player::changeCommandPoints(int commandPointsOffset)
 {
-    Player::changeHealth(healthOffset, ccp(470, 300));
+    Player::changeCommandPoints(commandPointsOffset, ccp(470, 300));
 }
 
-void Player::changeHealth(int healthOffset, CCPoint point)
+void Player::changeCommandPoints(int commandPointsOffset, CCPoint point)
 {
-    if(healthOffset < 0){
-        AM->createDamageIcon(healthOffset, point);
-        health += healthOffset;
-        GM->gameLayer->updateInterface();
-        GM->gameStateCheck();
-    }else{
-//        AM->createDamageIcon(healthOffset, point);
-        //need a heal icon of sorts
-        health += healthOffset;
-        GM->gameLayer->updateInterface();
-        GM->gameStateCheck();
-    }
+    commandPoints -= commandPointsOffset;
+    GM->gameLayer->updateInterface();
+    GM->gameStateCheck();
 }
 
 

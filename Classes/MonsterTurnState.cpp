@@ -14,7 +14,6 @@
 #include "ZoomState.h"
 #include "GameLayer.h"
 #include "CardSprite.h"
-#include "MonsterSprite.h"
 #include "NormalState.h"
 #include "Constants.h"
 #include "AnimationManager.h"
