@@ -17,17 +17,12 @@
 #include "AnimationObject.h"
 #include "CardSprite.h"
 #include "Targets.h"
+#include "SolarSystemObject.h"
 
 USING_NS_CC;
 
 Player::Player()
 {
-    money = 10;
-    commandPoints = 10;
-    commandPointsMax = 10;
-    this->actionsLeftArray = new CCArray();
-    this->actionsLeftArray->init();
-    
     this->deckCards = new CCArray();
     this->playedCards = new CCArray();
     this->discardCards = new CCArray();
@@ -40,51 +35,111 @@ Player::Player()
     handCards->init();
     libraryCards->init();
     solarSystemArray->init();
+}
+
+void Player::setupPlayer()
+{
+    money = 10;
+    commandPoints = 10;
+    commandPointsMax = 10;
+
     
     currentPlayCard = NULL;
     //addCards To library
     
+    //get home solar system
+    //SolarSystemObject *homeSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(0);
+    
     //attack cards
     for(int i = 0; i < 12; i++){
-        CardSprite *card = new CardSprite();
-        card->cardImageFile = "sword";
-        card->initWithSpriteFrameName("NeutralCard");
-        //Make card ability
-        CardTargets *cardTargets = new PlayAreaTargets();
-        cardTargets->initWithCardSprite(card);
-
-        /*cardTargets->targetingType = Monsters;
-        MonsterHealthOffsetStatus *status = new MonsterHealthOffsetStatus();
-        status->initWithHealthOffset(-2);
-        cardTargets->statuses->addObject(status);
-        */
-        card->cardTargets = cardTargets;
-        libraryCards->addObject(card);
-        deckCards->addObject(card);
+        if(i == 0){
+            CardSprite *card = new CardSprite();
+            card->cardImageFile = "sword";
+            card->initWithSpriteFrameName("YellowCard");
+            card->detailsLabel->setString("colonize card");
+            //Make card ability
+            SolarSystemTargets *cardTargets = new SolarSystemTargets();
+            cardTargets->initWithCardSprite(card);
+            cardTargets->targetNeutralSystems = true;
+            ColonizeStatus *status = new ColonizeStatus();
+            status->init();
+            cardTargets->statuses->addObject(status);
+            
+            card->cardTargets = cardTargets;
+            acquireCard(card);
+        }else if(i < 5){
+            CardSprite *card = new CardSprite();
+            card->cardImageFile = "sword";
+            card->initWithSpriteFrameName("YellowCard");
+            card->detailsLabel->setString("increase population of solar system by 1");
+            //Make card ability
+            SolarSystemTargets *cardTargets = new SolarSystemTargets();
+            cardTargets->initWithCardSprite(card);
+            cardTargets->targetFriendlySystems = true;
+            
+            
+            PopulationOffsetStatus *status = new PopulationOffsetStatus();
+            status->initWithPopulationOffset(1, 0);
+            cardTargets->statuses->addObject(status);
+            
+            card->cardTargets = cardTargets;
+            acquireCard(card);
+            
+        }else if(i == 6){
+            CardSprite *card = new CardSprite();
+            card->cardImageFile = "sword";
+            card->initWithSpriteFrameName("YellowCard");
+            card->isPassive = true;
+            card->detailsLabel->setString("Building: generate 50 money each turn");
+            //Make card ability
+            PassiveTargets *cardTargets = new PassiveTargets();
+            cardTargets->initWithCardSprite(card);
+            
+            MoneyOffsetStatus *status = new MoneyOffsetStatus();
+            status->initWithMoneyOffset(50);
+            cardTargets->statuses->addObject(status);
+            
+            card->passiveTargets = cardTargets;
+            acquireCard(card);
+        }else{
+            
+            CardSprite *card = new CardSprite();
+            card->cardImageFile = "sword";
+            card->initWithSpriteFrameName("YellowCard");
+            //Make card ability
+            CardTargets *cardTargets = new PlayAreaTargets();
+            cardTargets->initWithCardSprite(card);
+            
+            MoneyOffsetStatus *status = new MoneyOffsetStatus();
+            status->initWithMoneyOffset(10);
+            cardTargets->statuses->addObject(status);
+            
+            card->cardTargets = cardTargets;
+            acquireCard(card);
+        }
     }
     
     /*
-    //soul cards
-    for(int i = 0; i < 4; i++){
-        CardSprite *card = new CardSprite();
-        card->cardImageFile = "images";
-        card->initWithSpriteFrameName("NeutralCard");
-        //Make card ability
-        CardTargets *cardTargets = new PlayAreaTargets();
-        cardTargets->initWithCardSprite(card);
-        GainSoulStatus *status = new GainSoulStatus();
-        status->initWithSoulGain(2);
-        cardTargets->statuses->addObject(status);
-        
-        card->cardTargets = cardTargets;
-        card->setupSoulGainCard(2);
-        libraryCards->addObject(card);
-        deckCards->addObject(card);
-    }
+     //soul cards
+     for(int i = 0; i < 4; i++){
+     CardSprite *card = new CardSprite();
+     card->cardImageFile = "images";
+     card->initWithSpriteFrameName("NeutralCard");
+     //Make card ability
+     CardTargets *cardTargets = new PlayAreaTargets();
+     cardTargets->initWithCardSprite(card);
+     GainSoulStatus *status = new GainSoulStatus();
+     status->initWithSoulGain(2);
+     cardTargets->statuses->addObject(status);
+     
+     card->cardTargets = cardTargets;
+     card->setupSoulGainCard(2);
+     libraryCards->addObject(card);
+     deckCards->addObject(card);
+     }
      */
     reset();
 }
-
 
 #pragma mark - card manipulation
 
@@ -107,7 +162,7 @@ void Player::organizeHand(){
     int handSize = handCards->count();
     int i = 0;
     CCLog("Hand Organize");
-    float centralPoint = 700;
+    float centralPoint = 550;
     float cardOffset = 110;
     float startPoint = centralPoint - (cardOffset/2)*handSize;
     AnimationObject *animationHolder = new AnimationObject();
@@ -163,16 +218,40 @@ void Player::organizePlayedCards(){
     AM->addAnimation(animationHolder);
 }
 
-
 void Player::removeCard(CardSprite *card)
 {
     card->removeFromParent();
     deckCards->removeObject(card);
     handCards->removeObject(card);
+    libraryCards->removeObject(card);
+    playedCards->removeObject(card);
+    discardCards->removeObject(card);
+    
+    if(card->isPassive){
+        card->passiveTargets->removeAllObjects();
+    }
+    card->owner = NULL;
+}
+
+void Player::acquireCardInSolarSystemSpot(CardSprite *card, SolarSystemObject* solarSystem, int index)
+{
+    CardSprite *cardBeingReplaced = (CardSprite*)solarSystem->cardArray->objectAtIndex(index);
+    removeCard(cardBeingReplaced);
+    card->owner = this;
+    solarSystem->cardArray->replaceObjectAtIndex(index, card, true);
+    if(card->isPassive){
+        card->passiveTargets->checkAllObjects();
+    }
+    this->deckCards->addObject(card);
+    this->discardCards->addObject(card);
 }
 
 void Player::acquireCard(CardSprite *card)
 {
+    card->owner = this;
+    if(card->isPassive){
+        card->passiveTargets->checkAllObjects();
+    }
     this->deckCards->addObject(card);
     this->discardCards->addObject(card);
 }
@@ -224,20 +303,12 @@ void Player::playCard(CardSprite *card){
 
 void Player::finishedPlayingCard(){
     if(currentPlayCard != NULL){
-        //check if card should either go to discard, or be destroyed, or do anything else
-        if(currentPlayCard->cardTargets->shouldCardBeDestroyed()){
-            currentPlayCard->removeFromParent();
-            currentPlayCard = NULL;
-            GM->player->organizeHand();
-            GM->player->organizePlayedCards();
-        }else{
-            playedCards->addObject(currentPlayCard);
-            currentPlayCard = NULL;
-            GM->player->organizeHand();
-            GM->player->organizePlayedCards();
-        }
+        //check if card should either go to discard, or do anything else
+        playedCards->addObject(currentPlayCard);
+        currentPlayCard = NULL;
+        GM->player->organizeHand();
+        GM->player->organizePlayedCards();
     }
-    
 }
 
 void Player::discardCard(CardSprite* card)
@@ -270,7 +341,7 @@ void Player::discardHand()
         CardSprite *card = (CardSprite*)object;
         card->disableInteractive();
         discardCards->addObject(object);
-        CCMoveTo *move = CCMoveTo::create(.4, GM->gameLayer->handLayer->discardCardSprite->getPosition());
+        CCMoveTo *move = CCMoveTo::create(.4, ccp(900, 10));
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::removeCard));
         CCSequence *seq = CCSequence::createWithTwoActions(move, obj);
         animation->init(seq, card);
@@ -306,8 +377,30 @@ void Player::shuffle(CCArray *array)
     }
 }
 
-void changeCommandPoints(int commandPointsOffset);
-void changeCommandPoints(int commandPointsOffset, CCPoint point);
+void Player::loseSolarSystem(SolarSystemObject *solarSystem)
+{
+    solarSystem->owner = NULL;
+    for(int i = 0; i < solarSystem->cardArray->count(); i++){
+        CardSprite *card = (CardSprite*)solarSystem->cardArray->objectAtIndex(i);
+        this->removeCard(card);
+    }
+}
+
+void Player::acquireSolarSystem(SolarSystemObject *solarSystem)
+{
+    //clean up previous solar system owner
+    if(solarSystem->owner){
+        solarSystem->owner->loseSolarSystem(solarSystem);
+    }
+    //acquire
+    solarSystem->owner = this;
+    for(int i = 0; i < solarSystem->cardArray->count(); i++){
+        CardSprite *card = (CardSprite*)solarSystem->cardArray->objectAtIndex(i);
+        this->acquireCard(card);
+    }
+}
+
+
 
 void Player::changeMoney(int moneyOffset)
 {

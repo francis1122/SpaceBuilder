@@ -19,6 +19,7 @@
 #include "Constants.h"
 #include "SolarSystemObject.h"
 #include "LLMath.h"
+#include "PassiveTargets.h"
 
 
 
@@ -79,14 +80,17 @@ void GameManager::startNewGame(){
     
     // run
     pDirector->replaceScene(pScene);
-    player->reset();
-    player->drawHand();
-    player->organizeHand();
     gameLayer->getCurrentState()->defaultInteractiveState();
     isInteractive = true;
     createNodes();
+    player->setupPlayer();
+    player->reset();
+    player->drawHand();
+    player->organizeHand();
+    player->acquireSolarSystem( (SolarSystemObject*)solarSystemArray->objectAtIndex(0));
     
     gameLayer->updateInterface();
+    
     /*
      isInteractive = true;
      currentLevel = 1;
@@ -156,6 +160,15 @@ void GameManager::endTurn()
     
     currentTurn++;
     
+    //passive shit
+    for(int i = 0; i < player->deckCards->count(); i++){
+        CardSprite *card = (CardSprite*)player->deckCards->objectAtIndex(i);
+        if(card->isPassive){
+            PassiveTargets *passiveTarget = (PassiveTargets*)card->passiveTargets;
+            passiveTarget->updateStatuses();
+        }
+    }
+    
     player->drawHand();
     player->organizeHand();
     
@@ -177,21 +190,21 @@ void GameManager::endTurn()
 #pragma mark - solar system
 void GameManager::createNodes(){
     //add them to monster layer
-    for(int i = 0; i < 8; i++){
+    for(int i = 0; i < 5; i++){
         SolarSystemObject *solarSystem = new SolarSystemObject();
-        solarSystem->initWithSpriteFrameName("Button");
-        solarSystem->setPosition(ccp(LLMath::getDoubleValue(1200), LLMath::getDoubleValue(800)));
+        solarSystem->initWithSpriteFrameName("solarSystem_0");
+        solarSystem->setPosition(ccp(LLMath::getDoubleValue(1500), LLMath::getDoubleValue(1500)));
+        solarSystem->setScale(.7);
         gameLayer->monsterLayer->addChild(solarSystem);
         solarSystemArray->addObject(solarSystem);
         if(i == 0){
-            solarSystem->owner = player;
             solarSystem->population = 1;
         }
     }
 }
 
-void GameManager::updateNodes(){
-
+void GameManager::updateNodes()
+{
     //do statuses and income stuff
     for(int i = 0; i < solarSystemArray->count(); i++){
         SolarSystemObject *solarSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(i);

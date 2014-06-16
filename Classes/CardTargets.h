@@ -14,24 +14,16 @@
 class CardSprite;
 class UIState;
 class BaseObject;
-class MonsterSprite;
+class SolarSystemObject;
 USING_NS_CC;
 
 
-typedef enum TargetingType{
-    None,
-    RequireActions,
-    DiscardArea, //might not have cards required to discard
-    DrawCard_DiscardCard, //always have cards to discard, so it's not a problem
-    PlayArea, //can always be played in the play area, no restrictions
-    PlayArea_TargetMonsters, //must be played in the play area and must have monster targets
-    Monsters, //must have monster targets
-    DiscardCard, //draw card from the discard pile
-    DrawCard, // not sure
-    BuyCard, //buy a card
-    MonsterDefend //can only target monsters that are on the attack line
-    //    PlayToDiscard
-} TargetingType;
+typedef enum GameObjects{
+    Units,
+    Cards,
+    SolarSystem,
+    CurrentPlayer
+} GameObjects;
 
 
 class CardTargets : public CCObject
@@ -40,22 +32,20 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool initWithCardSprite(CardSprite *card);
     
+    //type of object to apply status to
+    GameObjects objectsToUse;
+    //which objects to apply status to
+    bool applyToAllFriendly;
+    bool applyToHomeSystem;
+    
     //cardsprite
     CardSprite *cardSprite;
     
     //amount of targets that must be targetted, used for dragging as well
     int targetAmount;
     
-    int minMonsterLife;
-    int maxMonsterLife;
-    
     int timesCardCanBePlayed;
     int timesCardHasBeenPlayed;
-    
-    bool isPreemptive;
-    
-    //type of targets to highlight
-    TargetingType targetingType;
     
     //Dragging stuff
     CCArray *selectedTargets;
@@ -101,8 +91,6 @@ public:
     //does what the ability should do
     virtual void useAbility();
 
-    //check if card should be destroyed after it has been used
-    virtual bool shouldCardBeDestroyed();
 
     
 };

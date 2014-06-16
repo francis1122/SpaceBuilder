@@ -40,11 +40,8 @@ void CardTargetingState::highlightInteractiveObjects(CardSprite *card){
     clearInteractiveState();
     GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
-    TargetingType indicatorState = card->cardTargets->targetingType;
 //    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
-    
 
-    
 }
 
 #pragma mark - touch events

@@ -15,6 +15,8 @@ USING_NS_CC;
 
 class MonsterSprite;
 class CardSprite;
+class Player;
+class SolarSystemObject;
 class Status : public CCObject
 {
 public:
@@ -24,7 +26,8 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(Status);
     
-    virtual void addStatusToGameObject(MonsterSprite *monster);
+    virtual void addStatusToPlayer(Player *player);
+    virtual void addStatusToSolarSystem(SolarSystemObject *solarSystemObject);
     virtual void addStatusToCardSprite(CardSprite *card);
     
     //checks whether the status can be used
@@ -44,6 +47,10 @@ public:
     
     //if status is used by monster, monster must be passed with it
     virtual void updateStatus(MonsterSprite *monster);
+    
+    virtual void updateStatus(SolarSystemObject *solarSystem);
+    
+    virtual void updateStatus(Player *player);
     
     CCString *className;
     

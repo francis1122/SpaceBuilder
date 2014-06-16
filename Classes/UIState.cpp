@@ -140,7 +140,6 @@ void UIState::clearInteractiveState(){
     
     GM->gameLayer->setButtonLabels("", "");
     GM->gameLayer->handLayer->disableDeckInteractive();
-    GM->gameLayer->handLayer->disableDiscardInterative();
     GM->gameLayer->disablePlayAreaInteractive();
     GM->gameLayer->disablePlayAreaInteractive();
     GM->gameLayer->disableLeftButtonInteractive();

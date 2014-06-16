@@ -90,10 +90,18 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
     GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
+
+    
     this->selectedCard->setPosition(touchPoint);
     //if can play card
-    if(GM->player->canPlayCard(selectedCard)){
+    
+    if(selectedCard->isPassive){
+        selectedCard = NULL;
+        this->transitionToNormalState();
+    }else if(GM->player->canPlayCard(selectedCard)){
+        
         CardTargets *target = this->selectedCard->cardTargets;
+
         //check if there are targets that the card can use
         if(target->isAbilityActivatable(this)){
             //check if the card was played in the correct spot

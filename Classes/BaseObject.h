@@ -24,6 +24,10 @@ public:
     void removeBaseObject();
     virtual void doDamage();
     
+    //used to keep track of passive stat changes from cards
+    CCArray *cardsAffectingNode;
+    
+    
 };
 
 #endif /* defined(__RogueDeck__BaseObject__) */

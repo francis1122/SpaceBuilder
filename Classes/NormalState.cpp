@@ -32,7 +32,6 @@ bool NormalState::init()
     return true;
 }
 
-
 #pragma mark - touch events
 bool NormalState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     UIState::ccTouchBegan(touch, event);
@@ -61,7 +60,6 @@ void NormalState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *ev
 
 void NormalState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     CCLog("Normal doubletap");
-
     CardSprite *handCard = this->handCardAtPoint(touch);
     if(handCard){
         this->transitionToZoomState(handCard, 0);
@@ -109,13 +107,9 @@ void NormalState::transitionToHandCardSelectedState(CardSprite* selectedCard){
     GM->gameLayer->changeState(HCSS);
 }
 
-
-
 void NormalState::transitionToCardTargetingState(CardSprite* selectedCard){
     
 }
-
-
 //type 0 = hand card, 1 = monster card, 2 = market card
 void NormalState::transitionToZoomState(CCObject *selectedObject, int type){
     //this function sucks balls, i hate the type stuff

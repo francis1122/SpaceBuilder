@@ -20,6 +20,9 @@ typedef enum CardType{
 } CardType;
 
 class CardTargets;
+class SolarSystemObject;
+class Player;
+class PassiveTargets;
 class CardSprite : public BaseObject
 {
 public:
@@ -33,11 +36,10 @@ public:
     int costToBuy;
     int costToPlay;
     int commandPointsToPlay;
+    bool isPassive;
     
+    Player *owner;
     
-
-    
-//    cocos2d::CCSprite *textBox;
     cocos2d::CCSprite *costBox;
     cocos2d::CCSprite *cardImage;
     cocos2d::CCLabelTTF *detailsLabel;
@@ -50,6 +52,9 @@ public:
     CREATE_FUNC(CardSprite);
     
     CardTargets *cardTargets;
+    PassiveTargets *passiveTargets;
+    
+    SolarSystemObject *homeSolarSystem;
     
     void enableInteractive();
     void disableInteractive();
@@ -60,7 +65,6 @@ public:
     
 private:
     CardType cardType;
-    
 };
 
 

@@ -11,5 +11,7 @@
 
 #include "CardTargets.h"
 #include "PlayAreaTargets.h"
+#include "SolarSystemTargets.h"
+#include "PassiveTargets.h"
 
 #endif

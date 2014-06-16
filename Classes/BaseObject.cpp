@@ -14,7 +14,8 @@ bool BaseObject::initDefaultState()
 {
     isZoomed = false;
     isInteractive = false;
-    
+    cardsAffectingNode = new CCArray();
+    cardsAffectingNode->init();
 
     return true;
     

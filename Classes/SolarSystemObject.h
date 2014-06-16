@@ -13,6 +13,7 @@
 #include "cocos2d.h"
 #include "BaseObject.h"
 
+class CardSprite;
 class Player;
 class SolarSystemObject : public BaseObject
 {
@@ -24,18 +25,29 @@ public:
     CREATE_FUNC(SolarSystemObject);
     
     int cardSlots;
+    CCArray *cardArray;
     //array for actual cards
-    //CCArray
+
     int incomeGeneration;
     int populationFraction;
     int population;
     int populationLimit;
+    CCString *solarSystemName;
+    
+    
+    CCLabelTTF *populationLabel;
+    CCLabelTTF *incomeLabel;
+    CCLabelTTF *nameLabel;
+    CCSprite *infoSprite;
     
     Player *owner;
     
     void update();
-
+    void updateInterface();
+    void populationOffset(int populationOffset, int populationFractionOffset);
+    void setHighlighted(bool enabled);
     
+    void replaceCardAtIndex(CardSprite *card, int index);
 };
 
 

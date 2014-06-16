@@ -16,8 +16,6 @@
 #include "HandLayer.h"
 #include "GameLayer.h"
 
-
-
 void DrawDiscardTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->enablePlayAreaInteractive();
     GM->gameLayer->changeIndicatorState("Play Area");
@@ -35,8 +33,7 @@ void DrawDiscardTargets::highlightInteractiveObjectsWithDraggingState(UIState* s
 
 void DrawDiscardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* state)
 {
-    GM->gameLayer->handLayer->enableDiscardInteractive();
-    
+//    GM->gameLayer->handLayer->enableDiscardInteractive();
 }
 
 //checks whether the ability can be activated

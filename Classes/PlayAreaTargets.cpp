@@ -13,8 +13,17 @@
 #include "Player.h"
 #include "Constants.h"
 #include "Statuses.h"
+#include "SolarSystemObject.h"
 
 
+// on "init" you need to initialize your instance
+bool PlayAreaTargets::initWithCardSprite(CardSprite *card)
+{
+    CardTargets::initWithCardSprite(card);
+
+    
+    return true;
+}
 
 void PlayAreaTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->enablePlayAreaInteractive();
@@ -23,7 +32,6 @@ void PlayAreaTargets::highlightInteractiveObjects(UIState* state){
 
 void PlayAreaTargets::highlightNextInteractiveObjects(UIState* state){
     CCLog("shouldn't call this");
-    
 }
 
 //checks whether the ability can be activated
@@ -63,11 +71,37 @@ void PlayAreaTargets::useInitialAbility(){
 void PlayAreaTargets::useAbility(){
     CardTargets::useAbility();
     //do status
+
     CCObject *object;
-    CCARRAY_FOREACH(statuses, object){
-        Status *status = (Status*)object;
-        status->applyStatus();
+
+    if(objectsToUse == CurrentPlayer){
+        CCARRAY_FOREACH(statuses, object){
+            Status *status = (Status*)object;
+            status->addStatusToPlayer(GM->player);
+        }
+    }else if(objectsToUse == SolarSystem){
+        for(int i = 0; i < GM->solarSystemArray->count(); i++){
+            SolarSystemObject *solarSystem = (SolarSystemObject*)GM->solarSystemArray->objectAtIndex(i);
+            if(applyToAllFriendly){
+                if(solarSystem->owner != GM->player) continue;
+            }
+            if(applyToHomeSystem){
+                if(cardSprite->homeSolarSystem != solarSystem) continue;
+                
+            }
+            CCARRAY_FOREACH(statuses, object){
+                Status *status = (Status*)object;
+                status->addStatusToSolarSystem(solarSystem);
+            }
+        }
+        
+    }else if(objectsToUse == Cards){
+        
+    }else if(objectsToUse == Units){
+        
     }
+    
+
     //apply status effects to monster
     GM->gameLayer->updateInterface();
     GM->afterCardPlayedStateCheck();

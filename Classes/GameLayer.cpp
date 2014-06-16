@@ -50,14 +50,14 @@ void GameLayer::setupButtons(){
     rightButton->setScale(.7);
     leftButton->setScale(.7);
 	rightButton->setPosition(ccp(visibleSize.width - 60,
-                                 240));
+                                 visibleSize.height - 50));
 	leftButton->setPosition(ccp( 50,
-                                240));
+                                visibleSize.height - 50));
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 102);
+    this->addChild(pMenu, 1002);
     
     rightButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
     leftButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
@@ -65,10 +65,8 @@ void GameLayer::setupButtons(){
     leftButtonGlow->setPosition(leftButton->getPosition());
     rightButtonGlow->setScale(rightButton->getScale());
     leftButtonGlow->setScale(leftButtonGlow->getScale());
-    this->addChild(rightButtonGlow, 101);
-    this->addChild(leftButtonGlow, 101);
-    
-    
+    this->addChild(rightButtonGlow, 1001);
+    this->addChild(leftButtonGlow, 1001);
     
     
     //labels
@@ -76,16 +74,13 @@ void GameLayer::setupButtons(){
     rightButtonLabel = CCLabelTTF::create("End Turn", Main_Font, 32);
     //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
-    leftButtonLabel->setPosition(ccp(240, 250));
-    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, 250));
+    leftButtonLabel->setPosition(ccp(240, visibleSize.height - 60));
+    rightButtonLabel->setPosition(ccp(visibleSize.width - 80, visibleSize.height - 60));
     
-    this->addChild(leftButtonLabel, 103);
-    this->addChild(rightButtonLabel, 103);
+    this->addChild(leftButtonLabel, 1003);
+    this->addChild(rightButtonLabel, 1003);
     
     this->scheduleUpdate();
-    
-
-    
 }
 
 // on "init" you need to initialize your instance
@@ -137,14 +132,15 @@ bool GameLayer::init()
 
     
     // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("lowerBG");
+    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("PlayerHolder");
+    pSprite->setColor(ccBLUE);
     //    pSprite->initWithSpriteFrameName("background");
     
     // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 360));
+    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 300));
     
     // add the sprite as a child to this layer
-    this->addChild(pSprite, 0);
+    this->addChild(pSprite, 104);
     
     
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -157,8 +153,8 @@ bool GameLayer::init()
     solarSystemDetailsLayer = SolarSystemDetailsLayer::create();
 //    topSlideLayer = TopSlideLayer::create();
 //    this->addChild(topSlideLayer);
-    this->addChild(handLayer, 101);
-    this->addChild(solarSystemDetailsLayer, 1000);
+    this->addChild(handLayer, 105);
+    this->addChild(solarSystemDetailsLayer, 103);
     this->addChild(monsterLayer, 100);
     this->addChild(zoomLayer, 1000000);
     

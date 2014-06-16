@@ -13,6 +13,7 @@
 #include "GameLayer.h"
 #include "Constants.h"
 #include "SolarSystemObject.h"
+#include "UIState.h"
 
 USING_NS_CC;
 
@@ -29,25 +30,53 @@ bool SolarSystemDetailsLayer::init()
     //        CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     
-        CCLayerColor *playArea = CCLayerColor::create(ccc4(80, 80, 80, 190), visibleSize.width, visibleSize.height);
-     playArea->setPosition(CCPointMake(0, 0));
-     addChild(playArea);
-     CCSprite *bg = CCSprite::createWithSpriteFrameName("MonsterLayerBG");
-     bg->setPosition(ccp( bg->getContentSize().width/2, bg->getContentSize().height/2 + 310));
-     this->addChild(bg);
-     
-    population = CCLabelTTF::create("population: 10", Main_Font, 48);
-    income = CCLabelTTF::create("income: 10", Main_Font, 48);
-    cardLimit = CCLabelTTF::create("cardLimit: 10", Main_Font, 48);
+    CCLayerColor *playArea = CCLayerColor::create(ccc4(80, 80, 80, 190), visibleSize.width, visibleSize.height);
+    playArea->setPosition(CCPointMake(0, 0));
+    addChild(playArea);
+    CCLayerColor *bg = CCLayerColor::create(ccc4(0, 0, 0,255));
+    //     bg->setPosition(ccp( bg->getContentSize().width/2, bg->getContentSize().height/2 + 310));
+    this->addChild(bg);
     
-    population->setPosition(ccp(160,  visibleSize.height - 220));
-    income->setPosition(ccp(160,  visibleSize.height - 60));
-    cardLimit->setPosition(ccp(160, visibleSize.height - 140));
+    population = CCLabelTTF::create("10 population", Main_Font, 48);
+    income = CCLabelTTF::create("10 income", Main_Font, 48);
+    cardLimit = CCLabelTTF::create("3 cardLimit", Main_Font, 48);
+    solarSystemName = CCLabelTTF::create("Solar System Name", Main_Font, 88);
+    
+    population->setPosition(ccp(760,  visibleSize.height - 320));
+    income->setPosition(ccp(760,  visibleSize.height - 160));
+    cardLimit->setPosition(ccp(760, visibleSize.height - 240));
+    solarSystemName->setPosition(ccp(200, visibleSize.height - 60));
+    
     
     this->addChild(population, 3);
     this->addChild(income, 3);
     this->addChild(cardLimit, 3);
-
+    this->addChild(solarSystemName, 4);
+    
+    
+    cardSpriteArray = new CCArray();
+    cardSpriteArray->init();
+    
+    
+    ///top bar stuff
+    CCSprite *backSprite =CCSprite::createWithSpriteFrameName("CardHolder");
+    backSprite->setColor(ccYELLOW);
+    CCMenuItemSprite *backButton = CCMenuItemSprite::create(backSprite,
+                                          CCSprite::createWithSpriteFrameName("CardHolder"),
+                                          this,
+                                          menu_selector(SolarSystemDetailsLayer::backButtonPress));
+	backButton->setPosition(ccp(50, visibleSize.height - 50));
+    
+    // create menu, it's an autorelease object
+    CCMenu* pMenu = CCMenu::create(backButton, NULL);
+    pMenu->setPosition(CCPointZero);
+    this->addChild(pMenu, 1002);
+    
+    CCLabelTTF *backButtonLabel = CCLabelTTF::create("back", Main_Font, 48);
+    backButtonLabel->setPosition(ccp(100, visibleSize.height - 100));
+    this->addChild(backButtonLabel, 1003);
+    
+    
     //this->monsterSpawnArray = new CCArray();
     //this->monsterSpawnArray->init();
     /*
@@ -64,28 +93,49 @@ bool SolarSystemDetailsLayer::init()
 }
 
 
+CCSprite *SolarSystemDetailsLayer::getSpriteFromSprite(CCSprite *citySprite, float citySpriteWidth, float citySpriteHeight)
+{
+    CCPoint prevPosition = citySprite->getPosition();
+    
+    //Set position in order to make it fit inside CCRenderTexture (You can change this later)
+    citySprite->setPosition(ccp(citySpriteWidth/2, citySpriteHeight/2));
+    
+    CCRenderTexture *render = CCRenderTexture::create(citySpriteWidth, citySpriteWidth);
+    render->beginWithClear(0, 0, 0, 0);
+    citySprite->visit();
+    render->end();
+    
+    citySprite->setPosition(prevPosition);
+    
+    CCTexture2D *tex = render->getSprite()->getTexture();
+    CCSprite *newCitySprite = CCSprite::createWithTexture(tex);
+    newCitySprite->setFlipY(true);  //Texture might be upside down
+    return newCitySprite;
+}
+
 void SolarSystemDetailsLayer::updateInterface(SolarSystemObject *solarSystem)
 {
     
-    CCString *populationString = CCString::createWithFormat("population: %i - %i" ,solarSystem->population, solarSystem->populationFraction);
+    CCString *populationString = CCString::createWithFormat(" %i - %i population %i" , solarSystem->population, solarSystem->populationLimit, solarSystem->populationFraction);
     population->setString(populationString->getCString());
-    CCString *incomeString = CCString::createWithFormat("income: %i", solarSystem->incomeGeneration);
+    CCString *incomeString = CCString::createWithFormat("%i income", solarSystem->incomeGeneration);
     income->setString(incomeString->getCString());
-    CCString *cardLimitString = CCString::createWithFormat("cardLimit: %i", solarSystem->cardSlots);
+    CCString *cardLimitString = CCString::createWithFormat("%i cardLimit", solarSystem->cardSlots);
     cardLimit->setString(cardLimitString->getCString());
+    solarSystemName->setString(solarSystem->solarSystemName->getCString());
     
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    for(int i = 0; i < solarSystem->cardArray->count(); i++){
+        CCSprite *card = (CCSprite*)solarSystem->cardArray->objectAtIndex(i);
+        CCSprite *cardCopy = this->getSpriteFromSprite(card, card->getContentSize().width, card->getContentSize().height);
+        cardCopy->setPosition(ccp(200, 500 - i * 100));
+        this->addChild(cardCopy, 4);
+    }
     
-    
-    /* CCArray *locationsArray = GM->locationArray;
-     for(int i = 0; i < locationsArray->count(); i++){
-     CCInteger *value = (CCInteger*)locationsArray->objectAtIndex(i);
-     CCSprite *spawnSprite = (CCSprite*)monsterSpawnArray->objectAtIndex(i);
-     if(value->getValue() == 0){
-     spawnSprite->setVisible(false);
-     }else if(value->getValue()){
-     spawnSprite->setVisible(true);
-     spawnSprite->setColor(ccRED);
-     }
-     }
-     */
+}
+
+void SolarSystemDetailsLayer::backButtonPress(CCObject *pSender)
+{
+    CCLog("leftButtonPressed");
+    GM->gameLayer->getCurrentState()->transitionToNormalState();
 }

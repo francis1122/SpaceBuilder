@@ -43,13 +43,11 @@ public:
 
     void updateInterface();
     
-    cocos2d::CCSprite *deckCardSprite, *discardCardSprite;
-    cocos2d::CCSprite *deckGlowCardSprite, *discardGlowCardSprite;
+    cocos2d::CCSprite *deckCardSprite;
+    cocos2d::CCSprite *deckGlowCardSprite;
     
     void enableDeckInteractive();
     void disableDeckInteractive();
-    void enableDiscardInteractive();
-    void disableDiscardInterative();
     void enableHandInteractive();
     void disableHandInteractive();
     

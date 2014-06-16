@@ -35,6 +35,7 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     costToBuy = 20;
     costToPlay = 0;
     commandPointsToPlay = 4;
+    isPassive = false;
     this->setScale(DEFAULT_CARD_SCALE);
     
 //    textBox = CCSprite::createWithSpriteFrameName("CardTextBox");

@@ -66,24 +66,20 @@ bool TitleLayer::init()
     // create and initialize a label
     
 //    CCLabelTTF* pLabel = CCLabelTTF::create("Rogue Deck", Main_Font, 24);
-     CCSprite* title = CCSprite::createWithSpriteFrameName("Title");
+/*     CCSprite* title = CCSprite::createWithSpriteFrameName("Title");
     // position the label on the center of the screen
     title->setPosition(ccp(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - title->getContentSize().height + 60));
     
     // add the label as a child to this layer
     this->addChild(title, 1);
-    
+    */
     // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("MenuBG");
-    pSprite->setPosition(ccp(pSprite->getContentSize().width/2,
-                           pSprite->getContentSize().height/2));
-    
+
     // position the sprite on the center of the screen
 //  pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     
     // add the sprite as a child to this layer
-    this->addChild(pSprite, 0);
     
     return true;
 }

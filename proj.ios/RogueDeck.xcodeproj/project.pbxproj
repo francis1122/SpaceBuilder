@@ -236,6 +236,10 @@
 		5A02C55419438FE6007F16BA /* SolarSystemObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C55219438FE6007F16BA /* SolarSystemObject.cpp */; };
 		5A02C5581943960D007F16BA /* SolarSystemDetailsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C5561943960D007F16BA /* SolarSystemDetailsLayer.cpp */; };
 		5A02C55B1943A085007F16BA /* SolarSystemDetailsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C5591943A085007F16BA /* SolarSystemDetailsState.cpp */; };
+		5A02C55F19452027007F16BA /* MoneyOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C55D19452027007F16BA /* MoneyOffsetStatus.cpp */; };
+		5A02C56319456EFA007F16BA /* ColonizeStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */; };
+		5A02C5661945743E007F16BA /* SolarSystemTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C5641945743E007F16BA /* SolarSystemTargets.cpp */; };
+		5A02C56C19468753007F16BA /* PopulationOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A02C56A19468753007F16BA /* PopulationOffsetStatus.cpp */; };
 		5A0438D118524F15008EF3F5 /* CardDraggingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438CF18524F15008EF3F5 /* CardDraggingState.cpp */; };
 		5A0438F91863EFCE008EF3F5 /* IRDSObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438F71863EFCE008EF3F5 /* IRDSObject.cpp */; };
 		5A0438FF186409B5008EF3F5 /* IRDSTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A0438FD186409B5008EF3F5 /* IRDSTable.cpp */; };
@@ -267,6 +271,7 @@
 		5A6D33EA183EAEFB00CB0174 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33E8183EAEFB00CB0174 /* Player.cpp */; };
 		5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */; };
 		5A6D33F4183EEEBE00CB0174 /* CardTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */; };
+		5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A757682194A33DF0063EED1 /* PassiveTargets.cpp */; };
 		5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */; };
 		5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */; };
 		5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CAD18AB218B0019A86B /* CCShake.cpp */; };
@@ -773,6 +778,14 @@
 		5A02C5571943960D007F16BA /* SolarSystemDetailsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolarSystemDetailsLayer.h; sourceTree = "<group>"; };
 		5A02C5591943A085007F16BA /* SolarSystemDetailsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SolarSystemDetailsState.cpp; sourceTree = "<group>"; };
 		5A02C55A1943A085007F16BA /* SolarSystemDetailsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolarSystemDetailsState.h; sourceTree = "<group>"; };
+		5A02C55D19452027007F16BA /* MoneyOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MoneyOffsetStatus.cpp; sourceTree = "<group>"; };
+		5A02C55E19452027007F16BA /* MoneyOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneyOffsetStatus.h; sourceTree = "<group>"; };
+		5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ColonizeStatus.cpp; sourceTree = "<group>"; };
+		5A02C56219456EFA007F16BA /* ColonizeStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColonizeStatus.h; sourceTree = "<group>"; };
+		5A02C5641945743E007F16BA /* SolarSystemTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SolarSystemTargets.cpp; sourceTree = "<group>"; };
+		5A02C5651945743E007F16BA /* SolarSystemTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolarSystemTargets.h; sourceTree = "<group>"; };
+		5A02C56A19468753007F16BA /* PopulationOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PopulationOffsetStatus.cpp; sourceTree = "<group>"; };
+		5A02C56B19468753007F16BA /* PopulationOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopulationOffsetStatus.h; sourceTree = "<group>"; };
 		5A0438CF18524F15008EF3F5 /* CardDraggingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardDraggingState.cpp; path = ../Classes/CardDraggingState.cpp; sourceTree = "<group>"; };
 		5A0438D018524F15008EF3F5 /* CardDraggingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardDraggingState.h; path = ../Classes/CardDraggingState.h; sourceTree = "<group>"; };
 		5A0438F518585402008EF3F5 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
@@ -835,6 +848,8 @@
 		5A6D33F0183EE8DC00CB0174 /* CardTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargets.h; path = ../Classes/CardTargets.h; sourceTree = "<group>"; };
 		5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardTargetingState.cpp; path = ../Classes/CardTargetingState.cpp; sourceTree = "<group>"; };
 		5A6D33F3183EEEBE00CB0174 /* CardTargetingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargetingState.h; path = ../Classes/CardTargetingState.h; sourceTree = "<group>"; };
+		5A757682194A33DF0063EED1 /* PassiveTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PassiveTargets.cpp; path = ../Classes/PassiveTargets.cpp; sourceTree = "<group>"; };
+		5A757683194A33DF0063EED1 /* PassiveTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassiveTargets.h; path = ../Classes/PassiveTargets.h; sourceTree = "<group>"; };
 		5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterTurnState.cpp; sourceTree = "<group>"; };
 		5AAE5C7E18A611D80019A86B /* MonsterTurnState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterTurnState.h; sourceTree = "<group>"; };
 		5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LabelWrapper.cpp; sourceTree = "<group>"; };
@@ -1881,6 +1896,12 @@
 				5A3B007C183F498F004384CD /* Statuses.h */,
 				5A3B0073183F3E37004384CD /* Status.cpp */,
 				5A3B0074183F3E37004384CD /* Status.h */,
+				5A02C55D19452027007F16BA /* MoneyOffsetStatus.cpp */,
+				5A02C55E19452027007F16BA /* MoneyOffsetStatus.h */,
+				5A02C56A19468753007F16BA /* PopulationOffsetStatus.cpp */,
+				5A02C56B19468753007F16BA /* PopulationOffsetStatus.h */,
+				5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */,
+				5A02C56219456EFA007F16BA /* ColonizeStatus.h */,
 			);
 			name = Status;
 			sourceTree = "<group>";
@@ -1970,6 +1991,10 @@
 				5A6D33F0183EE8DC00CB0174 /* CardTargets.h */,
 				5A4488EA188076080024E488 /* PlayAreaTargets.cpp */,
 				5A4488EB188076080024E488 /* PlayAreaTargets.h */,
+				5A757682194A33DF0063EED1 /* PassiveTargets.cpp */,
+				5A757683194A33DF0063EED1 /* PassiveTargets.h */,
+				5A02C5641945743E007F16BA /* SolarSystemTargets.cpp */,
+				5A02C5651945743E007F16BA /* SolarSystemTargets.h */,
 				5A4488F51880C8040024E488 /* DrawDiscardTargets.cpp */,
 				5A4488F61880C8040024E488 /* DrawDiscardTargets.h */,
 			);
@@ -2127,11 +2152,13 @@
 				5A4488F71880C8040024E488 /* DrawDiscardTargets.cpp in Sources */,
 				15A3D9021682F7D5002FB0C5 /* b2CollidePolygon.cpp in Sources */,
 				15A3D9031682F7D5002FB0C5 /* b2Collision.cpp in Sources */,
+				5A02C56C19468753007F16BA /* PopulationOffsetStatus.cpp in Sources */,
 				15A3D9041682F7D5002FB0C5 /* b2Distance.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
 				15A3D9061682F7D5002FB0C5 /* b2TimeOfImpact.cpp in Sources */,
 				5A3B00C11847144C004384CD /* ZoomLayer.cpp in Sources */,
 				15A3D9071682F7D5002FB0C5 /* b2ChainShape.cpp in Sources */,
+				5A02C56319456EFA007F16BA /* ColonizeStatus.cpp in Sources */,
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
@@ -2199,6 +2226,7 @@
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
 				5A0438F91863EFCE008EF3F5 /* IRDSObject.cpp in Sources */,
+				5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
 				15A3D9A91682F7F9002FB0C5 /* cpPolyShape.c in Sources */,
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
@@ -2218,6 +2246,7 @@
 				15A3DA331682F826002FB0C5 /* CCBKeyframe.cpp in Sources */,
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
+				5A02C55F19452027007F16BA /* MoneyOffsetStatus.cpp in Sources */,
 				15A3DA361682F826002FB0C5 /* CCBSequenceProperty.cpp in Sources */,
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
@@ -2340,6 +2369,7 @@
 				379BB9B717F03F3700829B88 /* UILayoutDefine.cpp in Sources */,
 				379BB9B817F03F3700829B88 /* CocosGUI.cpp in Sources */,
 				379BB9B917F03F3700829B88 /* UIHelper.cpp in Sources */,
+				5A02C5661945743E007F16BA /* SolarSystemTargets.cpp in Sources */,
 				379BB9BA17F03F3700829B88 /* UIInputManager.cpp in Sources */,
 				379BB9BB17F03F3700829B88 /* UILayer.cpp in Sources */,
 				379BB9BC17F03F3700829B88 /* UIDragPanel.cpp in Sources */,

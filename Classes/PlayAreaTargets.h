@@ -12,6 +12,8 @@
 #include "cocos2d.h"
 #include "CardTargets.h"
 
+
+
 class UIState;
 class CardSprite;
 USING_NS_CC;
@@ -19,6 +21,10 @@ USING_NS_CC;
 class PlayAreaTargets : public CardTargets
 {
 public:
+
+    virtual bool initWithCardSprite(CardSprite *card);
+    
+
 
     
     virtual void highlightInteractiveObjects(UIState* state);

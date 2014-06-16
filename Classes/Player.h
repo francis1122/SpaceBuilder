@@ -15,11 +15,13 @@
 
 USING_NS_CC;
 class CardSprite;
+class SolarSystemObject;
 class Player
 {
     
 public:
     Player();
+    void setupPlayer();
     
     //player variables
     int money;
@@ -28,11 +30,13 @@ public:
     CCArray *actionsLeftArray;
     
     CCArray *solarSystemArray;
-    //deck variables
+    //deckCards array is all cards the player owns
     CCArray *deckCards;
     
     CardSprite *currentPlayCard;
+    //playedCards are cards that have been played this turn
     CCArray *playedCards;
+    //library are the cards that get drawn into the hand
     CCArray *libraryCards;
     CCArray *discardCards;
     CCArray *handCards;
@@ -43,7 +47,13 @@ public:
     void organizeHand();
     void organizePlayedCards();
     void removeCard(CardSprite *card);
+    
+    //adds card to specific solar system player controls, used for replacing cards
+    void acquireCardInSolarSystemSpot(CardSprite *card, SolarSystemObject* solarSystem, int index);
+    
+    //adds card to deck
     void acquireCard(CardSprite *card);
+    
     void addCardToHand();
     bool canPlayCard(CardSprite *card);
     void playCard(CardSprite *card);
@@ -54,6 +64,9 @@ public:
     void drawHand();
     void reshuffleLibrary();
     void shuffle(CCArray *array);
+    
+    void loseSolarSystem(SolarSystemObject *solarSystem);
+    void acquireSolarSystem(SolarSystemObject *solarSystem);
     
     void changeMoney(int moneyOffset);
     void changeCommandPoints(int commandPointsOffset);

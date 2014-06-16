@@ -26,25 +26,15 @@ bool HandLayer::init()
 //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
     deckCardSprite = CCSprite::createWithSpriteFrameName("cardBack");
-    discardCardSprite  = CCSprite::createWithSpriteFrameName("cardBack");
     deckCardSprite->setScale(.20);
-    discardCardSprite->setScale(.20);
     deckCardSprite->setPosition(ccp(50, 85));
-    discardCardSprite->setPosition(ccp(visibleSize.width - 50, 90));
     
     this->addChild(deckCardSprite, 2);
-    this->addChild(discardCardSprite, 2);
     deckGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
-    discardGlowCardSprite  = CCSprite::createWithSpriteFrameName("cardGlow");
     deckGlowCardSprite->setScale(.20);
-    discardGlowCardSprite->setScale(.23);
-    discardGlowCardSprite->setColor(ccGREEN);
     deckGlowCardSprite->setPosition(deckCardSprite->getPosition());
-    discardGlowCardSprite->setPosition(discardCardSprite->getPosition());
     deckGlowCardSprite->setVisible(false);
-    discardGlowCardSprite->setVisible(false);
     this->addChild(deckGlowCardSprite, 1);
-    this->addChild(discardGlowCardSprite,1);
     
 
     
@@ -68,10 +58,10 @@ bool HandLayer::init()
     moneyLabel = CCLabelTTF::create("10\r10", Main_Font, 32);
     commandPointsLabel = CCLabelTTF::create("0\r10", Main_Font, 32);
     
-    libraryCountLabel->setPosition(ccp(160, 75));
-    discardCountLabel->setPosition(ccp(visibleSize.width - 60, 75));
-    moneyLabel->setPosition(ccp(90, visibleSize.height - 50));
-    commandPointsLabel->setPosition(ccp(355, visibleSize.height - 50));
+    libraryCountLabel->setPosition(ccp(80, 95));
+    discardCountLabel->setPosition(ccp(80, 35));
+    moneyLabel->setPosition(ccp(visibleSize.width - 160, 90));
+    commandPointsLabel->setPosition(ccp(visibleSize.width - 160, 30));
     
     this->addChild(libraryCountLabel, 3);
     this->addChild(discardCountLabel, 3);
@@ -133,13 +123,7 @@ void HandLayer::disableDeckInteractive(){
     deckGlowCardSprite->setVisible(false);
 }
 
-void HandLayer::enableDiscardInteractive(){
-    discardGlowCardSprite->setVisible(true);
-}
 
-void HandLayer::disableDiscardInterative(){
-    discardGlowCardSprite->setVisible(false);
-}
 
 void HandLayer::enableHandInteractive(){
     handGlow->setVisible(true);

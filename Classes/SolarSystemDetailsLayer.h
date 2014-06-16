@@ -26,8 +26,13 @@ public:
     CCLabelTTF *population;
     CCLabelTTF *income;
     CCLabelTTF *cardLimit;
+    CCLabelTTF *solarSystemName;
+    
+    CCArray *cardSpriteArray;
     
     void updateInterface(SolarSystemObject *solarSystem);
+    CCSprite *getSpriteFromSprite(CCSprite *citySprite, float citySpriteWidth, float citySpriteHeight);
+    void backButtonPress(CCObject *pSender);
     
 private:
     

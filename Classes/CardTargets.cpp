@@ -30,21 +30,21 @@ bool CardTargets::initWithCardSprite(CardSprite *card)
     statuses = new CCArray();
     initialStatuses = new CCArray();
     
-    targetingType = PlayArea;
     
     selectedTargets->init();
     statuses->init();
     initialStatuses->init();
     targetAmount = 1;
     
-    minMonsterLife = -1;
-    maxMonsterLife = -1;
     timesCardCanBePlayed = -1;
     timesCardHasBeenPlayed = 0;
     
-    isPreemptive = false;
-    
     cardSprite = card;
+    
+    objectsToUse = CurrentPlayer;
+    //which objects to apply status to
+    applyToAllFriendly =  false;
+    applyToHomeSystem = false;;
     
     return true;
 }
@@ -174,28 +174,6 @@ bool CardTargets::targetObjectWithDraggingCard(CCTouch* touch, UIState* state, C
 
 // checks whether the ability can be used
 bool CardTargets::isAbilityReady(){
-    if(targetingType == PlayArea_TargetMonsters ||
-       targetingType == Monsters ||
-       targetingType == MonsterDefend){
-        //targets
-        if(selectedTargets->count() >= targetAmount){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(targetingType == DiscardCard){
-        //dragging
-        if(selectedTargets->count() >= targetAmount){
-            return true;
-        }else{
-            return false;
-        }
-    }else if(targetingType == PlayArea ||
-             targetingType == DrawCard ||
-             targetingType == BuyCard ||
-             targetingType == DrawCard_DiscardCard){
-        return true;
-    }
     CCLog("CardTargets::isAbilityReady error");
     return false;
 }
@@ -223,17 +201,6 @@ void CardTargets::useInitialAbility(){
 void CardTargets::useAbility()
 {
     timesCardHasBeenPlayed++;
-}
-
-
-bool CardTargets::shouldCardBeDestroyed()
-{
-    if(timesCardCanBePlayed != -1){
-        if(timesCardHasBeenPlayed >= timesCardCanBePlayed ){
-            return true;
-        }
-    }
-    return false;
 }
 
 //utility functions
