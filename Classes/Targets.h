@@ -13,5 +13,6 @@
 #include "PlayAreaTargets.h"
 #include "SolarSystemTargets.h"
 #include "PassiveTargets.h"
+#include "ResearchTargets.h"
 
 #endif

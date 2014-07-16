@@ -41,6 +41,8 @@ public:
     virtual void transitionToSolarSystemDetailsState(SolarSystemObject *selectedSolarSystem);
     virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
+    virtual void transitionToResearchState();
+    virtual void transitionToResearchTypeTargetState(CardSprite* selectedCard);
     //type 0 = hand card, 1 = monster card, 2 = market card
     virtual void transitionToZoomState(CCObject *selectedObject, int type);
 

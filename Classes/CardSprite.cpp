@@ -13,6 +13,7 @@
 #include "Constants.h"
 #include "HandLayer.h"
 #include "Utility.h"
+#include "SolarSystemObject.h"
 
 USING_NS_CC;
 
@@ -28,15 +29,18 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
         return false;
     }
     
+    cardType = Utility;
+    
     BaseObject::initDefaultState();
-
+    homeSolarSystem = NULL;
 //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     costToBuy = 20;
     costToPlay = 0;
-    commandPointsToPlay = 4;
+    productionToPlay = 0;
     isPassive = false;
     this->setScale(DEFAULT_CARD_SCALE);
+    researchType = MilitaryTech;
     
 //    textBox = CCSprite::createWithSpriteFrameName("CardTextBox");
 //    textBox->setPosition(ccp(240, 180));
@@ -51,31 +55,52 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
 //    textBox->addChild(detailsLabel, 2);
     
     
-    costBox = CCSprite::createWithSpriteFrameName("CardGainSoul");
-    costBox->setScale(.45);
-    costBox->setPosition(ccp(35, 580));
-    costBox->setColor(ccBLACK);
-    this->addChild(costBox, 2);
+//    costBox = CCSprite::createWithSpriteFrameName("floaty");
+//    costBox->setPosition(ccp(95, 640));
+//    costBox->setColor(ccBLACK);
+//    this->addChild(costBox, 2);
     
-    CCSize costSize = CCSizeMake(300, 300);
-    costLabel = CCLabelTTF::create("0", LARGE_NUMBER_FONT, 192, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
-    costLabel->setColor(ccWHITE);
-    costLabel->setPosition(ccp(178,89));
-    costBox->addChild(costLabel, 2);
+//    playCostBox = CCSprite::createWithSpriteFrameName("floaty");
+//    playCostBox->setPosition(ccp(405, 640));
+    //    costBox->setColor(ccBLACK);
+//    this->addChild(playCostBox, 2);
+    
+//    CCSize costSize = CCSizeMake(200, 150);
+//    costLabel = CCLabelTTF::create("0", LARGE_NUMBER_FONT, 42, costSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+//    costLabel->setColor(ccBLACK);
+  //  costLabel->setPosition(ccp(260, 310));
+//    this->addChild(costLabel, 2);
+    
+    CCSize playCostSize = CCSizeMake(200, 100);
+    playCostLabel = CCLabelTTF::create("", LARGE_NUMBER_FONT, 52, playCostSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    playCostLabel->setColor(ccBLACK);
+    playCostLabel->setPosition(ccp(260, 281));
+    this->addChild(playCostLabel, 2);
+    
+    homeLabel = CCLabelTTF::create("", Main_Font, 52, detailSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
+    homeLabel->setColor(ccBLACK);
+    homeLabel->setPosition(ccp(220, 89));
+    this->addChild(homeLabel, 101);
+    
+    cardNameLabel = CCLabelTTF::create("Title", Main_Font, 36, detailSize, kCCTextAlignmentCenter, kCCVerticalTextAlignmentCenter);
+    cardNameLabel->setColor(ccBLACK);
+    cardNameLabel->setPosition(ccp(260,591));
+    this->addChild(cardNameLabel, 101);
+    
     
 
     
-    glowSprite = CCSprite::createWithSpriteFrameName("cardGlow");
+    glowSprite = CCSprite::createWithSpriteFrameName("NeutralCard");
     glowSprite->setPosition(ccp(glowSprite->getContentSize().width/2 + 15 ,glowSprite->getContentSize().height/2 - 9));
     glowSprite->setColor(ccGREEN);
     glowSprite->setScale(1.05);
     glowSprite->setVisible(false);
     this->addChild(glowSprite, -1);
 
-    CCString *newString = CCString::createWithFormat("%i", costToBuy);
-    costLabel->setString(newString->getCString());
+//    CCString *newString = CCString::createWithFormat("%i", costToBuy);
+//    costLabel->setString(newString->getCString());
     
-    detailsLabel->setString("cost to buy 20, command Points - 4");
+    detailsLabel->setString("no description");
     
     return true;
 }
@@ -99,7 +124,6 @@ void CardSprite::setCardType(CardType newCardType){
 
 }
 
-
 void CardSprite::enableInteractive(){
     glowSprite->setVisible(true);
     isInteractive = true;
@@ -110,16 +134,41 @@ void CardSprite::disableInteractive(){
     isInteractive = false;
 }
 
+void CardSprite::updateInterface(){
+//    CCString *commandPointsString =CCString::createWithFormat("command:%i-%i", GM->player->commandPoints, GM->player->commandPointsMax);
+//    commandPointsLabel->setString(commandPointsString->getCString());
+    
+    //card costs
+/*    CCString *costString =CCString::createWithFormat("%i", this->costToBuy);
+    costLabel->setString(costString->getCString());
+    */
+    //to play costs
+    CCString *playCostString = CCString::createWithFormat("%i %i", this->costToPlay, productionToPlay);
+    playCostLabel->setString(playCostString->getCString());
+  
+    //home planet
+/*    if(homeSolarSystem){
+        homeLabel->setString(homeSolarSystem->nameLabel->getString());
+    }
+    */
+}
+
 #pragma mark - card creation
 /*void CardSprite::setSoulCostOfCard(int newSoulCost){
     CCString *newString = CCString::createWithFormat("%i", newSoulCost);
     costLabel->setString(newString->getCString());
     soulCost = newSoulCost;
-    
     //    CCRenderTexture *damageShadow = Utility::createTTFStroke(costLabel, 7, ccBLACK, 255);
     //    costBox->addChild(damageShadow, 1);
 }
 */
+
+void CardSprite::setHomeSolarSystem(SolarSystemObject* newHome)
+{
+    homeSolarSystem = newHome;
+    updateInterface();
+}
+
 void CardSprite::setCardPicture(const char* pictureName)
 {
     //setup card basics

@@ -38,20 +38,14 @@ bool SolarSystemDetailsLayer::init()
     this->addChild(bg);
     
     population = CCLabelTTF::create("10 population", Main_Font, 48);
-    income = CCLabelTTF::create("10 income", Main_Font, 48);
-    cardLimit = CCLabelTTF::create("3 cardLimit", Main_Font, 48);
     solarSystemName = CCLabelTTF::create("Solar System Name", Main_Font, 88);
     
-    population->setPosition(ccp(760,  visibleSize.height - 320));
-    income->setPosition(ccp(760,  visibleSize.height - 160));
-    cardLimit->setPosition(ccp(760, visibleSize.height - 240));
-    solarSystemName->setPosition(ccp(200, visibleSize.height - 60));
+    population->setPosition(ccp(770,  visibleSize.height - 320));
+    solarSystemName->setPosition(ccp(220, visibleSize.height - 50));
     
     
     this->addChild(population, 3);
-    this->addChild(income, 3);
-    this->addChild(cardLimit, 3);
-    this->addChild(solarSystemName, 4);
+    this->addChild(solarSystemName, 40);
     
     
     cardSpriteArray = new CCArray();
@@ -59,13 +53,14 @@ bool SolarSystemDetailsLayer::init()
     
     
     ///top bar stuff
-    CCSprite *backSprite =CCSprite::createWithSpriteFrameName("CardHolder");
+    CCSprite *backSprite =CCSprite::createWithSpriteFrameName("Button");
     backSprite->setColor(ccYELLOW);
     CCMenuItemSprite *backButton = CCMenuItemSprite::create(backSprite,
-                                          CCSprite::createWithSpriteFrameName("CardHolder"),
+                                          CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                           this,
                                           menu_selector(SolarSystemDetailsLayer::backButtonPress));
 	backButton->setPosition(ccp(50, visibleSize.height - 50));
+    backButton->setScale(.7);
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(backButton, NULL);
@@ -100,7 +95,7 @@ CCSprite *SolarSystemDetailsLayer::getSpriteFromSprite(CCSprite *citySprite, flo
     //Set position in order to make it fit inside CCRenderTexture (You can change this later)
     citySprite->setPosition(ccp(citySpriteWidth/2, citySpriteHeight/2));
     
-    CCRenderTexture *render = CCRenderTexture::create(citySpriteWidth, citySpriteWidth);
+    CCRenderTexture *render = CCRenderTexture::create(citySpriteWidth, citySpriteHeight);
     render->beginWithClear(0, 0, 0, 0);
     citySprite->visit();
     render->end();
@@ -116,20 +111,36 @@ CCSprite *SolarSystemDetailsLayer::getSpriteFromSprite(CCSprite *citySprite, flo
 void SolarSystemDetailsLayer::updateInterface(SolarSystemObject *solarSystem)
 {
     
-    CCString *populationString = CCString::createWithFormat(" %i - %i population %i" , solarSystem->population, solarSystem->populationLimit, solarSystem->populationFraction);
+    CCString *populationString = CCString::createWithFormat(" %i - %i pop\n%i" , solarSystem->population, solarSystem->populationLimit, solarSystem->populationFraction);
     population->setString(populationString->getCString());
-    CCString *incomeString = CCString::createWithFormat("%i income", solarSystem->incomeGeneration);
-    income->setString(incomeString->getCString());
-    CCString *cardLimitString = CCString::createWithFormat("%i cardLimit", solarSystem->cardSlots);
-    cardLimit->setString(cardLimitString->getCString());
+
     solarSystemName->setString(solarSystem->solarSystemName->getCString());
     
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    //clear out old cards
+    for(int i = 0; i < cardSpriteArray->count(); i++){
+        CCSprite *card = (CCSprite*)cardSpriteArray->objectAtIndex(i);
+        this->removeChild(card);
+    }
+    cardSpriteArray->removeAllObjects();
+    //create cards
+//    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     for(int i = 0; i < solarSystem->cardArray->count(); i++){
         CCSprite *card = (CCSprite*)solarSystem->cardArray->objectAtIndex(i);
+//       save scale scale
+        float savedScale = card->getScale();
+        card->setScale(1);
         CCSprite *cardCopy = this->getSpriteFromSprite(card, card->getContentSize().width, card->getContentSize().height);
-        cardCopy->setPosition(ccp(200, 500 - i * 100));
+        card->setScale(savedScale);
+        cardCopy->setScale(.20);
+        CCPoint position;
+        if( i < 4){
+            cardCopy->setPosition(ccp(150 + i * 130 , 395 ));
+        }else{
+            cardCopy->setPosition(ccp(150 + (i-3) * 130, 220));
+        }
+
         this->addChild(cardCopy, 4);
+        cardSpriteArray->addObject(cardCopy);
     }
     
 }

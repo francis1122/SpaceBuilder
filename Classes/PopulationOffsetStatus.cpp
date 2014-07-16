@@ -30,6 +30,7 @@ bool PopulationOffsetStatus::initWithPopulationOffset(int _populationOffset, int
 void PopulationOffsetStatus::addStatusToSolarSystem(SolarSystemObject *solarSystemObject){
    // GameManager *GM = GameManager::sharedGameManager();
     solarSystemObject->populationOffset(populationOffset, populationFractionOffset);
+    solarSystemObject->updateInterface();
 //    solarSystemObject->change
 }
 

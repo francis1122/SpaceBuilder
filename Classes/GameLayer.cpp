@@ -18,6 +18,9 @@
 #include "AnimationManager.h"
 #include "Constants.h"
 #include "SolarSystemDetailsLayer.h"
+#include "EmpireCardLayer.h"
+#include "ResearchLayer.h"
+#include "ResearchTypeTargetLayer.h"
 
 USING_NS_CC;
 
@@ -46,39 +49,52 @@ void GameLayer::setupButtons(){
                                           CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                           this,
                                           menu_selector(GameLayer::leftButtonPressed));
+    endTurnButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                          CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                          this,
+                                          menu_selector(GameLayer::endTurnButtonPressed));
     
+    empireCardsButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                             CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                             this,
+                                             menu_selector(GameLayer::empireCardsButtonPressed));
+    researchButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+                                                 CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                                 this,
+                                                 menu_selector(GameLayer::researchButtonPressed));
+    
+    endTurnButton->setScale(.7);
     rightButton->setScale(.7);
     leftButton->setScale(.7);
+    empireCardsButton->setScale(.7);
+    researchButton->setScale(.7);
+    
 	rightButton->setPosition(ccp(visibleSize.width - 60,
                                  visibleSize.height - 50));
 	leftButton->setPosition(ccp( 50,
                                 visibleSize.height - 50));
-    
+	endTurnButton->setPosition(ccp( visibleSize.width - 80,
+                                visibleSize.height - 60));
+    empireCardsButton->setPosition(ccp( visibleSize.width - 380,
+                                   visibleSize.height - 60));
+    researchButton->setPosition(ccp( visibleSize.width - 580,
+                                    visibleSize.height - 60));
     // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(rightButton, leftButton, NULL);
+    CCMenu* pMenu = CCMenu::create(researchButton, empireCardsButton, endTurnButton, NULL);
     pMenu->setPosition(CCPointZero);
-    this->addChild(pMenu, 1002);
-    
-    rightButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
-    leftButtonGlow = CCSprite::createWithSpriteFrameName("ButtonGlow");
-    rightButtonGlow->setPosition(rightButton->getPosition());
-    leftButtonGlow->setPosition(leftButton->getPosition());
-    rightButtonGlow->setScale(rightButton->getScale());
-    leftButtonGlow->setScale(leftButtonGlow->getScale());
-    this->addChild(rightButtonGlow, 1001);
-    this->addChild(leftButtonGlow, 1001);
+    this->addChild(pMenu, 102);
     
     
     //labels
-    leftButtonLabel = CCLabelTTF::create("", Main_Font, 32);
+    leftButtonLabel = CCLabelTTF::create("Cards", Main_Font, 32);
     rightButtonLabel = CCLabelTTF::create("End Turn", Main_Font, 32);
     //    rightButtonLabel->enableStroke(ccBLACK, 2);
     
-    leftButtonLabel->setPosition(ccp(240, visibleSize.height - 60));
+    leftButtonLabel->setPosition(ccp(visibleSize.width - 380, visibleSize.height - 60));
     rightButtonLabel->setPosition(ccp(visibleSize.width - 80, visibleSize.height - 60));
     
-    this->addChild(leftButtonLabel, 1003);
-    this->addChild(rightButtonLabel, 1003);
+    this->addChild(leftButtonLabel, 103);
+    this->addChild(rightButtonLabel, 103);
     
     this->scheduleUpdate();
 }
@@ -107,10 +123,10 @@ bool GameLayer::init()
     
     //play area glow
     
-    playAreaGlow = CCSprite::createWithSpriteFrameName("PlayGlow");
-    playAreaGlow->setPosition(ccp(visibleSize.width/2, 255));
-    playAreaGlow->setVisible(false);
-    this->addChild(playAreaGlow, 100);
+//    playAreaGlow = CCSprite::createWithSpriteFrameName("PlayGlow");
+//    playAreaGlow->setPosition(ccp(visibleSize.width/2, 255));
+//    playAreaGlow->setVisible(false);
+//    this->addChild(playAreaGlow, 100);
     
     /////////////////////////////
     // 3. add your codes below...
@@ -131,16 +147,7 @@ bool GameLayer::init()
     this->addChild(visualIndicatorLabel, 102);
 
     
-    // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("PlayerHolder");
-    pSprite->setColor(ccBLUE);
-    //    pSprite->initWithSpriteFrameName("background");
-    
-    // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 300));
-    
-    // add the sprite as a child to this layer
-    this->addChild(pSprite, 104);
+
     
     
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
@@ -151,14 +158,23 @@ bool GameLayer::init()
     zoomLayer = ZoomLayer::create();
     monsterLayer = MonsterLayer::create();
     solarSystemDetailsLayer = SolarSystemDetailsLayer::create();
+    empireCardLayer = EmpireCardLayer::create();
+    researchLayer = ResearchLayer::create();
+    researchTypeTargetLayer = ResearchTypeTargetLayer::create();
 //    topSlideLayer = TopSlideLayer::create();
 //    this->addChild(topSlideLayer);
-    this->addChild(handLayer, 105);
-    this->addChild(solarSystemDetailsLayer, 103);
+    this->addChild(handLayer, 1000);
+    this->addChild(solarSystemDetailsLayer, 150);
     this->addChild(monsterLayer, 100);
     this->addChild(zoomLayer, 1000000);
+    this->addChild(empireCardLayer, 150);
+    this->addChild(researchLayer, 150);
+    this->addChild(researchTypeTargetLayer, 100000);
     
+    empireCardLayer->setVisible(false);
     solarSystemDetailsLayer->setVisible(false);
+    researchLayer->setVisible(false);
+    researchTypeTargetLayer->setVisible(false);
     
     this->leaveZoomState();
     
@@ -208,8 +224,8 @@ void GameLayer::update(float dt)
 
 
 void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
-    leftButtonLabel->setString(leftLabel);
-    rightButtonLabel->setString(rightLabel);
+//    leftButtonLabel->setString(leftLabel);
+//    rightButtonLabel->setString(rightLabel);
 }
 
 
@@ -225,8 +241,21 @@ void GameLayer::leftButtonPressed(CCObject *pSender){
     }
 }
 
-#pragma mark - touch code
+void GameLayer::endTurnButtonPressed(CCObject *pSender){
+    GM->endTurn();
+}
 
+
+void GameLayer::empireCardsButtonPressed(CCObject *pSender){
+    empireCardLayer->setVisible(true);
+}
+
+void GameLayer::researchButtonPressed(CCObject *pSender){
+    currentState->transitionToResearchState();
+}
+
+
+#pragma mark - touch code
 
 CCArray* GameLayer::allTouchesFromSet(CCSet *touches)
 {
@@ -369,44 +398,47 @@ void GameLayer::updateInterface(){
 
 void GameLayer::enableRightButtonMustEndTurnInteractive()
 {
-    rightButton->setEnabled(true);
+
+    /*rightButton->setEnabled(true);
     
     rightButton->setColor(ccGREEN);
     rightButtonLabel->setColor(ccRED);
     rightButtonLabel->setScale(1.4);
     rightButtonGlow->setVisible(true);
+    */
 }
 
 void GameLayer::enableRightButtonInteractive(){
-    rightButton->setEnabled(true);
+/*    rightButton->setEnabled(true);
     rightButton->setColor(ccWHITE);
     rightButtonLabel->setColor(ccWHITE);
     rightButtonLabel->setScale(1.0);
     rightButtonGlow->setVisible(true);
+    */
 }
 
 void GameLayer::disableRightButtonInteractive(){
-    rightButton->setEnabled(false);
-    rightButtonGlow->setVisible(false);
+//    rightButton->setEnabled(false);
+//    rightButtonGlow->setVisible(false);
 }
 
 
 void GameLayer::enableLeftButtonInteractive(){
-    leftButton->setEnabled(true);
-    leftButtonGlow->setVisible(true);
+//    leftButton->setEnabled(true);
+//    leftButtonGlow->setVisible(true);
 }
 
 void GameLayer::disableLeftButtonInteractive(){
-    leftButton->setEnabled(false);
-    leftButtonGlow->setVisible(false);
+//    leftButton->setEnabled(false);
+//    leftButtonGlow->setVisible(false);
 }
 
 void GameLayer::enablePlayAreaInteractive(){
-    playAreaGlow->setVisible(true);
+//    playAreaGlow->setVisible(true);
 }
 
 void GameLayer::disablePlayAreaInteractive(){
-    playAreaGlow->setVisible(false);
+  //  playAreaGlow->setVisible(false);
 }
 
 

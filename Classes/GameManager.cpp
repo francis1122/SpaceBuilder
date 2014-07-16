@@ -20,7 +20,7 @@
 #include "SolarSystemObject.h"
 #include "LLMath.h"
 #include "PassiveTargets.h"
-
+#include "UniverseGenerator.h"
 
 
 using namespace cocos2d;
@@ -84,10 +84,32 @@ void GameManager::startNewGame(){
     isInteractive = true;
     createNodes();
     player->setupPlayer();
+
+    //give player a starting solar systems to player
+    SolarSystemObject *system1 = (SolarSystemObject*)solarSystemArray->objectAtIndex(0);
+    player->acquireSolarSystem( system1);
+
     player->reset();
     player->drawHand();
     player->organizeHand();
-    player->acquireSolarSystem( (SolarSystemObject*)solarSystemArray->objectAtIndex(0));
+    
+
+
+
+//    system2->cardSlots = 5;
+    /*
+    for(int i = 0; i < 5; i++){
+        CardSprite *card = (CardSprite*)player->deckCards->objectAtIndex(i);
+        card->setHomeSolarSystem(system1);
+        system1->cardArray->addObject(card);
+    }
+    for(int i = 5; i < player->deckCards->count(); i++){
+        CardSprite *card = (CardSprite*)player->deckCards->objectAtIndex(i);
+        card->setHomeSolarSystem(system2);
+        system2->cardArray->addObject(card);
+    }
+
+    */
     
     gameLayer->updateInterface();
     
@@ -151,10 +173,7 @@ void GameManager::endTurn()
 {
     gameLayer->getCurrentState()->transitionToMonsterTurnState();
 
-    player->money += 10;
-    player->commandPointsMax = 10;
     updateNodes();
-    player->commandPoints = player->commandPointsMax;
     player->discardHand();
     player->discardPlayedCards();
     
@@ -188,48 +207,29 @@ void GameManager::endTurn()
 }
 
 #pragma mark - solar system
-void GameManager::createNodes(){
+void GameManager::createNodes()
+{
+    solarSystemArray = UniverseGenerator::createUniverse();
+    
     //add them to monster layer
-    for(int i = 0; i < 5; i++){
-        SolarSystemObject *solarSystem = new SolarSystemObject();
-        solarSystem->initWithSpriteFrameName("solarSystem_0");
-        solarSystem->setPosition(ccp(LLMath::getDoubleValue(1500), LLMath::getDoubleValue(1500)));
-        solarSystem->setScale(.7);
+    for(int i = 0; i < solarSystemArray->count(); i++){
+        SolarSystemObject *solarSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(i);
         gameLayer->monsterLayer->addChild(solarSystem);
-        solarSystemArray->addObject(solarSystem);
-        if(i == 0){
-            solarSystem->population = 1;
-        }
+        solarSystem->updateInterface();
     }
 }
 
 void GameManager::updateNodes()
 {
-    //do statuses and income stuff
-    for(int i = 0; i < solarSystemArray->count(); i++){
-        SolarSystemObject *solarSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(i);
-        Player *owner = solarSystem->owner;
-        if(owner){
-            owner->money += solarSystem->incomeGeneration;
-        }
-    }
-    int extraCommandPoints = 0;
     //update stuff on fields
     for(int i = 0; i < solarSystemArray->count(); i++){
         SolarSystemObject *solarSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(i);
         solarSystem->update();
-        Player *owner = solarSystem->owner;
-        if(owner){
-            extraCommandPoints += solarSystem->population;;
-        }
     }
-    player->commandPointsMax += extraCommandPoints;
 }
 
 #pragma mark - market stuff
-
 /*
-
 void GameManager::organizeMarket(){
 
 

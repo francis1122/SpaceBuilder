@@ -30,4 +30,31 @@
 #define ZORDERING_ACTIONSPRITE 6
 #define ZORDERING_ACTIONHOLDER 5
 
+
+typedef enum ResourceTypes{
+    FoodResource,
+    ProductionResource,
+    MoneyResource,
+    TechResource
+} ResourceTypes;
+
+typedef enum ResearchTypes{
+    MilitaryTech,
+    IndustryTech,
+    ExpansionTech,
+    ScienceTech
+} ResearchTypes;
+
+typedef enum PlanetSize{
+    Small,
+    Medium,
+    Large
+} PlanetSize;
+
+typedef enum PlanetType{
+    Terran,
+    Arid,
+    Artic
+} PlanetType;
+
 #endif

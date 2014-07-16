@@ -178,6 +178,12 @@ bool CardTargets::isAbilityReady(){
     return false;
 }
 
+//state to change to while card is being dragged around
+void CardTargets::initialChangeState(UIState *state, CardSprite *card)
+{
+    state->transitionToHandCardSelectedState(card);
+}
+
 
 //changes the state
 void CardTargets::changeState(UIState* state, CardSprite *card){

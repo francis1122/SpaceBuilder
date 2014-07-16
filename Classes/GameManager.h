@@ -14,6 +14,7 @@
 #include "CardSprite.h"
 #include "Player.h"
 
+
 USING_NS_CC;
 class LevelTemplate;
 class GameManager
@@ -34,13 +35,11 @@ public:
     GameLayer *gameLayer;
     Player *player;
     
-    
     CCArray *solarSystemArray;
     
     //level/round information
     int currentLevel;
     int currentTurn;
-    
     
     void startNewGame();
     void setIsInteractive(bool value);

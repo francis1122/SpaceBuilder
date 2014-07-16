@@ -60,7 +60,7 @@ void MonsterTurnState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEven
 }
 
 void MonsterTurnState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    CCLog("Normal doubletap");
+//    CCLog("Normal doubletap");
     /*
     CardSprite *handCard = this->handCardAtPoint(touch);
     if(handCard){

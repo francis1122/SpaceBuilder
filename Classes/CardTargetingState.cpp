@@ -28,7 +28,7 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     CCLog("card targeting state");
     this->selectedCard = _selectedCard;
-    GameManager *GM = GameManager::sharedGameManager();
+    
     UIState::clearInteractiveState();
     this->selectedCard->cardTargets->highlightNextInteractiveObjects(this);
     GM->gameLayer->setButtonLabels("", "");
@@ -38,7 +38,7 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
 
 void CardTargetingState::highlightInteractiveObjects(CardSprite *card){
     clearInteractiveState();
-    GameManager *GM = GameManager::sharedGameManager();
+    
     CCObject *object;
 //    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
 
@@ -53,13 +53,13 @@ bool CardTargetingState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent*
 }
 
 void CardTargetingState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    //    GameManager *GM = GameManager::sharedGameManager();
+    //    
     //get touch location
     //   CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
 }
 
 void CardTargetingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
+    
     CardTargets *targets = selectedCard->cardTargets;
     targets->targetObjectWithTargetingState(touch, this, this->selectedCard);
         if(targets->isAbilityReady()){
@@ -72,14 +72,14 @@ void CardTargetingState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent*
 
 void CardTargetingState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
 //    this->transitionToNormalState();
-//    GameManager *GM = GameManager::sharedGameManager();
+//    
 //    GM->player->organizeHand();
 }
 
 #pragma mark - state transitions
 
 void CardTargetingState::transitionToNormalState(){
-    GameManager *GM = GameManager::sharedGameManager();
+    
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();

@@ -18,6 +18,7 @@
 #include "CardTargets.h"
 #include "CardSprite.h"
 #include "Targets.h"
+#include "CardFactory.h"
 
 USING_NS_CC;
 
@@ -34,72 +35,85 @@ bool SolarSystemObject::initWithSpriteFrameName(const char *pszSpriteFrameName)
     
     BaseObject::initDefaultState();
     owner = NULL;
-    cardSlots = 3;
+    cardSlots = 0;
     //array for actual cards
     //CCArray
-    incomeGeneration = 3;
     population = 0;
     populationLimit = 6;
     cardArray = new CCArray();
     cardArray->init();
-    solarSystemName = new CCString();
-    solarSystemName->initWithFormat("Sol");
+    solarSystemName = NULL;
+    
+    planetSize = Small;
+    planetType = Terran;
     
     populationLabel = CCLabelTTF::create("1", Main_Font, 48);
-    incomeLabel = CCLabelTTF::create("3", Main_Font, 36);
-    nameLabel = CCLabelTTF::create("Sol", Main_Font, 48);
+    nameLabel = CCLabelTTF::create("test", Main_Font, 48);
     
     populationLabel->setPosition(ccp(15,47));
-    incomeLabel->setPosition(ccp(100,105));
     nameLabel->setPosition(ccp(135,47));
     
     this->addChild(populationLabel, 11);
-    this->addChild(incomeLabel, 11);
     this->addChild(nameLabel, 11);
     
     
-    infoSprite = CCSprite::createWithSpriteFrameName("solarSystemInfo");
-    infoSprite->setPosition(ccp(100, 50));
+    infoSprite = CCSprite::createWithSpriteFrameName("solarSystem_Label");
+    infoSprite->setPosition(ccp(110, 35));
     this->addChild(infoSprite, 10);
+    
+
+    updateInterface();
+    return true;
+}
+
+void SolarSystemObject::setupHomeResourceSlots()
+{
+    planetType = Terran;
+    this->setScale(.65);
+    planetSize = Large;
+    population = 3;
+    populationLimit = 7;
+    cardArray->removeAllObjects();
+    cardSlots = 6;
     //random cards should be added to planets on creation
     for(int i = 0; i < cardSlots; i++){
-        if(i < 1){
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            card->detailsLabel->setString("increase population of solar system by 1");
-            //Make card ability
-            SolarSystemTargets *cardTargets = new SolarSystemTargets();
-            cardTargets->initWithCardSprite(card);
-            cardTargets->targetFriendlySystems = true;
-            
-            
-            PopulationOffsetStatus *status = new PopulationOffsetStatus();
-            status->initWithPopulationOffset(1, 0);
-            cardTargets->statuses->addObject(status);
-            
-            card->cardTargets = cardTargets;
-            cardArray->addObject(card);
-            
+        ResourceCardSprite *card;
+        if(i == 0 || i == 1){
+            card = CardFactory::food();
+            card->tier = 2;
+        }else if(i == 2){
+            card = CardFactory::production();
+            card->tier = 2;
+        }else if(i == 3 || i == 4){
+            card = CardFactory::money();
         }else{
-            
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            //Make card ability
-            CardTargets *cardTargets = new PlayAreaTargets();
-            cardTargets->initWithCardSprite(card);
-            
-            MoneyOffsetStatus *status = new MoneyOffsetStatus();
-            status->initWithMoneyOffset(10);
-            cardTargets->statuses->addObject(status);
-            
-            card->cardTargets = cardTargets;
-            cardArray->addObject(card);
+            card = CardFactory::tech();
+            card->tier = 2;
         }
+        card->setHomeSolarSystem(this);
+        cardArray->addObject(card);
     }
-        updateInterface();
-    return true;
+}
+
+void SolarSystemObject::setupResourceSlots(int slots)
+{
+    cardArray->removeAllObjects();
+    cardSlots = slots;
+    //random cards should be added to planets on creation
+    for(int i = 0; i < cardSlots; i++){
+        CardSprite *card;
+        if(i == 0){
+            card = CardFactory::food();
+        }else if(i == 1){
+            card = CardFactory::production();
+        }else if(i == 2){
+            card = CardFactory::money();
+        }else{
+            card = CardFactory::tech();
+        }
+        card->setHomeSolarSystem(this);
+        cardArray->addObject(card);
+    }
 }
 
 void SolarSystemObject::update()
@@ -107,31 +121,46 @@ void SolarSystemObject::update()
     //only increase population if planet is owned
     if(owner){
         populationFraction++;
-        while(populationFraction > 4){
+        while(populationFraction > 9){
             population++;
-            populationFraction -= 5;
+            populationFraction -= 10;
+            if(owner){
+                owner->updateCardInterfaces();
+            }
         }
     }
     updateInterface();
+
 }
 
 void SolarSystemObject::updateInterface()
 {
     CCString *populationString = CCString::createWithFormat("%i" , population);
     populationLabel->setString(populationString->getCString());
-    CCString *incomeString = CCString::createWithFormat("%i", incomeGeneration);
-    incomeLabel->setString(incomeString->getCString());
-    nameLabel->setString(solarSystemName->getCString());
+
+    if(solarSystemName){
+        nameLabel->setString(solarSystemName->getCString());
+    }
+    
+    for(int i = 0; i < cardArray->count(); i ++){
+        CardSprite *card = (CardSprite*) cardArray->objectAtIndex(i);
+        card->setHomeSolarSystem(this);
+    }
 }
 
 void SolarSystemObject::populationOffset(int populationOffset, int populationFractionOffset)
 {
     population += populationOffset;
     populationFraction += populationFractionOffset;
-    while(populationFraction > 4){
+    while(populationFraction > 9){
         population++;
-        populationFraction -= 5;
+        populationFraction -= 10;
+        if(owner){
+            owner->updateCardInterfaces();
+        }
     }
+    updateInterface();
+
 }
 
 void SolarSystemObject::setHighlighted(bool enabled)

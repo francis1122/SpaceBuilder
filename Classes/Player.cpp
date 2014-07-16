@@ -18,6 +18,8 @@
 #include "CardSprite.h"
 #include "Targets.h"
 #include "SolarSystemObject.h"
+#include "CardFactory.h"
+#include "ResourceCardSprite.h"
 
 USING_NS_CC;
 
@@ -29,94 +31,79 @@ Player::Player()
     this->handCards = new CCArray();
     this->libraryCards = new CCArray();
     this->solarSystemArray = new CCArray();
+    this->militaryTechCards = new CCArray();;
+    this->industryTechCards = new CCArray();;
+    this->expansionTechCards = new CCArray();;
+    this->scienceTechCards = new CCArray();;
     deckCards->init();
     playedCards->init();
     discardCards->init();
     handCards->init();
     libraryCards->init();
     solarSystemArray->init();
+    
+    militaryTechCards->init();
+    industryTechCards->init();
+    expansionTechCards->init();
+    scienceTechCards->init();
+
 }
 
 void Player::setupPlayer()
 {
-    money = 10;
-    commandPoints = 10;
-    commandPointsMax = 10;
+    money = 40;
+    production = 40;
+    militaryTech = 0;
+    industryTech = 0;
+    expansionTech = 0;
+    scienceTech = 0;
 
-    
     currentPlayCard = NULL;
     //addCards To library
     
     //get home solar system
     //SolarSystemObject *homeSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(0);
     
+    for(int i = 0; i < 1; i++){
+        militaryTechCards->addObject(CardFactory::randomMilitaryTierOneCard());
+        industryTechCards->addObject(CardFactory::randomIndustryTierOneCard());
+        expansionTechCards->addObject(CardFactory::randomExpansionTierOneCard());
+        scienceTechCards->addObject(CardFactory::randomScienceTierOneCard());
+    }
+    
     //attack cards
-    for(int i = 0; i < 12; i++){
+    for(int i = 0; i < 4; i++){
+        CardSprite *card;
         if(i == 0){
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            card->detailsLabel->setString("colonize card");
-            //Make card ability
-            SolarSystemTargets *cardTargets = new SolarSystemTargets();
-            cardTargets->initWithCardSprite(card);
-            cardTargets->targetNeutralSystems = true;
-            ColonizeStatus *status = new ColonizeStatus();
-            status->init();
-            cardTargets->statuses->addObject(status);
-            
-            card->cardTargets = cardTargets;
+            card = CardFactory::colonize();
             acquireCard(card);
-        }else if(i < 5){
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            card->detailsLabel->setString("increase population of solar system by 1");
-            //Make card ability
-            SolarSystemTargets *cardTargets = new SolarSystemTargets();
-            cardTargets->initWithCardSprite(card);
-            cardTargets->targetFriendlySystems = true;
-            
-            
-            PopulationOffsetStatus *status = new PopulationOffsetStatus();
-            status->initWithPopulationOffset(1, 0);
-            cardTargets->statuses->addObject(status);
-            
-            card->cardTargets = cardTargets;
+        }else if(i == 1){
+            card = CardFactory::econResearch();
             acquireCard(card);
-            
-        }else if(i == 6){
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            card->isPassive = true;
-            card->detailsLabel->setString("Building: generate 50 money each turn");
-            //Make card ability
-            PassiveTargets *cardTargets = new PassiveTargets();
-            cardTargets->initWithCardSprite(card);
-            
-            MoneyOffsetStatus *status = new MoneyOffsetStatus();
-            status->initWithMoneyOffset(50);
-            cardTargets->statuses->addObject(status);
-            
-            card->passiveTargets = cardTargets;
+        }else if(i < 3){
+            card = CardFactory::populationIncrease();
             acquireCard(card);
         }else{
-            
-            CardSprite *card = new CardSprite();
-            card->cardImageFile = "sword";
-            card->initWithSpriteFrameName("YellowCard");
-            //Make card ability
-            CardTargets *cardTargets = new PlayAreaTargets();
-            cardTargets->initWithCardSprite(card);
-            
-            MoneyOffsetStatus *status = new MoneyOffsetStatus();
-            status->initWithMoneyOffset(10);
-            cardTargets->statuses->addObject(status);
-            
-            card->cardTargets = cardTargets;
+            card = CardFactory::econOne();
             acquireCard(card);
         }
+
+        /*
+         card->cardImageFile = "sword";
+         card->initWithSpriteFrameName("YellowCard");
+         card->isPassive = true;
+         card->detailsLabel->setString("Building: generate 5 money each turn");
+         //Make card ability
+         PassiveTargets *cardTargets = new PassiveTargets();
+         cardTargets->initWithCardSprite(card);
+         
+         MoneyOffsetStatus *status = new MoneyOffsetStatus();
+         status->initWithMoneyOffset(5);
+         cardTargets->statuses->addObject(status);
+         
+         card->passiveTargets = cardTargets;
+         acquireCard(card);
+         */
     }
     
     /*
@@ -138,7 +125,6 @@ void Player::setupPlayer()
      deckCards->addObject(card);
      }
      */
-    reset();
 }
 
 #pragma mark - card manipulation
@@ -153,7 +139,16 @@ void Player::reset(){
     libraryCards->addObjectsFromArray(deckCards);
     shuffle(libraryCards);
     money = 10;
-    commandPoints = commandPointsMax;
+}
+
+
+void Player::updateCardInterfaces()
+{
+    CCObject *object;
+    CCARRAY_FOREACH(deckCards, object){
+        CardSprite *card = (CardSprite*)object;
+        card->updateInterface();
+    }
 }
 
 
@@ -180,8 +175,6 @@ void Player::organizeHand(){
         }else{
             CCLog("nothing");
         }
-        
-        
         i++;
     }
     animationHolder->duration = .05;
@@ -246,6 +239,42 @@ void Player::acquireCardInSolarSystemSpot(CardSprite *card, SolarSystemObject* s
     this->discardCards->addObject(card);
 }
 
+void Player::changeResearch(int researchOffset, ResearchTypes type)
+{
+    if(type == MilitaryTech){
+        militaryTech += researchOffset;
+    }else if(type == IndustryTech){
+        industryTech += researchOffset;
+    }else if(type == ExpansionTech){
+        expansionTech += researchOffset;
+    }else if(type == ScienceTech){
+        scienceTech += researchOffset;
+    }
+    GM->gameLayer->updateInterface();
+}
+
+bool Player::canUpgradeCard(CardSprite* upgradeCard, CardSprite* toCard)
+{
+    //TODO: figure out which cards can be upgraded based on tech level and card research type
+    if(money >= toCard->costToBuy){
+        return true;
+    }
+    return false;
+}
+
+void Player::upgradeCard(CardSprite* upgradeCard, CardSprite* toCard)
+{
+    //upgradeCard needs to be part of player deck
+    //rotate home planet to new card
+    toCard->homeSolarSystem = upgradeCard->homeSolarSystem;
+    toCard->homeSolarSystem->cardArray->removeObject(upgradeCard);
+    toCard->homeSolarSystem->cardArray->addObject(toCard);
+    
+    acquireCard(toCard);
+    removeCard(upgradeCard);
+    militaryTechCards->removeObject(toCard);
+}
+
 void Player::acquireCard(CardSprite *card)
 {
     card->owner = this;
@@ -261,6 +290,8 @@ void Player::addCardToHand()
     if(libraryCards->count() > 0){
         CCObject *object = libraryCards->lastObject();
         CardSprite *card = (CardSprite*)object;
+        card->setVisible(true);
+        card->updateInterface();
         card->setScale(DEFAULT_CARD_SCALE);
         AnimationObject *animation = new AnimationObject();
         CCCallFunc *obj = CCCallFunc::create(card, callfunc_selector(CardSprite::addCard));
@@ -282,21 +313,26 @@ void Player::addCardToHand()
 
 bool Player::canPlayCard(CardSprite *card)
 {
-    if(commandPoints < card->commandPointsToPlay){
-        return false;
-    }
+    
     if(money < card->costToPlay){
         return false;
     }
+    if(production < card->productionToPlay){
+        return false;
+    }
+     
     return true;
 }
 
 void Player::playCard(CardSprite *card){
     //execute card
     card->setScale(.15);
-    commandPoints -= card->commandPointsToPlay;
+    card->setVisible(false);
+    money -= card->costToPlay;
+    production -= card->productionToPlay;
     currentPlayCard = card;
     handCards->removeObject(card);
+    GM->gameLayer->updateInterface();
     GM->player->organizeHand();
     GM->player->organizePlayedCards();
 }
@@ -361,9 +397,13 @@ void Player::drawHand()
 
 void Player::reshuffleLibrary()
 {
+    //when deck runs out, add card's research points to pool
+    tickResearchCycle();
+    
     libraryCards->addObjectsFromArray(discardCards);
     shuffle(libraryCards);
     discardCards->removeAllObjects();
+    GM->gameLayer->updateInterface();
 }
 
 void Player::shuffle(CCArray *array)
@@ -398,6 +438,7 @@ void Player::acquireSolarSystem(SolarSystemObject *solarSystem)
         CardSprite *card = (CardSprite*)solarSystem->cardArray->objectAtIndex(i);
         this->acquireCard(card);
     }
+    updateCardInterfaces();
 }
 
 
@@ -417,15 +458,190 @@ void Player::changeCommandPoints(int commandPointsOffset)
 
 void Player::changeCommandPoints(int commandPointsOffset, CCPoint point)
 {
-    commandPoints -= commandPointsOffset;
     GM->gameLayer->updateInterface();
     GM->gameStateCheck();
 }
 
 
+#pragma mark - research stuff
+
+void Player::tickResearchCycle(){
+    //figure out how many cards to produce and what tier player tech is
+    
+    cycleResearch(IndustryTech);
+    cycleResearch(MilitaryTech);
+    cycleResearch(ExpansionTech);
+    cycleResearch(ScienceTech);
+}
+
+void Player::cycleResearch(ResearchTypes tech)
+{
+    
+    int tier = getTechTier(tech);
+    
+    //choose right array
+    CCArray *techArray;
+    CardSprite* (*tierOne)();
+    if(tech == MilitaryTech){
+        tierOne = CardFactory::randomMilitaryTierOneCard;
+        techArray = militaryTechCards;
+    }else if(tech == IndustryTech){
+    tierOne = CardFactory::randomIndustryTierOneCard;
+        techArray = industryTechCards;
+    }else if(tech == ExpansionTech){
+    tierOne = CardFactory::randomExpansionTierOneCard;
+        techArray = expansionTechCards;
+    }else if(tech == ScienceTech){
+        tierOne = CardFactory::randomScienceTierOneCard;
+        techArray = scienceTechCards;
+    }
+    
+    //clear old cards
+    techArray->removeAllObjects();
+    
+    if(tier == 1){
+        techArray->addObject(tierOne());
+    }else if(tier == 2){
+        techArray->addObject(tierOne());
+        techArray->addObject(tierOne());
+    }else if(tier == 3){
+        techArray->addObject(tierOne());
+        techArray->addObject(tierOne());
+        techArray->addObject(tierOne());
+    }else if(tier == 4){
+        techArray->addObject(tierOne());
+        techArray->addObject(tierOne());
+        techArray->addObject(tierOne());
+    }
+}
+
+int Player::getTechTier(ResearchTypes tech)
+{
+    int techPoints = 0;
+    if(tech == MilitaryTech){
+        techPoints = militaryTech;
+    }else if(tech == IndustryTech){
+        techPoints = industryTech;
+    }else if(tech == ExpansionTech){
+        techPoints = expansionTech;
+    }else if(tech == ScienceTech){
+        techPoints = scienceTech;
+    }
+    
+    int tier = 1;
+    if(techPoints > 50){
+        tier = 2;
+    }
+    if(techPoints > 150){
+        tier = 3;
+    }
+    if(techPoints > 400){
+        tier = 4;
+    }
+    return tier;
+}
 
 
+int Player::getPointsTillNextTier(ResearchTypes tech)
+{
+    int techPoints = 0;
+    if(tech == MilitaryTech){
+        techPoints = militaryTech;
+    }else if(tech == IndustryTech){
+        techPoints = industryTech;
+    }else if(tech == ExpansionTech){
+        techPoints = expansionTech;
+    }else if(tech == ScienceTech){
+        techPoints = scienceTech;
+    }
+    int pointsRequired = 0;
 
+    if(techPoints < 50){
+        pointsRequired = 50 - techPoints;
+    }
+    if(techPoints < 150){
+        pointsRequired = 150 - techPoints;
+    }
+    if(techPoints < 400){
+        pointsRequired = 400 - techPoints;
+    }
+    return pointsRequired;
+}
+
+#pragma mark - resource generation
+void Player::resourceGeneration(ResourceCardSprite *resource)
+{
+    if(resource->resourceType == FoodResource){
+        resource->homeSolarSystem->populationOffset(0,1);
+        resource->updateInterface();
+    }else if(resource->resourceType == ProductionResource){
+        production += calculateProductionGeneartion();
+    }else if(resource->resourceType == MoneyResource){
+        money += calculateMoneyGeneration();
+    }else if(resource->resourceType == TechResource){
+        industryTech += calculateTechGeneration();
+    }
+}
+
+int Player::calculateMoneyGeneration()
+{
+    int moneyToAdd = 0;
+    //cycle through all cards in deck
+    CCObject *object;
+    CCARRAY_FOREACH(deckCards, object){
+        //find resource cards
+        CardSprite *card = (CardSprite*) object;
+        if(card->cardType == Resource){
+            ResourceCardSprite *resourceCard = (ResourceCardSprite*)card;
+            // check if it's the correct resource
+            if(resourceCard->resourceType == MoneyResource){
+                //multiply resource cards tier by homeplanets
+                moneyToAdd += (resourceCard->homeSolarSystem->population) * (resourceCard->tier);
+            }
+        }
+    }
+    return moneyToAdd;
+}
+
+int Player::calculateProductionGeneartion()
+{
+    int productionToAdd = 0;
+    //cycle through all cards in deck
+    CCObject *object;
+    CCARRAY_FOREACH(deckCards, object){
+        //find resource cards
+        CardSprite *card = (CardSprite*) object;
+        if(card->cardType == Resource){
+            ResourceCardSprite *resourceCard = (ResourceCardSprite*)card;
+            // check if it's the correct resource
+            if(resourceCard->resourceType == ProductionResource){
+                //multiply resource cards tier by homeplanets
+                productionToAdd += (resourceCard->homeSolarSystem->population) * (resourceCard->tier);
+            }
+        }
+    }
+    return productionToAdd;
+}
+
+int Player::calculateTechGeneration()
+{
+    int techToAdd = 0;
+    //cycle through all cards in deck
+    CCObject *object;
+    CCARRAY_FOREACH(deckCards, object){
+        //find resource cards
+        CardSprite *card = (CardSprite*) object;
+        if(card->cardType == Resource){
+            ResourceCardSprite *resourceCard = (ResourceCardSprite*)card;
+            // check if it's the correct resource
+            if(resourceCard->resourceType == TechResource){
+                //multiply resource cards tier by homeplanets
+                techToAdd += (resourceCard->homeSolarSystem->population) * (resourceCard->tier);
+            }
+        }
+    }
+    return techToAdd;
+}
 
 
 

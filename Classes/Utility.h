@@ -19,6 +19,8 @@ public:
     
     static CCRenderTexture* createTTFStroke(CCSprite* label, int size, ccColor3B color, GLubyte opacity);
     
+    static CCSprite* getSpriteFromSprite(CCSprite *citySprite, float citySpriteWidth, float citySpriteHeight);
+    
 };
 
 #endif /* defined(__RogueDeck__Utility__) */

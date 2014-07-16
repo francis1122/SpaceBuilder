@@ -28,7 +28,6 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     _selectedCard->setScale(.35);
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    GameManager *GM = GameManager::sharedGameManager();
     CCLog("handcardselectedState");
     this->selectedCard = _selectedCard;
     selectedCard->setZOrder(10000);
@@ -80,14 +79,12 @@ bool HandCardSelectedState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEve
 }
 
 void HandCardSelectedState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     this->selectedCard->setPosition(touchPoint);
 }
 
 void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
 
@@ -137,14 +134,12 @@ void HandCardSelectedState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEve
 
 void HandCardSelectedState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     this->transitionToNormalState();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->player->organizeHand();
 }
 
 #pragma mark - state transitions
 
 void HandCardSelectedState::transitionToNormalState(){
-    GameManager *GM = GameManager::sharedGameManager();
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();
@@ -161,7 +156,6 @@ void HandCardSelectedState::transitionToHandCardSelectedState(CardSprite* select
 }
 
 void HandCardSelectedState::transitionToCardTargetingState(CardSprite* selectedCard){
-    GameManager *GM = GameManager::sharedGameManager();
     CardTargetingState *CTS =  new CardTargetingState();
     CTS->init(selectedCard);
     CTS->autorelease();
@@ -171,7 +165,6 @@ void HandCardSelectedState::transitionToCardTargetingState(CardSprite* selectedC
 }
 
 void HandCardSelectedState::transitionToCardDraggingState(CardSprite* selectedCard){
-    GameManager *GM = GameManager::sharedGameManager();
     CardDraggingState *CDS =  new CardDraggingState();
     CDS->init(selectedCard);
     CDS->autorelease();

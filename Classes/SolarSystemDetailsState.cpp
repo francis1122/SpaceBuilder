@@ -29,7 +29,6 @@ bool SolarSystemDetailsState::init(SolarSystemObject *_selectedSolarSystemObject
     }
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->gameLayer->solarSystemDetailsLayer->setVisible(true);
     CCLog("SolarSystemDetailsState");
     selectedSolarSystemObject = _selectedSolarSystemObject;
@@ -50,13 +49,11 @@ bool SolarSystemDetailsState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCE
 }
 
 void SolarSystemDetailsState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
 }
 
 void SolarSystemDetailsState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     GM->player->organizeHand();
@@ -64,7 +61,6 @@ void SolarSystemDetailsState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCE
 
 void SolarSystemDetailsState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
     this->transitionToNormalState();
-    GameManager *GM = GameManager::sharedGameManager();
     GM->player->organizeHand();
 }
 
@@ -81,7 +77,6 @@ void SolarSystemDetailsState::rightButtonTouch(){
 #pragma mark - state transitions
 
 void SolarSystemDetailsState::transitionToNormalState(){
-    GameManager *GM = GameManager::sharedGameManager();
     NormalState *NS =  new NormalState();
     NS->init();
     NS->autorelease();
@@ -98,7 +93,6 @@ void SolarSystemDetailsState::transitionToSolarSystemDetailsState(SolarSystemObj
 }
 
 void SolarSystemDetailsState::transitionToCardTargetingState(CardSprite* selectedCard){
-    GameManager *GM = GameManager::sharedGameManager();
     CardTargetingState *CTS =  new CardTargetingState();
     CTS->init(selectedCard);
     CTS->autorelease();

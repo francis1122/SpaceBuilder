@@ -26,13 +26,14 @@ bool ColonizeStatus::init()
 }
 
 void ColonizeStatus::addStatusToSolarSystem(SolarSystemObject *solarSystemObject){
-    GameManager *GM = GameManager::sharedGameManager();
-    GM->player->acquireSolarSystem(solarSystemObject);
+
     
     if(solarSystemObject->population <= 0){
         solarSystemObject->population = 1;
         solarSystemObject->populationFraction = 0;
     }
+    GM->player->acquireSolarSystem(solarSystemObject);
+    solarSystemObject->updateInterface();
 }
 
 //checks whether the status can be used

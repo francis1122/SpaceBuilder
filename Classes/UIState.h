@@ -55,6 +55,13 @@ public:
     //collision checks
     bool cardInDiscardArea(CardSprite* card);
     bool cardInPlayArea(CardSprite* card);
+    
+    //-1 is nothing
+    // 0 is military
+    // 1 is industry
+    // 2 is exploration
+    // 3 is science
+    int cardInTechQuadrant(CardSprite* card);
     bool cardInSellArea(CardSprite*card);
     MonsterSprite* doesCardTouchMonster(CardSprite* card);
     MonsterSprite* doesPointTouchMonster(cocos2d::CCTouch *touch);
@@ -83,6 +90,10 @@ public:
     virtual void transitionToNormalState();
     virtual void transitionToHandCardSelectedState(CardSprite* selectedCard);
     virtual void transitionToSolarSystemDetailsState(SolarSystemObject *selectedSolarSystem);
+    virtual void transitionToResearchState();
+    virtual void transitionToResearchSelectState(CardSprite *selectedCard);
+    virtual void transitionToResearchTypeTargetState(CardSprite* selectedCard);
+    
     virtual void transitionToSelectMonsterState(CardSprite* selectedCard);
     virtual void transitionToCardTargetingState(CardSprite* selectedCard);
     virtual void transitionToCardDraggingState(CardSprite* selectedCard);

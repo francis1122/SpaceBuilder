@@ -90,3 +90,27 @@ CCRenderTexture* Utility::createTTFStroke(CCSprite* label, int size, ccColor3B c
     
     return rt;
 }
+
+
+CCSprite *Utility::getSpriteFromSprite(CCSprite *citySprite, float citySpriteWidth, float citySpriteHeight)
+{
+    CCPoint prevPosition = citySprite->getPosition();
+    
+    //Set position in order to make it fit inside CCRenderTexture (You can change this later)
+    citySprite->setPosition(ccp(citySpriteWidth/2, citySpriteHeight/2));
+    citySprite->setPosition(ccp(0, 0));
+    
+    CCRenderTexture *render = CCRenderTexture::create(citySpriteWidth, citySpriteWidth);
+    render->beginWithClear(0, 0, 0, 0);
+    citySprite->visit();
+    render->end();
+    
+    citySprite->setPosition(prevPosition);
+    
+    CCTexture2D *tex = render->getSprite()->getTexture();
+    CCSprite *newCitySprite = CCSprite::createWithTexture(tex);
+    newCitySprite->setFlipY(true);  //Texture might be upside down
+    return newCitySprite;
+}
+
+

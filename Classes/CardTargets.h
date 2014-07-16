@@ -82,6 +82,9 @@ public:
     // checks whether the ability can be used
     virtual bool isAbilityReady();
     
+    //state to change to while card is being dragged around
+    virtual void initialChangeState(UIState *state, CardSprite *card);
+    
     //changes the state
     virtual void changeState(UIState* state, CardSprite *card);
     

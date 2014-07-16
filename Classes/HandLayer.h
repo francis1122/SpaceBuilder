@@ -38,6 +38,7 @@ public:
     cocos2d::CCSprite *moneyHolder;
     cocos2d::CCSprite *commandPointHolder;
     
+    
     cocos2d::CCSprite *handGlow;
     
 

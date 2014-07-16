@@ -17,6 +17,9 @@ class HandLayer;
 class ZoomLayer;
 class MonsterLayer;
 class SolarSystemDetailsLayer;
+class EmpireCardLayer;
+class ResearchLayer;
+class ResearchTypeTargetLayer;
 class GameLayer : public cocos2d::CCLayer
 {
 public:
@@ -46,6 +49,9 @@ public:
     MonsterLayer *monsterLayer;
     ZoomLayer *zoomLayer;
     SolarSystemDetailsLayer *solarSystemDetailsLayer;
+    EmpireCardLayer *empireCardLayer;
+    ResearchLayer *researchLayer;
+    ResearchTypeTargetLayer *researchTypeTargetLayer;
     
     
     
@@ -53,6 +59,11 @@ public:
     CCLabelTTF *rightButtonLabel;
     CCMenuItemSprite *rightButton;
     CCMenuItemSprite *leftButton;
+    CCMenuItemSprite *endTurnButton;
+    CCMenuItemSprite *empireCardsButton;
+    CCMenuItemSprite *researchButton;
+    
+//    CCMenuItemSprite *leftButton;
     CCSprite *rightButtonGlow, *leftButtonGlow;
     CCSprite *playAreaGlow;
 
@@ -61,6 +72,9 @@ public:
     
     void rightButtonPressed(CCObject *pSender);
     void leftButtonPressed(CCObject *pSender);
+    void endTurnButtonPressed(CCObject *pSender);
+    void empireCardsButtonPressed(CCObject *pSender);
+    void researchButtonPressed(CCObject *pSender);
     
     bool isOnMonsters;
     void switchButtonPressed(CCObject *pSender);

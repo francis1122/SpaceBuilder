@@ -10,11 +10,13 @@
 #include "GameManager.h"
 #include "HandCardSelectedState.h"
 #include "ZoomState.h"
+#include "ResearchTypeTargetState.h"
 #include "GameLayer.h"
 #include "CardSprite.h"
 #include "SolarSystemObject.h"
 #include "SolarSystemDetailsLayer.h"
 #include "SolarSystemDetailsState.h"
+#include "ResearchState.h"
 
 USING_NS_CC;
 
@@ -26,7 +28,6 @@ bool NormalState::init()
     }
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    GameManager *GM = GameManager::sharedGameManager();
     UIState::defaultInteractiveState();
     GM->gameLayer->updateInterface();
     return true;
@@ -38,7 +39,12 @@ bool NormalState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
     CCLog("touch began");
     CCObject *object = this->objectAtPoint(touch);
     if(object != NULL){
-        this->transitionToHandCardSelectedState((CardSprite*)object);
+        CardSprite *card = (CardSprite*)object;
+        if(card->cardTargets){
+            card->cardTargets->initialChangeState(this, (CardSprite*)object);
+        }else{
+            this->transitionToHandCardSelectedState((CardSprite*)object);
+        }
     }
     return true;
 }
@@ -59,7 +65,7 @@ void NormalState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *ev
 }
 
 void NormalState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    CCLog("Normal doubletap");
+//    CCLog("Normal doubletap");
     CardSprite *handCard = this->handCardAtPoint(touch);
     if(handCard){
         this->transitionToZoomState(handCard, 0);
@@ -80,7 +86,6 @@ void NormalState::leftButtonTouch(){
 
 void NormalState::rightButtonTouch(){
     //end turn
-    GameManager *GM = GameManager::sharedGameManager();
     GM->endTurn();
 }
 
@@ -92,7 +97,6 @@ void NormalState::transitionToNormalState(){
 
 void NormalState::transitionToSolarSystemDetailsState(SolarSystemObject *selectedSolarSystem)
 {
-    GameManager *GM = GameManager::sharedGameManager();
     SolarSystemDetailsState *SSDS = new SolarSystemDetailsState();
     SSDS->init(selectedSolarSystem);
     SSDS->autorelease();
@@ -100,7 +104,6 @@ void NormalState::transitionToSolarSystemDetailsState(SolarSystemObject *selecte
 }
 
 void NormalState::transitionToHandCardSelectedState(CardSprite* selectedCard){
-    GameManager *GM = GameManager::sharedGameManager();
     HandCardSelectedState *HCSS =  new HandCardSelectedState();
     HCSS->init(selectedCard);
     HCSS->autorelease();
@@ -110,10 +113,10 @@ void NormalState::transitionToHandCardSelectedState(CardSprite* selectedCard){
 void NormalState::transitionToCardTargetingState(CardSprite* selectedCard){
     
 }
+
 //type 0 = hand card, 1 = monster card, 2 = market card
 void NormalState::transitionToZoomState(CCObject *selectedObject, int type){
     //this function sucks balls, i hate the type stuff
-    GameManager *GM = GameManager::sharedGameManager();
     ZoomState *ZS = new ZoomState;
     if(type == 0){
         CardSprite *card = (CardSprite*)selectedObject;
@@ -121,6 +124,22 @@ void NormalState::transitionToZoomState(CCObject *selectedObject, int type){
     }
     ZS->autorelease();
     GM->gameLayer->changeState(ZS);
+}
+
+void NormalState::transitionToResearchTypeTargetState(CardSprite* selectedCard)
+{
+    ResearchTypeTargetState *RTTS = new ResearchTypeTargetState();
+    RTTS->init(selectedCard);
+    RTTS->autorelease();
+    GM->gameLayer->changeState(RTTS);
+}
+
+void NormalState::transitionToResearchState()
+{
+    ResearchState *RS = new ResearchState();
+    RS->init();
+    RS->autorelease();
+    GM->gameLayer->changeState(RS);
 }
 
 

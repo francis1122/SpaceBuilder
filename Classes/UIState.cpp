@@ -18,7 +18,9 @@
 #include "SolarSystemObject.h"
 #include "SolarSystemDetailsLayer.h"
 #include "SolarSystemDetailsState.h"
-
+#include "ResearchSelectState.h"
+#include "ResearchTypeTargetLayer.h"
+#include "ResearchTypeTargetState.h"
 
 #define PAN_VELOCITY_SPEED 6.8
 #define PAN_VELOCITY_FRICTION .65
@@ -37,7 +39,6 @@ bool UIState::init()
 
 #pragma mark - utility functions
 CardSprite *UIState::handCardAtPoint(cocos2d::CCTouch*touch){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     CCObject *object;
@@ -53,10 +54,9 @@ CardSprite *UIState::handCardAtPoint(cocos2d::CCTouch*touch){
 }
 
 SolarSystemObject *UIState::solarSystemObjectAtPoint(cocos2d::CCTouch *touch){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
-    CCLog("solarTouch: %f, %f", touchPoint.x, touchPoint.y);
+//    CCLog("solarTouch: %f, %f", touchPoint.x, touchPoint.y);
     CCObject *object;
     CCARRAY_FOREACH(GM->solarSystemArray, object){
         SolarSystemObject *solarSystem = (SolarSystemObject*)object;
@@ -108,7 +108,6 @@ MonsterSprite *UIState::monsterCardAtPoint(cocos2d::CCTouch*touch){
 
 
 CCObject* UIState::objectAtPoint(cocos2d::CCTouch* touch){
-    GameManager *GM = GameManager::sharedGameManager();
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     //cycle through possible things that can be touched in state
@@ -129,7 +128,6 @@ CCObject* UIState::objectAtPoint(cocos2d::CCTouch* touch){
 
 //visualize what can be touched
 void UIState::clearInteractiveState(){
-    GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
     GM->gameLayer->changeIndicatorState("");
     CCARRAY_FOREACH(GM->player->handCards, object){
@@ -137,6 +135,7 @@ void UIState::clearInteractiveState(){
         card->disableInteractive();
     }
     
+    GM->gameLayer->researchTypeTargetLayer->setVisible(false);
     
     GM->gameLayer->setButtonLabels("", "");
     GM->gameLayer->handLayer->disableDeckInteractive();
@@ -157,8 +156,7 @@ void UIState::defaultInteractiveState(){
     //clear state
     clearInteractiveState();
     
-    GameManager *GM = GameManager::sharedGameManager();
-    CCObject *object;
+    GM->gameLayer->researchTypeTargetLayer->setVisible(false);
     GM->gameLayer->solarSystemDetailsLayer->setVisible(false);
     GM->gameLayer->changeIndicatorState("");
     GM->gameLayer->enableRightButtonInteractive();
@@ -174,14 +172,12 @@ void UIState::defaultInteractiveState(){
 
 #pragma mark - touch events
 bool UIState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     previousTouchPoint = touchPoint;
     return true;
 }
 
 void UIState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    GameManager *GM = GameManager::sharedGameManager();
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     previousTouchPoint = touchPoint;
     
@@ -224,11 +220,32 @@ bool UIState::cardInDiscardArea(CardSprite* card){
 
 bool UIState::cardInPlayArea(CardSprite* card){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCRect collisionRect = CCRectMake(0, 180, visibleSize.width, 160);
+    CCRect collisionRect = CCRectMake(0, 180, visibleSize.width, 960);
     if(collisionRect.containsPoint(card->getPosition()) ){
         return true;
     }
     return false;
+}
+
+int UIState::cardInTechQuadrant(CardSprite* card){
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    CCRect militaryRect = CCRectMake(0, 180, visibleSize.width/4, 960);
+    if(militaryRect.containsPoint(card->getPosition())){
+        return 0;
+    }
+    CCRect industryRect = CCRectMake(visibleSize.width/4, 180, visibleSize.width/4, 960);
+    if(industryRect.containsPoint(card->getPosition())){
+        return 1;
+    }
+    CCRect expandingRect = CCRectMake(visibleSize.width/2, 180, visibleSize.width/4, 960);
+    if(expandingRect.containsPoint(card->getPosition())){
+        return 2;
+    }
+    CCRect scienceRect = CCRectMake(visibleSize.width/4 + visibleSize.width/2, 180, visibleSize.width/4, 960);
+    if(scienceRect.containsPoint(card->getPosition())){
+        return 3;
+    }
+    return -1;
 }
 
 bool UIState::cardInSellArea(CardSprite*card){
@@ -241,7 +258,6 @@ bool UIState::cardInSellArea(CardSprite*card){
 }
 
 MonsterSprite* UIState::doesCardTouchMonster(CardSprite* card){
-    GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
   /*  CCARRAY_FOREACH(GM->monsterArray, object){
         MonsterSprite *monster = (MonsterSprite*)object;
@@ -256,7 +272,6 @@ MonsterSprite* UIState::doesCardTouchMonster(CardSprite* card){
 }
 
 MonsterSprite* UIState::doesPointTouchMonster(CCTouch *touch){
-    GameManager *GM = GameManager::sharedGameManager();
     CCObject *object;
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
@@ -277,7 +292,6 @@ MonsterSprite* UIState::doesPointTouchMonster(CCTouch *touch){
 #pragma mark -camera
 
 void UIState::sideCameraMovement(cocos2d::CCTouch* touch){
-    GameManager *GM = GameManager::sharedGameManager();
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     CCSize winSize = CCDirector::sharedDirector()->getVisibleSize();
         //    CCSize visibleSize =
@@ -306,14 +320,12 @@ void UIState::sideCameraMovement(cocos2d::CCTouch* touch){
 
 //map movement functions
 void UIState::cameraOnTouchBegan(cocos2d::CCTouch* touch){
-    GameManager *GM = GameManager::sharedGameManager();
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     previousTouchPoint = touchPoint;
     //    cameraVelocity = CGPointZero;
 }
 
 void UIState::cameraOnTouchMoved(cocos2d::CCTouch* touch){
-    GameManager *GM = GameManager::sharedGameManager();
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     //  NSLog(@"pintPoint %f, %f", touchPoint.x, touchPoint.y);
     deltaTouch = ccpSub(touchPoint, previousTouchPoint);
@@ -356,7 +368,6 @@ void UIState::updateCamera(float dt){
     if(moveCameraRight){
         cameraVelocity = ccp(cameraVelocity.x, -7);
     }
-    GameManager *GM = GameManager::sharedGameManager();
     
     GM->gameLayer->monsterLayer->setPosition(ccp(GM->gameLayer->monsterLayer->getPosition().x + cameraVelocity.x, GM->gameLayer->monsterLayer->getPosition().y + cameraVelocity.y));
     
@@ -365,7 +376,6 @@ void UIState::updateCamera(float dt){
 }
 
 void UIState::checkCameraBounds(){
-    GameManager *GM = GameManager::sharedGameManager();
     CCSize winSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint pos = GM->gameLayer->monsterLayer->getPosition();
     //   NSLog(@"%f, %f", pos.x, pos.y);
@@ -428,13 +438,30 @@ void UIState::transitionToSolarSystemDetailsState(SolarSystemObject *selectedSol
     
 }
 
+void UIState::transitionToResearchTypeTargetState(CardSprite* selectedCard)
+{
+    
+}
+
+void UIState::transitionToResearchState()
+{
+    
+}
+
+void UIState::transitionToResearchSelectState(CardSprite *selectedCard)
+{
+    ResearchTypeTargetState *RTTS = new ResearchTypeTargetState();
+    RTTS->init(selectedCard);
+    RTTS->autorelease();
+    GM->gameLayer->changeState(RTTS);
+}
+
 void UIState::transitionToCardDraggingState(CardSprite* selectedCard){
     CCLog("empty transitionToCardDraggingState");
 }
 
 void UIState::transitionToMonsterTurnState()
 {
-    GameManager *GM = GameManager::sharedGameManager();
     MonsterTurnState *MTS = new MonsterTurnState();
     MTS->init();
     MTS->autorelease();

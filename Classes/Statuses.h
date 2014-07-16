@@ -13,5 +13,8 @@
 #include "MoneyOffsetStatus.h"
 #include "ColonizeStatus.h"
 #include "PopulationOffsetStatus.h"
+#include "IncomeOffsetStatus.h"
+#include "ResearchOffsetStatus.h"
+#include "CardDrawStatus.h"
 
 #endif

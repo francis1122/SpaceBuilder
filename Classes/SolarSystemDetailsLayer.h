@@ -24,8 +24,6 @@ public:
     CREATE_FUNC(SolarSystemDetailsLayer);
     
     CCLabelTTF *population;
-    CCLabelTTF *income;
-    CCLabelTTF *cardLimit;
     CCLabelTTF *solarSystemName;
     
     CCArray *cardSpriteArray;

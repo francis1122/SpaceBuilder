@@ -14,13 +14,14 @@
 #include "Constants.h"
 #include "Statuses.h"
 #include "SolarSystemObject.h"
+#include "ResourceCardSprite.h"
 
 
 // on "init" you need to initialize your instance
 bool PlayAreaTargets::initWithCardSprite(CardSprite *card)
 {
     CardTargets::initWithCardSprite(card);
-
+    
     
     return true;
 }
@@ -41,7 +42,7 @@ bool PlayAreaTargets::isAbilityActivatable(UIState* state){
 
 //targets objects to use ability on
 bool PlayAreaTargets::targetObjectWithHandCard(CCTouch* touch, UIState* state, CardSprite *card){
-
+    
     return state->cardInPlayArea(card);
 }
 
@@ -71,37 +72,45 @@ void PlayAreaTargets::useInitialAbility(){
 void PlayAreaTargets::useAbility(){
     CardTargets::useAbility();
     //do status
-
-    CCObject *object;
-
-    if(objectsToUse == CurrentPlayer){
-        CCARRAY_FOREACH(statuses, object){
-            Status *status = (Status*)object;
-            status->addStatusToPlayer(GM->player);
-        }
-    }else if(objectsToUse == SolarSystem){
-        for(int i = 0; i < GM->solarSystemArray->count(); i++){
-            SolarSystemObject *solarSystem = (SolarSystemObject*)GM->solarSystemArray->objectAtIndex(i);
-            if(applyToAllFriendly){
-                if(solarSystem->owner != GM->player) continue;
-            }
-            if(applyToHomeSystem){
-                if(cardSprite->homeSolarSystem != solarSystem) continue;
-                
-            }
+    
+    if(cardSprite->cardType == Resource){
+        //add resource effects
+        ResourceCardSprite *card = (ResourceCardSprite*)cardSprite;
+        card->generateResources();
+        
+    }else{
+        
+        CCObject *object;
+        
+        if(objectsToUse == CurrentPlayer){
             CCARRAY_FOREACH(statuses, object){
                 Status *status = (Status*)object;
-                status->addStatusToSolarSystem(solarSystem);
+                status->addStatusToPlayer(GM->player);
             }
+        }else if(objectsToUse == SolarSystem){
+            for(int i = 0; i < GM->solarSystemArray->count(); i++){
+                SolarSystemObject *solarSystem = (SolarSystemObject*)GM->solarSystemArray->objectAtIndex(i);
+                if(applyToAllFriendly){
+                    if(solarSystem->owner != GM->player) continue;  
+                }
+                if(applyToHomeSystem){
+                    if(cardSprite->homeSolarSystem != solarSystem) continue;
+                    
+                }
+                CCARRAY_FOREACH(statuses, object){
+                    Status *status = (Status*)object;
+                    status->addStatusToSolarSystem(solarSystem);
+                }
+            }
+            
+        }else if(objectsToUse == Cards){
+            
+        }else if(objectsToUse == Units){
+            
         }
-        
-    }else if(objectsToUse == Cards){
-        
-    }else if(objectsToUse == Units){
-        
     }
     
-
+    
     //apply status effects to monster
     GM->gameLayer->updateInterface();
     GM->afterCardPlayedStateCheck();

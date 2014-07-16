@@ -23,14 +23,14 @@ bool HandLayer::init()
         return false;
     }
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-//    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     
-    deckCardSprite = CCSprite::createWithSpriteFrameName("cardBack");
+    deckCardSprite = CCSprite::createWithSpriteFrameName("NeutralCard");
     deckCardSprite->setScale(.20);
     deckCardSprite->setPosition(ccp(50, 85));
     
     this->addChild(deckCardSprite, 2);
-    deckGlowCardSprite = CCSprite::createWithSpriteFrameName("cardGlow");
+    deckGlowCardSprite = CCSprite::createWithSpriteFrameName("NeutralCard");
     deckGlowCardSprite->setScale(.20);
     deckGlowCardSprite->setPosition(deckCardSprite->getPosition());
     deckGlowCardSprite->setVisible(false);
@@ -38,10 +38,23 @@ bool HandLayer::init()
     
 
     
-    handGlow  = CCSprite::createWithSpriteFrameName("HandGlow");
+    handGlow  = CCSprite::createWithSpriteFrameName("NeutralCard");
     handGlow->setPosition(ccp(630, 100));
     handGlow->setVisible(false);
     this->addChild(handGlow, 10);
+    
+    
+    // add "HelloWorld" splash screen"
+    CCSprite* pSprite = CCSprite::createWithSpriteFrameName("PlayerHolder");
+    pSprite->setColor(ccBLUE);
+    //    pSprite->initWithSpriteFrameName("background");
+    
+    // position the sprite on the center of the screen
+    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 300));
+    
+    // add the sprite as a child to this layer
+    this->addChild(pSprite, 0);
+
     
     
 /*    CCLayerColor *playArea = CCLayerColor::create(ccc4(255, 0, 0, 255), visibleSize.width, 160);
@@ -110,9 +123,8 @@ void HandLayer::updateInterface(){
     discardCountLabel->setString(discardCountString->getCString());
     CCString *moneyString =CCString::createWithFormat("money:%i", GM->player->money);
     moneyLabel->setString(moneyString->getCString());
-    CCString *commandPointsString =CCString::createWithFormat("command:%i-%i", GM->player->commandPoints, GM->player->commandPointsMax);
+    CCString *commandPointsString =CCString::createWithFormat("production:%i", GM->player->production);
     commandPointsLabel->setString(commandPointsString->getCString());
-    
 }
 
 void HandLayer::enableDeckInteractive(){
