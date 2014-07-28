@@ -33,48 +33,13 @@ bool HandCardSelectedState::init(CardSprite *_selectedCard)
     selectedCard->setZOrder(10000);
         //highlight should take care of buttons as well
     GM->gameLayer->setButtonLabels("", "");
+    selectedCard->cardTargets->highlightInteractiveObjects(this);
     return true;
 }
 
 
-void HandCardSelectedState::highlightInteractiveObjects(CardSprite *card){
-    clearInteractiveState();
-   /* GameManager *GM = GameManager::sharedGameManager();
-    CCObject *object;
-    TargetingType indicatorState = card->cardTargets->targetingType;
-    //    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
-    
-    if(card->turnsLeftInMarket > 0){
-        //if it's a market card lead the user to the discard pile
-        GM->gameLayer->handLayer->enableDiscardInteractive();
-        GM->gameLayer->changeIndicatorState("Drag to Discard to Buy Card");
-        return;
-    }else{
-        GM->gameLayer->marketLayer->enableSellInteractive();
-    }
-    if(indicatorState == None){
-        
-    }else if(indicatorState == PlayArea){
-        GM->gameLayer->enablePlayAreaInteractive();
-    }else if(indicatorState == DiscardArea){
-        GM->gameLayer->handLayer->enableDiscardInteractive();
-    }else if(indicatorState == RequireActions){
-        //      visualIndicatorLabel->setString("More Actions Required");
-    }else if(indicatorState == DiscardCard){
-        //    visualIndicatorLabel->setString("Must Discard a Card");
-    }else if(indicatorState == DrawCard){
-        GM->gameLayer->handLayer->enableDeckInteractive();
-    }else if(indicatorState == DrawCard_DiscardCard){
-        GM->gameLayer->enablePlayAreaInteractive();
-    }else if(indicatorState == PlayArea_TargetMonsters){
-        GM->gameLayer->enablePlayAreaInteractive();
-    }*/
-    
-}
-
 #pragma mark - touch events
 bool HandCardSelectedState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    CCLog("selectedState");
     return true;
 }
 

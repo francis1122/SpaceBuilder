@@ -58,6 +58,8 @@ public:
     
     virtual void highlightInteractiveObjects(UIState* state);
     
+    virtual void highlightOnMove(UIState* state, CardSprite *card);
+    
     virtual void highlightNextInteractiveObjects(UIState* state);
     
     virtual void highlightInteractiveObjectsWithDraggingState(UIState* state);

@@ -36,8 +36,12 @@ public:
     //called when status is given to object
     virtual void applyStatus();
     
+    virtual void applyStatus(SolarSystemObject *solarSystem);
+    
     //called when the status ends
     virtual void applyEndStatus();
+    
+    virtual void applyEndStatus(SolarSystemObject *solarSystem);
     
     //checks whether the status should be destroyed
     virtual bool checkEnd();
@@ -46,6 +50,8 @@ public:
     virtual void updateStatus();
     
     virtual void updateStatus(Player *player);
+    
+    virtual void updateStatus(SolarSystemObject *solarSystem);
     
     CCString *className;
     

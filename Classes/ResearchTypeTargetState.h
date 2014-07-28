@@ -21,12 +21,7 @@ public:
     
     
     CardSprite *selectedCard;
-    
-    // implement the "static node()" method manually
-    // CREATE_FUNC(HandCardSelectedState);
-    
-    //used for when card is being played
-    virtual void highlightInteractiveObjects(CardSprite *card);
+
     
     //cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);

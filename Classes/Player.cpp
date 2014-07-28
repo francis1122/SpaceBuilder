@@ -51,8 +51,8 @@ Player::Player()
 
 void Player::setupPlayer()
 {
-    money = 40;
-    production = 40;
+    money = 50;
+    production = 50;
     militaryTech = 0;
     industryTech = 0;
     expansionTech = 0;
@@ -80,10 +80,10 @@ void Player::setupPlayer()
         }else if(i == 1){
             card = CardFactory::econResearch();
             acquireCard(card);
-        }else if(i < 3){
-            card = CardFactory::populationIncrease();
+        }else if(i == 2){
+            card = CardFactory::contractors();
             acquireCard(card);
-        }else{
+        }else if(i == 3){
             card = CardFactory::econOne();
             acquireCard(card);
         }
@@ -138,7 +138,8 @@ void Player::reset(){
     
     libraryCards->addObjectsFromArray(deckCards);
     shuffle(libraryCards);
-    money = 10;
+    money = 50;
+    production = 50;
 }
 
 
@@ -451,17 +452,10 @@ void Player::changeMoney(int moneyOffset)
     this->money += moneyOffset;
 }
 
-void Player::changeCommandPoints(int commandPointsOffset)
+void Player::changeProduction(int productionOffset)
 {
-    Player::changeCommandPoints(commandPointsOffset, ccp(470, 300));
+    this->production += productionOffset;
 }
-
-void Player::changeCommandPoints(int commandPointsOffset, CCPoint point)
-{
-    GM->gameLayer->updateInterface();
-    GM->gameStateCheck();
-}
-
 
 #pragma mark - research stuff
 
@@ -482,14 +476,15 @@ void Player::cycleResearch(ResearchTypes tech)
     //choose right array
     CCArray *techArray;
     CardSprite* (*tierOne)();
+    CardSprite* (tierTwo)();
     if(tech == MilitaryTech){
         tierOne = CardFactory::randomMilitaryTierOneCard;
         techArray = militaryTechCards;
     }else if(tech == IndustryTech){
-    tierOne = CardFactory::randomIndustryTierOneCard;
+        tierOne = CardFactory::randomIndustryTierOneCard;
         techArray = industryTechCards;
     }else if(tech == ExpansionTech){
-    tierOne = CardFactory::randomExpansionTierOneCard;
+        tierOne = CardFactory::randomExpansionTierOneCard;
         techArray = expansionTechCards;
     }else if(tech == ScienceTech){
         tierOne = CardFactory::randomScienceTierOneCard;
@@ -498,20 +493,41 @@ void Player::cycleResearch(ResearchTypes tech)
     
     //clear old cards
     techArray->removeAllObjects();
-    
+    CardSprite* card;
     if(tier == 1){
-        techArray->addObject(tierOne());
+        card = tierOne();
+        card->researchSlot = 0;
+        techArray->addObject(card);
     }else if(tier == 2){
-        techArray->addObject(tierOne());
-        techArray->addObject(tierOne());
+        card = tierOne();
+        card->researchSlot = 0;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 1;
+        techArray->addObject(card);
     }else if(tier == 3){
-        techArray->addObject(tierOne());
-        techArray->addObject(tierOne());
-        techArray->addObject(tierOne());
+        card = tierOne();
+        card->researchSlot = 0;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 1;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 2;
+        techArray->addObject(card);
     }else if(tier == 4){
-        techArray->addObject(tierOne());
-        techArray->addObject(tierOne());
-        techArray->addObject(tierOne());
+        card = tierOne();
+        card->researchSlot = 0;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 1;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 2;
+        techArray->addObject(card);
+        card = tierOne();
+        card->researchSlot = 3;
+        techArray->addObject(card);
     }
 }
 
@@ -529,13 +545,13 @@ int Player::getTechTier(ResearchTypes tech)
     }
     
     int tier = 1;
-    if(techPoints > 50){
+    if(techPoints > RESEARCH_TIER_1){
         tier = 2;
     }
-    if(techPoints > 150){
+    if(techPoints > RESEARCH_TIER_2){
         tier = 3;
     }
-    if(techPoints > 400){
+    if(techPoints > RESEARCH_TIER_3){
         tier = 4;
     }
     return tier;
@@ -556,15 +572,19 @@ int Player::getPointsTillNextTier(ResearchTypes tech)
     }
     int pointsRequired = 0;
 
-    if(techPoints < 50){
-        pointsRequired = 50 - techPoints;
+    if(techPoints < RESEARCH_TIER_3){
+        pointsRequired = RESEARCH_TIER_3 - techPoints;
     }
-    if(techPoints < 150){
-        pointsRequired = 150 - techPoints;
+
+    if(techPoints < RESEARCH_TIER_2){
+        pointsRequired = RESEARCH_TIER_2 - techPoints;
     }
-    if(techPoints < 400){
-        pointsRequired = 400 - techPoints;
+    
+    if(techPoints < RESEARCH_TIER_1){
+        pointsRequired = RESEARCH_TIER_1 - techPoints;
     }
+
+
     return pointsRequired;
 }
 

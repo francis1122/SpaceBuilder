@@ -15,6 +15,7 @@
 #include "Statuses.h"
 #include "SolarSystemObject.h"
 #include "ResourceCardSprite.h"
+#include "ResourceCardInfoLayer.h"
 
 
 // on "init" you need to initialize your instance
@@ -27,8 +28,12 @@ bool PlayAreaTargets::initWithCardSprite(CardSprite *card)
 }
 
 void PlayAreaTargets::highlightInteractiveObjects(UIState* state){
-    GM->gameLayer->enablePlayAreaInteractive();
-    GM->gameLayer->changeIndicatorState("Play Area");
+    if(cardSprite->cardType == Resource){
+        GM->gameLayer->resourceCardInfoLayer->setVisible(true);
+        GM->gameLayer->resourceCardInfoLayer->setupInterface((ResourceCardSprite*)cardSprite);
+    }
+//    GM->gameLayer->enablePlayAreaInteractive();
+//    GM->gameLayer->changeIndicatorState("Play Area");
 }
 
 void PlayAreaTargets::highlightNextInteractiveObjects(UIState* state){
@@ -116,5 +121,8 @@ void PlayAreaTargets::useAbility(){
     GM->afterCardPlayedStateCheck();
     //clear targetArray
     selectedTargets->removeAllObjects();
+    if(cardSprite->cardType == Resource){
+        GM->gameLayer->resourceCardInfoLayer->setVisible(false);
+    }
 }
 

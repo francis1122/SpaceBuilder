@@ -36,7 +36,6 @@ bool NormalState::init()
 #pragma mark - touch events
 bool NormalState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     UIState::ccTouchBegan(touch, event);
-    CCLog("touch began");
     CCObject *object = this->objectAtPoint(touch);
     if(object != NULL){
         CardSprite *card = (CardSprite*)object;

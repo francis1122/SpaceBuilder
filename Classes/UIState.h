@@ -36,8 +36,6 @@ public:
     
     //visualize what can be touched
     virtual void clearInteractiveState();
-    //used for when card is being played
-    virtual void highlightInteractiveObjects(CardSprite *card);
     
     virtual void defaultInteractiveState();
     

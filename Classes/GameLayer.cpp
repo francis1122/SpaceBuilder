@@ -21,6 +21,8 @@
 #include "EmpireCardLayer.h"
 #include "ResearchLayer.h"
 #include "ResearchTypeTargetLayer.h"
+#include "CardInfoLayer.h"
+#include "ResourceCardInfoLayer.h"
 
 USING_NS_CC;
 
@@ -161,6 +163,9 @@ bool GameLayer::init()
     empireCardLayer = EmpireCardLayer::create();
     researchLayer = ResearchLayer::create();
     researchTypeTargetLayer = ResearchTypeTargetLayer::create();
+    cardInfoLayer = CardInfoLayer::create();
+    resourceCardInfoLayer = ResourceCardInfoLayer::create();
+    
 //    topSlideLayer = TopSlideLayer::create();
 //    this->addChild(topSlideLayer);
     this->addChild(handLayer, 1000);
@@ -170,11 +175,15 @@ bool GameLayer::init()
     this->addChild(empireCardLayer, 150);
     this->addChild(researchLayer, 150);
     this->addChild(researchTypeTargetLayer, 100000);
+    this->addChild(cardInfoLayer, 100000);
+    this->addChild(resourceCardInfoLayer, 100000);
     
     empireCardLayer->setVisible(false);
     solarSystemDetailsLayer->setVisible(false);
     researchLayer->setVisible(false);
     researchTypeTargetLayer->setVisible(false);
+    cardInfoLayer->setVisible(false);
+    resourceCardInfoLayer->setVisible(false);
     
     this->leaveZoomState();
     

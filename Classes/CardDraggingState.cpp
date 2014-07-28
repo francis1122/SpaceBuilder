@@ -36,10 +36,6 @@ bool CardDraggingState::init(CardSprite *_selectedCard)
     return true;
 }
 
-void CardDraggingState::highlightInteractiveObjects(CardSprite *card){
-    clearInteractiveState();
-}
-
 #pragma mark - touch events
 bool CardDraggingState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     

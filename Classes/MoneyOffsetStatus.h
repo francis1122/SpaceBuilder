@@ -45,6 +45,8 @@ public:
     
     virtual void updateStatus(Player *player);
     
+    virtual void updateStatus(SolarSystemObject *solarSystem);
+    
     CCString *className;
     
     

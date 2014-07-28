@@ -1,33 +1,31 @@
 //
-//  ResearchOffsetStatus.h
+//  ProductionOffsetStatus.h
 //  RogueDeck
 //
-//  Created by Hunter Francis on 6/29/14.
+//  Created by Hunter Francis on 7/23/14.
 //
 //
 
-#ifndef __RogueDeck__ResearchOffsetStatus__
-#define __RogueDeck__ResearchOffsetStatus__
-
+#ifndef __RogueDeck__ProductionOffsetStatus__
+#define __RogueDeck__ProductionOffsetStatus__
 
 #include "cocos2d.h"
 #include "Status.h"
-#include "Constants.h"
 USING_NS_CC;
 
 class Player;
 class CardSprite;
-class ResearchOffsetStatus : public Status
+class SolarSystemObject;
+class ProductionOffsetStatus : public Status
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool initWithResearchOffset(int _researchOffset, ResearchTypes _researchType);
+    virtual bool initWithProductionOffset(int _productionOffset);
     
-    int researchOffset;
-    ResearchTypes researchType;
+    int productionOffset;
     
     // implement the "static node()" method manually
-    CREATE_FUNC(ResearchOffsetStatus);
+    CREATE_FUNC(ProductionOffsetStatus);
     
     virtual void addStatusToPlayer(Player *player);
     
@@ -37,8 +35,12 @@ public:
     //called when status is given to object
     virtual void applyStatus();
     
+    virtual void applyStatus(SolarSystemObject *solarSystem);
+    
     //called when the status ends
     virtual void applyEndStatus();
+    
+    virtual void applyEndStatus(SolarSystemObject *solarSystem);
     
     //checks whether the status should be destroyed
     virtual bool checkEnd();
@@ -55,5 +57,4 @@ public:
     
 };
 
-
-#endif /* defined(__RogueDeck__ResearchOffsetStatus__) */
+#endif /* defined(__RogueDeck__ProductionOffsetStatus__) */

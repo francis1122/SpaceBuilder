@@ -14,6 +14,7 @@
 #include "Constants.h"
 #include "SolarSystemObject.h"
 #include "UIState.h"
+#include "BuildingObject.h"
 
 USING_NS_CC;
 
@@ -39,13 +40,16 @@ bool SolarSystemDetailsLayer::init()
     
     population = CCLabelTTF::create("10 population", Main_Font, 48);
     solarSystemName = CCLabelTTF::create("Solar System Name", Main_Font, 88);
+    resourceGenerationLabel = CCLabelTTF::create("resource generation", Main_Font, 48);
     
-    population->setPosition(ccp(770,  visibleSize.height - 320));
-    solarSystemName->setPosition(ccp(220, visibleSize.height - 50));
+    population->setPosition(ccp(790,  visibleSize.height - 60));
+    solarSystemName->setPosition(ccp(320, visibleSize.height - 50));
+    resourceGenerationLabel->setPosition(ccp(200, visibleSize.height - 150));
     
     
     this->addChild(population, 3);
     this->addChild(solarSystemName, 40);
+    this->addChild(resourceGenerationLabel, 41);
     
     
     cardSpriteArray = new CCArray();
@@ -68,7 +72,7 @@ bool SolarSystemDetailsLayer::init()
     this->addChild(pMenu, 1002);
     
     CCLabelTTF *backButtonLabel = CCLabelTTF::create("back", Main_Font, 48);
-    backButtonLabel->setPosition(ccp(100, visibleSize.height - 100));
+    backButtonLabel->setPosition(ccp(85, visibleSize.height - 70));
     this->addChild(backButtonLabel, 1003);
     
     
@@ -111,10 +115,31 @@ CCSprite *SolarSystemDetailsLayer::getSpriteFromSprite(CCSprite *citySprite, flo
 void SolarSystemDetailsLayer::updateInterface(SolarSystemObject *solarSystem)
 {
     
-    CCString *populationString = CCString::createWithFormat(" %i - %i pop\n%i" , solarSystem->population, solarSystem->populationLimit, solarSystem->populationFraction);
+    CCString *populationString = CCString::createWithFormat("pop %i - %i\n%i" , solarSystem->population, solarSystem->populationLimit, solarSystem->populationFraction);
     population->setString(populationString->getCString());
 
     solarSystemName->setString(solarSystem->solarSystemName->getCString());
+    
+    //RESOURCE GENERATION
+    int foodTier = solarSystem->getSystemsResourceTier(FoodResource);
+    int moneyTier = solarSystem->getSystemsResourceTier(MoneyResource);
+    int productionTier = solarSystem->getSystemsResourceTier(ProductionResource);
+    int scienceTier = solarSystem->getSystemsResourceTier(TechResource);
+    resourceGenerationLabel->setString(CCString::createWithFormat("%i %i %i %i", foodTier, moneyTier * solarSystem->population, productionTier * solarSystem->population, scienceTier * solarSystem->population)->getCString() );
+    
+    //buildings
+    for(int i = 0; i < solarSystem->buildingSlots ; i++){
+        CCSprite *buildingSprite;
+        if(i < solarSystem->buildingsArray->count()){
+            BuildingObject *building = (BuildingObject*)solarSystem->buildingsArray->objectAtIndex(i);
+            buildingSprite = CCSprite::createWithSpriteFrameName(building->buildingSpriteName->getCString());
+        }else{
+            buildingSprite = CCSprite::createWithSpriteFrameName("Button_Pressed");
+        }
+        buildingSprite->setPosition(ccp(700 + 70 * i, 300));
+        this->addChild(buildingSprite, 100);
+    }
+    
     
     //clear out old cards
     for(int i = 0; i < cardSpriteArray->count(); i++){
@@ -128,15 +153,18 @@ void SolarSystemDetailsLayer::updateInterface(SolarSystemObject *solarSystem)
         CCSprite *card = (CCSprite*)solarSystem->cardArray->objectAtIndex(i);
 //       save scale scale
         float savedScale = card->getScale();
+        bool isVisible = card->isVisible();
         card->setScale(1);
+        card->setVisible(true);
         CCSprite *cardCopy = this->getSpriteFromSprite(card, card->getContentSize().width, card->getContentSize().height);
         card->setScale(savedScale);
+        card->setVisible(isVisible);
         cardCopy->setScale(.20);
         CCPoint position;
         if( i < 4){
-            cardCopy->setPosition(ccp(150 + i * 130 , 395 ));
+            cardCopy->setPosition(ccp(130 + i * 115 , 385 ));
         }else{
-            cardCopy->setPosition(ccp(150 + (i-3) * 130, 220));
+            cardCopy->setPosition(ccp(130 + (i-3) * 115, 230));
         }
 
         this->addChild(cardCopy, 4);

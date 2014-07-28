@@ -21,6 +21,8 @@
 #include "ResearchSelectState.h"
 #include "ResearchTypeTargetLayer.h"
 #include "ResearchTypeTargetState.h"
+#include "ResourceCardInfoLayer.h"
+#include "CardInfoLayer.h"
 
 #define PAN_VELOCITY_SPEED 6.8
 #define PAN_VELOCITY_FRICTION .65
@@ -135,6 +137,12 @@ void UIState::clearInteractiveState(){
         card->disableInteractive();
     }
     
+    //unhighlight planets
+    CCARRAY_FOREACH(GM->solarSystemArray, object){
+        SolarSystemObject *solarSystem = (SolarSystemObject*)object;
+            solarSystem->setHighlighted(false);
+    }
+    
     GM->gameLayer->researchTypeTargetLayer->setVisible(false);
     
     GM->gameLayer->setButtonLabels("", "");
@@ -147,17 +155,19 @@ void UIState::clearInteractiveState(){
 }
 
 
-void UIState::highlightInteractiveObjects(CardSprite *card){
-    clearInteractiveState();
-    
-}
-
 void UIState::defaultInteractiveState(){
     //clear state
     clearInteractiveState();
+    CCObject *object;
+    CCARRAY_FOREACH(GM->solarSystemArray, object){
+        SolarSystemObject *solarSystem = (SolarSystemObject*)object;
+        solarSystem->setHighlighted(false);
+    }
     
     GM->gameLayer->researchTypeTargetLayer->setVisible(false);
     GM->gameLayer->solarSystemDetailsLayer->setVisible(false);
+    GM->gameLayer->cardInfoLayer->setVisible(false);
+    GM->gameLayer->resourceCardInfoLayer->setVisible(false);
     GM->gameLayer->changeIndicatorState("");
     GM->gameLayer->enableRightButtonInteractive();
     GM->gameLayer->setButtonLabels("", "End Turn");
@@ -192,7 +202,7 @@ void UIState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event)
 }
 
 void UIState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    CCLog("doubletap");
+//    CCLog("doubletap");
 }
 
 

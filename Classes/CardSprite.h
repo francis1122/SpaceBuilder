@@ -36,6 +36,7 @@ public:
     
     const char *cardImageFile;
     int costToBuy;
+    int researchSlot;
     
     int costToPlay;
     int productionToPlay;

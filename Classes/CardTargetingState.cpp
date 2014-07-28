@@ -36,14 +36,6 @@ bool CardTargetingState::init(CardSprite *_selectedCard)
 }
 
 
-void CardTargetingState::highlightInteractiveObjects(CardSprite *card){
-    clearInteractiveState();
-    
-    CCObject *object;
-//    GM->gameLayer->changeIndicatorState(card->cardTargets->targetingType);
-
-}
-
 #pragma mark - touch events
 bool CardTargetingState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     CCLog("card targeting touch");

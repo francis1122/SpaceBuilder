@@ -27,6 +27,18 @@ public:
     
     static CCPoint truncate(CCPoint vector, float max);
     
+    
+    //2d geometry
+    static bool intersectionCheck(CCPoint a, CCPoint b, CCPoint c, CCPoint d);
+    
+    static CCPoint makeVector(CCPoint a, CCPoint b);
+    
+    static float value(CCPoint p, CCPoint a, CCPoint b);
+    
+    static bool normalized(CCPoint &v);
+    
+    static bool areParallelVectors(CCPoint v, CCPoint w);
+    
 };
 
 #endif /* defined(__RogueDeck__LLMath__) */

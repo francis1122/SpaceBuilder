@@ -18,6 +18,8 @@
 
 class CardSprite;
 class Player;
+class BuildingObject;
+class ResourceCardSprite;
 class SolarSystemObject : public BaseObject
 {
 public:
@@ -31,17 +33,30 @@ public:
     // implement the "static node()" method manually
     CREATE_FUNC(SolarSystemObject);
     
+    CCArray *connectedSystems;
+    
     int cardSlots;
     CCArray *cardArray;
     //array for actual cards
-
+    
+    int buildingSlots;
+    CCArray *buildingsArray;
+    
+    //add structure
+    void addBuilding(BuildingObject *building);
+    
+    //remove structure
+    void removeBuilding(BuildingObject *building);
+    
     int populationFraction;
+    int populationGrowth;
     int population;
     int populationLimit;
     CCString *solarSystemName;
     
     CCLabelTTF *populationLabel;
     CCLabelTTF *nameLabel;
+    
     CCSprite *infoSprite;
     
     PlanetType planetType;
@@ -49,8 +64,18 @@ public:
     
     Player *owner;
     
+    CCLabelTTF *resourceGeneration;
+//    CCLabelTTF *foodGeneration;
+//    CCLabelTTF *productionGeneration;
+  //  CCLabelTTF *moneyGeneration;
+//    CCLabelTTF *scienceGeneration;
+    
+    
+    
     void update();
     void updateInterface();
+    int getSystemsResourceTier(ResourceTypes type);
+    bool addResourceCard(ResourceCardSprite* card);
     void populationOffset(int populationOffset, int populationFractionOffset);
     void setHighlighted(bool enabled);
     

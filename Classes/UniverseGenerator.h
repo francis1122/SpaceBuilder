@@ -28,6 +28,12 @@ public:
     static SolarSystemObject* createSystem();
     
     static void setupResourcesForSystem(SolarSystemObject *solarSystem);
+    
+    static bool isOverlapping(SolarSystemObject *solarSystem, CCArray *universeArray);
+    
+    static void createConnections(CCArray *universeArray);
+    
+    static bool isOpenPath(SolarSystemObject *solarSystemA, SolarSystemObject *solarSystemB, CCArray *universeArray);
 };
 
 #endif /* defined(__RogueDeck__UniverseGenerator__) */

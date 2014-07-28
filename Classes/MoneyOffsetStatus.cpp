@@ -9,6 +9,7 @@
 #include "MoneyOffsetStatus.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "SolarSystemObject.h"
 
 
 USING_NS_CC;
@@ -57,5 +58,10 @@ void MoneyOffsetStatus::updateStatus(){
 void MoneyOffsetStatus::updateStatus(Player *player)
 {
     player->changeMoney(moneyOffset);
+}
+
+void MoneyOffsetStatus::updateStatus(SolarSystemObject *solarSystem)
+{
+    solarSystem->owner->changeMoney(moneyOffset);
 }
 

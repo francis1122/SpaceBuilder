@@ -55,6 +55,11 @@ void CardTargets::highlightInteractiveObjects(UIState* state)
     
 }
 
+void CardTargets::highlightOnMove(UIState* state, CardSprite *card)
+{
+    
+}
+
 void CardTargets::highlightNextInteractiveObjects(UIState* state)
 {
     

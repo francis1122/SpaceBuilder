@@ -74,7 +74,6 @@ void GameManager::startNewGame(){
     player = NULL;
     player = new Player();
 
-    
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCScene *pScene = GameLayer::scene();
     
@@ -93,9 +92,6 @@ void GameManager::startNewGame(){
     player->drawHand();
     player->organizeHand();
     
-
-
-
 //    system2->cardSlots = 5;
     /*
     for(int i = 0; i < 5; i++){
@@ -215,6 +211,30 @@ void GameManager::createNodes()
     for(int i = 0; i < solarSystemArray->count(); i++){
         SolarSystemObject *solarSystem = (SolarSystemObject*)solarSystemArray->objectAtIndex(i);
         gameLayer->monsterLayer->addChild(solarSystem);
+        
+        //create connections
+        for(int j = 0; j < solarSystem->connectedSystems->count(); j++){
+            SolarSystemObject *solarSystemB = (SolarSystemObject*)solarSystem->connectedSystems->objectAtIndex(j);
+            //temp:: add graphical sprite at midpoint between systems to show path
+            CCSprite *road = CCSprite::createWithSpriteFrameName("waypoint");
+            road->setAnchorPoint(ccp(.5, .5));
+//            road->setScale(.5);
+            CCPoint posA = solarSystem->getPosition();
+            CCPoint posB = solarSystemB->getPosition();
+            road->setPosition(ccpMidpoint(posA, posB));
+            
+            float dx = posA.x - posB.x;
+            float dy = posA.y - posB.y;
+            float angle = atan2f(dy,dx);
+//            float angle = atan2(posB.y, posB.x) - atan2(posA.y, posA.x);
+//            angle = angle * 180 / M_PI;
+             angle = CC_RADIANS_TO_DEGREES(angle);
+            road->setRotation(-angle);
+            
+            gameLayer->monsterLayer->addChild(road);
+            
+        }
+        
         solarSystem->updateInterface();
     }
 }

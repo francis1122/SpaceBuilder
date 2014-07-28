@@ -56,15 +56,17 @@ void ResourceCardSprite::updateInterface(){
     
     CCString *resourceString;
     if(owner){
-    if(resourceType == FoodResource){
-        resourceString = CCString::createWithFormat("food %i", tier);
-    }else if(resourceType == ProductionResource){
-        resourceString = CCString::createWithFormat("prod %i\n%i", tier, owner->calculateProductionGeneartion());
-    }else if(resourceType == MoneyResource){
-        resourceString = CCString::createWithFormat("money %i\n%i", tier, owner->calculateMoneyGeneration());
-    }else if(resourceType == TechResource){
-        resourceString = CCString::createWithFormat("tech %i\n%i", tier, owner->calculateTechGeneration());
-    }
+        if(resourceType == FoodResource){
+            resourceString = CCString::createWithFormat("food %i", tier);
+        }else if(resourceType == ProductionResource){
+            resourceString = CCString::createWithFormat("prod %i\n%i", tier, owner->calculateProductionGeneartion());
+        }else if(resourceType == MoneyResource){
+            resourceString = CCString::createWithFormat("money %i\n%i", tier, owner->calculateMoneyGeneration());
+        }else if(resourceType == TechResource){
+            resourceString = CCString::createWithFormat("tech %i\n%i", tier, owner->calculateTechGeneration());
+        }else if(resourceType == WasteResource){
+            resourceString = CCString::createWithFormat("Waste");
+        }
     }else{
         if(resourceType == FoodResource){
             resourceString = CCString::createWithFormat("food %i", tier);
@@ -74,6 +76,8 @@ void ResourceCardSprite::updateInterface(){
             resourceString = CCString::createWithFormat("money %i", tier);
         }else if(resourceType == TechResource){
             resourceString = CCString::createWithFormat("tech %i", tier);
+        }else if(resourceType == WasteResource){
+            resourceString = CCString::createWithFormat("Waste");
         }
     }
 

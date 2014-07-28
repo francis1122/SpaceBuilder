@@ -88,9 +88,7 @@ public:
     void acquireSolarSystem(SolarSystemObject *solarSystem);
     
     void changeMoney(int moneyOffset);
-    void changeCommandPoints(int commandPointsOffset);
-    void changeCommandPoints(int commandPointsOffset, CCPoint point);
-    
+    void changeProduction(int productionOffset);
     
     //research stuff
     void tickResearchCycle();

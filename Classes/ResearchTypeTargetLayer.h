@@ -10,7 +10,7 @@
 #define __RogueDeck__ResearchTypeTargetLayer__
 
 #include "cocos2d.h"
-
+#include "Constants.h"
 USING_NS_CC;
 
 class CardSprite;
@@ -32,7 +32,8 @@ public:
     CCSprite *expansionIcon;
     CCSprite *scienceIcon;
     
-    
+    CCLabelTTF *description;
+    void setupInterface(ResearchTypes type);
     void updateInterface();
     
     

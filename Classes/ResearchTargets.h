@@ -33,7 +33,8 @@ public:
     virtual bool initWithCardSprite(CardSprite *card);
     
     virtual void highlightInteractiveObjects(UIState* state);
-    virtual void highlightNextInteractiveObjects(UIState* state);
+    
+    virtual void highlightOnMove(UIState* state, CardSprite *card);
     
     //checks whether the ability can be activated
     virtual bool isAbilityActivatable(UIState* state);

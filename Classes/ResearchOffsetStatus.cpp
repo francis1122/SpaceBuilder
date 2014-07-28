@@ -9,6 +9,7 @@
 #include "ResearchOffsetStatus.h"
 #include "GameManager.h"
 #include "Player.h"
+#include "SolarSystemObject.h"
 
 USING_NS_CC;
 
@@ -57,3 +58,10 @@ void ResearchOffsetStatus::updateStatus(Player *player)
 {
 //    player->changeMoney(moneyOffset);
 }
+
+void ResearchOffsetStatus::updateStatus(SolarSystemObject *solarSystem)
+{
+    solarSystem->owner->changeResearch(researchOffset, researchType);
+}
+
+

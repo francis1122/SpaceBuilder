@@ -37,11 +37,6 @@ bool ResearchTypeTargetState::init(CardSprite *_selectedCard)
     return true;
 }
 
-
-void ResearchTypeTargetState::highlightInteractiveObjects(CardSprite *card){
-    clearInteractiveState();
-}
-
 #pragma mark - touch events
 bool ResearchTypeTargetState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     CCLog("selectedState");
@@ -52,6 +47,8 @@ void ResearchTypeTargetState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCE
     //get touch location
     CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
     this->selectedCard->setPosition(touchPoint);
+    //figure out what quadrant card is in
+    selectedCard->cardTargets->highlightOnMove(this, selectedCard);
 }
 
 void ResearchTypeTargetState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){

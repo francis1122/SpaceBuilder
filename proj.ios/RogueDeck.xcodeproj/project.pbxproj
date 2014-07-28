@@ -268,6 +268,7 @@
 		5A3B08271974D95F0086551D /* ResearchTypeTargetState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B08251974D95F0086551D /* ResearchTypeTargetState.cpp */; };
 		5A3B082A1974F2890086551D /* ResearchTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B08281974F2890086551D /* ResearchTargets.cpp */; };
 		5A3B082D1975D08C0086551D /* ResearchTypeTargetLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B082B1975D08C0086551D /* ResearchTypeTargetLayer.cpp */; };
+		5A3B08301976087A0086551D /* BuildingObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A3B082E1976087A0086551D /* BuildingObject.cpp */; };
 		5A4488EC188076080024E488 /* PlayAreaTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A4488EA188076080024E488 /* PlayAreaTargets.cpp */; };
 		5A4488F71880C8040024E488 /* DrawDiscardTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A4488F51880C8040024E488 /* DrawDiscardTargets.cpp */; };
 		5A4488F918861A1D0024E488 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5A4488F818861A1D0024E488 /* fonts */; };
@@ -282,14 +283,19 @@
 		5A6D33EA183EAEFB00CB0174 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33E8183EAEFB00CB0174 /* Player.cpp */; };
 		5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */; };
 		5A6D33F4183EEEBE00CB0174 /* CardTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */; };
+		5A72BB06197F00D900F89D6B /* CreateBuildingStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A72BB04197F00D900F89D6B /* CreateBuildingStatus.cpp */; };
 		5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A757682194A33DF0063EED1 /* PassiveTargets.cpp */; };
 		5A7576CF194EA6850063EED1 /* EmpireCardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7576CD194EA6850063EED1 /* EmpireCardLayer.cpp */; };
+		5AA7B087197F4FB400BCE143 /* BaseModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B085197F4FB400BCE143 /* BaseModel.cpp */; };
+		5AA7B08A197F60AF00BCE143 /* CardInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B088197F60AF00BCE143 /* CardInfoLayer.cpp */; };
+		5AA7B08D197F616200BCE143 /* ResourceCardInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B08B197F616200BCE143 /* ResourceCardInfoLayer.cpp */; };
+		5AA7B090198059E500BCE143 /* ProductionOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B08E198059E500BCE143 /* ProductionOffsetStatus.cpp */; };
 		5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */; };
 		5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */; };
 		5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AAE5CAD18AB218B0019A86B /* CCShake.cpp */; };
+		5AB3A8711981E08900F37F33 /* CreateResourceCardStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3A86F1981E08900F37F33 /* CreateResourceCardStatus.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
-		5ABE711319513628002EDC3B /* IncomeOffsetStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE711119513628002EDC3B /* IncomeOffsetStatus.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -854,6 +860,8 @@
 		5A3B08291974F2890086551D /* ResearchTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResearchTargets.h; path = ../Classes/ResearchTargets.h; sourceTree = "<group>"; };
 		5A3B082B1975D08C0086551D /* ResearchTypeTargetLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResearchTypeTargetLayer.cpp; path = ../Classes/ResearchTypeTargetLayer.cpp; sourceTree = "<group>"; };
 		5A3B082C1975D08C0086551D /* ResearchTypeTargetLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResearchTypeTargetLayer.h; path = ../Classes/ResearchTypeTargetLayer.h; sourceTree = "<group>"; };
+		5A3B082E1976087A0086551D /* BuildingObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BuildingObject.cpp; path = ../Classes/BuildingObject.cpp; sourceTree = "<group>"; };
+		5A3B082F1976087A0086551D /* BuildingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuildingObject.h; path = ../Classes/BuildingObject.h; sourceTree = "<group>"; };
 		5A4488EA188076080024E488 /* PlayAreaTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayAreaTargets.cpp; path = ../Classes/PlayAreaTargets.cpp; sourceTree = "<group>"; };
 		5A4488EB188076080024E488 /* PlayAreaTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayAreaTargets.h; path = ../Classes/PlayAreaTargets.h; sourceTree = "<group>"; };
 		5A4488ED1880769E0024E488 /* Targets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Targets.h; path = ../Classes/Targets.h; sourceTree = "<group>"; };
@@ -883,22 +891,32 @@
 		5A6D33F0183EE8DC00CB0174 /* CardTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargets.h; path = ../Classes/CardTargets.h; sourceTree = "<group>"; };
 		5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardTargetingState.cpp; path = ../Classes/CardTargetingState.cpp; sourceTree = "<group>"; };
 		5A6D33F3183EEEBE00CB0174 /* CardTargetingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardTargetingState.h; path = ../Classes/CardTargetingState.h; sourceTree = "<group>"; };
+		5A72BB04197F00D900F89D6B /* CreateBuildingStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CreateBuildingStatus.cpp; path = ../Classes/CreateBuildingStatus.cpp; sourceTree = "<group>"; };
+		5A72BB05197F00D900F89D6B /* CreateBuildingStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateBuildingStatus.h; path = ../Classes/CreateBuildingStatus.h; sourceTree = "<group>"; };
 		5A757682194A33DF0063EED1 /* PassiveTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PassiveTargets.cpp; path = ../Classes/PassiveTargets.cpp; sourceTree = "<group>"; };
 		5A757683194A33DF0063EED1 /* PassiveTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassiveTargets.h; path = ../Classes/PassiveTargets.h; sourceTree = "<group>"; };
 		5A7576CD194EA6850063EED1 /* EmpireCardLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmpireCardLayer.cpp; path = ../Classes/EmpireCardLayer.cpp; sourceTree = "<group>"; };
 		5A7576CE194EA6850063EED1 /* EmpireCardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmpireCardLayer.h; path = ../Classes/EmpireCardLayer.h; sourceTree = "<group>"; };
+		5AA7B085197F4FB400BCE143 /* BaseModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseModel.cpp; path = ../Classes/BaseModel.cpp; sourceTree = "<group>"; };
+		5AA7B086197F4FB400BCE143 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = ../Classes/BaseModel.h; sourceTree = "<group>"; };
+		5AA7B088197F60AF00BCE143 /* CardInfoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardInfoLayer.cpp; path = ../Classes/CardInfoLayer.cpp; sourceTree = "<group>"; };
+		5AA7B089197F60AF00BCE143 /* CardInfoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardInfoLayer.h; path = ../Classes/CardInfoLayer.h; sourceTree = "<group>"; };
+		5AA7B08B197F616200BCE143 /* ResourceCardInfoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceCardInfoLayer.cpp; path = ../Classes/ResourceCardInfoLayer.cpp; sourceTree = "<group>"; };
+		5AA7B08C197F616200BCE143 /* ResourceCardInfoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourceCardInfoLayer.h; path = ../Classes/ResourceCardInfoLayer.h; sourceTree = "<group>"; };
+		5AA7B08E198059E500BCE143 /* ProductionOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ProductionOffsetStatus.cpp; path = ../Classes/ProductionOffsetStatus.cpp; sourceTree = "<group>"; };
+		5AA7B08F198059E500BCE143 /* ProductionOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductionOffsetStatus.h; path = ../Classes/ProductionOffsetStatus.h; sourceTree = "<group>"; };
 		5AAE5C7D18A611D80019A86B /* MonsterTurnState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MonsterTurnState.cpp; sourceTree = "<group>"; };
 		5AAE5C7E18A611D80019A86B /* MonsterTurnState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterTurnState.h; sourceTree = "<group>"; };
 		5AAE5C8018A61B810019A86B /* LabelWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LabelWrapper.cpp; sourceTree = "<group>"; };
 		5AAE5C8118A61B810019A86B /* LabelWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelWrapper.h; sourceTree = "<group>"; };
 		5AAE5CAD18AB218B0019A86B /* CCShake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCShake.cpp; sourceTree = "<group>"; };
 		5AAE5CAE18AB218B0019A86B /* CCShake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCShake.h; sourceTree = "<group>"; };
+		5AB3A86F1981E08900F37F33 /* CreateResourceCardStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CreateResourceCardStatus.cpp; path = ../Classes/CreateResourceCardStatus.cpp; sourceTree = "<group>"; };
+		5AB3A8701981E08900F37F33 /* CreateResourceCardStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateResourceCardStatus.h; path = ../Classes/CreateResourceCardStatus.h; sourceTree = "<group>"; };
 		5ABBEAA0188BADC900EE8A8A /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Utility.cpp; path = ../Classes/Utility.cpp; sourceTree = "<group>"; };
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
 		5ABBEAAE188E109500EE8A8A /* DamageIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageIcon.h; path = ../Classes/DamageIcon.h; sourceTree = "<group>"; };
-		5ABE711119513628002EDC3B /* IncomeOffsetStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IncomeOffsetStatus.cpp; path = ../Classes/IncomeOffsetStatus.cpp; sourceTree = "<group>"; };
-		5ABE711219513628002EDC3B /* IncomeOffsetStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncomeOffsetStatus.h; path = ../Classes/IncomeOffsetStatus.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1941,8 +1959,6 @@
 				5A3B0074183F3E37004384CD /* Status.h */,
 				5A02C55D19452027007F16BA /* MoneyOffsetStatus.cpp */,
 				5A02C55E19452027007F16BA /* MoneyOffsetStatus.h */,
-				5ABE711119513628002EDC3B /* IncomeOffsetStatus.cpp */,
-				5ABE711219513628002EDC3B /* IncomeOffsetStatus.h */,
 				5A02C56A19468753007F16BA /* PopulationOffsetStatus.cpp */,
 				5A02C56B19468753007F16BA /* PopulationOffsetStatus.h */,
 				5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */,
@@ -1951,6 +1967,12 @@
 				5A245173195FF39300FDE71C /* ResearchOffsetStatus.h */,
 				5A3B081C197091E70086551D /* CardDrawStatus.cpp */,
 				5A3B081D197091E70086551D /* CardDrawStatus.h */,
+				5A72BB04197F00D900F89D6B /* CreateBuildingStatus.cpp */,
+				5A72BB05197F00D900F89D6B /* CreateBuildingStatus.h */,
+				5AA7B08E198059E500BCE143 /* ProductionOffsetStatus.cpp */,
+				5AA7B08F198059E500BCE143 /* ProductionOffsetStatus.h */,
+				5AB3A86F1981E08900F37F33 /* CreateResourceCardStatus.cpp */,
+				5AB3A8701981E08900F37F33 /* CreateResourceCardStatus.h */,
 			);
 			name = Status;
 			sourceTree = "<group>";
@@ -2037,6 +2059,10 @@
 				5A245167195E64A200FDE71C /* ResearchLayer.h */,
 				5A3B082B1975D08C0086551D /* ResearchTypeTargetLayer.cpp */,
 				5A3B082C1975D08C0086551D /* ResearchTypeTargetLayer.h */,
+				5AA7B08B197F616200BCE143 /* ResourceCardInfoLayer.cpp */,
+				5AA7B08C197F616200BCE143 /* ResourceCardInfoLayer.h */,
+				5AA7B088197F60AF00BCE143 /* CardInfoLayer.cpp */,
+				5AA7B089197F60AF00BCE143 /* CardInfoLayer.h */,
 			);
 			name = interface;
 			sourceTree = "<group>";
@@ -2044,12 +2070,15 @@
 		5A6D33E4183DDFBF00CB0174 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				5AA7B081197F4F8500BCE143 /* model */,
 				5A3B0817196F96600086551D /* Cards */,
 				5A04391F187C83C9008EF3F5 /* BaseObject.cpp */,
 				5A043920187C83C9008EF3F5 /* BaseObject.h */,
 				5ABBEAAC188E107100EE8A8A /* Visuals */,
 				5A02C55219438FE6007F16BA /* SolarSystemObject.cpp */,
 				5A02C55319438FE6007F16BA /* SolarSystemObject.h */,
+				5A3B082E1976087A0086551D /* BuildingObject.cpp */,
+				5A3B082F1976087A0086551D /* BuildingObject.h */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -2072,6 +2101,15 @@
 				5A3B08291974F2890086551D /* ResearchTargets.h */,
 			);
 			name = CardTarget;
+			sourceTree = "<group>";
+		};
+		5AA7B081197F4F8500BCE143 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				5AA7B085197F4FB400BCE143 /* BaseModel.cpp */,
+				5AA7B086197F4FB400BCE143 /* BaseModel.h */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 		5ABBEA9C188BA92D00EE8A8A /* utility */ = {
@@ -2236,6 +2274,7 @@
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,
 				15A3D90A1682F7D5002FB0C5 /* b2PolygonShape.cpp in Sources */,
+				5AA7B090198059E500BCE143 /* ProductionOffsetStatus.cpp in Sources */,
 				15A3D90B1682F7D5002FB0C5 /* b2BlockAllocator.cpp in Sources */,
 				15A3D90C1682F7D5002FB0C5 /* b2Draw.cpp in Sources */,
 				15A3D90D1682F7D5002FB0C5 /* b2Math.cpp in Sources */,
@@ -2304,6 +2343,7 @@
 				5A0438F91863EFCE008EF3F5 /* IRDSObject.cpp in Sources */,
 				5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
+				5A72BB06197F00D900F89D6B /* CreateBuildingStatus.cpp in Sources */,
 				15A3D9A91682F7F9002FB0C5 /* cpPolyShape.c in Sources */,
 				15A3D9AA1682F7F9002FB0C5 /* cpShape.c in Sources */,
 				15A3D9AB1682F7F9002FB0C5 /* cpSpace.c in Sources */,
@@ -2315,7 +2355,6 @@
 				15A3D9B01682F7F9002FB0C5 /* cpSpatialIndex.c in Sources */,
 				15A3D9B11682F7F9002FB0C5 /* cpSweep1D.c in Sources */,
 				15A3D9B21682F7F9002FB0C5 /* cpVect.c in Sources */,
-				5ABE711319513628002EDC3B /* IncomeOffsetStatus.cpp in Sources */,
 				15A3DA311682F826002FB0C5 /* CCBAnimationManager.cpp in Sources */,
 				5A6D33D21839E53100CB0174 /* GameManager.cpp in Sources */,
 				15A3DA321682F826002FB0C5 /* CCBFileLoader.cpp in Sources */,
@@ -2329,6 +2368,7 @@
 				15A3DA371682F826002FB0C5 /* CCBValue.cpp in Sources */,
 				15A3DA381682F826002FB0C5 /* CCControlButtonLoader.cpp in Sources */,
 				15A3DA391682F826002FB0C5 /* CCControlLoader.cpp in Sources */,
+				5AA7B08A197F60AF00BCE143 /* CardInfoLayer.cpp in Sources */,
 				15A3DA3A1682F826002FB0C5 /* CCData.cpp in Sources */,
 				15A3DA3B1682F826002FB0C5 /* CCLabelBMFontLoader.cpp in Sources */,
 				15A3DA3C1682F826002FB0C5 /* CCLabelTTFLoader.cpp in Sources */,
@@ -2457,15 +2497,18 @@
 				379BB9BA17F03F3700829B88 /* UIInputManager.cpp in Sources */,
 				5A24516B195F8BC700FDE71C /* ResearchState.cpp in Sources */,
 				379BB9BB17F03F3700829B88 /* UILayer.cpp in Sources */,
+				5A3B08301976087A0086551D /* BuildingObject.cpp in Sources */,
 				379BB9BC17F03F3700829B88 /* UIDragPanel.cpp in Sources */,
 				379BB9BD17F03F3700829B88 /* UIListView.cpp in Sources */,
 				379BB9BE17F03F3700829B88 /* UIPageView.cpp in Sources */,
 				5A043929187C8676008EF3F5 /* AnimationObject.cpp in Sources */,
 				5A245165195E32A000FDE71C /* CardFactory.cpp in Sources */,
 				379BB9BF17F03F3700829B88 /* UIScrollView.cpp in Sources */,
+				5AA7B087197F4FB400BCE143 /* BaseModel.cpp in Sources */,
 				379BB9C017F03F3700829B88 /* UIButton.cpp in Sources */,
 				5A0439121877420F008EF3F5 /* MonsterLayer.cpp in Sources */,
 				379BB9C117F03F3700829B88 /* UICheckBox.cpp in Sources */,
+				5AA7B08D197F616200BCE143 /* ResourceCardInfoLayer.cpp in Sources */,
 				5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */,
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
@@ -2474,6 +2517,7 @@
 				379BB9C617F03F3700829B88 /* UILoadingBar.cpp in Sources */,
 				379BB9C717F03F3700829B88 /* UISlider.cpp in Sources */,
 				379BB9C817F03F3700829B88 /* UISwitch.cpp in Sources */,
+				5AB3A8711981E08900F37F33 /* CreateResourceCardStatus.cpp in Sources */,
 				5A6D33CF1839DCF000CB0174 /* GameLayer.cpp in Sources */,
 				379BB9C917F03F3700829B88 /* UITextField.cpp in Sources */,
 				379BB9CA17F03F3700829B88 /* CSContentJsonDictionary.cpp in Sources */,

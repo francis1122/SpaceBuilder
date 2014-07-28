@@ -44,9 +44,21 @@ void PopulationOffsetStatus::applyStatus(){
     //    GameManager::sharedGameManager()->player->changeMoney(moneyOffset);
 }
 
+void PopulationOffsetStatus::applyStatus(SolarSystemObject *solarSystem)
+{
+    solarSystem->populationGrowth += populationFractionOffset;
+}
+
+
 //called when the status ends
-void PopulationOffsetStatus::applyEndStatus(){
+void PopulationOffsetStatus::applyEndStatus()
+{
     
+}
+
+void PopulationOffsetStatus::applyEndStatus(SolarSystemObject *solarSystem)
+{
+    solarSystem->populationGrowth -= populationFractionOffset;
 }
 
 //checks whether the status should be destroyed
@@ -63,3 +75,10 @@ void PopulationOffsetStatus::updateStatus(Player *player)
 {
     
 }
+
+void PopulationOffsetStatus::updateStatus(SolarSystemObject *solarSystem)
+{
+    
+}
+
+

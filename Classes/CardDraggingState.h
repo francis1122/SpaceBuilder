@@ -25,9 +25,6 @@ public:
     CardSprite *selectedCard;
     CardSprite *draggingCard;
     
-    // implement the "static node()" method manually
-    // CREATE_FUNC(HandCardSelectedState);
-    
     //cocos2d::CCArray* allTouchesFromSet(cocos2d::CCSet *touches);
     virtual bool ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);
     virtual void ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event);

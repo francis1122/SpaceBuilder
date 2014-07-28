@@ -48,45 +48,43 @@ bool ResearchLayer::init()
                                                             CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                                             this,
                                                             menu_selector(ResearchLayer::backButtonPress));
-    backButton->setScale(.7);
+    backButton->setScale(.8);
     
     CCSprite *militarySprite =CCSprite::createWithSpriteFrameName("Button");
     militarySprite->setColor(ccYELLOW);
-    CCMenuItemSprite *militaryButton = CCMenuItemSprite::create(militarySprite,
-                                                            CCSprite::createWithSpriteFrameName("Button_Pressed"),
-                                                            this,
-                                                            menu_selector(ResearchLayer::militaryButtonPress));
-    militaryButton->setScale(.7);
+    CCMenuItemSprite *militaryButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("tech_military"),
+                                                                CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                                                this,
+                                                                menu_selector(ResearchLayer::militaryButtonPress));
+    militaryButton->setScale(.3);
     
-    CCSprite *industrySprite =CCSprite::createWithSpriteFrameName("Button");
+    CCSprite *industrySprite = CCSprite::createWithSpriteFrameName("Button");
     industrySprite->setColor(ccYELLOW);
-    CCMenuItemSprite *industryButton = CCMenuItemSprite::create(industrySprite,
+    CCMenuItemSprite *industryButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("tech_industry"),
                                                                 CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                                                 this,
                                                                 menu_selector(ResearchLayer::industryButtonPress));
-    industryButton->setScale(.7);
+    industryButton->setScale(.3);
     
     CCSprite *expansionSprite =CCSprite::createWithSpriteFrameName("Button");
     expansionSprite->setColor(ccYELLOW);
-    CCMenuItemSprite *expansionButton = CCMenuItemSprite::create(expansionSprite,
-                                                                CCSprite::createWithSpriteFrameName("Button_Pressed"),
-                                                                this,
-                                                                menu_selector(ResearchLayer::expansionButtonPress));
-    expansionButton->setScale(.7);
+    CCMenuItemSprite *expansionButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("tech_expansion"),
+                                                                 CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                                                 this,
+                                                                 menu_selector(ResearchLayer::expansionButtonPress));
+    expansionButton->setScale(.3);
     
-    CCSprite *scienceSprite =CCSprite::createWithSpriteFrameName("Button");
-    scienceSprite->setColor(ccYELLOW);
-    CCMenuItemSprite *scienceButton = CCMenuItemSprite::create(scienceSprite,
-                                                                CCSprite::createWithSpriteFrameName("Button_Pressed"),
-                                                                this,
-                                                                menu_selector(ResearchLayer::scienceButtonPress));
-    scienceButton->setScale(.7);
+    CCMenuItemSprite *scienceButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("tech_science"),
+                                                               CCSprite::createWithSpriteFrameName("Button_Pressed"),
+                                                               this,
+                                                               menu_selector(ResearchLayer::scienceButtonPress));
+    scienceButton->setScale(.3);
     
     // create menu, it's an autorelease object
     CCMenu* pMenu = CCMenu::create(backButton, militaryButton, industryButton, expansionButton, scienceButton, NULL);
-
+    
     pMenu->setPosition(ccp(75, 395));
-    pMenu->alignItemsVerticallyWithPadding(-25);
+    pMenu->alignItemsVerticallyWithPadding(0);
     this->addChild(pMenu, 1002);
     
     
@@ -108,20 +106,21 @@ void ResearchLayer::updateInterface()
     //update title
     //currentTech
     CCArray *researchCardArray;
+    int tillNext = GM->player->getPointsTillNextTier(currentTech);
     if(currentTech == MilitaryTech){
-        CCString *researchString = CCString::createWithFormat("Military Tech %i", GM->player->militaryTech);
+        CCString *researchString = CCString::createWithFormat("Military Tech %i\n %i till next level", GM->player->militaryTech, tillNext);
         titleLabel->setString(researchString->getCString());
         researchCardArray = GM->player->militaryTechCards;
     }else if(currentTech == IndustryTech){
-        CCString *researchString = CCString::createWithFormat("Industry Tech %i", GM->player->industryTech);
+        CCString *researchString = CCString::createWithFormat("Industry Tech %i\n %i till next level", GM->player->industryTech, tillNext);
         titleLabel->setString(researchString->getCString());
         researchCardArray = GM->player->industryTechCards;
     }else if(currentTech == ExpansionTech){
-        CCString *researchString = CCString::createWithFormat("Expansion Tech %i", GM->player->expansionTech);
+        CCString *researchString = CCString::createWithFormat("Expansion Tech %i\n %i till next level", GM->player->expansionTech, tillNext);
         titleLabel->setString(researchString->getCString());
         researchCardArray = GM->player->expansionTechCards;
     }else if(currentTech == ScienceTech){
-        CCString *researchString = CCString::createWithFormat("Science Tech %i", GM->player->scienceTech);
+        CCString *researchString = CCString::createWithFormat("Science Tech %i\n %i till next level", GM->player->scienceTech, tillNext);
         titleLabel->setString(researchString->getCString());
         researchCardArray = GM->player->scienceTechCards;
     }
@@ -139,34 +138,65 @@ void ResearchLayer::updateInterface()
     //create cards
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     
-    for(int i = 0; i < researchCardArray->count(); i++){
-        CardSprite *card = (CardSprite*)researchCardArray->objectAtIndex(i);
-        //        this->addChild(card);
-//        card->setPosition(CCPointZero);
-        //        this->addChild(card);
-        //        float scale = card->getScale();
-        card->setScale(1);
-        
-        //        CCSprite *cardCopy = Utility::getSpriteFromSprite(card, card->getContentSize().width, card->getContentSize().height);
-        //      card->setScale(scale);
-        //        cardCopy->setScale(scale);
-        CCPoint position;
-        //        cardCopy->setScale(.4);
-        
-        CCMenuItemSprite *cardButton = CCMenuItemSprite::create(    card,
-                                                                CCSprite::createWithSpriteFrameName("Button_Pressed"),
-                                                                this,
-                                                                menu_selector(ResearchLayer::cardPressed));
-        cardButton->setTag(i);
-        cardButton->setScale(.35);
-        cardButton->setPosition(CCPointZero);
-        cardSpriteArray->addObject(cardButton);
-        this->removeChild(card);
+    for(int i = 0; i < 5; i++){
+        CardSprite *card = NULL;
+        //grab the correct card for the slot being created
+        for(int j = 0; j < researchCardArray->count(); j++){
+            CardSprite *cardA = (CardSprite*)researchCardArray->objectAtIndex(j);
+            if(cardA->researchSlot == i){
+                card = cardA;
+                break;
+            }
+        }
+
+        if(card){
+                //        this->addChild(card);
+                //        card->setPosition(CCPointZero);
+                //        this->addChild(card);
+                //        float scale = card->getScale();
+                card->setScale(1);
+                
+                //        CCSprite *cardCopy = Utility::getSpriteFromSprite(card, card->getContentSize().width, card->getContentSize().height);
+                //      card->setScale(scale);
+                //        cardCopy->setScale(scale);
+                CCPoint position;
+                //        cardCopy->setScale(.4);
+                
+                CCMenuItemSprite *cardButton = CCMenuItemSprite::create(    card,
+                                                                        CCSprite::createWithSpriteFrameName("spaceCards"),
+                                                                        this,
+                                                                        menu_selector(ResearchLayer::cardPressed));
+                cardButton->setTag(i);
+                cardButton->setScale(.35);
+                cardButton->setPosition(CCPointZero);
+                cardSpriteArray->addObject(cardButton);
+                
+                CCLabelTTF *money = CCLabelTTF::create("$50", Main_Font, 72);
+                money->setPosition(ccp(225, -70));
+                cardButton->addChild(money);
+                if(i > 1){
+                    money->setString("$200");
+                }
+
+            
+        }else{
+            
+            CCMenuItemSprite *cardButton = CCMenuItemSprite::create( CCSprite::createWithSpriteFrameName("blankCard"),
+                                                                    CCSprite::createWithSpriteFrameName("spaceCards"),
+                                                                    this,
+                                                                    menu_selector(ResearchLayer::cardPressed));
+            cardButton->setTag(i);
+            cardButton->setScale(.35);
+            cardButton->setPosition(CCPointZero);
+            cardSpriteArray->addObject(cardButton);
+        }
+        //        this->removeChild(card);
     }
     
     cardMenu = CCMenu::createWithArray(cardSpriteArray);
     //menu creation
-    cardMenu->setPosition(ccp(430 , 355 ));
+    cardMenu->setPosition(ccp(610 , 380 ));
+    cardMenu->setAnchorPoint(ccp(0.0, 0.5));
     cardMenu->alignItemsHorizontallyWithPadding(00);
     this->addChild(cardMenu, 1003);
 }
@@ -191,19 +221,12 @@ void ResearchLayer::cardPressed(CCMenuItemSprite *pSender){
             //purchase the cards if enough money is available
             GM->player->money -= card->costToBuy;
             card->setAnchorPoint(ccp(0.5, 0.5));
-            //seperate card from researchInterface
-            if(cardMenu){
-                cardMenu->removeAllChildren();
-                this->removeChild(cardMenu);
-            }
-            cardMenu = NULL;
-            cardSpriteArray->removeAllObjects();
             GM->player->acquireCard(card);
             researchCardArray->removeObjectAtIndex(tag);
-            updateInterface();
-            GM->gameLayer->updateInterface();
         }
     }
+    updateInterface();
+    GM->gameLayer->updateInterface();
 }
 
 void ResearchLayer::backButtonPress(CCObject *pSender)

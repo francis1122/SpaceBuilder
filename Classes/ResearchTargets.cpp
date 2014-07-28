@@ -34,8 +34,19 @@ void ResearchTargets::highlightInteractiveObjects(UIState* state){
     GM->gameLayer->researchTypeTargetLayer->setVisible(true);
 }
 
-void ResearchTargets::highlightNextInteractiveObjects(UIState* state){
-    CCLog("shouldn't call this");
+void ResearchTargets::highlightOnMove(UIState* state, CardSprite *card)
+{
+    int currentTarget = state->cardInTechQuadrant(card);
+    if(currentTarget == 0){
+        GM->gameLayer->researchTypeTargetLayer->setupInterface(MilitaryTech);
+    }else if(currentTarget == 1){
+        GM->gameLayer->researchTypeTargetLayer->setupInterface(IndustryTech);
+    }else if(currentTarget == 2){
+        GM->gameLayer->researchTypeTargetLayer->setupInterface(ExpansionTech);
+    }else if(currentTarget == 3){
+        GM->gameLayer->researchTypeTargetLayer->setupInterface(ScienceTech);
+    }
+
 }
 
 //checks whether the ability can be activated

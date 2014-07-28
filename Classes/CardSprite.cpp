@@ -35,9 +35,10 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     homeSolarSystem = NULL;
 //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 //   CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    costToBuy = 20;
+    costToBuy = 50;
     costToPlay = 0;
     productionToPlay = 0;
+    researchSlot = 0;
     isPassive = false;
     this->setScale(DEFAULT_CARD_SCALE);
     researchType = MilitaryTech;

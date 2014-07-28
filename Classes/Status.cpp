@@ -19,7 +19,6 @@ bool Status::init()
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
     className = new CCString();
     className->initWithFormat("Status");
-    preemptiveBonus = 0;
     return true;
 }
 
@@ -37,17 +36,30 @@ void Status::addStatusToSolarSystem(SolarSystemObject *solarSystemObject)
 }
 
 //checks whether the status can be used
-bool Status::checkStart(){
+bool Status::checkStart()
+{
     return true;
 }
 
 //called when status is given to object
-void Status::applyStatus(){
+void Status::applyStatus()
+{
     
 }
 
+void Status::applyStatus(SolarSystemObject *solarSystem)
+{
+    
+}
+
+
 //called when the status ends
 void Status::applyEndStatus(){
+    
+}
+
+void Status::applyEndStatus(SolarSystemObject *solarSystem)
+{
     
 }
 

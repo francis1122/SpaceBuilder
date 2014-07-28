@@ -28,7 +28,7 @@ void SolarSystemTargets::highlightInteractiveObjects(UIState* state){
         }
     }
     
-    GM->gameLayer->changeIndicatorState("Target System");
+   // GM->gameLayer->changeIndicatorState("Target System");
     
 }
 

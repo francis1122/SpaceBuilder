@@ -25,6 +25,7 @@ public:
     
     CCLabelTTF *population;
     CCLabelTTF *solarSystemName;
+    CCLabelTTF *resourceGenerationLabel;
     
     CCArray *cardSpriteArray;
     
