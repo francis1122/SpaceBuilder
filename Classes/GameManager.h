@@ -17,6 +17,8 @@
 
 USING_NS_CC;
 class LevelTemplate;
+class ShipModel;
+
 class GameManager
 {
 private:
@@ -36,6 +38,7 @@ public:
     Player *player;
     
     CCArray *solarSystemArray;
+    CCArray *shipsArray;
     
     //level/round information
     int currentLevel;
@@ -47,6 +50,9 @@ public:
     
     void gameStateCheck();
     void afterCardPlayedStateCheck();
+    
+    void addShip(ShipModel *shipModel);
+    void removeShip(ShipModel *shipModel);
     
     //endTurn
     bool hasMorePlayerInteraction();

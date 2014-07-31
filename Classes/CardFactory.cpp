@@ -13,7 +13,6 @@
 #include "GameLayer.h"
 #include "HandLayer.h"
 #include "Statuses.h"
-#include "CardTargets.h"
 #include "Constants.h"
 #include "AnimationManager.h"
 #include "AnimationObject.h"
@@ -22,6 +21,8 @@
 #include "SolarSystemObject.h"
 #include "Constants.h"
 #include "ResourceCardSprite.h"
+#include "Ability.h"
+#include "AbilityTargets.h"
 
 USING_NS_CC;
 
@@ -123,23 +124,122 @@ ResourceCardSprite *CardFactory::waste()
 
 CardSprite* CardFactory::colonize()
 {
+
     CardSprite *card = new CardSprite();
     card->cardImageFile = "sword";
     card->initWithSpriteFrameName("spaceCards");
+    card->detailsLabel->setString("Ship: 1-1 colony");
+    card->cardNameLabel->setString("Colony Ship");
     card->productionToPlay = 50;
-    card->detailsLabel->setString("colonize card");
-    card->cardNameLabel->setString("Colonize");
-    
+    card->populationToPlay = 1;
     //Make card ability
     SolarSystemTargets *cardTargets = new SolarSystemTargets();
     cardTargets->initWithCardSprite(card);
-    cardTargets->targetNeutralSystems = true;
-    ColonizeStatus *status = new ColonizeStatus();
+    cardTargets->targetFriendlySystems = true;
+    
+    
+    MoveShipStatus *status = new MoveShipStatus();
     status->init();
-    cardTargets->statuses->addObject(status);
+    
+    SolarSystemAbilityTargets *abilityTargets = new SolarSystemAbilityTargets();
+    //need to assign ship modedl later
+    abilityTargets->init();
+    abilityTargets->adjacentOnly = true;
+    abilityTargets->needsFuel = true;
+    abilityTargets->statuses->addObject(status);
+    
+    CCString *string = new CCString();
+    string->initWithFormat("Command-hd");
+    abilityTargets->normalCommandImage = string;
+    string = new CCString();
+    string->initWithFormat("Command_Pressed-hd");
+    abilityTargets->selectedCommandImage = string;
     
     
-    card->researchType =  ExpansionTech;
+    ColonizeStatus *statusColonize = new ColonizeStatus();
+    statusColonize->init();
+
+    
+    PlayAbilityTargets *playAbilityTargets = new PlayAbilityTargets();
+    //need to assign ship modedl later
+    playAbilityTargets->init();
+    playAbilityTargets->targetNeutralSystems = true;
+    playAbilityTargets->statuses->addObject(statusColonize);
+    
+    string = new CCString();
+    string->initWithFormat("Ability_Colonize");
+    playAbilityTargets->normalCommandImage = string;
+    string = new CCString();
+    string->initWithFormat("Ability_Colonize_selected");
+    playAbilityTargets->selectedCommandImage = string;
+    
+    
+    CreateShipStatus *shipStatus = new CreateShipStatus();
+    shipStatus->init();
+    shipStatus->shipTitle = new CCString("Scout Ship");
+    shipStatus->shipDescription = new CCString("2-2 ship");
+    shipStatus->shipSpriteName = new CCString("tech_military");
+    
+
+    
+    
+    shipStatus->health = 1;
+    shipStatus->attack = 0;
+    shipStatus->abilities->addObject(abilityTargets);
+    shipStatus->abilities->addObject(playAbilityTargets);
+    
+    
+    cardTargets->statuses->addObject(shipStatus);
+    card->cardTargets = cardTargets;
+    card->updateInterface();
+    return card;
+    
+}
+
+CardSprite* CardFactory::scoutShip()
+{
+    CardSprite *card = new CardSprite();
+    card->cardImageFile = "sword";
+    card->initWithSpriteFrameName("spaceCards");
+    card->detailsLabel->setString("Ship: 0-2");
+    card->cardNameLabel->setString("Scout Ship");
+    card->productionToPlay = 20;
+    //Make card ability
+    SolarSystemTargets *cardTargets = new SolarSystemTargets();
+    cardTargets->initWithCardSprite(card);
+    cardTargets->targetFriendlySystems = true;
+    
+    
+    MoveShipStatus *status = new MoveShipStatus();
+    status->init();
+    
+    SolarSystemAbilityTargets *abilityTargets = new SolarSystemAbilityTargets();
+    //need to assign ship modedl later
+    abilityTargets->init();
+    abilityTargets->adjacentOnly = true;
+    abilityTargets->needsFuel = true;
+    
+    CCString *string = new CCString();
+    string->initWithFormat("Command-hd");
+    abilityTargets->normalCommandImage = string;
+    string = new CCString();
+    string->initWithFormat("Command_Pressed-hd");
+    abilityTargets->selectedCommandImage = string;
+    
+    abilityTargets->statuses->addObject(status);
+    
+    
+    CreateShipStatus *shipStatus = new CreateShipStatus();
+    shipStatus->init();
+    shipStatus->shipTitle = new CCString("Scout Ship");
+    shipStatus->shipDescription = new CCString("2-2 ship");
+    shipStatus->shipSpriteName = new CCString("tech_military");
+    shipStatus->health = 2;
+    shipStatus->attack = 2;
+    shipStatus->abilities->addObject(abilityTargets);
+    
+    
+    cardTargets->statuses->addObject(shipStatus);
     card->cardTargets = cardTargets;
     card->updateInterface();
     return card;
@@ -178,6 +278,7 @@ CardSprite* CardFactory::randomIndustryTierOneCard()
     }else if(rnd == 2){
         return populationIncrease();
     }else if(rnd == 3){
+        return drawTwoDiscardTwo();
         return drawTwo();
     }else if(rnd == 4){
         return productionImprovementBuilding();
@@ -188,6 +289,17 @@ CardSprite* CardFactory::randomIndustryTierOneCard()
 }
 
 CardSprite* CardFactory::randomIndustryTierTwoCard()
+{
+    int rnd = arc4random()%2;
+    if(rnd == 0){
+        return drawTwoDiscardOne();
+    }else if(rnd == 1){
+        return productionResourceCardTwoCreation();
+    }
+    return econOne();
+}
+
+CardSprite* CardFactory::randomIndustryTierThreeCard()
 {
     int rnd = arc4random()%2;
     if(rnd == 0){
@@ -247,16 +359,16 @@ CardSprite* CardFactory::populationIncrease()
     CardSprite *card = new CardSprite();
     card->cardImageFile = "sword";
     card->initWithSpriteFrameName("spaceCards");
-    card->detailsLabel->setString("increase population of solar system by 0.1");
+    card->detailsLabel->setString("increase population of solar system by 0.5");
     card->cardNameLabel->setString("forced copulations");
-    card->productionToPlay = 10;
+    card->productionToPlay = 25;
     //Make card ability
     SolarSystemTargets *cardTargets = new SolarSystemTargets();
     cardTargets->initWithCardSprite(card);
     cardTargets->targetFriendlySystems = true;
     
     PopulationOffsetStatus *status = new PopulationOffsetStatus();
-    status->initWithPopulationOffset(0, 1);
+    status->initWithPopulationOffset(0, 2);
     cardTargets->statuses->addObject(status);
     
     card->cardTargets = cardTargets;
@@ -264,42 +376,45 @@ CardSprite* CardFactory::populationIncrease()
     return card;
 }
 
-CardSprite* CardFactory::drawTwo()
+CardSprite* CardFactory::drawTwoDiscardTwo()
 {
     CardSprite *card = new CardSprite();
     card->cardImageFile = "sword";
     card->initWithSpriteFrameName("spaceCards");
     card->productionToPlay = 0;
-    card->detailsLabel->setString("Draw 2 cards");
+    card->detailsLabel->setString("Draw 2 cards, Discard 2");
     card->cardNameLabel->setString("Divination");
     //Make card ability
-    CardTargets *cardTargets = new PlayAreaTargets();
+    CardTargets *cardTargets = new DrawDiscardTargets();
     cardTargets->initWithCardSprite(card);
+    cardTargets->targetAmount = 2;
     
     CardDrawStatus *status = new CardDrawStatus();
     status->initWithCardDraw(2);
-    cardTargets->statuses->addObject(status);
+    cardTargets->initialStatuses->addObject(status);
     
     card->cardTargets = cardTargets;
     card->updateInterface();
     return card;
 }
+
+
 
 CardSprite* CardFactory::productionImprovementBuilding()
 {
     CardSprite *card = new CardSprite();
     card->cardImageFile = "sword";
     card->initWithSpriteFrameName("spaceCards");
-    card->detailsLabel->setString("Building: generates 5 production each turn");
+    card->detailsLabel->setString("Building: generates 4 production each turn");
     card->cardNameLabel->setString("Factory I");
-    card->productionToPlay = 30;
+    card->productionToPlay = 25;
     //Make card ability
     SolarSystemTargets *cardTargets = new SolarSystemTargets();
     cardTargets->initWithCardSprite(card);
     cardTargets->targetFriendlySystems = true;
     
     ProductionOffsetStatus *status = new ProductionOffsetStatus();
-    status->initWithProductionOffset(5);
+    status->initWithProductionOffset(4);
     
     CreateBuildingStatus *buildingStatus = new CreateBuildingStatus();
     buildingStatus->init();
@@ -337,8 +452,30 @@ CardSprite* CardFactory::productionResourceCardCreation()
 }
 
 
-#pragma mark - tier 2
+#pragma mark tier 2
 
+
+CardSprite* CardFactory::drawTwoDiscardOne()
+{
+    CardSprite *card = new CardSprite();
+    card->cardImageFile = "sword";
+    card->initWithSpriteFrameName("spaceCards");
+    card->productionToPlay = 0;
+    card->detailsLabel->setString("Draw 2 cards, Discard 1");
+    card->cardNameLabel->setString("Divination");
+    //Make card ability
+    CardTargets *cardTargets = new DrawDiscardTargets();
+    cardTargets->initWithCardSprite(card);
+    cardTargets->targetAmount = 1;
+    
+    CardDrawStatus *status = new CardDrawStatus();
+    status->initWithCardDraw(2);
+    cardTargets->initialStatuses->addObject(status);
+    
+    card->cardTargets = cardTargets;
+    card->updateInterface();
+    return card;
+}
 
 CardSprite* CardFactory::productionResourceCardTwoCreation()
 {
@@ -361,6 +498,30 @@ CardSprite* CardFactory::productionResourceCardTwoCreation()
     card->updateInterface();
     return card;
 }
+
+#pragma mark tier 3
+
+CardSprite* CardFactory::drawTwo()
+{
+    CardSprite *card = new CardSprite();
+    card->cardImageFile = "sword";
+    card->initWithSpriteFrameName("spaceCards");
+    card->productionToPlay = 0;
+    card->detailsLabel->setString("Draw 2 cards");
+    card->cardNameLabel->setString("Divination");
+    //Make card ability
+    CardTargets *cardTargets = new PlayAreaTargets();
+    cardTargets->initWithCardSprite(card);
+    
+    CardDrawStatus *status = new CardDrawStatus();
+    status->initWithCardDraw(2);
+    cardTargets->statuses->addObject(status);
+    
+    card->cardTargets = cardTargets;
+    card->updateInterface();
+    return card;
+}
+
 
 #pragma mark - Expansion Cards
 
@@ -588,22 +749,22 @@ CardSprite* CardFactory::researchBuilding()
     CardSprite *card = new CardSprite();
     card->cardImageFile = "sword";
     card->initWithSpriteFrameName("spaceCards");
-    card->detailsLabel->setString("Building: increase all techs by 10 each turn");
+    card->detailsLabel->setString("Building: increase all techs by 5 each turn");
     card->cardNameLabel->setString("Research Lab");
-    card->productionToPlay = 50;
+    card->productionToPlay = 30;
     //Make card ability
     SolarSystemTargets *cardTargets = new SolarSystemTargets();
     cardTargets->initWithCardSprite(card);
     cardTargets->targetFriendlySystems = true;
     
     ResearchOffsetStatus *statusMilitary = new ResearchOffsetStatus();
-    statusMilitary->initWithResearchOffset(10, MilitaryTech);
+    statusMilitary->initWithResearchOffset(5, MilitaryTech);
     ResearchOffsetStatus *statusIndustry = new ResearchOffsetStatus();
-    statusIndustry->initWithResearchOffset(10, IndustryTech);
+    statusIndustry->initWithResearchOffset(5, IndustryTech);
     ResearchOffsetStatus *statusExpansion = new ResearchOffsetStatus();
-    statusExpansion->initWithResearchOffset(10, ExpansionTech);
+    statusExpansion->initWithResearchOffset(5, ExpansionTech);
     ResearchOffsetStatus *statusScience = new ResearchOffsetStatus();
-    statusScience->initWithResearchOffset(10, ScienceTech);
+    statusScience->initWithResearchOffset(5, ScienceTech);
     
     CreateBuildingStatus *buildingStatus = new CreateBuildingStatus();
     buildingStatus->init();

@@ -20,6 +20,8 @@ class CardSprite;
 class Player;
 class BuildingObject;
 class ResourceCardSprite;
+class ShipModel;
+
 class SolarSystemObject : public BaseObject
 {
 public:
@@ -34,6 +36,8 @@ public:
     CREATE_FUNC(SolarSystemObject);
     
     CCArray *connectedSystems;
+    
+    CCArray *shipsArray;
     
     int cardSlots;
     CCArray *cardArray;
@@ -76,6 +80,10 @@ public:
     void updateInterface();
     int getSystemsResourceTier(ResourceTypes type);
     bool addResourceCard(ResourceCardSprite* card);
+    
+    void addShip(ShipModel* shipModel);
+    void removeShipModel(ShipModel* shipModel);
+    
     void populationOffset(int populationOffset, int populationFractionOffset);
     void setHighlighted(bool enabled);
     

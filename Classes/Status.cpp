@@ -35,6 +35,13 @@ void Status::addStatusToSolarSystem(SolarSystemObject *solarSystemObject)
     this->applyStatus();    
 }
 
+void Status::addStatusToSolarSystemWithShip(SolarSystemObject *solarsystemObject, ShipModel *ship)
+{
+    
+    
+}
+
+
 //checks whether the status can be used
 bool Status::checkStart()
 {

@@ -10,7 +10,7 @@
 #include "GameManager.h"
 #include "Player.h"
 #include "SolarSystemObject.h"
-
+#include "ShipModel.h"
 
 USING_NS_CC;
 
@@ -25,14 +25,28 @@ bool ColonizeStatus::init()
     return true;
 }
 
-void ColonizeStatus::addStatusToSolarSystem(SolarSystemObject *solarSystemObject){
-
-    
+void ColonizeStatus::addStatusToSolarSystem(SolarSystemObject *solarSystemObject)
+{
     if(solarSystemObject->population <= 0){
         solarSystemObject->population = 1;
         solarSystemObject->populationFraction = 0;
     }
     GM->player->acquireSolarSystem(solarSystemObject);
+    solarSystemObject->updateInterface();
+}
+
+void ColonizeStatus::addStatusToSolarSystemWithShip(SolarSystemObject *solarSystemObject, ShipModel *ship)
+{
+    if(solarSystemObject->population <= 0){
+        solarSystemObject->population = 1;
+        solarSystemObject->populationFraction = 0;
+    }
+    GM->player->acquireSolarSystem(solarSystemObject);
+    
+    //destroy ship
+    ship->destroyShip();
+    
+    
     solarSystemObject->updateInterface();
 }
 

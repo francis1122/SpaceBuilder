@@ -17,6 +17,8 @@
 #include "SolarSystemDetailsLayer.h"
 #include "SolarSystemDetailsState.h"
 #include "ResearchState.h"
+#include "SolarSystemWorldDetailsState.h"
+#include "ShipWorldDetailsState.h"
 
 USING_NS_CC;
 
@@ -36,6 +38,8 @@ bool NormalState::init()
 #pragma mark - touch events
 bool NormalState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     UIState::ccTouchBegan(touch, event);
+    
+    //checks for a card touch
     CCObject *object = this->objectAtPoint(touch);
     if(object != NULL){
         CardSprite *card = (CardSprite*)object;
@@ -44,27 +48,43 @@ bool NormalState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event)
         }else{
             this->transitionToHandCardSelectedState((CardSprite*)object);
         }
+        return true;
     }
+    
+    
     return true;
 }
 
 void NormalState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-//    UIState::ccTouchMoved(touch, event);
     UIState::cameraOnTouchMoved(touch);
 }
 
 void NormalState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-//    UIState::ccTouchEnded(touch, event);
+    
+    if(!isDraggingCamera){
+        //checks for a solarSystem touch
+        SolarSystemObject *selectedSolarSystem = this->solarSystemObjectAtPoint(touch);
+        if(selectedSolarSystem){
+            this->transitionToSolarSystemWorldDetailsState(selectedSolarSystem);
+            return;
+        }
+        
+        ShipModel *selectedShip = this->shipAtPoint(touch);
+        if(selectedShip){
+            this->transitionToShipWorldDetailsState(selectedShip);
+            return;
+        }
+    }
     UIState::ccTouchEnded(touch, event);
 }
 
 void NormalState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-//    UIState::ccTouchCancelled(touch, event);
+    //    UIState::ccTouchCancelled(touch, event);
     UIState::ccTouchCancelled(touch, event);
 }
 
 void NormalState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-//    CCLog("Normal doubletap");
+    //    CCLog("Normal doubletap");
     CardSprite *handCard = this->handCardAtPoint(touch);
     if(handCard){
         this->transitionToZoomState(handCard, 0);
@@ -141,4 +161,19 @@ void NormalState::transitionToResearchState()
     GM->gameLayer->changeState(RS);
 }
 
+void NormalState::transitionToSolarSystemWorldDetailsState(SolarSystemObject *selectedSolarSystem)
+{
+    SolarSystemWorldDetailsState *SSWDS = new SolarSystemWorldDetailsState();
+    SSWDS->init(selectedSolarSystem);
+    SSWDS->autorelease();
+    GM->gameLayer->changeState(SSWDS);
+    
+}
 
+void NormalState::transitionToShipWorldDetailsState(ShipModel *selectedShipModel)
+{
+    ShipWorldDetailsState *SWDS = new ShipWorldDetailsState();
+    SWDS->init(selectedShipModel);
+    SWDS->autorelease();
+    GM->gameLayer->changeState(SWDS);
+}

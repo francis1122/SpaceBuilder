@@ -23,6 +23,8 @@
 #include "ResearchTypeTargetLayer.h"
 #include "CardInfoLayer.h"
 #include "ResourceCardInfoLayer.h"
+#include "SolarSystemWorldDetailsLayer.h"
+#include "ShipWorldDetailsLayer.h"
 
 USING_NS_CC;
 
@@ -43,11 +45,11 @@ CCScene* GameLayer::scene()
 
 void GameLayer::setupButtons(){
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    rightButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+    rightButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("CardGainSoul"),
                                            CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                            this,
                                            menu_selector(GameLayer::rightButtonPressed));
-    leftButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("Button"),
+    leftButton = CCMenuItemSprite::create(CCSprite::createWithSpriteFrameName("CardCostBox"),
                                           CCSprite::createWithSpriteFrameName("Button_Pressed"),
                                           this,
                                           menu_selector(GameLayer::leftButtonPressed));
@@ -72,9 +74,9 @@ void GameLayer::setupButtons(){
     researchButton->setScale(.7);
     
 	rightButton->setPosition(ccp(visibleSize.width - 60,
-                                 visibleSize.height - 50));
+                                 120));
 	leftButton->setPosition(ccp( 50,
-                                visibleSize.height - 50));
+                                120));
 	endTurnButton->setPosition(ccp( visibleSize.width - 80,
                                 visibleSize.height - 60));
     empireCardsButton->setPosition(ccp( visibleSize.width - 380,
@@ -82,9 +84,13 @@ void GameLayer::setupButtons(){
     researchButton->setPosition(ccp( visibleSize.width - 580,
                                     visibleSize.height - 60));
     // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(researchButton, empireCardsButton, endTurnButton, NULL);
+    CCMenu* pMenu = CCMenu::create( researchButton, empireCardsButton, endTurnButton, NULL);
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 102);
+    
+    CCMenu *handOptions = CCMenu::create(leftButton, rightButton, NULL);
+    handOptions->setPosition(CCPointZero);
+    this->addChild(handOptions, 1000002);
     
     
     //labels
@@ -165,6 +171,8 @@ bool GameLayer::init()
     researchTypeTargetLayer = ResearchTypeTargetLayer::create();
     cardInfoLayer = CardInfoLayer::create();
     resourceCardInfoLayer = ResourceCardInfoLayer::create();
+    solarSystemWorldDetailsLayer = SolarSystemWorldDetailsLayer::create();
+    shipWorldDetailsLayer = ShipWorldDetailsLayer::create();
     
 //    topSlideLayer = TopSlideLayer::create();
 //    this->addChild(topSlideLayer);
@@ -177,6 +185,8 @@ bool GameLayer::init()
     this->addChild(researchTypeTargetLayer, 100000);
     this->addChild(cardInfoLayer, 100000);
     this->addChild(resourceCardInfoLayer, 100000);
+    this->addChild(solarSystemWorldDetailsLayer, 1000);
+    this->addChild(shipWorldDetailsLayer, 1000);
     
     empireCardLayer->setVisible(false);
     solarSystemDetailsLayer->setVisible(false);
@@ -184,6 +194,8 @@ bool GameLayer::init()
     researchTypeTargetLayer->setVisible(false);
     cardInfoLayer->setVisible(false);
     resourceCardInfoLayer->setVisible(false);
+    solarSystemWorldDetailsLayer->setVisible(false);
+    shipWorldDetailsLayer->setVisible(false);
     
     this->leaveZoomState();
     
@@ -233,8 +245,8 @@ void GameLayer::update(float dt)
 
 
 void GameLayer::setButtonLabels(const char *leftLabel, const char *rightLabel){
-//    leftButtonLabel->setString(leftLabel);
-//    rightButtonLabel->setString(rightLabel);
+    leftButtonLabel->setString(leftLabel);
+    rightButtonLabel->setString(rightLabel);
 }
 
 
@@ -334,7 +346,7 @@ void GameLayer::ccTouchMoved(CCTouch* touch, CCEvent* event)
 void GameLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
     if(GM->isInteractive){
-        currentState->ccTouchEnded(touch, event);
+//        currentState->ccTouchEnded(touch, event);
         
         if(isTap){
             long currentTouchTime = millisecondNow();
@@ -342,8 +354,12 @@ void GameLayer::ccTouchEnded(CCTouch* touch, CCEvent* event)
             if(deltaTime < 150){
                 //is a double tap
                 currentState->doubleTap(touch, event);
+            }else{
+                currentState->ccTouchEnded(touch, event);
             }
             previousTouchTime = currentTouchTime;
+        }else{
+            currentState->ccTouchEnded(touch, event);
         }
     }
 }
@@ -418,6 +434,8 @@ void GameLayer::enableRightButtonMustEndTurnInteractive()
 }
 
 void GameLayer::enableRightButtonInteractive(){
+    rightButton->setVisible(true);
+    rightButton->setEnabled(true);
 /*    rightButton->setEnabled(true);
     rightButton->setColor(ccWHITE);
     rightButtonLabel->setColor(ccWHITE);
@@ -427,18 +445,21 @@ void GameLayer::enableRightButtonInteractive(){
 }
 
 void GameLayer::disableRightButtonInteractive(){
-//    rightButton->setEnabled(false);
+    rightButton->setVisible(false);
+    rightButton->setEnabled(false);
 //    rightButtonGlow->setVisible(false);
 }
 
 
 void GameLayer::enableLeftButtonInteractive(){
-//    leftButton->setEnabled(true);
+    leftButton->setVisible(true);
+    leftButton->setEnabled(true);
 //    leftButtonGlow->setVisible(true);
 }
 
 void GameLayer::disableLeftButtonInteractive(){
-//    leftButton->setEnabled(false);
+    leftButton->setEnabled(false);
+    leftButton->setVisible(false);
 //    leftButtonGlow->setVisible(false);
 }
 

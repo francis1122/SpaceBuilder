@@ -286,6 +286,13 @@
 		5A72BB06197F00D900F89D6B /* CreateBuildingStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A72BB04197F00D900F89D6B /* CreateBuildingStatus.cpp */; };
 		5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A757682194A33DF0063EED1 /* PassiveTargets.cpp */; };
 		5A7576CF194EA6850063EED1 /* EmpireCardLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5A7576CD194EA6850063EED1 /* EmpireCardLayer.cpp */; };
+		5AA608A41986E1F1007969BA /* SolarSystemWorldDetailsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608A21986E1F1007969BA /* SolarSystemWorldDetailsLayer.cpp */; };
+		5AA608A81986E31B007969BA /* SolarSystemWorldDetailsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608A61986E31B007969BA /* SolarSystemWorldDetailsState.cpp */; };
+		5AA608AC1986F0D3007969BA /* ShipModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608AA1986F0D3007969BA /* ShipModel.cpp */; };
+		5AA608AF1986F60B007969BA /* CreateShipStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608AD1986F60B007969BA /* CreateShipStatus.cpp */; };
+		5AA608B21986FDC6007969BA /* ShipSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608B01986FDC6007969BA /* ShipSprite.cpp */; };
+		5AA608B519870A42007969BA /* ShipWorldDetailsLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608B319870A42007969BA /* ShipWorldDetailsLayer.cpp */; };
+		5AA608B819870C1A007969BA /* ShipWorldDetailsState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA608B619870C1A007969BA /* ShipWorldDetailsState.cpp */; };
 		5AA7B087197F4FB400BCE143 /* BaseModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B085197F4FB400BCE143 /* BaseModel.cpp */; };
 		5AA7B08A197F60AF00BCE143 /* CardInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B088197F60AF00BCE143 /* CardInfoLayer.cpp */; };
 		5AA7B08D197F616200BCE143 /* ResourceCardInfoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AA7B08B197F616200BCE143 /* ResourceCardInfoLayer.cpp */; };
@@ -296,6 +303,13 @@
 		5AB3A8711981E08900F37F33 /* CreateResourceCardStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AB3A86F1981E08900F37F33 /* CreateResourceCardStatus.cpp */; };
 		5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAA0188BADC900EE8A8A /* Utility.cpp */; };
 		5ABBEAAF188E109500EE8A8A /* DamageIcon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */; };
+		5ADB5FF619882262007F2CD4 /* Ability.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB5FF419882262007F2CD4 /* Ability.cpp */; };
+		5ADB5FFA1988255E007F2CD4 /* AbilityTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB5FF81988255E007F2CD4 /* AbilityTargets.cpp */; };
+		5ADB5FFD1988267E007F2CD4 /* BaseTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB5FFB1988267E007F2CD4 /* BaseTargets.cpp */; };
+		5ADB6004198833F5007F2CD4 /* SolarSystemAbilityTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB6002198833F5007F2CD4 /* SolarSystemAbilityTargets.cpp */; };
+		5ADB6007198834E2007F2CD4 /* ShipTargetingState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB6005198834E2007F2CD4 /* ShipTargetingState.cpp */; };
+		5ADB600A19883748007F2CD4 /* MoveShipStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB600819883748007F2CD4 /* MoveShipStatus.cpp */; };
+		5ADB600D1988AFBF007F2CD4 /* PlayAbilityTargets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5ADB600B1988AFBF007F2CD4 /* PlayAbilityTargets.cpp */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -897,6 +911,20 @@
 		5A757683194A33DF0063EED1 /* PassiveTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PassiveTargets.h; path = ../Classes/PassiveTargets.h; sourceTree = "<group>"; };
 		5A7576CD194EA6850063EED1 /* EmpireCardLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmpireCardLayer.cpp; path = ../Classes/EmpireCardLayer.cpp; sourceTree = "<group>"; };
 		5A7576CE194EA6850063EED1 /* EmpireCardLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmpireCardLayer.h; path = ../Classes/EmpireCardLayer.h; sourceTree = "<group>"; };
+		5AA608A21986E1F1007969BA /* SolarSystemWorldDetailsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SolarSystemWorldDetailsLayer.cpp; path = ../Classes/SolarSystemWorldDetailsLayer.cpp; sourceTree = "<group>"; };
+		5AA608A31986E1F1007969BA /* SolarSystemWorldDetailsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolarSystemWorldDetailsLayer.h; path = ../Classes/SolarSystemWorldDetailsLayer.h; sourceTree = "<group>"; };
+		5AA608A61986E31B007969BA /* SolarSystemWorldDetailsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SolarSystemWorldDetailsState.cpp; path = ../Classes/SolarSystemWorldDetailsState.cpp; sourceTree = "<group>"; };
+		5AA608A71986E31B007969BA /* SolarSystemWorldDetailsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolarSystemWorldDetailsState.h; path = ../Classes/SolarSystemWorldDetailsState.h; sourceTree = "<group>"; };
+		5AA608AA1986F0D3007969BA /* ShipModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipModel.cpp; path = ../Classes/ShipModel.cpp; sourceTree = "<group>"; };
+		5AA608AB1986F0D3007969BA /* ShipModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipModel.h; path = ../Classes/ShipModel.h; sourceTree = "<group>"; };
+		5AA608AD1986F60B007969BA /* CreateShipStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CreateShipStatus.cpp; path = ../Classes/CreateShipStatus.cpp; sourceTree = "<group>"; };
+		5AA608AE1986F60B007969BA /* CreateShipStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateShipStatus.h; path = ../Classes/CreateShipStatus.h; sourceTree = "<group>"; };
+		5AA608B01986FDC6007969BA /* ShipSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipSprite.cpp; path = ../Classes/ShipSprite.cpp; sourceTree = "<group>"; };
+		5AA608B11986FDC6007969BA /* ShipSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipSprite.h; path = ../Classes/ShipSprite.h; sourceTree = "<group>"; };
+		5AA608B319870A42007969BA /* ShipWorldDetailsLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipWorldDetailsLayer.cpp; path = ../Classes/ShipWorldDetailsLayer.cpp; sourceTree = "<group>"; };
+		5AA608B419870A42007969BA /* ShipWorldDetailsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipWorldDetailsLayer.h; path = ../Classes/ShipWorldDetailsLayer.h; sourceTree = "<group>"; };
+		5AA608B619870C1A007969BA /* ShipWorldDetailsState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipWorldDetailsState.cpp; path = ../Classes/ShipWorldDetailsState.cpp; sourceTree = "<group>"; };
+		5AA608B719870C1A007969BA /* ShipWorldDetailsState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipWorldDetailsState.h; path = ../Classes/ShipWorldDetailsState.h; sourceTree = "<group>"; };
 		5AA7B085197F4FB400BCE143 /* BaseModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseModel.cpp; path = ../Classes/BaseModel.cpp; sourceTree = "<group>"; };
 		5AA7B086197F4FB400BCE143 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = ../Classes/BaseModel.h; sourceTree = "<group>"; };
 		5AA7B088197F60AF00BCE143 /* CardInfoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CardInfoLayer.cpp; path = ../Classes/CardInfoLayer.cpp; sourceTree = "<group>"; };
@@ -917,6 +945,21 @@
 		5ABBEAA1188BADCA00EE8A8A /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Classes/Utility.h; sourceTree = "<group>"; };
 		5ABBEAAD188E109500EE8A8A /* DamageIcon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DamageIcon.cpp; path = ../Classes/DamageIcon.cpp; sourceTree = "<group>"; };
 		5ABBEAAE188E109500EE8A8A /* DamageIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DamageIcon.h; path = ../Classes/DamageIcon.h; sourceTree = "<group>"; };
+		5ADB5FF319882258007F2CD4 /* Abilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Abilities.h; path = ../Classes/Abilities.h; sourceTree = "<group>"; };
+		5ADB5FF419882262007F2CD4 /* Ability.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ability.cpp; path = ../Classes/Ability.cpp; sourceTree = "<group>"; };
+		5ADB5FF519882262007F2CD4 /* Ability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ability.h; path = ../Classes/Ability.h; sourceTree = "<group>"; };
+		5ADB5FF81988255E007F2CD4 /* AbilityTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AbilityTargets.cpp; path = ../Classes/AbilityTargets.cpp; sourceTree = "<group>"; };
+		5ADB5FF91988255E007F2CD4 /* AbilityTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbilityTargets.h; path = ../Classes/AbilityTargets.h; sourceTree = "<group>"; };
+		5ADB5FFB1988267E007F2CD4 /* BaseTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BaseTargets.cpp; path = ../Classes/BaseTargets.cpp; sourceTree = "<group>"; };
+		5ADB5FFC1988267E007F2CD4 /* BaseTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseTargets.h; path = ../Classes/BaseTargets.h; sourceTree = "<group>"; };
+		5ADB6002198833F5007F2CD4 /* SolarSystemAbilityTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SolarSystemAbilityTargets.cpp; path = ../Classes/SolarSystemAbilityTargets.cpp; sourceTree = "<group>"; };
+		5ADB6003198833F5007F2CD4 /* SolarSystemAbilityTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SolarSystemAbilityTargets.h; path = ../Classes/SolarSystemAbilityTargets.h; sourceTree = "<group>"; };
+		5ADB6005198834E2007F2CD4 /* ShipTargetingState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShipTargetingState.cpp; path = ../Classes/ShipTargetingState.cpp; sourceTree = "<group>"; };
+		5ADB6006198834E2007F2CD4 /* ShipTargetingState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShipTargetingState.h; path = ../Classes/ShipTargetingState.h; sourceTree = "<group>"; };
+		5ADB600819883748007F2CD4 /* MoveShipStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoveShipStatus.cpp; path = ../Classes/MoveShipStatus.cpp; sourceTree = "<group>"; };
+		5ADB600919883748007F2CD4 /* MoveShipStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoveShipStatus.h; path = ../Classes/MoveShipStatus.h; sourceTree = "<group>"; };
+		5ADB600B1988AFBF007F2CD4 /* PlayAbilityTargets.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayAbilityTargets.cpp; path = ../Classes/PlayAbilityTargets.cpp; sourceTree = "<group>"; };
+		5ADB600C1988AFBF007F2CD4 /* PlayAbilityTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayAbilityTargets.h; path = ../Classes/PlayAbilityTargets.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -1961,8 +2004,6 @@
 				5A02C55E19452027007F16BA /* MoneyOffsetStatus.h */,
 				5A02C56A19468753007F16BA /* PopulationOffsetStatus.cpp */,
 				5A02C56B19468753007F16BA /* PopulationOffsetStatus.h */,
-				5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */,
-				5A02C56219456EFA007F16BA /* ColonizeStatus.h */,
 				5A245172195FF39300FDE71C /* ResearchOffsetStatus.cpp */,
 				5A245173195FF39300FDE71C /* ResearchOffsetStatus.h */,
 				5A3B081C197091E70086551D /* CardDrawStatus.cpp */,
@@ -1973,6 +2014,12 @@
 				5AA7B08F198059E500BCE143 /* ProductionOffsetStatus.h */,
 				5AB3A86F1981E08900F37F33 /* CreateResourceCardStatus.cpp */,
 				5AB3A8701981E08900F37F33 /* CreateResourceCardStatus.h */,
+				5AA608AD1986F60B007969BA /* CreateShipStatus.cpp */,
+				5AA608AE1986F60B007969BA /* CreateShipStatus.h */,
+				5A02C56119456EFA007F16BA /* ColonizeStatus.cpp */,
+				5A02C56219456EFA007F16BA /* ColonizeStatus.h */,
+				5ADB600819883748007F2CD4 /* MoveShipStatus.cpp */,
+				5ADB600919883748007F2CD4 /* MoveShipStatus.h */,
 			);
 			name = Status;
 			sourceTree = "<group>";
@@ -2000,12 +2047,13 @@
 		5A6D33CC1839DCDE00CB0174 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				5ADB5FF219882246007F2CD4 /* Abilities */,
 				5A3B00B11845CD49004384CD /* PostRound */,
 				5A3B0072183F3E27004384CD /* Status */,
 				5A6D33D6183A009400CB0174 /* UIStates */,
 				5A6D33E3183C3DA900CB0174 /* interface */,
 				5A043922187C8451008EF3F5 /* Singletons */,
-				5A6D33EE183EE87900CB0174 /* CardTarget */,
+				5A6D33EE183EE87900CB0174 /* Target */,
 				5A6D33E4183DDFBF00CB0174 /* GameObjects */,
 			);
 			name = Game;
@@ -2014,12 +2062,15 @@
 		5A6D33D6183A009400CB0174 /* UIStates */ = {
 			isa = PBXGroup;
 			children = (
+				5AA608A91986E324007969BA /* World Details */,
 				5A6D33D7183A00A600CB0174 /* UIState.cpp */,
 				5A6D33D8183A00A600CB0174 /* UIState.h */,
 				5A6D33DA183A062700CB0174 /* NormalState.cpp */,
 				5A6D33DB183A062700CB0174 /* NormalState.h */,
 				5A02C5591943A085007F16BA /* SolarSystemDetailsState.cpp */,
 				5A02C55A1943A085007F16BA /* SolarSystemDetailsState.h */,
+				5ADB6005198834E2007F2CD4 /* ShipTargetingState.cpp */,
+				5ADB6006198834E2007F2CD4 /* ShipTargetingState.h */,
 				5A6D33DD183B45BA00CB0174 /* HandCardSelectedState.cpp */,
 				5A6D33DE183B45BA00CB0174 /* HandCardSelectedState.h */,
 				5A6D33F2183EEEBE00CB0174 /* CardTargetingState.cpp */,
@@ -2043,10 +2094,9 @@
 		5A6D33E3183C3DA900CB0174 /* interface */ = {
 			isa = PBXGroup;
 			children = (
+				5AA608A51986E1F7007969BA /* world details */,
 				5A6D33CD1839DCF000CB0174 /* GameLayer.cpp */,
 				5A6D33CE1839DCF000CB0174 /* GameLayer.h */,
-				5A6D33E0183C3D4100CB0174 /* HandLayer.cpp */,
-				5A6D33E1183C3D4100CB0174 /* HandLayer.h */,
 				5A3B00BF1847144C004384CD /* ZoomLayer.cpp */,
 				5A3B00C01847144C004384CD /* ZoomLayer.h */,
 				5A0439101877420F008EF3F5 /* MonsterLayer.cpp */,
@@ -2077,37 +2127,57 @@
 				5ABBEAAC188E107100EE8A8A /* Visuals */,
 				5A02C55219438FE6007F16BA /* SolarSystemObject.cpp */,
 				5A02C55319438FE6007F16BA /* SolarSystemObject.h */,
-				5A3B082E1976087A0086551D /* BuildingObject.cpp */,
-				5A3B082F1976087A0086551D /* BuildingObject.h */,
+				5AA608B01986FDC6007969BA /* ShipSprite.cpp */,
+				5AA608B11986FDC6007969BA /* ShipSprite.h */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
 		};
-		5A6D33EE183EE87900CB0174 /* CardTarget */ = {
+		5A6D33EE183EE87900CB0174 /* Target */ = {
 			isa = PBXGroup;
 			children = (
 				5A4488ED1880769E0024E488 /* Targets.h */,
-				5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */,
-				5A6D33F0183EE8DC00CB0174 /* CardTargets.h */,
-				5A4488EA188076080024E488 /* PlayAreaTargets.cpp */,
-				5A4488EB188076080024E488 /* PlayAreaTargets.h */,
-				5A757682194A33DF0063EED1 /* PassiveTargets.cpp */,
-				5A757683194A33DF0063EED1 /* PassiveTargets.h */,
-				5A02C5641945743E007F16BA /* SolarSystemTargets.cpp */,
-				5A02C5651945743E007F16BA /* SolarSystemTargets.h */,
-				5A4488F51880C8040024E488 /* DrawDiscardTargets.cpp */,
-				5A4488F61880C8040024E488 /* DrawDiscardTargets.h */,
-				5A3B08281974F2890086551D /* ResearchTargets.cpp */,
-				5A3B08291974F2890086551D /* ResearchTargets.h */,
+				5ADB5FFE19882689007F2CD4 /* CardTargets */,
+				5ADB5FF71988254C007F2CD4 /* AbilityTargets */,
+				5ADB5FFB1988267E007F2CD4 /* BaseTargets.cpp */,
+				5ADB5FFC1988267E007F2CD4 /* BaseTargets.h */,
 			);
-			name = CardTarget;
+			name = Target;
+			sourceTree = "<group>";
+		};
+		5AA608A51986E1F7007969BA /* world details */ = {
+			isa = PBXGroup;
+			children = (
+				5A6D33E0183C3D4100CB0174 /* HandLayer.cpp */,
+				5A6D33E1183C3D4100CB0174 /* HandLayer.h */,
+				5AA608A21986E1F1007969BA /* SolarSystemWorldDetailsLayer.cpp */,
+				5AA608A31986E1F1007969BA /* SolarSystemWorldDetailsLayer.h */,
+				5AA608B319870A42007969BA /* ShipWorldDetailsLayer.cpp */,
+				5AA608B419870A42007969BA /* ShipWorldDetailsLayer.h */,
+			);
+			name = "world details";
+			sourceTree = "<group>";
+		};
+		5AA608A91986E324007969BA /* World Details */ = {
+			isa = PBXGroup;
+			children = (
+				5AA608A61986E31B007969BA /* SolarSystemWorldDetailsState.cpp */,
+				5AA608A71986E31B007969BA /* SolarSystemWorldDetailsState.h */,
+				5AA608B619870C1A007969BA /* ShipWorldDetailsState.cpp */,
+				5AA608B719870C1A007969BA /* ShipWorldDetailsState.h */,
+			);
+			name = "World Details";
 			sourceTree = "<group>";
 		};
 		5AA7B081197F4F8500BCE143 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				5A3B082E1976087A0086551D /* BuildingObject.cpp */,
+				5A3B082F1976087A0086551D /* BuildingObject.h */,
 				5AA7B085197F4FB400BCE143 /* BaseModel.cpp */,
 				5AA7B086197F4FB400BCE143 /* BaseModel.h */,
+				5AA608AA1986F0D3007969BA /* ShipModel.cpp */,
+				5AA608AB1986F0D3007969BA /* ShipModel.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -2135,6 +2205,48 @@
 				5AAE5C8118A61B810019A86B /* LabelWrapper.h */,
 			);
 			name = Visuals;
+			sourceTree = "<group>";
+		};
+		5ADB5FF219882246007F2CD4 /* Abilities */ = {
+			isa = PBXGroup;
+			children = (
+				5ADB5FF319882258007F2CD4 /* Abilities.h */,
+				5ADB5FF419882262007F2CD4 /* Ability.cpp */,
+				5ADB5FF519882262007F2CD4 /* Ability.h */,
+			);
+			name = Abilities;
+			sourceTree = "<group>";
+		};
+		5ADB5FF71988254C007F2CD4 /* AbilityTargets */ = {
+			isa = PBXGroup;
+			children = (
+				5ADB5FF81988255E007F2CD4 /* AbilityTargets.cpp */,
+				5ADB5FF91988255E007F2CD4 /* AbilityTargets.h */,
+				5ADB6002198833F5007F2CD4 /* SolarSystemAbilityTargets.cpp */,
+				5ADB6003198833F5007F2CD4 /* SolarSystemAbilityTargets.h */,
+				5ADB600B1988AFBF007F2CD4 /* PlayAbilityTargets.cpp */,
+				5ADB600C1988AFBF007F2CD4 /* PlayAbilityTargets.h */,
+			);
+			name = AbilityTargets;
+			sourceTree = "<group>";
+		};
+		5ADB5FFE19882689007F2CD4 /* CardTargets */ = {
+			isa = PBXGroup;
+			children = (
+				5A6D33EF183EE8DC00CB0174 /* CardTargets.cpp */,
+				5A6D33F0183EE8DC00CB0174 /* CardTargets.h */,
+				5A4488EA188076080024E488 /* PlayAreaTargets.cpp */,
+				5A4488EB188076080024E488 /* PlayAreaTargets.h */,
+				5A757682194A33DF0063EED1 /* PassiveTargets.cpp */,
+				5A757683194A33DF0063EED1 /* PassiveTargets.h */,
+				5A02C5641945743E007F16BA /* SolarSystemTargets.cpp */,
+				5A02C5651945743E007F16BA /* SolarSystemTargets.h */,
+				5A4488F51880C8040024E488 /* DrawDiscardTargets.cpp */,
+				5A4488F61880C8040024E488 /* DrawDiscardTargets.h */,
+				5A3B08281974F2890086551D /* ResearchTargets.cpp */,
+				5A3B08291974F2890086551D /* ResearchTargets.h */,
+			);
+			name = CardTargets;
 			sourceTree = "<group>";
 		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
@@ -2285,12 +2397,14 @@
 				15A3D9121682F7D5002FB0C5 /* b2ContactManager.cpp in Sources */,
 				15A3D9131682F7D5002FB0C5 /* b2Fixture.cpp in Sources */,
 				15A3D9141682F7D5002FB0C5 /* b2Island.cpp in Sources */,
+				5ADB5FF619882262007F2CD4 /* Ability.cpp in Sources */,
 				15A3D9151682F7D5002FB0C5 /* b2World.cpp in Sources */,
 				5A3B082A1974F2890086551D /* ResearchTargets.cpp in Sources */,
 				15A3D9161682F7D5002FB0C5 /* b2WorldCallbacks.cpp in Sources */,
 				5AAE5C7F18A611D80019A86B /* MonsterTurnState.cpp in Sources */,
 				15A3D9171682F7D5002FB0C5 /* b2ChainAndCircleContact.cpp in Sources */,
 				15A3D9181682F7D5002FB0C5 /* b2ChainAndPolygonContact.cpp in Sources */,
+				5ADB5FFA1988255E007F2CD4 /* AbilityTargets.cpp in Sources */,
 				15A3D9191682F7D5002FB0C5 /* b2CircleContact.cpp in Sources */,
 				5A3B0075183F3E37004384CD /* Status.cpp in Sources */,
 				5A02C55419438FE6007F16BA /* SolarSystemObject.cpp in Sources */,
@@ -2325,6 +2439,7 @@
 				15A3D99A1682F7F9002FB0C5 /* cpGearJoint.c in Sources */,
 				5A3B00BE18471012004384CD /* ZoomState.cpp in Sources */,
 				15A3D99B1682F7F9002FB0C5 /* cpGrooveJoint.c in Sources */,
+				5AA608AF1986F60B007969BA /* CreateShipStatus.cpp in Sources */,
 				5A6D33F1183EE8DC00CB0174 /* CardTargets.cpp in Sources */,
 				15A3D99C1682F7F9002FB0C5 /* cpPinJoint.c in Sources */,
 				15A3D99D1682F7F9002FB0C5 /* cpPivotJoint.c in Sources */,
@@ -2340,6 +2455,7 @@
 				15A3D9A51682F7F9002FB0C5 /* cpBBTree.c in Sources */,
 				15A3D9A61682F7F9002FB0C5 /* cpBody.c in Sources */,
 				15A3D9A71682F7F9002FB0C5 /* cpCollision.c in Sources */,
+				5AA608AC1986F0D3007969BA /* ShipModel.cpp in Sources */,
 				5A0438F91863EFCE008EF3F5 /* IRDSObject.cpp in Sources */,
 				5A757684194A33DF0063EED1 /* PassiveTargets.cpp in Sources */,
 				15A3D9A81682F7F9002FB0C5 /* cpHashSet.c in Sources */,
@@ -2361,6 +2477,7 @@
 				5A6D33DF183B45BA00CB0174 /* HandCardSelectedState.cpp in Sources */,
 				15A3DA331682F826002FB0C5 /* CCBKeyframe.cpp in Sources */,
 				5A3B08211970B6950086551D /* UniverseGenerator.cpp in Sources */,
+				5AA608B21986FDC6007969BA /* ShipSprite.cpp in Sources */,
 				15A3DA341682F826002FB0C5 /* CCBReader.cpp in Sources */,
 				15A3DA351682F826002FB0C5 /* CCBSequence.cpp in Sources */,
 				5A02C55F19452027007F16BA /* MoneyOffsetStatus.cpp in Sources */,
@@ -2397,6 +2514,7 @@
 				15A3DA4F1682F826002FB0C5 /* CCControlSlider.cpp in Sources */,
 				15A3DA501682F826002FB0C5 /* CCControlStepper.cpp in Sources */,
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
+				5AA608B819870C1A007969BA /* ShipWorldDetailsState.cpp in Sources */,
 				5A6D33D9183A00A600CB0174 /* UIState.cpp in Sources */,
 				5A3B00B51845CD73004384CD /* PostRoundLayer.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
@@ -2405,6 +2523,7 @@
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
+				5AA608A41986E1F1007969BA /* SolarSystemWorldDetailsLayer.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
@@ -2434,19 +2553,24 @@
 				5AAE5CAF18AB218B0019A86B /* CCShake.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
+				5ADB600D1988AFBF007F2CD4 /* PlayAbilityTargets.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
 				1A8F3B76175E05DA00049216 /* BoneData.cpp in Sources */,
+				5AA608B519870A42007969BA /* ShipWorldDetailsLayer.cpp in Sources */,
 				1A8F3B77175E05DA00049216 /* CCSkeleton.cpp in Sources */,
+				5AA608A81986E31B007969BA /* SolarSystemWorldDetailsState.cpp in Sources */,
 				5AAE5C8218A61B810019A86B /* LabelWrapper.cpp in Sources */,
 				5A245168195E64A200FDE71C /* ResearchLayer.cpp in Sources */,
 				5A6D33E2183C3D4100CB0174 /* HandLayer.cpp in Sources */,
 				5A3B081A196F96D00086551D /* ResourceCardSprite.cpp in Sources */,
+				5ADB6004198833F5007F2CD4 /* SolarSystemAbilityTargets.cpp in Sources */,
 				1A8F3B78175E05DA00049216 /* CCSkeletonAnimation.cpp in Sources */,
 				1A8F3B79175E05DA00049216 /* extension.cpp in Sources */,
 				1A8F3B7A175E05DA00049216 /* Json.cpp in Sources */,
 				1A8F3B7B175E05DA00049216 /* RegionAttachment.cpp in Sources */,
 				1A8F3B7C175E05DA00049216 /* Skeleton.cpp in Sources */,
 				1A8F3B7D175E05DA00049216 /* SkeletonData.cpp in Sources */,
+				5ADB5FFD1988267E007F2CD4 /* BaseTargets.cpp in Sources */,
 				1A8F3B7E175E05DA00049216 /* SkeletonJson.cpp in Sources */,
 				1A8F3B7F175E05DA00049216 /* Skin.cpp in Sources */,
 				1A8F3B80175E05DA00049216 /* Slot.cpp in Sources */,
@@ -2510,11 +2634,13 @@
 				379BB9C117F03F3700829B88 /* UICheckBox.cpp in Sources */,
 				5AA7B08D197F616200BCE143 /* ResourceCardInfoLayer.cpp in Sources */,
 				5ABBEAA2188BADCA00EE8A8A /* Utility.cpp in Sources */,
+				5ADB6007198834E2007F2CD4 /* ShipTargetingState.cpp in Sources */,
 				379BB9C217F03F3700829B88 /* UIImageView.cpp in Sources */,
 				379BB9C317F03F3700829B88 /* UILabel.cpp in Sources */,
 				379BB9C417F03F3700829B88 /* UILabelAtlas.cpp in Sources */,
 				379BB9C517F03F3700829B88 /* UILabelBMFont.cpp in Sources */,
 				379BB9C617F03F3700829B88 /* UILoadingBar.cpp in Sources */,
+				5ADB600A19883748007F2CD4 /* MoveShipStatus.cpp in Sources */,
 				379BB9C717F03F3700829B88 /* UISlider.cpp in Sources */,
 				379BB9C817F03F3700829B88 /* UISwitch.cpp in Sources */,
 				5AB3A8711981E08900F37F33 /* CreateResourceCardStatus.cpp in Sources */,

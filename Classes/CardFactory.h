@@ -30,7 +30,7 @@ public:
     //neutral cards
     //tier one
     static CardSprite* colonize();
-    
+    static CardSprite* scoutShip();
     
     //
     //military cards
@@ -45,18 +45,23 @@ public:
     //
     static CardSprite* randomIndustryTierOneCard();
     static CardSprite* randomIndustryTierTwoCard();
+    static CardSprite* randomIndustryTierThreeCard();
     
     //tier one
     static CardSprite* econOne();
     static CardSprite* contractors();
-
+    static CardSprite* drawTwoDiscardTwo();
     static CardSprite* populationIncrease();
-    static CardSprite* drawTwo();
+
     static CardSprite* productionImprovementBuilding();
     static CardSprite* productionResourceCardCreation();
     
     //tier two
+    static CardSprite* drawTwoDiscardOne();
     static CardSprite* productionResourceCardTwoCreation();
+    
+    //tier three
+    static CardSprite* drawTwo();
     
     //
     //expansion
@@ -71,6 +76,7 @@ public:
     
     //tier two
     
+
     static CardSprite* foodResourceCardTwoCreation();
     
     //

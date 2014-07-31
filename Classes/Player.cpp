@@ -78,13 +78,13 @@ void Player::setupPlayer()
             card = CardFactory::colonize();
             acquireCard(card);
         }else if(i == 1){
-            card = CardFactory::econResearch();
+            card = CardFactory::productionImprovementBuilding();
             acquireCard(card);
         }else if(i == 2){
-            card = CardFactory::contractors();
+            card = CardFactory::scoutShip();
             acquireCard(card);
         }else if(i == 3){
-            card = CardFactory::econOne();
+            card = CardFactory::drawTwoDiscardTwo();
             acquireCard(card);
         }
 

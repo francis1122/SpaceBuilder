@@ -17,6 +17,9 @@ class MonsterSprite;
 class CardSprite;
 class Player;
 class SolarSystemObject;
+class Ability;
+class ShipModel;
+
 class Status : public CCObject
 {
 public:
@@ -28,6 +31,7 @@ public:
     
     virtual void addStatusToPlayer(Player *player);
     virtual void addStatusToSolarSystem(SolarSystemObject *solarSystemObject);
+    virtual void addStatusToSolarSystemWithShip(SolarSystemObject *solarsystemObject, ShipModel *ship);
     virtual void addStatusToCardSprite(CardSprite *card);
     
     //checks whether the status can be used

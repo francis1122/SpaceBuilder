@@ -23,6 +23,10 @@
 #include "ResearchTypeTargetState.h"
 #include "ResourceCardInfoLayer.h"
 #include "CardInfoLayer.h"
+#include "SolarSystemWorldDetailsLayer.h"
+#include "ShipModel.h"
+#include "ShipSprite.h"
+#include "shipWorldDetailsLayer.h"
 
 #define PAN_VELOCITY_SPEED 6.8
 #define PAN_VELOCITY_FRICTION .65
@@ -30,6 +34,12 @@
 #define PAN_VELOCITY_MIN 0.3
 
 #define OVERLAY_HEIGHT 100
+
+
+CCPoint UIState::previousTouchPoint;
+CCPoint UIState::deltaTouch;
+CCPoint UIState::cameraVelocity;
+bool UIState::isDraggingCamera = false;
 
 // on "init" you need to initialize your instance
 bool UIState::init()
@@ -90,21 +100,20 @@ CardSprite *UIState::marketCardAtPoint(cocos2d::CCTouch*touch){
     return NULL;
 }
 
-MonsterSprite *UIState::monsterCardAtPoint(cocos2d::CCTouch*touch){
-    /*
-    GameManager *GM = GameManager::sharedGameManager();
-    //get touch location
-    CCPoint touchPoint = GM->gameLayer->convertTouchToNodeSpace(touch);
+ShipModel *UIState::shipAtPoint(CCTouch*touch)
+{
+    CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
+    //    CCLog("solarTouch: %f, %f", touchPoint.x, touchPoint.y);
     CCObject *object;
-    CCARRAY_FOREACH(GM->monsterArray, object){
-        MonsterSprite *monster = (MonsterSprite*)object;
-        CCRect collisionRect = CCRectMake(monster->getPosition().x - monster->getContentSize().width/2 * monster->getScale(), monster->getPosition().y - monster->getContentSize().height/2 * monster->getScale(), monster->getContentSize().width  * monster->getScale(), monster->getContentSize().height * monster->getScale());
-        bool stuff = collisionRect.containsPoint(touchPoint);
-        if(stuff){
-            return monster;
+    CCARRAY_FOREACH(GM->shipsArray, object){
+        ShipModel *shipModel = (ShipModel*)object;
+        ShipSprite *shipSprite = shipModel->worldShipSprite;
+        CCRect collisionRect = CCRectMake(shipSprite->getPosition().x - shipSprite->getContentSize().width/2 * shipSprite->getScale(), shipSprite->getPosition().y - shipSprite->getContentSize().height/2 * shipSprite->getScale(), shipSprite->getContentSize().width * shipSprite->getScale(), shipSprite->getContentSize().height * shipSprite->getScale() );
+        bool isHit = collisionRect.containsPoint(touchPoint);
+        if(isHit){
+            return shipModel;
         }
     }
-     */
     return NULL;
 }
 
@@ -168,37 +177,48 @@ void UIState::defaultInteractiveState(){
     GM->gameLayer->solarSystemDetailsLayer->setVisible(false);
     GM->gameLayer->cardInfoLayer->setVisible(false);
     GM->gameLayer->resourceCardInfoLayer->setVisible(false);
+    GM->gameLayer->handLayer->setVisible(true);
+    GM->gameLayer->solarSystemWorldDetailsLayer->setVisible(false);
+    GM->gameLayer->shipWorldDetailsLayer->setVisible(false);
     GM->gameLayer->changeIndicatorState("");
-    GM->gameLayer->enableRightButtonInteractive();
+    
+    
     GM->gameLayer->setButtonLabels("", "End Turn");
     
+    GM->gameLayer->disableLeftButtonInteractive();
+    GM->gameLayer->disableRightButtonInteractive();
+    
     //if there are no actions left, make right action glow
-    if(!GM->hasMorePlayerInteraction()){
+  /*  if(!GM->hasMorePlayerInteraction()){
         GM->gameLayer->enableRightButtonMustEndTurnInteractive();
     }
-
+*/
 }
 
 
 #pragma mark - touch events
 bool UIState::ccTouchBegan(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
-    previousTouchPoint = touchPoint;
+    UIState::previousTouchPoint = touchPoint;
+    UIState::isDraggingCamera = false;
     return true;
 }
 
 void UIState::ccTouchMoved(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
+
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
-    previousTouchPoint = touchPoint;
+    UIState::previousTouchPoint = touchPoint;
     
 }
 
 void UIState::ccTouchEnded(cocos2d::CCTouch* touch, cocos2d::CCEvent* event){
-    deltaTouch = CCPointZero;
+    UIState::deltaTouch = CCPointZero;
+    UIState::isDraggingCamera = false;
 }
 
 void UIState::ccTouchCancelled(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
-    deltaTouch = CCPointZero;
+    UIState::deltaTouch = CCPointZero;
+    UIState::isDraggingCamera = false;
 }
 
 void UIState::doubleTap(cocos2d::CCTouch *touch, cocos2d::CCEvent *event){
@@ -331,52 +351,53 @@ void UIState::sideCameraMovement(cocos2d::CCTouch* touch){
 //map movement functions
 void UIState::cameraOnTouchBegan(cocos2d::CCTouch* touch){
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
-    previousTouchPoint = touchPoint;
+    UIState::previousTouchPoint = touchPoint;
     //    cameraVelocity = CGPointZero;
 }
 
 void UIState::cameraOnTouchMoved(cocos2d::CCTouch* touch){
     CCPoint touchPoint = GM->gameLayer->monsterLayer->convertTouchToNodeSpace(touch);
     //  NSLog(@"pintPoint %f, %f", touchPoint.x, touchPoint.y);
-    deltaTouch = ccpSub(touchPoint, previousTouchPoint);
-    previousTouchPoint = touchPoint;
+    UIState::isDraggingCamera = true;
+    UIState::deltaTouch = ccpSub(touchPoint, previousTouchPoint);
+    UIState::previousTouchPoint = touchPoint;
     // playLayer.boardLayer.position = ccpAdd(UIState.playLayer.boardLayer.position, deltaTouch);
  //   this->checkCameraBounds();
 }
 
 void UIState::cameraOnTouchEnded(cocos2d::CCTouch* touch){
-    deltaTouch = CCPointZero;
+    UIState::deltaTouch = CCPointZero;
 }
 
 void UIState::cameraOnTouchCancelled(cocos2d::CCTouch* touch){
-    deltaTouch = CCPointZero;
+    UIState::deltaTouch = CCPointZero;
 }
 
 void UIState::updateCamera(float dt){
-    cameraVelocity = LLMath::truncate(cameraVelocity, (PAN_VELOCITY_MAX * dt));
-    cameraVelocity = CCPointMake(cameraVelocity.x + PAN_VELOCITY_SPEED*(deltaTouch.x)*dt, cameraVelocity.y + PAN_VELOCITY_SPEED*(deltaTouch.y)*dt);
+    UIState::cameraVelocity = LLMath::truncate(cameraVelocity, (PAN_VELOCITY_MAX * dt));
+    UIState::cameraVelocity = CCPointMake(cameraVelocity.x + PAN_VELOCITY_SPEED*(deltaTouch.x)*dt, cameraVelocity.y + PAN_VELOCITY_SPEED*(deltaTouch.y)*dt);
     CCPoint newCameraVel = ccp(cameraVelocity.x * PAN_VELOCITY_FRICTION, cameraVelocity.y * PAN_VELOCITY_FRICTION);
     CCPoint cameraDif = ccpSub(cameraVelocity, newCameraVel);
     cameraDif = ccpMult(cameraDif, dt * 15);
     //  NSLog(@"cameraVel %f, %f", cameraVelocity.x, cameraVelocity.y);
     //  NSLog(@"CameraDif %f, %f", cameraDif.x, cameraDif.y);
-    cameraVelocity = ccpSub(cameraVelocity, cameraDif);
+    UIState::cameraVelocity = ccpSub(cameraVelocity, cameraDif);
     
 	if(ccpLength(cameraVelocity) * dt  < PAN_VELOCITY_MIN * dt){
-		cameraVelocity = CCPointMake(0.0, 0.0);
+		UIState::cameraVelocity = CCPointMake(0.0, 0.0);
 	}
     
     if(moveCameraUp){
-        cameraVelocity = ccp(7, cameraVelocity.y);
+        UIState::cameraVelocity = ccp(7, cameraVelocity.y);
     }
     if(moveCameraDown){
-        cameraVelocity = ccp(-7, cameraVelocity.y);
+        UIState::cameraVelocity = ccp(-7, cameraVelocity.y);
     }
     if(moveCameraLeft){
-        cameraVelocity = ccp(cameraVelocity.x, 7);
+        UIState::cameraVelocity = ccp(cameraVelocity.x, 7);
     }
     if(moveCameraRight){
-        cameraVelocity = ccp(cameraVelocity.x, -7);
+        UIState::cameraVelocity = ccp(cameraVelocity.x, -7);
     }
     
     GM->gameLayer->monsterLayer->setPosition(ccp(GM->gameLayer->monsterLayer->getPosition().x + cameraVelocity.x, GM->gameLayer->monsterLayer->getPosition().y + cameraVelocity.y));
@@ -391,11 +412,11 @@ void UIState::checkCameraBounds(){
     //   NSLog(@"%f, %f", pos.x, pos.y);
     if(pos.x > 0){
         GM->gameLayer->monsterLayer->setPosition(ccp(0, pos.y));
-        cameraVelocity = ccp(0, cameraVelocity.y);
+        UIState::cameraVelocity = ccp(0, cameraVelocity.y);
     }
     if(pos.y > OVERLAY_HEIGHT){
         GM->gameLayer->monsterLayer->setPosition(ccp(pos.x, OVERLAY_HEIGHT));
-        cameraVelocity = ccp(cameraVelocity.x, 0);
+        UIState::cameraVelocity = ccp(cameraVelocity.x, 0);
     }
     
     //board limit
@@ -404,18 +425,18 @@ void UIState::checkCameraBounds(){
     float heightLimit = -(limit.height - winSize.height);
     if(pos.x < widthLimit){
         GM->gameLayer->monsterLayer->setPosition(ccp(widthLimit, pos.y));
-        cameraVelocity = ccp(0, cameraVelocity.y);
+        UIState::cameraVelocity = ccp(0, cameraVelocity.y);
     }
     if(pos.y < heightLimit){
         GM->gameLayer->monsterLayer->setPosition(ccp(pos.x, heightLimit));
-        cameraVelocity = ccp(cameraVelocity.x, 0);
+        UIState::cameraVelocity = ccp(cameraVelocity.x, 0);
     }
 }
 
 void UIState::cleanCameraVariables(){
-    cameraVelocity = CCPointZero;
-    deltaTouch = CCPointZero;
-    previousTouchPoint = CCPointZero;
+    UIState::cameraVelocity = CCPointZero;
+    UIState::deltaTouch = CCPointZero;
+    UIState::previousTouchPoint = CCPointZero;
     moveCameraDown = false;
     moveCameraLeft = false;
     moveCameraRight = false;
@@ -484,4 +505,18 @@ void UIState::transitionToZoomState(CCObject *selectedObject, int type){
 }
 
 
+void UIState::transitionToShipTargetingState(Ability *ability)
+{
+    
+}
+
+void UIState::transitionToSolarSystemWorldDetailsState(SolarSystemObject *selectedSolarSystem)
+{
+    
+}
+
+void UIState::transitionToShipWorldDetailsState(ShipModel *selectedShipModel)
+{
+    
+}
 

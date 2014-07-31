@@ -40,6 +40,7 @@ public:
     
     int costToPlay;
     int productionToPlay;
+    int populationToPlay;
     
     bool isPassive;
     

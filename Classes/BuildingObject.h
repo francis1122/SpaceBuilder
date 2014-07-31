@@ -33,7 +33,6 @@ public:
     void onAddingToSystem(SolarSystemObject* solarSystem);
     void onRemovalFromSystem(SolarSystemObject* solarSystem);
     void update(SolarSystemObject *solarSystem);
-    void updateInterface();
     
 };
 

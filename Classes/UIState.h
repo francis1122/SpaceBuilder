@@ -17,6 +17,9 @@ class CardSprite;
 class MonsterSprite;
 class CardTargets;
 class SolarSystemObject;
+class ShipModel;
+class Ability;
+
 class UIState : public cocos2d::CCObject
 {
 public:
@@ -31,7 +34,7 @@ public:
     CardSprite *handCardAtPoint(cocos2d::CCTouch*touch);
     SolarSystemObject *solarSystemObjectAtPoint(cocos2d::CCTouch *touch);
     CardSprite *marketCardAtPoint(cocos2d::CCTouch*touch);
-    MonsterSprite *monsterCardAtPoint(cocos2d::CCTouch*touch);
+    ShipModel *shipAtPoint(cocos2d::CCTouch*touch);
     cocos2d::CCObject* objectAtPoint(cocos2d::CCTouch* touch);
     
     //visualize what can be touched
@@ -65,9 +68,10 @@ public:
     MonsterSprite* doesPointTouchMonster(cocos2d::CCTouch *touch);
     
     //camera
-    CCPoint previousTouchPoint;
-    CCPoint deltaTouch;
-    CCPoint cameraVelocity;
+    static CCPoint previousTouchPoint;
+    static CCPoint deltaTouch;
+    static CCPoint cameraVelocity;
+    static bool isDraggingCamera;
     bool moveCameraUp;
     bool moveCameraDown;
     bool moveCameraLeft;
@@ -98,6 +102,11 @@ public:
     virtual void transitionToMonsterTurnState();
     //type 0 = hand card, 1 = monster card, 2 = market card
     virtual void transitionToZoomState(CCObject *selectedObject, int type);
+    
+    virtual void transitionToShipTargetingState(Ability *ability);
+    
+    virtual void transitionToSolarSystemWorldDetailsState(SolarSystemObject *selectedSolarSystem);
+    virtual void transitionToShipWorldDetailsState(ShipModel *selectedShipModel);
     
     
 private:

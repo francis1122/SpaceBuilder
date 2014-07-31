@@ -29,6 +29,7 @@ bool SolarSystemDetailsState::init(SolarSystemObject *_selectedSolarSystemObject
     }
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+    UIState::defaultInteractiveState();
     GM->gameLayer->solarSystemDetailsLayer->setVisible(true);
     CCLog("SolarSystemDetailsState");
     selectedSolarSystemObject = _selectedSolarSystemObject;

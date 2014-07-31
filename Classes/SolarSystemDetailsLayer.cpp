@@ -120,13 +120,24 @@ void SolarSystemDetailsLayer::updateInterface(SolarSystemObject *solarSystem)
 
     solarSystemName->setString(solarSystem->solarSystemName->getCString());
     
-    //RESOURCE GENERATION
-    int foodTier = solarSystem->getSystemsResourceTier(FoodResource);
-    int moneyTier = solarSystem->getSystemsResourceTier(MoneyResource);
-    int productionTier = solarSystem->getSystemsResourceTier(ProductionResource);
-    int scienceTier = solarSystem->getSystemsResourceTier(TechResource);
-    resourceGenerationLabel->setString(CCString::createWithFormat("%i %i %i %i", foodTier, moneyTier * solarSystem->population, productionTier * solarSystem->population, scienceTier * solarSystem->population)->getCString() );
     
+    if(solarSystem->owner){
+        //RESOURCE GENERATION
+        int foodTier = solarSystem->getSystemsResourceTier(FoodResource);
+        int moneyTier = solarSystem->getSystemsResourceTier(MoneyResource);
+        int productionTier = solarSystem->getSystemsResourceTier(ProductionResource);
+        int scienceTier = solarSystem->getSystemsResourceTier(TechResource);
+        resourceGenerationLabel->setString(CCString::createWithFormat("%i %i %i %i", foodTier, moneyTier * solarSystem->population, productionTier * solarSystem->population, scienceTier * solarSystem->population)->getCString() );
+        
+    }else{
+        //RESOURCE GENERATION
+        int foodTier = solarSystem->getSystemsResourceTier(FoodResource);
+        int moneyTier = solarSystem->getSystemsResourceTier(MoneyResource);
+        int productionTier = solarSystem->getSystemsResourceTier(ProductionResource);
+        int scienceTier = solarSystem->getSystemsResourceTier(TechResource);
+        resourceGenerationLabel->setString(CCString::createWithFormat("%i %i %i %i", foodTier, moneyTier, productionTier, scienceTier)->getCString() );
+
+    }
     //buildings
     for(int i = 0; i < solarSystem->buildingSlots ; i++){
         CCSprite *buildingSprite;

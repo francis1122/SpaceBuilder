@@ -39,6 +39,7 @@ bool CardSprite::initWithSpriteFrameName(const char *pszSpriteFrameName)
     costToPlay = 0;
     productionToPlay = 0;
     researchSlot = 0;
+    populationToPlay = 0;
     isPassive = false;
     this->setScale(DEFAULT_CARD_SCALE);
     researchType = MilitaryTech;

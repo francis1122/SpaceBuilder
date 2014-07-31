@@ -7,7 +7,6 @@
 //
 
 #include "BuildingObject.h"
-#include "BuildingObject.h"
 #include "CardSprite.h"
 #include "CardTargets.h"
 #include "GameManager.h"
@@ -28,7 +27,6 @@ USING_NS_CC;
 bool BuildingObject::init()
 {
 
-    updateInterface();
     statusArray = new CCArray();
     statusArray->init();
     return true;
@@ -56,11 +54,4 @@ void BuildingObject::update(SolarSystemObject *solarSystem)
         status->updateStatus(solarSystem);
     }
     
-    updateInterface();
 }
-
-void BuildingObject::updateInterface()
-{
-
-}
-

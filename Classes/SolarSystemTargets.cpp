@@ -169,10 +169,18 @@ void SolarSystemTargets::useAbility(){
     CCARRAY_FOREACH(selectedTargets, object){
         //TODO: can target more than just monsters
         SolarSystemObject *solarSystem = (SolarSystemObject*)object;
+        //additional cost specific to ship creation
+        if(cardSprite->populationToPlay > 0){
+            solarSystem->population -= cardSprite->populationToPlay;
+        }
+        
         CCObject *object2;
         CCARRAY_FOREACH(statuses, object2){
             Status *status = (Status*)object2;
             status->addStatusToSolarSystem(solarSystem);
+            
+
+            
         }
     }
     
@@ -187,6 +195,13 @@ void SolarSystemTargets::useAbility(){
 
 bool SolarSystemTargets::isValidSolarSystem(SolarSystemObject *solarSystemObject)
 {
+    
+    if(cardSprite->populationToPlay > 0){
+        if(solarSystemObject->population <= 1){
+            return false;
+        }
+    }
+    
     bool isValid = false;
     if(targetFriendlySystems){
         if(solarSystemObject->owner){

@@ -39,6 +39,293 @@
 			<string></string>
 			<key>Sheet_Sprites_Info</key>
 			<dict>
+				<key>Ability_Colonize</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxgEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA8AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAcAAAABAQAA
+					SHVudGVycwAKAAAAAQEAAHN0YXJlbXBpcmUA
+					ABQAAAABAQAAQWJpbGl0eV9Db2xvbml6ZS5w
+					bmcYAAAAAQYAAAQAAAAUAAAAJAAAADQAAABE
+					AAAAWAAAAAgAAAAEAwAA6RACAAAAAAAIAAAA
+					BAMAABXEBQAAAAAACAAAAAQDAAD2PBAAAAAA
+					AAgAAAAEAwAAahzBAAAAAAAIAAAABAMAALMc
+					wQAAAAAACAAAAAQDAADzV9IAAAAAABgAAAAB
+					BgAAlAAAAKQAAAC0AAAAxAAAANQAAADkAAAA
+					CAAAAAAEAABBuYmNiQAAABgAAAABAgAAAQAA
+					AAAAAAAPAAAAAAAAAAAAAAAAAAAAAAAAAAEF
+					AAAEAAAAAwMAAAYAAAAEAAAAAwMAAAQAAAAI
+					AAAABAMAAAQAAAAAAAAABAAAAAMDAAD1AQAA
+					DAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMA
+					AAAgiD06AAAACAAAAAAEAABBtu+R2gAAACQA
+					AAABAQAAMURFRUE1N0UtRjc5Mi0zN0JELUFG
+					OTEtNTIzOTBCRkM1M0FEGAAAAAECAACBAAAA
+					AQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEA
+					AC8AAAAEAAAAAwMAAAABAADOAAAAAQIAADFh
+					NTNmYzUzYzAzOWZmYjhjYTFhNDFlNmE0YjA4
+					YTZlOWI4ZDIzYmE7MDAwMDAwMDA7MDAwMDAw
+					MDA7MDAwMDAwMDAwMDAwMDAyMDtjb20uYXBw
+					bGUuYXBwLXNhbmRib3gucmVhZC13cml0ZTsw
+					MDAwMDAwMTswMTAwMDAwMjswMDAwMDAwMDAw
+					ZDI1N2YzOy91c2Vycy9odW50ZXIvZHJvcGJv
+					eC9odW50ZXJzL3N0YXJlbXBpcmUvYWJpbGl0
+					eV9jb2xvbml6ZS5wbmcAAADwAAAA/v///wEA
+					AAAAAAAAEwAAAAQQAAB0AAAAAAAAAAUQAAD0
+					AAAAAAAAABAQAAAkAQAAAAAAAEAQAAAUAQAA
+					AAAAAFQQAABMAQAAAAAAAFUQAABYAQAAAAAA
+					AFYQAABEAQAAAAAAAAIgAAAAAgAAAAAAABAg
+					AACAAQAAAAAAABEgAAC0AQAAAAAAABIgAACU
+					AQAAAAAAABMgAACkAQAAAAAAACAgAADgAQAA
+					AAAAADAgAABEAQAAAAAAAAHAAABkAQAAAAAA
+					ABHAAAAUAAAAAAAAABLAAAB0AQAAAAAAABDQ
+					AAAMAgAAAAAAAIDwAAAYAgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>Ability_Colonize</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{592, 262}, {62.5, 62.5}}</string>
+						<key>Frame-HD</key>
+						<string>{{2368, 1048}, {250, 250}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>Ability_Colonize</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/Hunters/starempire/Ability_Colonize.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/Hunters/starempire/Ability_Colonize.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {250, 250}}</string>
+						<key>OriginalSize</key>
+						<string>{250, 250}</string>
+						<key>Position</key>
+						<string>{2368, 1048}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{62.5, 62.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>Ability_Colonize_selected</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaywEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAABAMAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAcAAAABAQAA
+					SHVudGVycwAKAAAAAQEAAHN0YXJlbXBpcmUA
+					AB0AAAABAQAAQWJpbGl0eV9Db2xvbml6ZV9z
+					ZWxlY3RlZC5wbmcAAAAYAAAAAQYAAAQAAAAU
+					AAAAJAAAADQAAABEAAAAWAAAAAgAAAAEAwAA
+					6RACAAAAAAAIAAAABAMAABXEBQAAAAAACAAA
+					AAQDAAD2PBAAAAAAAAgAAAAEAwAAahzBAAAA
+					AAAIAAAABAMAALMcwQAAAAAACAAAAAQDAAD5
+					V9IAAAAAABgAAAABBgAAoAAAALAAAADAAAAA
+					0AAAAOAAAADwAAAACAAAAAAEAABBuYmNvQAA
+					ABgAAAABAgAAAQAAAAAAAAAPAAAAAAAAAAAA
+					AAAAAAAAAAAAAAEFAAAEAAAAAwMAAAYAAAAE
+					AAAAAwMAAAQAAAAIAAAABAMAAAQAAAAAAAAA
+					BAAAAAMDAAD1AQAADAAAAAEBAABNYWNpbnRv
+					c2ggSEQIAAAABAMAAAAgiD06AAAACAAAAAAE
+					AABBtu+R2gAAACQAAAABAQAAMURFRUE1N0Ut
+					Rjc5Mi0zN0JELUFGOTEtNTIzOTBCRkM1M0FE
+					GAAAAAECAACBAAAAAQAIAO8XAAABAAgAAAAA
+					AAAAAAABAAAAAQEAAC8AAAAEAAAAAwMAAAAB
+					AADXAAAAAQIAADc0ZGViNDc2MjUyMTM0ZWRh
+					NmU0OWJiODA1MTkzMWM3ZjNlNTRiNGE7MDAw
+					MDAwMDA7MDAwMDAwMDA7MDAwMDAwMDAwMDAw
+					MDAyMDtjb20uYXBwbGUuYXBwLXNhbmRib3gu
+					cmVhZC13cml0ZTswMDAwMDAwMTswMTAwMDAw
+					MjswMDAwMDAwMDAwZDI1N2Y5Oy91c2Vycy9o
+					dW50ZXIvZHJvcGJveC9odW50ZXJzL3N0YXJl
+					bXBpcmUvYWJpbGl0eV9jb2xvbml6ZV9zZWxl
+					Y3RlZC5wbmcAAPAAAAD+////AQAAAAAAAAAT
+					AAAABBAAAIAAAAAAAAAABRAAAAABAAAAAAAA
+					EBAAADABAAAAAAAAQBAAACABAAAAAAAAVBAA
+					AFgBAAAAAAAAVRAAAGQBAAAAAAAAVhAAAFAB
+					AAAAAAAAAiAAAAwCAAAAAAAAECAAAIwBAAAA
+					AAAAESAAAMABAAAAAAAAEiAAAKABAAAAAAAA
+					EyAAALABAAAAAAAAICAAAOwBAAAAAAAAMCAA
+					AFABAAAAAAAAAcAAAHABAAAAAAAAEcAAABQA
+					AAAAAAAAEsAAAIABAAAAAAAAENAAABgCAAAA
+					AAAAgPAAACQCAAAAAAAA
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>Ability_Colonize_selected</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{513, 178}, {62.5, 62.5}}</string>
+						<key>Frame-HD</key>
+						<string>{{2052, 712}, {250, 250}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>Ability_Colonize_selected</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/Hunters/starempire/Ability_Colonize_selected.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/Hunters/starempire/Ability_Colonize_selected.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {250, 250}}</string>
+						<key>OriginalSize</key>
+						<string>{250, 250}</string>
+						<key>Position</key>
+						<string>{2052, 712}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{62.5, 62.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
 				<key>Button</key>
 				<dict>
 					<key>DocumentSecurityImageBookmark</key>
@@ -1040,6 +1327,292 @@
 						<integer>0</integer>
 					</dict>
 				</dict>
+				<key>Command-hd</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vawwEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA5AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAcAAAABAQAA
+					SHVudGVycwAKAAAAAQEAAHN0YXJlbXBpcmUA
+					AA4AAAABAQAAQ29tbWFuZC1oZC5wbmcAABgA
+					AAABBgAABAAAABQAAAAkAAAANAAAAEQAAABY
+					AAAACAAAAAQDAADpEAIAAAAAAAgAAAAEAwAA
+					FcQFAAAAAAAIAAAABAMAAPY8EAAAAAAACAAA
+					AAQDAABqHMEAAAAAAAgAAAAEAwAAsxzBAAAA
+					AAAIAAAABAMAAPFX0gAAAAAAGAAAAAEGAACQ
+					AAAAoAAAALAAAADAAAAA0AAAAOAAAAAIAAAA
+					AAQAAEG5iY0FAAAAGAAAAAECAAABAAAAAAAA
+					AA8AAAAAAAAAAAAAAAAAAAAAAAAAAQUAAAQA
+					AAADAwAABgAAAAQAAAADAwAABAAAAAgAAAAE
+					AwAABAAAAAAAAAAEAAAAAwMAAPUBAAAMAAAA
+					AQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAACCI
+					PToAAAAIAAAAAAQAAEG275HaAAAAJAAAAAEB
+					AAAxREVFQTU3RS1GNzkyLTM3QkQtQUY5MS01
+					MjM5MEJGQzUzQUQYAAAAAQIAAIEAAAABAAgA
+					7xcAAAEACAAAAAAAAAAAAAEAAAABAQAALwAA
+					AAQAAAADAwAAAAEAAMgAAAABAgAAOGE4YzNk
+					NGIwYmVkYThhYzUwYjhjZmM1ZGYxNmI3NGEy
+					ZjJmMDg2ZDswMDAwMDAwMDswMDAwMDAwMDsw
+					MDAwMDAwMDAwMDAwMDIwO2NvbS5hcHBsZS5h
+					cHAtc2FuZGJveC5yZWFkLXdyaXRlOzAwMDAw
+					MDAxOzAxMDAwMDAyOzAwMDAwMDAwMDBkMjU3
+					ZjE7L3VzZXJzL2h1bnRlci9kcm9wYm94L2h1
+					bnRlcnMvc3RhcmVtcGlyZS9jb21tYW5kLWhk
+					LnBuZwDwAAAA/v///wEAAAAAAAAAEwAAAAQQ
+					AABwAAAAAAAAAAUQAADwAAAAAAAAABAQAAAg
+					AQAAAAAAAEAQAAAQAQAAAAAAAFQQAABIAQAA
+					AAAAAFUQAABUAQAAAAAAAFYQAABAAQAAAAAA
+					AAIgAAD8AQAAAAAAABAgAAB8AQAAAAAAABEg
+					AACwAQAAAAAAABIgAACQAQAAAAAAABMgAACg
+					AQAAAAAAACAgAADcAQAAAAAAADAgAABAAQAA
+					AAAAAAHAAABgAQAAAAAAABHAAAAUAAAAAAAA
+					ABLAAABwAQAAAAAAABDQAAAIAgAAAAAAAIDw
+					AAAUAgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>Command-hd</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{752, 213}, {62.5, 62.5}}</string>
+						<key>Frame-HD</key>
+						<string>{{3008, 852}, {250, 250}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>Command-hd</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/Hunters/starempire/Command-hd.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/Hunters/starempire/Command-hd.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {250, 250}}</string>
+						<key>OriginalSize</key>
+						<string>{250, 250}</string>
+						<key>Position</key>
+						<string>{3008, 852}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{62.5, 62.5}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>Command_Pressed-hd</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vaxwEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA9AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAcAAAABAQAA
+					SHVudGVycwAKAAAAAQEAAHN0YXJlbXBpcmUA
+					ABYAAAABAQAAQ29tbWFuZF9QcmVzc2VkLWhk
+					LnBuZwAAGAAAAAEGAAAEAAAAFAAAACQAAAA0
+					AAAARAAAAFgAAAAIAAAABAMAAOkQAgAAAAAA
+					CAAAAAQDAAAVxAUAAAAAAAgAAAAEAwAA9jwQ
+					AAAAAAAIAAAABAMAAGocwQAAAAAACAAAAAQD
+					AACzHMEAAAAAAAgAAAAEAwAA9VfSAAAAAAAY
+					AAAAAQYAAJgAAACoAAAAuAAAAMgAAADYAAAA
+					6AAAAAgAAAAABAAAQbcToSoAAAAYAAAAAQIA
+					AAEAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAAA
+					AAABBQAABAAAAAMDAAAGAAAABAAAAAMDAAAE
+					AAAACAAAAAQDAAAEAAAAAAAAAAQAAAADAwAA
+					9QEAAAwAAAABAQAATWFjaW50b3NoIEhECAAA
+					AAQDAAAAIIg9OgAAAAgAAAAABAAAQbbvkdoA
+					AAAkAAAAAQEAADFERUVBNTdFLUY3OTItMzdC
+					RC1BRjkxLTUyMzkwQkZDNTNBRBgAAAABAgAA
+					gQAAAAEACADvFwAAAQAIAAAAAAAAAAAAAQAA
+					AAEBAAAvAAAABAAAAAMDAAAAAQAA0AAAAAEC
+					AAA5YmFmMWI2ZWU3MGFiNDIxMGVhYWRkNGQz
+					MTFmNTEzZDM1MDI0YjAxOzAwMDAwMDAwOzAw
+					MDAwMDAwOzAwMDAwMDAwMDAwMDAwMjA7Y29t
+					LmFwcGxlLmFwcC1zYW5kYm94LnJlYWQtd3Jp
+					dGU7MDAwMDAwMDE7MDEwMDAwMDI7MDAwMDAw
+					MDAwMGQyNTdmNTsvdXNlcnMvaHVudGVyL2Ry
+					b3Bib3gvaHVudGVycy9zdGFyZW1waXJlL2Nv
+					bW1hbmRfcHJlc3NlZC1oZC5wbmcA8AAAAP7/
+					//8BAAAAAAAAABMAAAAEEAAAeAAAAAAAAAAF
+					EAAA+AAAAAAAAAAQEAAAKAEAAAAAAABAEAAA
+					GAEAAAAAAABUEAAAUAEAAAAAAABVEAAAXAEA
+					AAAAAABWEAAASAEAAAAAAAACIAAABAIAAAAA
+					AAAQIAAAhAEAAAAAAAARIAAAuAEAAAAAAAAS
+					IAAAmAEAAAAAAAATIAAAqAEAAAAAAAAgIAAA
+					5AEAAAAAAAAwIAAASAEAAAAAAAABwAAAaAEA
+					AAAAAAARwAAAFAAAAAAAAAASwAAAeAEAAAAA
+					AAAQ0AAAEAIAAAAAAACA8AAAHAIAAAAAAAA=
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>Command_Pressed-hd</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{997, 92}, {26.75, 20.75}}</string>
+						<key>Frame-HD</key>
+						<string>{{3988, 368}, {107, 83}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>Command_Pressed-hd</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/Hunters/starempire/Command_Pressed-hd.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/Hunters/starempire/Command_Pressed-hd.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {107, 83}}</string>
+						<key>OriginalSize</key>
+						<string>{107, 83}</string>
+						<key>Position</key>
+						<string>{3988, 368}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{26.75, 20.75}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
 				<key>GreenCard</key>
 				<dict>
 					<key>DocumentSecurityImageBookmark</key>
@@ -1171,6 +1744,150 @@
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
 						<string>{127.75, 173.25}</string>
+						<key>SpriteWasBreaked</key>
+						<false/>
+						<key>Tag</key>
+						<integer>0</integer>
+						<key>TextureOffset</key>
+						<string>{0, 0}</string>
+						<key>UsesBatchRendering</key>
+						<true/>
+						<key>ZOrder</key>
+						<integer>0</integer>
+					</dict>
+				</dict>
+				<key>MartianRocket_Logo_Big</key>
+				<dict>
+					<key>DocumentSecurityImageBookmark</key>
+					<data>
+					Ym9vayQEAAAAAAQQMAAAAAAAAAAAAAAAAAAA
+					AAAAAAAAAAAAAAAAAAAAAAAAAAAA/AIAAAUA
+					AAABAQAAVXNlcnMAAAAGAAAAAQEAAEh1bnRl
+					cgAABwAAAAEBAABEcm9wYm94AAcAAAABAQAA
+					SHVudGVycwAKAAAAAQEAAHN0YXJlbXBpcmUA
+					ABoAAAABAQAATWFydGlhblJvY2tldF9Mb2dv
+					X0JpZy5wbmcAABgAAAABBgAABAAAABQAAAAk
+					AAAANAAAAEQAAABYAAAACAAAAAQDAADpEAIA
+					AAAAAAgAAAAEAwAAFcQFAAAAAAAIAAAABAMA
+					APY8EAAAAAAACAAAAAQDAABqHMEAAAAAAAgA
+					AAAEAwAAsxzBAAAAAAAIAAAABAMAAPdX0gAA
+					AAAAGAAAAAEGAACcAAAArAAAALwAAADMAAAA
+					3AAAAOwAAAAIAAAAAAQAAEG5iY5sAAAAGAAA
+					AAECAAABAAAAAAAAAA8AAAAAAAAAAAAAAAAA
+					AAAAAAAAAQUAAAQAAAADAwAABgAAAAQAAAAD
+					AwAABAAAAAgAAAAEAwAABAAAAAAAAAAEAAAA
+					AwMAAPUBAAAMAAAAAQEAAE1hY2ludG9zaCBI
+					RAgAAAAEAwAAACCIPToAAAAIAAAAAAQAAEG2
+					75HaAAAAJAAAAAEBAAAxREVFQTU3RS1GNzky
+					LTM3QkQtQUY5MS01MjM5MEJGQzUzQUQYAAAA
+					AQIAAIEAAAABAAgA7xcAAAEACAAAAAAAAAAA
+					AAEAAAABAQAALwAAAAQAAAADAwAAAAEAANQA
+					AAABAgAANTFkNTAwNWJmNDQwYzcyNDJmOGI1
+					MTdmMjA1MDIyNmZlNzY5MWVkOTswMDAwMDAw
+					MDswMDAwMDAwMDswMDAwMDAwMDAwMDAwMDIw
+					O2NvbS5hcHBsZS5hcHAtc2FuZGJveC5yZWFk
+					LXdyaXRlOzAwMDAwMDAxOzAxMDAwMDAyOzAw
+					MDAwMDAwMDBkMjU3Zjc7L3VzZXJzL2h1bnRl
+					ci9kcm9wYm94L2h1bnRlcnMvc3RhcmVtcGly
+					ZS9tYXJ0aWFucm9ja2V0X2xvZ29fYmlnLnBu
+					ZwDwAAAA/v///wEAAAAAAAAAEwAAAAQQAAB8
+					AAAAAAAAAAUQAAD8AAAAAAAAABAQAAAsAQAA
+					AAAAAEAQAAAcAQAAAAAAAFQQAABUAQAAAAAA
+					AFUQAABgAQAAAAAAAFYQAABMAQAAAAAAAAIg
+					AAAIAgAAAAAAABAgAACIAQAAAAAAABEgAAC8
+					AQAAAAAAABIgAACcAQAAAAAAABMgAACsAQAA
+					AAAAACAgAADoAQAAAAAAADAgAABMAQAAAAAA
+					AAHAAABsAQAAAAAAABHAAAAUAAAAAAAAABLA
+					AAB8AQAAAAAAABDQAAAUAgAAAAAAAIDwAAAg
+					AgAAAAAAAA==
+					</data>
+					<key>IsSHSprite</key>
+					<true/>
+					<key>PhysicProperties</key>
+					<dict>
+						<key>AngularDamping</key>
+						<real>0.0</real>
+						<key>AngularVelocity</key>
+						<real>0.0</real>
+						<key>CanSleep</key>
+						<true/>
+						<key>FixedRot</key>
+						<false/>
+						<key>GravityScale</key>
+						<real>1</real>
+						<key>HandledBySH</key>
+						<true/>
+						<key>IsBullet</key>
+						<false/>
+						<key>LinearDamping</key>
+						<real>0.0</real>
+						<key>LinearVelocity</key>
+						<string>{0, 0}</string>
+						<key>SH_ComplexShapes</key>
+						<array/>
+						<key>Type</key>
+						<integer>3</integer>
+					</dict>
+					<key>SHSheetName</key>
+					<string>RougeCards</string>
+					<key>SHSpriteName</key>
+					<string>MartianRocket_Logo_Big</string>
+					<key>SheetImage</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>SheetImage-HD</key>
+					<string>RogueCardsDoc_RougeCards.png</string>
+					<key>TextureProperties</key>
+					<dict>
+						<key>Angle</key>
+						<integer>0</integer>
+						<key>Border</key>
+						<integer>0</integer>
+						<key>CanBeTrimmed</key>
+						<true/>
+						<key>Color</key>
+						<string>{{1, 1}, {1, 1}}</string>
+						<key>ConvertedFromOldFormat</key>
+						<false/>
+						<key>CustomClassName</key>
+						<string></string>
+						<key>FlipX</key>
+						<false/>
+						<key>FlipY</key>
+						<false/>
+						<key>Frame</key>
+						<string>{{717, 307}, {128, 128}}</string>
+						<key>Frame-HD</key>
+						<string>{{2868, 1228}, {512, 512}}</string>
+						<key>Image</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>Image-HD</key>
+						<string>RogueCardsDoc_RougeCards.png</string>
+						<key>IsCropped</key>
+						<false/>
+						<key>IsDrawable</key>
+						<true/>
+						<key>IsRotated</key>
+						<false/>
+						<key>IsTrimmed</key>
+						<false/>
+						<key>Name</key>
+						<string>MartianRocket_Logo_Big</string>
+						<key>Opacity</key>
+						<real>1</real>
+						<key>OriginalImage</key>
+						<string>/Users/Hunter/Dropbox/Hunters/starempire/MartianRocket_Logo_Big.png</string>
+						<key>OriginalImage_RelativePath</key>
+						<string>../../../../../Dropbox/Hunters/starempire/MartianRocket_Logo_Big.png/</string>
+						<key>OriginalRect</key>
+						<string>{{0, 0}, {512, 512}}</string>
+						<key>OriginalSize</key>
+						<string>{512, 512}</string>
+						<key>Position</key>
+						<string>{2868, 1228}</string>
+						<key>Scale</key>
+						<string>{1, 1}</string>
+						<key>SpriteSize</key>
+						<string>{128, 128}</string>
 						<key>SpriteWasBreaked</key>
 						<false/>
 						<key>Tag</key>
@@ -2999,9 +3716,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{831, 178}, {127.75, 173.75}}</string>
+						<string>{{836, 178}, {127.75, 173.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{3324, 712}, {511, 693}}</string>
+						<string>{{3344, 712}, {511, 693}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3027,7 +3744,7 @@
 						<key>OriginalSize</key>
 						<string>{511, 693}</string>
 						<key>Position</key>
-						<string>{3324, 712}</string>
+						<string>{3344, 712}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -3857,9 +4574,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{748, 132}, {81.75, 78.5}}</string>
+						<string>{{752, 132}, {81.75, 78.5}}</string>
 						<key>Frame-HD</key>
-						<string>{{2992, 528}, {327, 314}}</string>
+						<string>{{3008, 528}, {327, 314}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -3885,7 +4602,7 @@
 						<key>OriginalSize</key>
 						<string>{327, 314}</string>
 						<key>Position</key>
-						<string>{2992, 528}</string>
+						<string>{3008, 528}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -4715,9 +5432,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{513, 178}, {59.75, 57.75}}</string>
+						<string>{{656, 262}, {59.75, 57.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2052, 712}, {237, 231}}</string>
+						<string>{{2624, 1048}, {237, 231}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -4727,7 +5444,7 @@
 						<key>IsDrawable</key>
 						<true/>
 						<key>IsRotated</key>
-						<true/>
+						<false/>
 						<key>IsTrimmed</key>
 						<false/>
 						<key>Name</key>
@@ -4743,7 +5460,7 @@
 						<key>OriginalSize</key>
 						<string>{237, 231}</string>
 						<key>Position</key>
-						<string>{2052, 712}</string>
+						<string>{2624, 1048}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5001,9 +5718,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{572, 132}, {127.75, 173.75}}</string>
+						<string>{{577, 132}, {127.75, 173.75}}</string>
 						<key>Frame-HD</key>
-						<string>{{2288, 528}, {511, 693}}</string>
+						<string>{{2308, 528}, {511, 693}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5029,7 +5746,7 @@
 						<key>OriginalSize</key>
 						<string>{511, 693}</string>
 						<key>Position</key>
-						<string>{2288, 528}</string>
+						<string>{2308, 528}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>
@@ -5716,9 +6433,9 @@
 						<key>FlipY</key>
 						<false/>
 						<key>Frame</key>
-						<string>{{997, 92}, {38, 6}}</string>
+						<string>{{997, 114}, {38, 6}}</string>
 						<key>Frame-HD</key>
-						<string>{{3988, 368}, {152, 24}}</string>
+						<string>{{3988, 456}, {152, 24}}</string>
 						<key>Image</key>
 						<string>RogueCardsDoc_RougeCards.png</string>
 						<key>Image-HD</key>
@@ -5744,7 +6461,7 @@
 						<key>OriginalSize</key>
 						<string>{152, 24}</string>
 						<key>Position</key>
-						<string>{3988, 368}</string>
+						<string>{3988, 456}</string>
 						<key>Scale</key>
 						<string>{1, 1}</string>
 						<key>SpriteSize</key>

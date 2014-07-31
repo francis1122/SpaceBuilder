@@ -40,7 +40,11 @@ bool CardDrawStatus::checkStart(){
 
 //called when status is given to object
 void CardDrawStatus::applyStatus(){
-//    GameManager::sharedGameManager()->player->changeMoney(moneyOffset);
+    int i = 0;
+    while( i < cardDraw){
+        GM->player->addCardToHand();
+        i++;
+    }
 }
 
 //called when the status ends

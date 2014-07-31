@@ -25,26 +25,12 @@ bool CardTargets::initWithCardSprite(CardSprite *card)
     
     //    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     //    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-    
-    selectedTargets = new CCArray();
-    statuses = new CCArray();
-    initialStatuses = new CCArray();
-    
-    
-    selectedTargets->init();
-    statuses->init();
-    initialStatuses->init();
-    targetAmount = 1;
-    
+    if(!BaseTargets::init()){
+        return false;
+    }
+    cardSprite = card;
     timesCardCanBePlayed = -1;
     timesCardHasBeenPlayed = 0;
-    
-    cardSprite = card;
-    
-    objectsToUse = CurrentPlayer;
-    //which objects to apply status to
-    applyToAllFriendly =  false;
-    applyToHomeSystem = false;;
     
     return true;
 }

@@ -37,7 +37,12 @@ void DrawDiscardTargets::highlightInteractiveObjectsWithDraggingCard(UIState* st
 }
 
 //checks whether the ability can be activated
-bool DrawDiscardTargets::isAbilityActivatable(UIState* state){
+bool DrawDiscardTargets::isAbilityActivatable(UIState* state)
+{
+/*    if(GM->player->handCards->count() >= targetAmount){
+        return true;
+    }
+    */
     return true;
 }
 

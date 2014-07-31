@@ -10,6 +10,7 @@
 #define __RogueDeck__CardTargets__
 
 #include "cocos2d.h"
+#include "BaseTargets.h"
 
 class CardSprite;
 class UIState;
@@ -18,42 +19,19 @@ class SolarSystemObject;
 USING_NS_CC;
 
 
-typedef enum GameObjects{
-    Units,
-    Cards,
-    SolarSystem,
-    CurrentPlayer
-} GameObjects;
-
-
-class CardTargets : public CCObject
+class CardTargets : public BaseTargets
 {
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool initWithCardSprite(CardSprite *card);
     
-    //type of object to apply status to
-    GameObjects objectsToUse;
-    //which objects to apply status to
-    bool applyToAllFriendly;
-    bool applyToHomeSystem;
-    
     //cardsprite
     CardSprite *cardSprite;
     
-    //amount of targets that must be targetted, used for dragging as well
-    int targetAmount;
     
     int timesCardCanBePlayed;
     int timesCardHasBeenPlayed;
     
-    //Dragging stuff
-    CCArray *selectedTargets;
-    
-    //array of statuses
-    //inital statuses cannot require targets, gets called before statuses get's called and before state change
-    CCArray *initialStatuses;
-    CCArray *statuses;
     
     
     virtual void highlightInteractiveObjects(UIState* state);

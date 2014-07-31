@@ -21,6 +21,8 @@
 #include "LLMath.h"
 #include "PassiveTargets.h"
 #include "UniverseGenerator.h"
+#include "ShipModel.h"
+#include "ShipSprite.h"
 
 
 using namespace cocos2d;
@@ -51,7 +53,11 @@ GameManager::GameManager()
      CCLog("capcity %i", this->deckCards->capacity());
      */
     solarSystemArray = new CCArray();
+    shipsArray = new CCArray();
+    
     solarSystemArray->init();
+    shipsArray->init();
+    
 }
 
 GameManager* GameManager::sharedGameManager()
@@ -200,6 +206,25 @@ void GameManager::endTurn()
     CCSequence *seq = CCSequence::create( delay, obj, NULL);
     gameLayer->runAction(seq);
     
+}
+
+
+void GameManager::addShip(ShipModel *shipModel)
+{
+    shipsArray->addObject(shipModel);
+    shipModel->worldShipSprite = new ShipSprite();
+    shipModel->worldShipSprite->initWithSpriteFrameName(shipModel->shipSpriteName->getCString());
+    shipModel->worldShipSprite->shipModel = shipModel;
+    gameLayer->monsterLayer->addChild(shipModel->worldShipSprite);
+    shipModel->worldShipSprite->updateInterface();
+    
+}
+
+
+void GameManager::removeShip(ShipModel *shipModel)
+{
+    gameLayer->monsterLayer->removeChild(shipModel->worldShipSprite);
+    shipsArray->removeObject(shipModel);
 }
 
 #pragma mark - solar system

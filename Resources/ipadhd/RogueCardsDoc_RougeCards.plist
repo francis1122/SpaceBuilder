@@ -4,6 +4,44 @@
 <dict>
 	<key>frames</key>
 	<dict>
+		<key>Ability_Colonize</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {250, 250}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{250, 250}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{2368, 1048}, {250, 250}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>Ability_Colonize_selected</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {250, 250}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{250, 250}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{2052, 712}, {250, 250}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
 		<key>Button</key>
 		<dict>
 			<key>aliases</key>
@@ -137,6 +175,44 @@
 			<key>textureRotated</key>
 			<true/>
 		</dict>
+		<key>Command-hd</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {250, 250}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{250, 250}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{3008, 852}, {250, 250}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		<key>Command_Pressed-hd</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {107, 83}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{107, 83}</string>
+			<key>spriteSourceSize</key>
+			<string>{107, 83}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{3988, 368}, {107, 83}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
 		<key>GreenCard</key>
 		<dict>
 			<key>aliases</key>
@@ -155,6 +231,25 @@
 			<string>{{2768, 8}, {693, 511}}</string>
 			<key>textureRotated</key>
 			<true/>
+		</dict>
+		<key>MartianRocket_Logo_Big</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteColorRect</key>
+			<string>{{0, 0}, {512, 512}}</string>
+			<key>spriteOffset</key>
+			<string>{0, 0}</string>
+			<key>spriteSize</key>
+			<string>{512, 512}</string>
+			<key>spriteSourceSize</key>
+			<string>{512, 512}</string>
+			<key>spriteTrimmed</key>
+			<false/>
+			<key>textureRect</key>
+			<string>{{2868, 1228}, {512, 512}}</string>
+			<key>textureRotated</key>
+			<false/>
 		</dict>
 		<key>NeutralCard</key>
 		<dict>
@@ -399,7 +494,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{3324, 712}, {693, 511}}</string>
+			<string>{{3344, 712}, {693, 511}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
@@ -513,7 +608,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{2992, 528}, {327, 314}}</string>
+			<string>{{3008, 528}, {327, 314}}</string>
 			<key>textureRotated</key>
 			<false/>
 		</dict>
@@ -627,9 +722,9 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{2052, 712}, {231, 237}}</string>
+			<string>{{2624, 1048}, {237, 231}}</string>
 			<key>textureRotated</key>
-			<true/>
+			<false/>
 		</dict>
 		<key>solarSystem_Label</key>
 		<dict>
@@ -665,7 +760,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{2288, 528}, {693, 511}}</string>
+			<string>{{2308, 528}, {693, 511}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>
@@ -760,7 +855,7 @@
 			<key>spriteTrimmed</key>
 			<false/>
 			<key>textureRect</key>
-			<string>{{3988, 368}, {24, 152}}</string>
+			<string>{{3988, 456}, {24, 152}}</string>
 			<key>textureRotated</key>
 			<true/>
 		</dict>

@@ -20,6 +20,7 @@
 #include "Targets.h"
 #include "CardFactory.h"
 #include "BuildingObject.h"
+#include "ShipModel.h"
 
 USING_NS_CC;
 
@@ -46,10 +47,12 @@ bool SolarSystemObject::initWithSpriteFrameName(const char *pszSpriteFrameName)
     cardArray = new CCArray();
     buildingsArray = new CCArray();
     connectedSystems = new CCArray();
+    shipsArray = new CCArray();
     
     cardArray->init();
     buildingsArray->init();
     connectedSystems->init();
+    shipsArray->init();
     solarSystemName = NULL;
     
     planetSize = Small;
@@ -89,14 +92,15 @@ void SolarSystemObject::setupHomeResourceSlots()
     //random cards should be added to planets on creation
     for(int i = 0; i < cardSlots; i++){
         ResourceCardSprite *card;
-        if(i == 0 || i == 1){
+        if(i == 0){
             card = CardFactory::food();
-            card->tier = 1;
-        }else if(i == 2){
-            card = CardFactory::production();
             card->tier = 2;
-        }else if(i == 3 || i == 4){
+        }else if(i == 2 || i == 4){
+            card = CardFactory::production();
+            card->tier = 1;
+        }else if(i == 3 || i == 1){
             card = CardFactory::money();
+            card->tier = 1;
         }else{
             card = CardFactory::tech();
             card->tier = 2;
@@ -155,8 +159,13 @@ void SolarSystemObject::update()
         }
     }
     
+    //update ships
+    for(int i = 0; i < shipsArray->count(); i++){
+        ShipModel *ship = (ShipModel*)shipsArray->objectAtIndex(i);
+        ship->update();
+    }
+    
     updateInterface();
-
 }
 
 void SolarSystemObject::updateInterface()
@@ -200,6 +209,22 @@ int SolarSystemObject::getSystemsResourceTier(ResourceTypes type){
         }
     }
     return tier;
+}
+
+void SolarSystemObject::addShip(ShipModel* shipModel)
+{
+    shipModel->location = this;
+    shipsArray->addObject(shipModel);
+    GM->addShip(shipModel);
+    this->updateInterface();    
+}
+
+void SolarSystemObject::removeShipModel(ShipModel* shipModel)
+{
+    shipModel->location = NULL;
+    shipsArray->removeObject(shipModel);
+    GM->removeShip(shipModel);
+    this->updateInterface();
 }
 
 bool SolarSystemObject::addResourceCard(ResourceCardSprite* card)

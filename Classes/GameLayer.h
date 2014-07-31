@@ -22,6 +22,8 @@ class ResearchLayer;
 class ResearchTypeTargetLayer;
 class CardInfoLayer;
 class ResourceCardInfoLayer;
+class SolarSystemWorldDetailsLayer;
+class ShipWorldDetailsLayer;
 
 class GameLayer : public cocos2d::CCLayer
 {
@@ -57,6 +59,8 @@ public:
     ResearchTypeTargetLayer *researchTypeTargetLayer;
     CardInfoLayer *cardInfoLayer;
     ResourceCardInfoLayer *resourceCardInfoLayer;
+    SolarSystemWorldDetailsLayer *solarSystemWorldDetailsLayer;
+    ShipWorldDetailsLayer *shipWorldDetailsLayer;
     
     
     

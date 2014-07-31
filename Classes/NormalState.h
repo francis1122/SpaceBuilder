@@ -45,6 +45,8 @@ public:
     virtual void transitionToResearchTypeTargetState(CardSprite* selectedCard);
     //type 0 = hand card, 1 = monster card, 2 = market card
     virtual void transitionToZoomState(CCObject *selectedObject, int type);
+    virtual void transitionToSolarSystemWorldDetailsState(SolarSystemObject *selectedSolarSystem);
+    virtual void transitionToShipWorldDetailsState(ShipModel *selectedShipModel);
 
 private:
     

@@ -18,5 +18,8 @@
 #include "CreateBuildingStatus.h"
 #include "ProductionOffsetStatus.h"
 #include "CreateResourceCardStatus.h"
+#include "CreateShipStatus.h"
+
+#include "MoveShipStatus.h"
 
 #endif

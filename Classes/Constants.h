@@ -32,8 +32,8 @@
 
 
 //research tiers
-#define RESEARCH_TIER_1 50
-#define RESEARCH_TIER_2 150
+#define RESEARCH_TIER_1 40
+#define RESEARCH_TIER_2 120
 #define RESEARCH_TIER_3 300
 #define RESEARCH_TIER_4 800
 #define RESEARCH_TIER_5 10000

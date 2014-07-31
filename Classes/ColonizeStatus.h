@@ -28,6 +28,7 @@ public:
     
     virtual void addStatusToSolarSystem(SolarSystemObject *solarSystemObject);
     
+    virtual void addStatusToSolarSystemWithShip(SolarSystemObject *solarSystemObject, ShipModel *ship);
     //checks whether the status can be used
     virtual bool checkStart();
     
